@@ -7,9 +7,6 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
     "test": "karma start --coverage",
-    "test:watch": "karma start --auto-watch=true --single-run=false",
-    "storybook": "start-storybook --node-resolve --watch --open",
-    "storybook:build": "build-storybook",
     "start:build": "cd dist && es-dev-server --open",
     "build": "webpack --mode=production",
     "start": "es-dev-server --app-index index.html --node-resolve --open --watch"
