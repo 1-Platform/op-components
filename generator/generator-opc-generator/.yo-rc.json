@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "hybridx",
+      "authorEmail": "hybridx18@gmail.com",
+      "authorUrl": "https://hybridx.github.io"
+    }
+  }
+}
