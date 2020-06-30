@@ -1,5 +1,4 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
@@ -14,34 +13,27 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                  loader: 'babel-loader',
-                  options: {
-                    presets: ['@babel/preset-env'],
-                    plugins: ['@babel/plugin-proposal-object-rest-spread',
-                              '@babel/plugin-proposal-class-properties',]
-                  },
-                }
-            },
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin, 'css-loader']
-            },
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
-                  ],
-            },
         {
-            test: /\.html$/i,
-            loader: 'html-loader',
-          },
+            test: /\.m?js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                presets: ['@babel/preset-env'],
+                plugins: ['@babel/plugin-proposal-object-rest-spread',
+                            '@babel/plugin-proposal-class-properties',]
+                },
+            }
+        },
+        {
+            test: /\.css|\.s(c|a)ss$/,
+            use: [{
+              loader: 'lit-scss-loader',
+              options: {
+                minify: true, // defaults to false
+              },
+            }, 'extract-loader', 'css-loader', 'sass-loader'],
+        },
         ],
     },
     resolve: {

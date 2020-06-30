@@ -12,10 +12,13 @@
             align-items: center;
             height: 100vh;
         }
+        <%= elementName %> {
+            --font-size: 40px;
+        }
     </style>
 </head>
 <body>
-    <<%= elementName %>>
+    <<%= elementName %> my-prop="A second late">
     </<%= elementName %>>
 </body>
 </html>

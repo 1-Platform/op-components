@@ -1,32 +1,17 @@
 // @ts-nocheck
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html } from "lit-element";
+import style  from './styles/style.scss';
 
 export class MyCounter extends LitElement {
   static properties = {
     count: { type: Number },
-    num: {type: Number }
+    num: {type: Number },
+    myProp: { attribute: 'my-prop' }
   };
 
-  static styles = css`
-  * {
-    font-size: 200%;
+  static get styles() {
+    return [ style ];
   }
-
-  span {
-    width: 4rem;
-    display: inline-block;
-    text-align: center;
-  }
-
-  button {
-    width: 4rem;
-    height: 4rem;
-    border: none;
-    border-radius: 10px;
-    background-color: #BE0000;
-    color: white;
-  }
-`;
 
   constructor() {
     super();
@@ -36,10 +21,10 @@ export class MyCounter extends LitElement {
 
   inc() {
     this.count++;
-    this.newTest();
+    this.lateNumAssignment();
   }
 
-  newTest() {
+  lateNumAssignment() {
     setTimeout(() => {
       this.num = this.count;
     }, 1000);
@@ -47,16 +32,18 @@ export class MyCounter extends LitElement {
 
   dec() {
     this.count--;
-    this.newTest();
+    this.lateNumAssignment();
   }
 
   render() {
     return html`
+      <style include="my-custom-style">
+      </style>
       <button @click="${this.dec}">-</button>
       <span>${this.count}</span>
       <button @click="${this.inc}">+</button>
       <br>
-      <div style="text-align: center;">${this.num}</div>
+      <div class="info"><span class="info__text">${this.myProp}</span>: ${this.num}</div>
     `;
   }
 }
