@@ -3,7 +3,8 @@ import { LitElement, html, css } from "lit-element";
 
 export class MyCounter extends LitElement {
   static properties = {
-    count: { type: Number }
+    count: { type: Number },
+    num: {type: Number }
   };
 
   static styles = css`
@@ -30,14 +31,23 @@ export class MyCounter extends LitElement {
   constructor() {
     super();
     this.count = 0;
+    this.num = 0;
   }
 
   inc() {
     this.count++;
+    this.newTest();
+  }
+
+  newTest() {
+    setTimeout(() => {
+      this.num = this.count;
+    }, 1000);
   }
 
   dec() {
     this.count--;
+    this.newTest();
   }
 
   render() {
@@ -45,6 +55,8 @@ export class MyCounter extends LitElement {
       <button @click="${this.dec}">-</button>
       <span>${this.count}</span>
       <button @click="${this.inc}">+</button>
+      <br>
+      <div style="text-align: center;">${this.num}</div>
     `;
   }
 }

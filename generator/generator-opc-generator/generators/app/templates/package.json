@@ -1,7 +1,7 @@
 {
   "name": "<%= elementName %>",
   "version": "0.0.1",
-  "description": "A simple web component built in typescript and lit",
+  "description": "A simple web component built in javascript and lit",
   "scripts": {
     "dev": "webpack-dev-server --open",
     "build": "webpack --mode production",

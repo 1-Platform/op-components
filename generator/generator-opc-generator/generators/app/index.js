@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use strict';
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
@@ -8,7 +9,7 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the super ${chalk.red('generator-opc-generator')} generator!`)
+      yosay(`Welcome to the super ${chalk.red('opc-generator')} generator!`)
     );
 
     const prompts = [
@@ -23,6 +24,11 @@ module.exports = class extends Generator {
         name: 'authorName',
         message: 'Please enter the author name: '
       },
+      {
+        type: 'confirm',
+        name: 'installDependencies',
+        message: 'Do you want to install dependencies?'
+      }
     ];
 
     return this.prompt(prompts).then(props => {
@@ -42,11 +48,12 @@ module.exports = class extends Generator {
   }
 
   install () {
-
-    // this.installDependencies( {
-    //   npm: true,
-    //   bower: false,
-    //   yarn: false
-    // } );
+    if (this.props.installDependencies) {
+      this.installDependencies( {
+        npm: true,
+        bower: false,
+        yarn: false
+      } );
+    }
   }
 };

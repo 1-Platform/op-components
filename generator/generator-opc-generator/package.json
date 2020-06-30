@@ -2,7 +2,7 @@
   "name": "@one-platform/generator-opc-generator",
   "version": "0.0.0",
   "description": "A generator to scaffold vanillaJS or lit custom elements",
-  "homepage": "https://github.com/1-Platform/op-component-library",
+  "homepage": "https://github.com/1-Platform/op-components",
   "author": {
     "name": "hybridx",
     "email": "hybridx18@gmail.com",
@@ -78,6 +78,6 @@
     "pretest": "eslint .",
     "test": "jest"
   },
-  "repository": "git@github.com:gisumit/opc-mock.git",
+  "repository": "git@github.com:1-Platform/op-components.git",
   "license": "MIT"
 }
