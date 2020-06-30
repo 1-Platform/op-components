@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/generator-opc-generator",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A generator to scaffold vanillaJS or lit custom elements",
   "homepage": "https://github.com/1-Platform/op-components",
   "author": {

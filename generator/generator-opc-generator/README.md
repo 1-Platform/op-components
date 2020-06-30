@@ -7,13 +7,13 @@ First, install [Yeoman](http://yeoman.io) and generator-opc-generator using [npm
 
 ```bash
 npm install -g yo
-npm install -g generator-opc-generator
+npm install -g @one-platform/generator-opc-generator
 ```
 
 Then generate your new project:
 
 ```bash
-yo opc-generator
+yo @one-platform/opc-generator
 ```
 
 ## Getting To Know Yeoman
