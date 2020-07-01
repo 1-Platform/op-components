@@ -1,12 +1,12 @@
 {
-  "name": "<%= elementName %>",
+  "name": "@one-platform/<%= elementName %>",
   "version": "0.0.1",
   "description": "A simple web component built in javascript and lit",
   "scripts": {
     "dev": "webpack-dev-server --open",
     "build": "webpack --mode production",
     "start": "webpack-dev-server",
-    "test": "wtc"
+    "test": "wct"
   },
   "publishConfig": {
     "access": "public"

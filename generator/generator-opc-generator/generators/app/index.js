@@ -55,5 +55,8 @@ module.exports = class extends Generator {
         yarn: false
       } );
     }
+    this.log(
+      `The files have been created. Please cd into ${this.props.elementName}`
+    );
   }
 };
