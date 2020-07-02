@@ -1,6 +1,6 @@
-# This is <%= elementName %> 👋
+# This is <%= componentName %> 👋
 
-Here is some information about <%= elementName %>
+Here is some information about <%= componentName %>
 
 ## Install
 

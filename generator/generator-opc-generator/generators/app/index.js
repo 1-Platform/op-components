@@ -1,33 +1,35 @@
-//@ts-nocheck
-'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
-const fs = require( 'fs' );
+// @ts-nocheck
+"use strict";
+const Generator = require("yeoman-generator");
+const chalk = require("chalk");
+const yosay = require("yosay");
+const _ = require("lodash");
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the super ${chalk.red('opc-generator')} generator!`)
+      yosay(`Welcome to the super ${chalk.red("opc-generator")} generator!`)
     );
 
     const prompts = [
       {
-        type: 'input',
-        name: 'elementName',
-        message: 'What would you like to call your element? ',
-        default: 'my-element'
+        type: "input",
+        name: "componentName",
+        message: "What would you like to call your component? ",
+        default: "op-my-component"
       },
       {
-        type: 'input',
-        name: 'authorName',
-        message: 'Please enter the author name: '
+        type: "input",
+        name: "authorName",
+        message: "Please enter the author name: ",
+        default: "undefined"
       },
       {
-        type: 'confirm',
-        name: 'installDependencies',
-        message: 'Do you want to install dependencies?'
+        type: "input",
+        name: "authorEmail",
+        message: "Please enter the author email address: ",
+        default: ""
       }
     ];
 
@@ -38,25 +40,36 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const elementName = this.props.elementName;
+    this.props = {
+      ...this.props,
+      authorName: this.props.authorName.trim(),
+      authorEmail: this.props.authorEmail.trim(),
+      componentName: this.props.componentName.trim(),
+      componentClass: _.chain(this.props.componentName)
+        .camelCase()
+        .upperFirst()
+        .value()
+    };
+    if (!this.props.componentName.startsWith("op-")) {
+      this.props.componentName = `op-${this.props.componentName}`;
+    }
 
     this.fs.copyTpl(
-      this.templatePath(),
-      this.destinationPath(`${elementName}/`),
+      `${this.templatePath()}/**/!(_)*`,
+      this.destinationPath(`${this.props.componentName}/`),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/_style.scss"),
+      this.destinationPath(
+        `${this.props.componentName}/src/${this.props.componentName}.scss/`
+      ),
       this.props
     );
   }
 
-  install () {
-    if (this.props.installDependencies) {
-      this.installDependencies( {
-        npm: true,
-        bower: false,
-        yarn: false
-      } );
-    }
-    this.log(
-      `The files have been created. Please cd into ${this.props.elementName}`
-    );
+  install() {
+    process.chdir(this.props.componentName);
+    this.npmInstall();
   }
 };

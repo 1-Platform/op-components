@@ -1,4 +1,4 @@
-# Welcome to OP-Components library 👋
+# Welcome to One Platform Components Library 👋
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/1-Platform/op-components#readme)
@@ -55,6 +55,12 @@ yo opc-generator
 
 ## 🤝 Contributors
 
-👤 **Deepesh Nair** [@hybridx](https://github.com/hybridx)
+👤 **Ghanshyam Lohar** [@ghanlohar](https://github.com/ghanlohar)
+
+👤 **Diwanshi Gadgil** [@diwanshi](https://github.com/diwanshi)
+
+👤 **Anjnee K. Sharma** [@anjneeksharma](https://github.com/anjneeksharma)
 
 👤 **Sumeet Ingole** [@gisumit](https://github.com/gisumit)
+
+👤 **Deepesh Nair** [@hybridx](https://github.com/hybridx)

@@ -14,16 +14,9 @@ module.exports = {
     module: {
         rules: [
         {
-            test: /\.m?js$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                presets: ['@babel/preset-env'],
-                plugins: ['@babel/plugin-proposal-object-rest-spread',
-                            '@babel/plugin-proposal-class-properties',]
-                },
-            }
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/,
         },
         {
             test: /\.css|\.s(c|a)ss$/,
@@ -37,10 +30,10 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.scss', '.css'],
+        extensions: [ '.tsx', '.ts', '.js' ],
     },
     output: {
-        filename: '<%= elementName %>.js',
+        filename: '<%= componentName %>.js',
         path: path.resolve(__dirname, 'dist'),
     },
 };

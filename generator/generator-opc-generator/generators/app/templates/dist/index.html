@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= elementName %></title>
-    <script src="<%= elementName %>.js"></script>
+    <title><%= componentName %></title>
+    <script src="<%= componentName %>.js"></script>
     <style>
         body {
             display: flex;
@@ -12,13 +12,13 @@
             align-items: center;
             height: 100vh;
         }
-        <%= elementName %> {
-            --font-size: 40px;
+        <%= componentName %> {
+            --op-component--text-size: 4rem;
         }
     </style>
 </head>
 <body>
-    <<%= elementName %> my-prop="A second late">
-    </<%= elementName %>>
+    <<%= componentName %> name="<%= authorName %>">
+    </<%= componentName %>>
 </body>
 </html>
