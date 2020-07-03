@@ -28,7 +28,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "authorEmail",
-        message: "Please enter the author email address: ",
+        message: "Author Email: ",
         default: ""
       }
     ];
