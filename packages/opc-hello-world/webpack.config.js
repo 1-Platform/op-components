@@ -7,7 +7,7 @@ module.exports = {
         compress: true,
         port: 4200,
     },
-    entry: `${path.join(__dirname, 'src/<%= componentName %>')}`,
+    entry: `${path.join(__dirname, 'src/opc-hello-world')}`,
     devtool: 'inline-source-map',
     optimization : {
         usedExports: true
@@ -34,7 +34,7 @@ module.exports = {
         extensions: [ '.tsx', '.ts', '.js' ],
     },
     output: {
-        filename: '<%= componentName %>.js',
+        filename: 'opc-hello-world.js',
         path: path.resolve(__dirname, 'dist'),
     },
 };

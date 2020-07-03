@@ -17,7 +17,7 @@ module.exports = class extends Generator {
         type: "input",
         name: "componentName",
         message: "Component Name? ",
-        default: "op-my-component"
+        default: "opc-my-component"
       },
       {
         type: "input",
@@ -29,13 +29,13 @@ module.exports = class extends Generator {
         type: "input",
         name: "authorName",
         message: "Author Name: ",
-        default: "undefined"
+        default: this.user.git.name()
       },
       {
         type: "input",
         name: "authorEmail",
         message: "Author Email: ",
-        default: ""
+        default: this.user.git.email()
       }
     ];
 
@@ -56,8 +56,8 @@ module.exports = class extends Generator {
         .upperFirst()
         .value()
     };
-    if (!this.props.componentName.startsWith("op-")) {
-      this.props.componentName = `op-${this.props.componentName}`;
+    if (!this.props.componentName.startsWith("opc-")) {
+      this.props.componentName = `opc-${this.props.componentName}`;
     }
 
     this.fs.copyTpl(
@@ -70,6 +70,25 @@ module.exports = class extends Generator {
       this.destinationPath(
         `${this.props.componentName}/src/${this.props.componentName}.scss/`
       ),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/_index.ts"),
+      this.destinationPath(
+        `${this.props.componentName}/src/${this.props.componentName}.ts/`
+      ),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath("test/_.test.js"),
+      this.destinationPath(
+        `${this.props.componentName}/test/${this.props.componentName}.test.js/`
+      ),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath(".gitignore"),
+      this.destinationPath(`${this.props.componentName}/.gitignore`),
       this.props
     );
   }

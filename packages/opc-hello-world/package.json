@@ -1,5 +1,5 @@
 {
-  "name": "@one-platform/<%= componentName %>",
+  "name": "@one-platform/opc-hello-world",
   "version": "0.0.1",
   "description": "A simple web component built in javascript and lit",
   "scripts": {
@@ -15,8 +15,8 @@
     "access": "public"
   },
   "author": {
-    "name": "<%= authorName %>",
-    "email": "<%= authorEmail %>"
+    "name": "hybridx",
+    "email": "hybridx18@gmail.com"
   },
   "license": "MIT",
   "devDependencies": {
