@@ -29,8 +29,4 @@ describe("generator-opc-generator:app", () => {
   it("has index.html file in the dist folder", () => {
     assert.file(["dist/index.html"]);
   });
-
-  it("has index.ts file src folder", () => {
-    assert.file(["src/index.ts"]);
-  });
 });

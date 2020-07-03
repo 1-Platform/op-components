@@ -80,7 +80,7 @@ module.exports = class extends Generator {
       this.props
     );
     this.fs.copyTpl(
-      this.templatePath("test/_.test.js"),
+      this.templatePath("test/_test.js"),
       this.destinationPath(
         `${this.props.componentName}/test/${this.props.componentName}.test.js/`
       ),
