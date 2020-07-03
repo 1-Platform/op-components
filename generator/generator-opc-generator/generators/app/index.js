@@ -16,7 +16,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "componentName",
-        message: "What would you like to call your component? ",
+        message: "Component Name? ",
         default: "op-my-component"
       },
       {
