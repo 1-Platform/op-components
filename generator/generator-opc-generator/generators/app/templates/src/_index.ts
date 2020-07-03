@@ -3,14 +3,14 @@ import style  from './<%= componentName %>.scss';
 
 @customElement('<%= componentName %>')
 export class <%= componentClass %> extends LitElement {
-  @property() name = 'World';
+  @property() name = '<%= componentName %>';
   static get styles() {
     return [ style ];
   }
 
   render() {
     return html`
-      <p>Hello, ${this.name}!</p>
+      <h2>${this.name}!</h2>
     `;
   }
 }

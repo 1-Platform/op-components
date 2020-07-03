@@ -21,7 +21,7 @@
   },
   "name": "opc-lib",
   "version": "0.0.0",
-  "description": "Web component opc-lib following open-wc recommendations",
+  "description": "One Platform web components library following open-wc recommendations.",
   "author": "opc-lib",
   "license": "MIT",
   "dependencies": {

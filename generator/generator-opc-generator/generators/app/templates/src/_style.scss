@@ -1,3 +1,11 @@
-p {
-  font-size: var(--op-component--text-size, 16px);
+@import "../../opc-styles/opc-styles.scss";
+
+$LOCAL: <%= componentName %>;
+
+$variables: ( 
+  //Add your variables here
+);
+
+:host {
+  // add root styles here
 }
