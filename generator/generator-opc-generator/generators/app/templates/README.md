@@ -1,6 +1,6 @@
 # This is <%= componentName %> 👋
 
-Here is some information about <%= componentName %>
+<%= componentDescription %>
 
 ## Install
 

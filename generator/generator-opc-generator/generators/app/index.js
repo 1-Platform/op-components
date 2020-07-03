@@ -21,6 +21,12 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
+        name: "componentDescription",
+        message: "Briefly Describe your component: ",
+        default: "Web component based on lit-html"
+      },
+      {
+        type: "input",
         name: "authorName",
         message: "Author Name: ",
         default: "undefined"
