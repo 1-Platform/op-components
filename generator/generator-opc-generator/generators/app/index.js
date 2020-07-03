@@ -22,7 +22,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "authorName",
-        message: "Please enter the author name: ",
+        message: "Author Name: ",
         default: "undefined"
       },
       {
