@@ -7,7 +7,7 @@ describe("generator-opc-generator:app", () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, "../generators/app"))
-      .withPrompts({ someAnswer: true });
+      .withPrompts({ componentName: false });
   });
 
   it("has tsconfig file", () => {

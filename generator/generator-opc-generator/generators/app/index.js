@@ -40,7 +40,7 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
+      // To access props later use this.props
       this.props = props;
     });
   }
@@ -50,7 +50,10 @@ module.exports = class extends Generator {
       ...this.props,
       authorName: this.props.authorName.trim(),
       authorEmail: this.props.authorEmail.trim(),
-      componentName: this.props.componentName.trim(),
+      componentName: this.props.componentName
+        .trim()
+        .replace(/\s+/g, "-")
+        .toLowerCase(),
       componentClass: _.chain(this.props.componentName)
         .camelCase()
         .upperFirst()
@@ -80,13 +83,13 @@ module.exports = class extends Generator {
       this.props
     );
     this.fs.copyTpl(
-      this.templatePath("test/_test.js"),
+      this.templatePath("test/_test.ts"),
       this.destinationPath(
-        `${this.props.componentName}/test/${this.props.componentName}.test.js/`
+        `${this.props.componentName}/test/${this.props.componentName}.test.ts/`
       ),
       this.props
     );
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath(".gitignore"),
       this.destinationPath(`${this.props.componentName}/.gitignore`),
       this.props

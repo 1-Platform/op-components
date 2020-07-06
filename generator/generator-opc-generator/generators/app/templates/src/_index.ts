@@ -10,7 +10,7 @@ export class <%= componentClass %> extends LitElement {
 
   render() {
     return html`
-      <h2>${this.name}!</h2>
+      <h1 id="<%= componentName %>">${this.name}</h1>
     `;
   }
 }

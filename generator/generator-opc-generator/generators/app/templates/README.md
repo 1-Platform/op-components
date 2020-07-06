@@ -23,6 +23,12 @@ npm run install
 npm run dev
 ```
 
+OR
+
+```sh
+npm run start
+```
+
 ### Build
 
 ```sh
@@ -32,7 +38,6 @@ npm run build
 ## Run tests
 
 ```sh
-npm run build
 npm run test
 ```
 
