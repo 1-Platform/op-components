@@ -16,10 +16,16 @@ lerna run install
 
 ### Development server
 
-- Run storybook
+- Run a single component 
 
 ```sh
-npm run dev
+npm run dev <component-name>
+```
+
+- Build a single component
+
+```sh
+npm run build <component-name>
 ```
 
 ### Build all packages
