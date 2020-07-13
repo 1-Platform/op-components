@@ -1,4 +1,4 @@
-# generator-opc-generator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# generator-opc-generator ![Version](https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000) [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/1-Platform/op-components#readme) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/1-Platform/op-components/graphs/commit-activity) [![License: MIT](https://img.shields.io/github/license/1-Platform/op-components)](https://github.com/1-Platform/op-components/blob/master/LICENSE)
 > A generator to scaffold vanillaJS or lit custom elements
 
 ## Installation
@@ -22,11 +22,6 @@ yo @one-platform/opc-generator
  * Yeoman is a person with feelings and opinions, but is very easy to work with.
  * Yeoman can be too opinionated at times but is easily convinced not to be.
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
-
-## License
-
-MIT © [hybridx](https://hybridx.github.io)
-
 
 [npm-image]: https://badge.fury.io/js/generator-opc-generator.svg
 [npm-url]: https://npmjs.org/package/generator-opc-generator
