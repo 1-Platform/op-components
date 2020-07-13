@@ -1,0 +1,11 @@
+@import "../../opc-styles/opc-styles.scss";
+
+$LOCAL: <%= componentName %>;
+
+$variables: ( 
+  //Add your variables here
+);
+
+:host {
+  // add root styles here
+}
