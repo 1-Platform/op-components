@@ -1,0 +1,36 @@
+//@import "../../opc-styles/opc-styles.scss";
+
+$LOCAL: opc-header;
+
+$variables: ( 
+  //Add your variables here
+);
+
+:host {
+  // add root styles here
+}
+
+.app-header{
+  &__top-row{
+    &--header-name{
+      font-size: 1.5rem;
+      margin: 0px;
+    }
+    display:flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 72px;
+  }
+  &__bottom-row{
+    &--spacer{
+      flex: 1 1 auto;
+    }
+    padding: 0 20px;
+    height: 72px;
+    display: flex;
+    align-items: flex-end;
+  }
+  width: 100%;
+  height: 144px;
+  border: 1px solid #DDDDDD;
+}
