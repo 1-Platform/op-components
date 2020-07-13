@@ -1,0 +1,64 @@
+$opc-colors: (
+
+  /// Text, Link Colors
+  text:                           $opc-color--black-900,
+  link:                           $opc-color--blue-400,
+  link--visited:                  $opc-color--blue-200,
+  link--hover:                    $opc-color--blue-600,
+  link--focus:                    $opc-color--blue-600,
+
+  /// Text, Link on Dark
+  text--on-dark:               $opc-color--black-100,
+  link--on-dark:               $opc-color--blue-300,
+  link--visited--on-dark:      $opc-color--blue-600,
+  link--hover--on-dark:        $opc-color--blue-500,
+  link--focus--on-dark:        $opc-color--blue-100,
+
+  /// Primary Colors
+  primary--light:                 $opc-color--blue-100,
+  primary:                        $opc-color--blue-400,
+  primary--dark:                  $opc-color--blue-600,
+
+  /// Secondary Colors
+  secondary--light:               $opc-color--light-blue-100,
+  secondary:                      $opc-color--light-blue-400,
+  secondary--dark:                $opc-color--light-blue-600,
+
+  /// Tertiary colors
+  tertiary--light:                $opc-color--cyan-100,
+  tertiary:                       $opc-color--cyan-400,
+  tertiary--dark:                 $opc-color--cyan-600,
+
+  /// Success Colors
+  success--light:                 $opc-color--green-200,
+  success:                        $opc-color--green-500,
+  success--dark:                  $opc-color--green-700,
+
+  /// Danger Colors
+  danger--light:                  $opc-color--red-50,
+  danger:                         $opc-color--red-100,
+  danger--dark:                   $opc-color--red-300,
+
+  /// Info Colors
+  info--light:                    $opc-color--blue-300,
+  info--dark:                     $opc-color--blue-600,
+
+  /// Warning Colors
+  warn--light:                    $opc-color--gold-200,
+  warn:                           $opc-color--gold-400,
+  warn--dark:                     $opc-color--gold-600,
+
+  /// Disabled colors
+  disabled--color-100:            $opc-color--black-600,
+  disabled--color-200:            $opc-color--black-300,
+  disabled--color-300:            $opc-color--black-200,
+
+  /// Background Colors
+  background--color-100:          $opc-color--white,
+  background--color-200:          $opc-color--black-100,
+  background--color--dark-100:    $opc-color--black-700,
+  background--color--dark-200:    $opc-color--black-800,
+  background--color--dark-300:    $opc-color--black-850,
+  background--color--dark-400:    $opc-color--black-900,
+
+);
