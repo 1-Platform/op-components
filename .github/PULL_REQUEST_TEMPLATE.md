@@ -39,10 +39,10 @@ Assignees: "One Platform Developers"
 - [ ] My changes generate no new warnings
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
-<!-- If it is a new component -->
+#### If it is a new component
 - [ ] Does your component follow One Platform style guidelines?
 - [ ] Is your component responsive (supports standard - Mobile, Tab, Desktop)
-<!-- Browsers you have tested in -->
+#### Browsers you have tested in
 - [ ] Chrome
 - [ ] Firefox
 - [ ] Edge
