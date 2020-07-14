@@ -38,7 +38,7 @@ Assignees: "One Platform Developers"
 - [ ] Did you update or add any necessary documentation (README.md, WHY.md, etc.)?
 - [ ] My changes generate no new warnings
 - [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have documented my code, particularly in areas like todo, complex logic, quick fix, temporary patch, etc.
 #### If it is a new component
 - [ ] Does your component follow One Platform style guidelines?
 - [ ] Is your component responsive (supports standard - Mobile, Tab, Desktop)
