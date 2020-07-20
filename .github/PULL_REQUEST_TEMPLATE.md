@@ -41,8 +41,9 @@ Assignees: "One Platform Developers"
 - [ ] I have documented my code, particularly in areas like todo, complex logic, quick fix, temporary patch, etc.
 #### If it is a new component
 - [ ] Does your component follow One Platform style guidelines?
-- [ ] Is your component responsive (supports standard - Mobile, Tab, Desktop)
+- [ ] Does your component web accessibility standards? [Helper Doc](https://www.w3.org/TR/wai-aria-1.1/)
 #### Browsers you have tested in
 - [ ] Chrome
 - [ ] Firefox
 - [ ] Edge
+- [ ] Safari
