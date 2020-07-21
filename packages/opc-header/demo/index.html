@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opc-header</title>
+    <script src="opc-header.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <opc-header style="--opc-header--width: 1200px;">
+        <div slot="breadcrumb">
+        </div>
+        <div slot="jumplinks" >
+        </div>
+    </opc-header>
+
+    <opc-header style="--opc-header--width: 1200px;">
+        <div slot="breadcrumb">
+            This is a breadcrumb
+        </div>
+        <div slot="jumplinks" >
+        </div>
+    </opc-header>
+
+    <opc-header style="--opc-header--width: 1200px;">
+        <div slot="breadcrumb">
+            This is a breadcrumb
+        </div>
+        <div slot="jumplinks">
+            Video Guide  FAQs  Documentation
+        </div>
+    </opc-header>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/generator-opc-generator",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A generator to scaffold vanillaJS or lit custom elements",
   "homepage": "https://github.com/1-Platform/op-components",
   "author": {
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },

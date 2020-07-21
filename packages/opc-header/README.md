@@ -1,16 +1,55 @@
 # This is opc-header 👋
 
-Web component based on lit-element, it can be used as a other element of HTML for example <opc-header> </opc-header>
+opc-header contains a header section that is customizable it can be reused. This is based on lit element.
 
-https://docs.google.com/document/d/1PoxpPsret2njugkAG_YBmlS3ZNkDd0MTY-JZKDbesrQ/edit#heading=h.w85tasqfwpfc
 
 ## Install
 
 ```sh
-npm i  @1-Platform/opc-header 
+npm i @one-platform/opc-header 
 ```
 
 ## Usage
+```
+<html>
+  <body>
+    <opc-header title="Outages"></opc-header>
+    <opc-header>
+      <span slot="name">Hello</span>
+    </opc-header>
+  </body>
+</html>
+```
+To use it in React
+```
+<html>
+<script>
+require('~/node_modules/@one-platform/opc-header/dist/opc-header);
+</script>
+<opc-header></opc-header>
+<opc-header title="Outages"></opc-header>
+<opc-header>
+    <span slot="name">Hello</span>
+</opc-header>
+</html>
+```
+
+To use it in Angular
+
+import '@one-platform/opc-header/dist/opc-header';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
 ### Development server
 - Install packages
@@ -45,4 +84,4 @@ npm run test
 
 ## 🤝 Contributors
 
-👤 **Anjnee**
+👤 **Anjnee K Sharma** [anjneeksharma] (https://github.com/anjneeksharma)

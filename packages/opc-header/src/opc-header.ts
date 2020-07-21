@@ -1,27 +1,37 @@
 import { LitElement, html, property, customElement } from 'lit-element';
 import style  from './opc-header.scss';
+import { classMap } from 'lit-html/directives/class-map';
+import { styleMap } from 'lit-html/directives/style-map';
 
 @customElement('opc-header')
 export class Header extends LitElement {
-  @property({ attribute: "header-name" }) headerName = "Opc-Header";
+  @property({ attribute: "title" }) title = "Opc-Header";
   static get styles() {
-    return [ style ];
+    return [ style ]
+  }
+  
+  handleSlotchange(e:any) {
+    const childNodes = e.target.assignedNodes({flatten: true});
+    const hasSlot = e.target.assignedElements().length !== 0;
+    e.target.styles = {"color" : "red"};
+     let slotClass = hasSlot ? 'with-slot' : 'without-slot';
+     document.querySelector('.opc-header')
   }
 
   render() {
     return html`
-    <div class="app-header">
-      <div class="app-header__top-row">
-        <h1 class="app-header__top-row--header-name"> ${ this.headerName } </h1>
+    <div class="opc-header"  }>
+      <div class="opc-header__top-row">
+        <h1 class="opc-header__top-row--header-name"> ${ this.title } </h1>
       </div>
-      <div class="app-header__bottom-row">
-      <div class="app-header__bottom-row--left">
-          <slot name="breadcrumb-slot">
+      <div class="opc-header__bottom-row" >
+        <div class="opc-header__bottom-row--left">
+          <slot name="breadcrumb" @slotchange=${this.handleSlotchange}>
           </slot>
         </div>
-        <div class="app-header__bottom-row--spacer"> </div>
-        <div class="app-header__bottom-row--right app-header__spacer--rh-text">
-          <slot name="right-link-slot">
+        <div class="opc-header__bottom-row--spacer"> </div>
+        <div class="opc-header__bottom-row--right opc-header__spacer--rh-text">
+          <slot name="jumplinks">
           </slot>
         </div>
       </div>
