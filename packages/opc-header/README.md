@@ -7,10 +7,12 @@ https://docs.google.com/document/d/1PoxpPsret2njugkAG_YBmlS3ZNkDd0MTY-JZKDbesrQ/
 ## Install
 
 ```sh
-npm i  @1-Platform/opc-header 
+npm i  @one-platform/opc-header 
 ```
 
 ## Usage
+
+<opc-header header-name="Outages"></opc-header>
 
 ### Development server
 - Install packages
