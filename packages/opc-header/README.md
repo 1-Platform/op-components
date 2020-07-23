@@ -12,7 +12,40 @@ npm i  @one-platform/opc-header
 
 ## Usage
 
+import '@one-platform/opc-header/dist/opc-header';
+
 <opc-header header-name="Outages"></opc-header>
+<opc-header>
+  <span slot="name">Hello</span>
+</opc-header>
+
+To use it in React
+
+<script>
+require('~/node_modules/@one-platform/opc-header/dist/opc-header);
+</script>
+<opc-header></opc-header>
+<opc-header header-name="Outages"></opc-header>
+<opc-header>
+    <span slot="name">Hello</span>
+</opc-header>
+
+To use it in Angular
+
+import '@one-platform/opc-header/dist/opc-header';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
 ### Development server
 - Install packages

@@ -7,7 +7,7 @@ $variables: (
 );
 
 :host {
-  // add root styles here
+  --opc-header--width: 100%;
 }
 
 .app-header{
@@ -30,7 +30,7 @@ $variables: (
     display: flex;
     align-items: flex-end;
   }
-  width: 100%;
+  width: var(--opc-header--width, 100%);
   height: 144px;
   border: 1px solid #DDDDDD;
 }

@@ -8,14 +8,39 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+        .test__styles {
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
-    <opc-header>
+    <opc-header style="--opc-header--width: 1200px;">
+        <div slot="breadcrumb-slot">
+        </div>
+        <div slot="right-link-slot" class="test__styles">
+        </div>
+    </opc-header>
+
+    <opc-header style="--opc-header--width: 1200px;">
+        <div slot="breadcrumb-slot">
+            This is a breadcrumb
+        </div>
+        <div slot="right-link-slot" class="test__styles">
+        </div>
+    </opc-header>
+
+    <opc-header style="--opc-header--width: 1200px;">
+        <div slot="breadcrumb-slot">
+            This is a breadcrumb
+        </div>
+        <div slot="right-link-slot" class="test__styles">
+            Video Guide  FAQs  Documentation
+        </div>
     </opc-header>
 </body>
 </html>

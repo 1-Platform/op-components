@@ -1,0 +1,101 @@
+/// Author: https://github.com/patternfly/patternfly-elements/blob/master/elements/pfe-sass/functions/_custom-properties.scss
+/// Returns the css variable with category type and fallback if provided
+/// this function is called in the opc-color function.
+/// @param {String} $category - Category name to be appended to variables within the map
+/// @param {String} $key - Variable name passed by opc-color function
+/// @param {Map} $map - SASS Map of variables
+/// @param {String} $fallback [""] - Optional fallback override for custom property
+/// @requires {String} $prefix - Global variable definition of custom property
+/// @requires {Boolean} $USE-FALLBACK - True to use fallback colors, false to omit
+@function opc-get-from-map($category, $key, $map, $fallback: null) {
+    // Start building the variable declaration
+    $var-declaration: "--#{$prefix}-theme--";
+    // If the category exists, inject that into the string
+    @if $category != "" {
+        $var-declaration: "#{$var-declaration}#{$category}--";
+    }
+    // Append the key to the string
+    $var-declaration: "#{$var-declaration}#{$key}";
+
+    // If the fallback is not provided but use-fallback is set to true
+    @if $fallback == null and $USE-FALLBACK and map-get($map, $key) != null {
+        $fallback: map-get($map, $key);
+    }
+    @if $fallback != null {
+        // Create the variable declaration
+        $var-declaration: "#{$var-declaration}, #{$fallback}";
+    }
+
+    // Return the variable declaration string
+    @return var(#{$var-declaration});
+}
+
+
+/// Author: https://github.com/patternfly/patternfly-elements/blob/master/elements/pfe-sass/functions/_custom-properties.scss
+/// Color fetch
+/// Returns CSS variable with fallback if provided
+/// @param {String} $cssvar - color name define in map
+/// @param {String} $fallback [null] - Optional custom fallback value
+/// @requires {Map} $opc-colors - A map of the colors in the repository
+/// @requires {Function} to-string - convert the list into string. function defined in _tools.scss
+/// @requires {Function} opc-get-from-map - return the css property with fallback
+/// @example -
+///
+///     1. To look up a color: maps/_colors.scss
+///     2. Use like this:
+///         ```
+///         .my-element {
+///           color:       #{opc-color(black-800)};
+///           background:  #{opc-color(black-100)};
+///         }
+///         ```
+@function opc-color($cssvar, $fallback: null) {
+    $var-name: to-string($cssvar, "--");
+
+    @if map-get($opc-colors, $var-name) != null {
+        @return opc-get-from-map("color", $var-name, $opc-colors, $fallback);
+    }
+    @else {
+        @error "The key for #{$var-name} could not be found in the $opc-colors map.";
+    }
+}
+
+/// Author: https://github.com/patternfly/patternfly-elements/blob/master/elements/pfe-sass/functions/_custom-properties.scss
+/// Get Var
+/// Creates a local css custom variable with fallback
+/// @param {String} $cssvar - color name define in map
+/// @param {String} $fallback [null] - Optional custom fallback value its
+///                                    👉 best practice to provide the fallback color
+///                                    from variables/_2-crayons.scss
+/// @requires {String} $region - [null] - Optional path for region, slot, sub-property etc.
+/// @requires {String} $prefix - a prefix defined in variables/_1-definitions.scss
+/// @requires {String} LOCAL - a string relative to the component itself
+/// @requires {Function} to-string - converts list to string. defied in functions/_tools.scss
+/// @example -
+///     1. To look up a color: maps/_colors.scss
+///     2. Use like this:
+///         ```
+///         .my-element {
+///           background-color:   #{opc-get-var(BackgroundColor, $opc-color--blue-50, soft)};
+///         }
+///         ```
+///     3. After Compiled:
+///        ```
+///        .my-element {
+///           background-color: var(--opc-button__soft--BackgroundColor, #E7F1FA);
+///        }
+@function opc-get-var($cssvar, $fallback: null, $region: null) {
+  // If a region value exists, build the region string
+  @if $region != null {
+      $region: "__#{$region}";
+  }
+  // Start building the variable declaration
+  $var-declaration: "--#{$prefix}-#{$LOCAL}#{$region}--#{to-string($cssvar, '--')}";
+  // If a fallback is defined, pass that in too
+  @if $fallback != null {
+      $var-declaration: "#{$var-declaration}, #{$fallback}";
+  }
+
+  // Return the variable declaration string
+  @return var(#{$var-declaration});
+}

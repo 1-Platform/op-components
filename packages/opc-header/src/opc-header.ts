@@ -5,7 +5,7 @@ import style  from './opc-header.scss';
 export class Header extends LitElement {
   @property({ attribute: "header-name" }) headerName = "Opc-Header";
   static get styles() {
-    return [ style ];
+    return [ style ]
   }
 
   render() {
