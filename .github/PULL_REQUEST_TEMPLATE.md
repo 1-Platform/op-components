@@ -42,8 +42,10 @@ Assignees: "One Platform Developers"
 #### If it is a new component
 - [ ] Does your component follow One Platform style guidelines?
 - [ ] Does your component web accessibility standards? [Helper Doc](https://www.w3.org/TR/wai-aria-1.1/)
+- [ ] Does your component support desktop screen sizes (350px, 720px, 1150px ,1920px)
 #### Browsers you have tested in
-- [ ] Chrome
-- [ ] Firefox
-- [ ] Edge
-- [ ] Safari
+- [ ] Chrome [Latest 2 versions]
+- [ ] Firefox [Latest 2 versions]
+- [ ] Edge [Latest 2 versions]
+- [ ] Safari [Latest 2 versions]
+- [ ] IE [Latest 2 versions]
