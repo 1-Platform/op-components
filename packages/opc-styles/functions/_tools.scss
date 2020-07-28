@@ -1,0 +1,23 @@
+// https://hugogiraudel.com/2013/08/08/advanced-sass-list-functions
+/// Return `$list` as a string connected by `$glue`
+/// @author Hugo Giraudel
+/// @param {String} $list - List of strings to combine
+/// @param {String} $glue ('') - Optional combinator
+/// @param {String} $is-nested (false) - Indicates if the list is nested, internal use-only
+/// @return {String} - Combined string of all list items
+@function to-string($list, $glue: '', $is-nested: false) {
+    $result: null;
+
+    @for $i from 1 through length($list) {
+        $e: nth($list, $i);
+
+        @if type-of($e) == list {
+            $result: $result#{to-string($e, $glue, true)};
+        }
+        @else {
+            $result: if($i != length($list) or $is-nested, $result#{$e}#{$glue}, $result#{$e});
+        }
+    }
+
+    @return $result;
+}

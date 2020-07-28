@@ -1,0 +1,96 @@
+// import for Red Hat Text font
+// includes weight of 400, 500 and 700
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;700&display=swap');
+
+// import for Red Hat Text font
+// includes weight of 400, 500, 700 and 900
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap');
+
+/// Root Variables
+:root {
+  --opc-global--Heading--Font-Family: 'Red Hat Display';
+  --opc-global--Font-Family: 'Red Hat Text';
+}
+
+// NORMALIZE
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: var(--opc-global--Font-Family, 'Red Hat Text');
+}
+
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin-top: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+img,
+embed,
+iframe,
+object,
+audio,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+}
