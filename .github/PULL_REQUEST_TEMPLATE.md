@@ -45,6 +45,8 @@ Assignees: "One Platform Developers"
 - [ ] Does your component support desktop screen sizes (350px, 720px, 1150px ,1920px)
 #### Browsers you have tested in
 - [ ] Latest two versions of Mozilla Firefox and Google Chrome supported by Red Hat Enterprise Linux distribution
+- [ ] Google Chrome [Latest 2 versions]
+- [ ] Mozilla Firefox [Latest 2 versions]
 - [ ] Microsoft Edge [Latest 2 versions]
 - [ ] Apple Safari [Latest 2 versions]
 - [ ] Microsoft Internet Explorer 11
