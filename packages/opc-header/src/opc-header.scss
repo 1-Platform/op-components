@@ -1,4 +1,4 @@
-//@import "../../opc-styles/opc-styles.scss";
+@import "../../opc-styles/opc-styles.scss";
 
 $LOCAL: opc-header;
 
@@ -10,7 +10,7 @@ $variables: (
   --opc-header--width: 100%;
 }
 
-.app-header{
+.opc-header{
   &__top-row{
     &--header-name{
       font-size: 1.5rem;

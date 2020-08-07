@@ -3,25 +3,25 @@ import style  from './opc-header.scss';
 
 @customElement('opc-header')
 export class Header extends LitElement {
-  @property({ attribute: "header-name" }) headerName = "Opc-Header";
+  @property({ attribute: "title" }) title = "Opc-Header";
   static get styles() {
     return [ style ]
   }
 
   render() {
     return html`
-    <div class="app-header">
-      <div class="app-header__top-row">
-        <h1 class="app-header__top-row--header-name"> ${ this.headerName } </h1>
+    <div class="opc-header">
+      <div class="opc-header__top-row">
+        <h1 class="opc-header__top-row--header-name"> ${ this.title } </h1>
       </div>
-      <div class="app-header__bottom-row">
-      <div class="app-header__bottom-row--left">
-          <slot name="breadcrumb-slot">
+      <div class="opc-header__bottom-row">
+      <div class="opc-header__bottom-row--left">
+          <slot name="breadcrumb">
           </slot>
         </div>
-        <div class="app-header__bottom-row--spacer"> </div>
-        <div class="app-header__bottom-row--right app-header__spacer--rh-text">
-          <slot name="right-link-slot">
+        <div class="opc-header__bottom-row--spacer"> </div>
+        <div class="opc-header__bottom-row--right opc-header__spacer--rh-text">
+          <slot name="jumplinks">
           </slot>
         </div>
       </div>

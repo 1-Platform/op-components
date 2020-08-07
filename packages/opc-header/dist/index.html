@@ -13,34 +13,32 @@
             align-items: center;
             height: 100vh;
         }
-        .test__styles {
-            font-size: 1rem;
-        }
     </style>
 </head>
 <body>
     <opc-header style="--opc-header--width: 1200px;">
-        <div slot="breadcrumb-slot">
+        <div slot="breadcrumb">
         </div>
-        <div slot="right-link-slot" class="test__styles">
-        </div>
-    </opc-header>
-
-    <opc-header style="--opc-header--width: 1200px;">
-        <div slot="breadcrumb-slot">
-            This is a breadcrumb
-        </div>
-        <div slot="right-link-slot" class="test__styles">
+        <div slot="jumplinks" >
         </div>
     </opc-header>
 
     <opc-header style="--opc-header--width: 1200px;">
-        <div slot="breadcrumb-slot">
+        <div slot="breadcrumb">
             This is a breadcrumb
         </div>
-        <div slot="right-link-slot" class="test__styles">
+        <div slot="jumplinks" >
+        </div>
+    </opc-header>
+
+    <opc-header style="--opc-header--width: 1200px;">
+        <div slot="breadcrumb">
+            This is a breadcrumb
+        </div>
+        <div slot="jumplinks">
             Video Guide  FAQs  Documentation
         </div>
     </opc-header>
 </body>
+
 </html>

@@ -22,5 +22,4 @@ describe('opc-header', () => {
 
         expect(renderedText).toEqual('opc-header');
     });
-
 });
