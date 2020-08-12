@@ -1,13 +1,14 @@
 /// Variables imports
-@import "./variables/1-definitions";
-@import "./variables/2-crayons";
+@import "./variables/_1-definitions";
+@import "./variables/_2-crayons";
 
 /// Maps imports
-@import "./maps/colors";
+@import "./maps/_colors";
 
 /// Functions imports
-@import "./functions/tools";
-@import "./functions/custom-properties";
+@import "./functions/_tools";
+@import "./functions/_custom-properties";
 
 /// Typography
-@import "./typography"
+@import "./typography/_base";
+@import "./typography/_headings";

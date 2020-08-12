@@ -51,6 +51,24 @@ opc-button.scss
   
 ```
 
+#### Adding the Headings style to the component
+Use the mixin which are defined in the headings.scss file e.g.
+
+```
+  .app-heading {
+    @include heading--three
+  }
+```
+this will convert to the css
+
+```
+  .app-heading {
+    font-family: var(--opc-global--Heading--font-Family, "Red Hat Display");
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+```
+
 ## 🤝 Contributors
 
 👤 **Sumeet Ingole** [@gisumit](https://github.com/gisumit)
