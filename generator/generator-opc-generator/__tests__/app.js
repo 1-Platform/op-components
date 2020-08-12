@@ -27,6 +27,6 @@ describe("generator-opc-generator:app", () => {
   });
 
   it("has index.html file in the dist folder", () => {
-    assert.file(["dist/index.html"]);
+    assert.file(["demo/index.html"]);
   });
 });
