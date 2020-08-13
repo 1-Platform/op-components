@@ -1,10 +1,13 @@
 {
   "name": "@one-platform/opc-styles",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This packages contains the all common styles which are important to get #### started with any component which includes global variables, colors, common mixin",
   "main": "opc-styles.scss",
   "scripts": {
     "test": "node-sass -w ./test/ -o css/"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "author": "",
   "license": "MIT",

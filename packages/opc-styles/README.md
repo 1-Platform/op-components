@@ -12,7 +12,7 @@ started with any component which includes global variables, colors, common mixin
 Import the opc-style.scss into your style file 
 
 ```
-  @import "/opc-styles.scss";
+  @import "@one-platform/opc-styles";
 
 ```
 
