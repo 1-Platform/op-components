@@ -4,9 +4,9 @@ on:
     types: [opened]
 jobs:
   notify:
-    if: github.repository == ‘1-Platform/op-components’
     runs-on: ubuntu-latest
     steps:
+      if: github.repository == ‘1-Platform/op-components’
       - name: Google Chat Notification
         uses: gautamkrishnar/google-chat-notification@master
         with:
