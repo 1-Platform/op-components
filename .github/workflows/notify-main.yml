@@ -1,4 +1,4 @@
-name: Notify the Gchat Group for PPs from main repo
+name: Notify the Gchat Group for PRs from main repo
 on:
   pull_request:
     types: [opened]
