@@ -10,8 +10,7 @@ npm i @one-platform/opc-header
 ```
 
 ## Usage
-```
-<html>
+```<html>
   <body>
     <opc-header title="Outages"></opc-header>
     <opc-header>
@@ -21,8 +20,7 @@ npm i @one-platform/opc-header
 </html>
 ```
 To use it in React
-```
-<html>
+```<html>
 <script>
 require('~/node_modules/@one-platform/opc-header/dist/opc-header);
 </script>
@@ -35,7 +33,7 @@ require('~/node_modules/@one-platform/opc-header/dist/opc-header);
 ```
 
 To use it in Angular
-
+```js
 import '@one-platform/opc-header/dist/opc-header';
 
 @NgModule({
@@ -50,6 +48,7 @@ import '@one-platform/opc-header/dist/opc-header';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+```
 
 ### Development server
 - Install packages
