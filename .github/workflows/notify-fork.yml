@@ -1,9 +1,10 @@
-name: Notify the Gchat Group
+name: Notify the Gchat Group for PRs from forks
 on:
   pull_request_target:
     types: [opened]
 jobs:
   notify:
+    if: github.repository != ‘1-Platform/op-components’
     runs-on: ubuntu-latest
     steps:
     - name: Google Chat Notification

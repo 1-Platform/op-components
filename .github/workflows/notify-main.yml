@@ -1,0 +1,13 @@
+name: Notify the Gchat Group for PRs from main repo
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  notify:
+    if: github.repository == ‘1-Platform/op-components’
+    runs-on: ubuntu-latest
+    steps:
+      - name: Google Chat Notification
+        uses: gautamkrishnar/google-chat-notification@master
+        with:
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
