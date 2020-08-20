@@ -1,15 +1,7 @@
-// import for Red Hat Text font
-// includes weight of 400, 500 and 700
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;700&display=swap');
-
-// import for Red Hat Text font
-// includes weight of 400, 500, 700 and 900
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap');
-
 /// Root Variables
 :root {
-  --opc-global--Heading--Font-Family: 'Red Hat Display';
-  --opc-global--Font-Family: 'Red Hat Text';
+  --opc-global--Heading--Font-Family: 'Red Hat Display', Overpass 'Arial';
+  --opc-global--Font-Family: 'Red Hat Text', Overpass, 'Arial';
 }
 
 // NORMALIZE
