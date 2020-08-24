@@ -5,9 +5,7 @@
 }
 
 // NORMALIZE
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   font-family: var(--opc-global--Font-Family, 'Red Hat Text');
 }

@@ -69,6 +69,12 @@ this will convert to the css
   }
 ```
 
+### Using Spacing and Gaps to the component
+use the global Gap and spacing variables to add space,
+these variables are using css pixel unit for distance which are defined in the 
+variables/_1-definitions.scss file
+
+
 ## 🤝 Contributors
 
 👤 **Sumeet Ingole** [@gisumit](https://github.com/gisumit)
