@@ -1,0 +1,94 @@
+@import '@one-platform/opc-styles';
+
+$LOCAL: footer;
+
+:host {
+  display: block;
+}
+
+/// Mixin
+/// Link Reset
+@mixin reset-link {
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+/// Mixin for Link group name
+@mixin mixin--link-group__name {
+  @include heading--four__small_quotes;
+  margin-bottom: opc-get-var(MarginBottom, 32px);
+  text-transform: uppercase;
+}
+
+/// Theme for Slotted content
+.light ::slotted(a) {
+  @include reset-link;
+  color: opc-color(text);
+}
+
+.dark ::slotted(a) {
+  @include reset-link;
+  color: opc-color(text--on-dark);
+}
+
+.light ::slotted(a:hover),
+.dark ::slotted(a:hover) {
+  text-decoration: underline;
+}
+
+/// Common styles for both theme
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: opc-get-var(Padding, 20px);
+
+  .footer-link-group {
+    margin-bottom: opc-get-var(MarginBottom, 32px, link-group);
+    display: flex;
+    flex-direction: column;
+    flex-basis: opc-get-var(FlexBasis, 320px, link-group);
+  }
+
+  .link-group__name {
+    @include mixin--link-group__name;
+  }
+
+  a {
+    @include reset-link;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+}
+
+/// Light theme Styles
+footer.light {
+  border: 1px solid $opc-color--black-300;
+  color: opc-get-var(TextColor,#000);
+  background: opc-get-var(BackgroundColor, #FFF);
+
+  a {
+    color: opc-color(text)
+  }
+}
+
+/// Dark theme Styles
+footer.dark {
+  color: opc-get-var(TextColor,#fff);
+  background: opc-get-var(BackgroundColor, #000);
+
+  a {
+    color: opc-color(text--on-dark)
+  }
+}
+
+/// Inherits the theme from the parent element
+.footer-note {
+  flex: 1 0 100%;
+  text-align: center;
+  font-size: opc-get-var(FontSize, 12px, Note);
+}
+
