@@ -1,0 +1,42 @@
+/* font style */
+.rh-display {
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+.rh-text {
+  font-family: 'Red Hat Text', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  height: 72px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  background: black;
+  color: white;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row, opc-footer {
+  width: 100%;
+}
