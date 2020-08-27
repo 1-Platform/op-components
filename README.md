@@ -1,4 +1,4 @@
-# Welcome to One Platform Components Library 👋
+# Welcome to One Platform Components Library Test 👋
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/1-Platform/op-components#readme)
