@@ -6,9 +6,25 @@ $prefix: opc !default;
 $USE-FALLBACK: true;
 
 /// Global variables for Gap/ Spacing in layout
-$opc-global--spacer--sm:  0.5rem; // 8px
-$opc-global--spacer--md:  1rem;   // 16px
-$opc-global--spacer--lg:  1.5rem; // 24px
-$opc-global--spacer--xl:  2rem;   // 32px
-$opc-global--spacer--2xl: 3rem;   // 48px
-$opc-global--spacer--3xl: 4rem;   // 64px
+$opc-global--spacer--sm:              0.5rem; // 8px
+$opc-global--spacer--md:              1rem;   // 16px
+$opc-global--spacer--lg:              1.5rem; // 24px
+$opc-global--spacer--xl:              2rem;   // 32px
+$opc-global--spacer--2xl:             3rem;   // 48px
+$opc-global--spacer--3xl:             4rem;   // 64px
+
+/// Global variables for font-weight
+$opc-global--fontWeight--light:       300;
+$opc-global--fontWeight--normal:      500;
+$opc-global--fontWeight--semi-bold:   600;
+$opc-global--fontWeight--bold:        700;
+
+/// Global variables for font-size
+$opc-global--FontSize--4xl:           2.25rem;   /// 36px
+$opc-global--FontSize--3xl:           1.75rem;   /// 28px
+$opc-global--FontSize--2xl:           1.5rem;    /// 24px
+$opc-global--FontSize--xl:            1.25rem;   /// 20px
+$opc-global--FontSize--lg:            1.12rem;   /// 18px
+$opc-global--FontSize--md:            1rem;      /// 16px
+$opc-global--FontSize--sm:            0.8rem;    /// 14px
+$opc-global--FontSize--xs:            0.75rem;   /// 12px
