@@ -4,3 +4,11 @@ $prefix: opc !default;
 
 /// adding support for css custom property by default
 $USE-FALLBACK: true;
+
+/// Global variables for Gap/ Spacing in layout
+$opc-global--spacer--sm:  0.5rem; // 8px
+$opc-global--spacer--md:  1rem;   // 16px
+$opc-global--spacer--lg:  1.5rem; // 24px
+$opc-global--spacer--xl:  2rem;   // 32px
+$opc-global--spacer--2xl: 3rem;   // 48px
+$opc-global--spacer--3xl: 4rem;   // 64px
