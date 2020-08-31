@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>opc-footer</title>
+  <link rel="stylesheet" type="text/css" href="demoStyles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="rh-display">Footer Component Demo</header>
+
+  <div class="slide flex-col">
+    <div class="flex-row rh-text">
+      <p>Full size footer with light theme</p>
+      <opc-footer @footer-link-click="${(e) => { console.log(e.detail.message) }}"></opc-footer>
+    </div>
+    <div class="flex-row rh-text">
+      <p>Full size footer with dark theme</p>
+      <opc-footer opc-theme="dark" opc-links-group='[
+      {
+         "name":"Quick Links",
+         "links":[
+            {
+               "name":"Down For The Count",
+               "path":"https://fb.com"
+            },
+            { "name":"Between a Rock and a Hard Place"},
+            { "name":"Keep Your Eyes Peeled"},
+            { "name":"Drawing a Blank"}
+         ]
+      },
+      {
+         "name":"Related Links",
+         "links":[
+            {
+               "name":"All Greek To Me",
+               "path":"https://fb.com"
+            },
+            { "name":"Keep Your Shirt On"},
+            { "name":"Go For Broke"},
+            { "name":"Head Over Heels"},
+            { "name":"Lovey Dovey"},
+            { "name":"Raining Cats and Dogs"}
+         ]
+      },
+      {
+         "name":"Help",
+         "links":[
+            {
+               "name":"Back To the Drawing Board",
+               "path":"https://fb.com"
+            },
+            { "name":"Go For Broke" },
+            { "name":"Right Off the Bat" },
+            { "name":"Down And Out" }
+         ]
+      },
+      {
+        "name":"Other Links",
+        "links":[
+           {
+              "name":"Cup Of Joe",
+              "path":"https://fb.com"
+           },
+           { "name":"Quick On the Draw" },
+           { "name":"Long In The Tooth" }
+        ]
+     }
+   ]'>
+      </opc-footer>
+    </div>
+  </div>
+</body>
+<script src="opc-footer.js"></script>
+<script>
+  const myElement = document.querySelectorAll('opc-footer');
+  [...myElement].map(el => {
+    el.addEventListener('opc-footer-link-click', (e) => {console.log(e)});
+  });
+</script>
+</html>
