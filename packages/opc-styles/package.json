@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-styles",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This packages contains the all common styles which are important to get #### started with any component which includes global variables, colors, common mixin",
   "main": "opc-styles.scss",
   "scripts": {

@@ -1,70 +1,47 @@
-$heading--xxl:                3rem;    /// 48px
-$heading--xl:                 2.5rem;  /// 40px
-$heading--one:                2.25rem; /// 36px
-$heading--two:                1.75rem; /// 28px
-$heading--three:              1.5rem;  /// 24px
-$heading--four:               1.25rem; /// 20px
-
-@mixin heading--xxl {
-  font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--xxl;
-    weight: 400;
-  }
-}
-
-@mixin heading--xl {
-  font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--xl;
-    weight: 400;
-  }
-}
-
 @mixin heading--one {
   font: {
     family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--one;
-    weight: 500;
+    size: $opc-global--FontSize--4xl;
+    weight: $opc-global--fontWeight--normal;
   }
 }
 
 @mixin heading--two {
   font: {
     family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--two;
-    weight: 500;
+    size: $opc-global--FontSize--3xl;
+    weight: $opc-global--fontWeight--normal;
   }
 }
 
 @mixin heading--two__large_quotes {
   font: {
     family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--two;
-    weight: 400;
+    size: $opc-global--FontSize--3xl;
+    weight: $opc-global--fontWeight--light;
   }
 }
 
 @mixin heading--three {
   font: {
     family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--three;
-    weight: 500;
+    size: $opc-global--FontSize--2xl;
+    weight: $opc-global--fontWeight--normal;
   }
 }
 
 @mixin heading--four {
   font: {
     family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--four;
-    weight: 500;
+    size: $opc-global--FontSize--xl;
+    weight: $opc-global--fontWeight--normal;
   }
 }
 
 @mixin heading--four__small_quotes {
   font: {
     family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
-    size: $heading--four;
-    weight: 400;
+    size: $opc-global--FontSize--xl;
+    weight: $opc-global--fontWeight--light;
   }
 }
