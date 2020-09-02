@@ -6,10 +6,10 @@
 
 One platform component library.
 
-## Install dependencies in all packages
+## Install dependencies
 
 ```sh
-lerna run install
+npm install
 ```
 
 ## Usage
@@ -28,12 +28,6 @@ npm run dev <component-name>
 npm run build <component-name>
 ```
 
-### Build all packages
-
-```sh
-lerna run build
-```
-
 ## Run tests
 
 ```sh
@@ -41,21 +35,23 @@ npm run build
 npm run test
 ```
 
-## Build an element using opc-generator
+## Create a new component
 
-### Installation
-
-First, install [Yeoman](http://yeoman.io) and generator-opc-generator using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
-
+### Install packages
 ```bash
-npm install -g yo
-npm install -g generator-opc-generator
+npm install
 ```
 
-Then generate your new project:
-
+### Create new component
 ```bash
-yo opc-generator
+npm run new
+```
+#### This would run the generator and add the component to packages folder
+
+
+#### Run your component
+```bash
+npm run dev <component-name>
 ```
 
 
