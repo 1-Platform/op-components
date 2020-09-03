@@ -1,0 +1,97 @@
+@import "@one-platform/opc-styles";
+
+$LOCAL: opc-header;
+
+$variables: (
+  //Add your variables here
+);
+
+:host {
+  --opc-header--BackgroundColor: #ffffff;
+  --opc-header--Color: #000000;
+  --opc-header--Width: 100%;
+  --opc-header__BreadcrumbDivider--Color: #000000;
+  --opc-header__BreadcrumbLink--Color: var(--pf-global--link--Color);
+  --opc-header__Links--Color: initial;
+
+  .opc-header {
+    background-color: var(--opc-header--BackgroundColor, #ffffff);
+    color: var(--opc-header--Color, #000000);
+    width: var(--opc-header--Width, 100%);
+    border: 1px solid #DDDDDD;
+    &__top-row {
+      display:flex;
+      align-items: center;
+      padding: 20px;
+      height: 72px;
+      &--header-name {
+        font-size: 1.5rem;
+        margin: 0px;
+      }
+    }
+    &__bottom-row {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .pf-c-breadcrumb__link {
+    color: var(--opc-header__BreadcrumbLink--Color);
+  }
+  .pf-c-breadcrumb__item-divider {
+    --pf-c-breadcrumb__item-divider--Color: var(--opc-header__BreadcrumbDivider--Color);
+  }
+  .pf-c-button {
+    --pf-c-button--m-link--Color: var(--opc-header__Links--Color);
+    --pf-c-button--FontSize: var(--pf-global--FontSize--sm);
+  }
+}
+
+:host([theme="default"]) {
+  --opc-header--BackgroundColor: #ffffff;
+  --opc-header--Color: #000000;
+}
+
+:host([theme="dark"]) {
+  --opc-header--BackgroundColor: #000000;
+  --opc-header--Color: #ffffff;
+  [name="breadcrumb"]::slotted(*) {
+    --opc-header__BreadcrumbLink--Color: #ffffff;
+    --opc-header__BreadcrumbDivider--Color: #ffffff;
+  }
+  [name="links"]::slotted(*) {
+    --opc-header__Links--Color: #ffffff;
+  }
+}
+
+:host([theme="red"]) {
+  --opc-header--BackgroundColor: #be0000;
+  --opc-header--Color: #ffffff;
+  [name="breadcrumb"]::slotted(*) {
+    --opc-header__BreadcrumbLink--Color: #ffffff;
+    --opc-header__BreadcrumbDivider--Color: #ffffff;
+  }
+}
+
+:host([theme="blue"]) {
+  --opc-header--BackgroundColor: #316DC1;
+  --opc-header--Color: #ffffff;
+  [name="breadcrumb"]::slotted(*) {
+    --opc-header__BreadcrumbLink--Color: #ffffff;
+    --opc-header__BreadcrumbDivider--Color: #ffffff;
+  }
+}
+
+:host([theme="cyan"]) {
+  --opc-header--BackgroundColor: #1B8793;
+  --opc-header--Color: #ffffff;
+  [name="breadcrumb"]::slotted(*) {
+    --opc-header__BreadcrumbLink--Color: #ffffff;
+    --opc-header__BreadcrumbDivider--Color: #ffffff;
+  }
+}
+
+:host([hidden]) {
+  display: none;
+}

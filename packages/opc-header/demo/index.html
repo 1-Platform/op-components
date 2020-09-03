@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+      <title>opc-header</title>
+      <script src="opc-header.js"></script>
+      <style>
+        h1, h2, section {
+          margin: 1rem;
+        }
+      </style>
+  </head>
+  <body>
+      <h1>&nbsp;&nbsp;&nbsp;&nbsp;ShadowDOM Implementation</h1>
+      <section>
+        <h2>&lt;opc-header&gt; with [theme="default"]</h2>
+        <opc-header title="Outage Management" id="header1" theme="default">
+          <opc-header-breadcrumb slot="breadcrumb" id="breadcrumb1"></opc-header-breadcrumb>
+          <opc-header-links slot="links" id="links1"></opc-header-links>
+        </opc-header>
+      </section>
+
+      <section>
+        <h2>&lt;opc-header&gt; with [theme="dark"]</h2>
+        <opc-header title="Outage Management" id="header2" theme="dark">
+          <opc-header-breadcrumb slot="breadcrumb" id="breadcrumb2"></opc-header-breadcrumb>
+          <opc-header-links slot="links" id="links2"></opc-header-links>
+        </opc-header>
+      </section>
+
+      <section>
+        <h2>&lt;opc-header&gt; with [theme="red"]</h2>
+        <opc-header title="Outage Management" id="header3" theme="red">
+          <opc-header-breadcrumb slot="breadcrumb" id="breadcrumb3"></opc-header-breadcrumb>
+          <opc-header-links slot="links" id="links3"></opc-header-links>
+        </opc-header>
+      </section>
+
+      <section>
+        <h2>&lt;opc-header&gt; with [theme="blue"]</h2>
+        <opc-header title="Outage Management" id="header4" theme="blue">
+          <opc-header-breadcrumb slot="breadcrumb" id="breadcrumb4"></opc-header-breadcrumb>
+          <opc-header-links slot="links" id="links4"></opc-header-links>
+        </opc-header>
+      </section>
+
+      <section>
+        <h2>&lt;opc-header&gt; with [theme="cyan"]</h2>
+        <opc-header title="Outage Management" id="header5" theme="cyan">
+          <opc-header-breadcrumb slot="breadcrumb" id="breadcrumb5"></opc-header-breadcrumb>
+          <opc-header-links slot="links" id="links5"></opc-header-links>
+        </opc-header>
+      </section>
+      <br />
+      <h1>&nbsp;&nbsp;&nbsp;&nbsp;LightDOM Implementation</h1>
+      <section>
+        <h2>&lt;opc-header&gt; with [theme="default"]</h2>
+        <opc-header title="Outage Management" id="header1" theme="default">
+          <div slot="breadcrumb" id="breadcrumb">
+            <nav class="pf-c-breadcrumb" aria-label="breadcrumb">
+              <ol class="pf-c-breadcrumb__list">
+                <li class="pf-c-breadcrumb__item">
+                  <span class="pf-c-breadcrumb__item-divider">
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                  </span>
+                  <a href="#" class="pf-c-breadcrumb__link">Section home</a>
+                </li>
+                <li class="pf-c-breadcrumb__item">
+                  <span class="pf-c-breadcrumb__item-divider">
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                  </span>
+                  <a href="#" class="pf-c-breadcrumb__link">Section title</a>
+                </li>
+                <li class="pf-c-breadcrumb__item">
+                  <span class="pf-c-breadcrumb__item-divider">
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                  </span>
+                  <a href="#" class="pf-c-breadcrumb__link">Section title</a>
+                </li>
+                <li class="pf-c-breadcrumb__item">
+                  <span class="pf-c-breadcrumb__item-divider">
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                  </span>
+                  <a href="#" class="pf-c-breadcrumb__link pf-m-current" aria-current="page">Section landing</a>
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div slot="links">
+            <a class="pf-c-button pf-m-link" href="" style="--pf-c-button--m-link--Color: var(--opc-header__Links--Color);--pf-c-button--FontSize: var(--pf-global--FontSize--sm);">
+              <span class="pf-c-button__icon pf-m-start">
+                <i class="fas fa-play-circle" aria-hidden="true"></i>
+              </span>Video Guide
+            </a>
+            <a class="pf-c-button pf-m-link" href="" style="--pf-c-button--m-link--Color: var(--opc-header__Links--Color);--pf-c-button--FontSize: var(--pf-global--FontSize--sm);">
+              <span class="pf-c-button__icon pf-m-start">
+                <i class="fas fa-question-circle-o" aria-hidden="true"></i>
+              </span>FAQs
+            </a>
+            <a class="pf-c-button pf-m-link" href="" style="--pf-c-button--m-link--Color: var(--opc-header__Links--Color);--pf-c-button--FontSize: var(--pf-global--FontSize--sm);">
+              <span class="pf-c-button__icon pf-m-start">
+                <i class="fas fa-file-o" aria-hidden="true"></i>
+              </span>Documentation
+            </a>
+          </div>
+        </opc-header>
+      </section>
+
+      <script>
+        const breadcrumbs = [{"name":"Home", "href":"#"},{"name":"Outages", "href":"#"}];
+        const links = [{"name":"Video Guide", "href":"#", "icon":"fa-play-circle"},{"name":"FAQs", "href":"#", "icon":"fa-question-circle"},{"name":"Documentation", "href":"#", "icon":"fa-file"}];
+
+        document.querySelector("#breadcrumb1").opcHeaderBreadcrumb = breadcrumbs;
+        document.querySelector("#links1").opcHeaderLinks = links;
+
+        document.querySelector("#breadcrumb2").opcHeaderBreadcrumb = breadcrumbs;
+        document.querySelector("#links2").opcHeaderLinks = links;
+
+        document.querySelector("#breadcrumb3").opcHeaderBreadcrumb = breadcrumbs;
+        document.querySelector("#links3").opcHeaderLinks = links;
+
+        document.querySelector("#breadcrumb4").opcHeaderBreadcrumb = breadcrumbs;
+        document.querySelector("#links4").opcHeaderLinks = links;
+
+        document.querySelector("#breadcrumb5").opcHeaderBreadcrumb = breadcrumbs;
+        document.querySelector("#links5").opcHeaderLinks = links;
+      </script>
+  </body>
+</html>
