@@ -1,7 +1,7 @@
 {
   "name": "@one-platform/opc-header",
-  "version": "0.0.1",
-  "description": "A simple web component built in javascript and lit",
+  "version": "0.0.1-prerelease",
+  "description": "A web component based on Lit Element for Red Hat One Platform Header",
   "scripts": {
     "dev": "webpack-dev-server --open",
     "build": "webpack --mode production",
