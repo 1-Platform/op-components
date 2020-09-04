@@ -44,7 +44,7 @@ class OPCHeaderBreadcrumb extends LitElement {
 
   // Property Declarations
   @property({ type: Array })
-  _breadcrumb
+  _breadcrumb = [];
 
   constructor() {
     super();
@@ -60,24 +60,28 @@ class OPCHeaderBreadcrumb extends LitElement {
   }
 
   set opcHeaderBreadcrumb(breadcrumb) {
-    this._breadcrumb = breadcrumb;
+    if (!breadcrumb.length) {
+      console.warn(`${this.tagName.toLowerCase()}: Array of "breadcrumb" must be provided. You can do so by using opcHeaderBreadcrumb setter function`);
+    } else {
+      this._breadcrumb = breadcrumb;
+    }
   }
 
   render() {
     return html`
-      <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
-      <nav class="pf-c-breadcrumb" aria-label="breadcrumb">
-        <ol class="pf-c-breadcrumb__list">
-          ${this.opcHeaderBreadcrumb.map(breadcrumb =>
-            html`<li class="pf-c-breadcrumb__item">
-                  <span class="pf-c-breadcrumb__item-divider">
-                    <i class="fas fa-angle-right" aria-hidden="true"></i>
-                  </span>
-                  <a href="${breadcrumb.href}" class="pf-c-breadcrumb__link">${breadcrumb.name}</a>
-                </li>`)}
-        </ol>
-      </nav>
-    `;
+        <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+        <nav class="pf-c-breadcrumb" aria-label="breadcrumb">
+          <ol class="pf-c-breadcrumb__list">
+            ${this._breadcrumb.map(breadcrumb =>
+              html`<li class="pf-c-breadcrumb__item">
+                    <span class="pf-c-breadcrumb__item-divider">
+                      <i class="fas fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                    <a href="${breadcrumb.href}" class="pf-c-breadcrumb__link">${breadcrumb.name}</a>
+                  </li>`)}
+          </ol>
+        </nav>
+      `;
   }
 }
 
@@ -86,7 +90,7 @@ class OPCHeaderLinks extends LitElement {
 
   // Property Declarations
   @property({ type: Array })
-  _links
+  _links = []
 
   constructor() {
     super()
@@ -101,20 +105,24 @@ class OPCHeaderLinks extends LitElement {
   }
 
   set opcHeaderLinks(links) {
-    this._links = links;
+    if (!links.length) {
+      console.warn(`${this.tagName.toLowerCase()}: Array of "links" must be provided. You can do so by using opcHeaderLinks setter function`);
+    } else {
+      this._links = links;
+    }
   }
 
   render() {
     return html`
-      <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
-      ${this.opcHeaderLinks.map(link =>
-        html`
-            <a class="pf-c-button pf-m-link" href="${link.href}">
-              <span class="pf-c-button__icon pf-m-start">
-                <i class="fas ${link.icon}" aria-hidden="true"></i>
-              </span>${link.name}
-            </a>`)}
-    `;
+        <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+        ${this._links.map(link =>
+          html`
+              <a class="pf-c-button pf-m-link" href="${link.href}">
+                <span class="pf-c-button__icon pf-m-start">
+                  <i class="fas ${link.icon}" aria-hidden="true"></i>
+                </span>${link.name}
+              </a>`)}
+      `;
   }
 }
 
