@@ -2,31 +2,26 @@ import {LitElement} from 'lit-element';
 
 describe('opc-header', () => {
 
-    const OPC_COMPONENT = 'opc-header';
-    const ELEMENT_ID = 'opc-header';
-    let buttonElement: LitElement;
+    const OPC_HEADER = 'opc-header';
 
-    const getShadowRoot = (tagName: string): ShadowRoot => {
-        return document.body.getElementsByTagName(tagName)[0].shadowRoot;
-    }
+    let opcHeader: LitElement;
 
     beforeEach(() => {
-        buttonElement = window.document.createElement(OPC_COMPONENT) as LitElement;
-        document.body.appendChild(buttonElement);
+      opcHeader = window.document.createElement(OPC_HEADER) as LitElement;
+      document.body.appendChild(opcHeader);
     });
 
     afterEach(() => {
-       document.body.getElementsByTagName(OPC_COMPONENT)[0].remove();
+      document.querySelector(OPC_HEADER).remove();
     });
 
-    it('displays button text', async () => {
-        buttonElement.setAttribute('name', 'opc-header');
-        await buttonElement.updateComplete;
-
-        const renderedText = getShadowRoot(OPC_COMPONENT).getElementById(ELEMENT_ID).innerText;
-
-        expect(renderedText).toEqual('opc-header');
+    it('should be defined', async () => {
+      expect(opcHeader).toBeDefined();
     });
 
-    // Add more tests here
+    it('should render header text on setting "heading" attribute', async () => {
+      opcHeader.setAttribute('heading', 'OPC Header');
+      await opcHeader.updateComplete;
+      expect(opcHeader.getAttribute("heading")).toEqual('OPC Header');
+    });
 });
