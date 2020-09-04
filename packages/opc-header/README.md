@@ -6,6 +6,8 @@
 
 A standardized web component based on Lit Element for Red Hat One Platform Header that uses Patternfly Breadcrumb and Links as button HTML component
 
+## Prerequisites
+The `op-header` component is partially dependent on the Patternfly library for breadcrumbs and links. So to avoid any missing styles, add the `patternfly.css` file before the component script tags.
 
 ## Usage
 Plain Header
@@ -109,14 +111,14 @@ Place the `opc-header-breadcrumb` and `opc-header-links` component here.
 
 ## Attributes
 <style>
-    .color-preview {
-        display: inline-block;
-        width: 1em;
-        height: 1em;
-        vertical-align: middle;
-        background-color: var(--bg, #ffffff);
-        border: 1px solid #444444;
-    }
+  .readme-color-preview {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    background-color: var(--bg, #ffffff);
+    border: 1px solid #444444;
+  }
 </style>
 
 **`title`**
@@ -127,26 +129,28 @@ Options include default, dark, red, blue, cyan. Please use css variables provide
 
 | color   | hex                                                              |
 |---------|------------------------------------------------------------------|
-| default | <span class="color-preview" style="--bg:#ffffff"></span> #ffffff |
-| dark    | <span class="color-preview" style="--bg:#000000"></span> #000000 |
-| red     | <span class="color-preview" style="--bg:#be0000"></span> #be0000 |
-| blue    | <span class="color-preview" style="--bg:#464646"></span> #316DC1 |
-| cyan    | <span class="color-preview" style="--bg:#131313"></span> #1B8793 |
+| default | <span class="readme-color-preview" style="--bg:#ffffff"></span> #ffffff |
+| dark    | <span class="readme-color-preview" style="--bg:#000000"></span> #000000 |
+| red     | <span class="readme-color-preview" style="--bg:#be0000"></span> #be0000 |
+| blue    | <span class="readme-color-preview" style="--bg:#464646"></span> #316DC1 |
+| cyan    | <span class="readme-color-preview" style="--bg:#131313"></span> #1B8793 |
 
 
-
-### Variable hooks
+## Variable hooks
 Available hooks for styling header, breadcrumb and link colors include:
 
-| Variable name                               | Default value                    |
-| --------------------------------------------| ---------------------------------|
-| `--opc-header--BackgroundColor`             | #ffffff                          |
-| `--opc-header--Color`                       | #000000                          |
-| `--opc-header--Width`                       | 100%                             |
-| `--opc-header__BreadcrumbDivider--Color`    | #000000                          |
-| `--opc-header__BreadcrumbLink--Color`       | var(--pf-global--link--Color)    |
-| `--opc-header__Links--Color`                | var(--pf-global--link--Color)    |
+| Variable name                               | Default value                                                              |
+| --------------------------------------------| ---------------------------------------------------------------------------|
+| `--opc-header--BackgroundColor`             | <span class="readme-color-preview" style="--bg:#ffffff"></span> #ffffff    |
+| `--opc-header--Color`                       | <span class="readme-color-preview" style="--bg:#000000"></span> #000000    |
+| `--opc-header--Width`                       | 100%                                                                       |
+| `--opc-header__BreadcrumbDivider--Color`    | <span class="readme-color-preview" style="--bg:#000000"></span> #000000    |
+| `--opc-header__BreadcrumbLink--Color`       | var(--pf-global--link--Color)                                              |
+| `--opc-header__Links--Color`                | var(--pf-global--link--Color)                                              |
+
+
 ## Events
+None as of yet
 
 
 ### Development server
