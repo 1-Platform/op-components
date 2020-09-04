@@ -13,12 +13,12 @@ The `op-header` component is partially dependent on the Patternfly library for b
 Plain Header
 
 ```html
- <opc-header title="OPC Header"></opc-header>
+ <opc-header heading="OPC Header"></opc-header>
 ```
 
 Header with Breadcrumbs and Links
 ```html
- <opc-header title="OPC Header">
+ <opc-header heading="OPC Header">
   <opc-header-breadcrumb slot="breadcrumb"></opc-header-breadcrumb>
   <opc-header-links slot="links"></opc-header-links>
  </opc-header>
@@ -61,7 +61,7 @@ For custom options,
 
 Header with color themes
 ```html
- <opc-header title="OPC Header" theme="dark">
+ <opc-header heading="OPC Header" theme="dark">
   <opc-header-breadcrumb slot="breadcrumb"></opc-header-breadcrumb>
   <opc-header-links slot="links"></opc-header-links>
  </opc-header>
@@ -69,7 +69,7 @@ Header with color themes
 
 Header with lightDOM
 ```html
- <opc-header title="OPC Header" theme="red">
+ <opc-header heading="OPC Header" theme="red">
   <div slot="breadcrumb" id="breadcrumb">
     <nav class="pf-c-breadcrumb" aria-label="breadcrumb">
       <ol class="pf-c-breadcrumb__list">
@@ -121,8 +121,8 @@ Place the `opc-header-breadcrumb` and `opc-header-links` component here.
   }
 </style>
 
-**`title`**
-Adds the title to header component
+**`heading`**
+Adds a heading to the header component
 
 **`theme`**
 Options include default, dark, red, blue, cyan. Please use css variables provided with the component if you want to add more customizations.

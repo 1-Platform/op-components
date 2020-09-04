@@ -1,4 +1,4 @@
-import { LitElement, html, property, customElement, queryAll } from 'lit-element';
+import { LitElement, html, property, customElement } from 'lit-element';
 import style from './opc-header.scss';
 
 @customElement('opc-header')
@@ -6,20 +6,16 @@ class OPCHeader extends LitElement {
 
   // Property Declarations
   @property({ reflect: true })
-  title
+  heading
   version
   sponsor
 
   @property({ reflect: true })
   theme
 
-  @queryAll('.opc-header')
-  _opcheader
-
   constructor() {
     super();
     this.theme = "default";
-    console.log(this.shadowRoot.querySelector('.opc-header__bottom-row'));
   }
 
   static get styles() {
@@ -30,7 +26,7 @@ class OPCHeader extends LitElement {
     return html`
       <div class="opc-header">
         <div class="opc-header__top-row">
-          <h1 class="opc-header__top-row--header-name"> ${ this.title } </h1>
+          <h1 class="opc-header__top-row--header-name"> ${ this.heading } </h1>
         </div>
         <div class="opc-header__bottom-row">
           <slot name="breadcrumb">
