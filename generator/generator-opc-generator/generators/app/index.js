@@ -90,8 +90,8 @@ module.exports = class extends Generator {
       this.props
     );
     this.fs.copy(
-      this.templatePath("_.gitignore"),
-      this.destinationPath(`${this.props.componentName}/.gitignore`),
+      this.templatePath("_.npmignore"),
+      this.destinationPath(`${this.props.componentName}/.npmignore`),
       this.props
     );
   }

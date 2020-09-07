@@ -10,7 +10,7 @@
 .DS_Store
 
 ## npm
-/node_modules/
+node_modules
 /npm-debug.log
 
 ## testing
@@ -22,3 +22,4 @@
 # build
 /_site/
 /dist/
+packages/*/dist
