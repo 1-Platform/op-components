@@ -7,7 +7,7 @@
 A standardized web component based on Lit Element for Red Hat One Platform Header that uses Patternfly Breadcrumb and Links as button HTML component
 
 ## Prerequisites
-The `op-header` component is partially dependent on the Patternfly library for breadcrumbs and links. So to avoid any missing styles, add the `patternfly.css` file before the component script tags.
+The `opc-header` component is partially dependent on the Patternfly library for breadcrumbs and links. So to avoid any missing styles, add the `patternfly.css` file before the component script tags.
 
 ## Usage
 Plain Header
