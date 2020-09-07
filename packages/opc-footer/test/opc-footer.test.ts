@@ -53,7 +53,7 @@ describe('opc-footer', () => {
         }
       ]`;
 
-      opcFooterElement.setAttribute('opc-links-group', MockLinksGroupData);
+      opcFooterElement.setAttribute('opc-links', MockLinksGroupData);
       await opcFooterElement.updateComplete;
       expect(opcFooterElement.linksGroups[0].name).toEqual("Quick Links");
       expect(opcFooterElement.linksGroups[0].links.length).toEqual(4);

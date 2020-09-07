@@ -1,12 +1,11 @@
 import { LitElement, html, property, customElement } from 'lit-element';
 import style  from './opc-footer.scss';
-import { OpcFooterLinksGroup } from './opc-footer-interface';
 
 @customElement('opc-footer')
 export class OpcFooter extends LitElement {
   @property({ attribute: 'opc-theme' }) theme: string = 'light';
 
-  @property({ type: Array, attribute: 'opc-links-group' })
+  @property({ type: Array, attribute: 'opc-links' })
   linksGroups: OpcFooterLinksGroup[] | undefined = [];
 
   static get styles() {
@@ -33,7 +32,7 @@ export class OpcFooter extends LitElement {
 
       <div class="footer-note">
         Copyright &copy; ${new Date().getFullYear() }
-        <slot name="copyright">All Right Reserved.</slot>
+        <slot name="copyright">All Rights Reserved.</slot>
       </div>
       </footer>
     `;

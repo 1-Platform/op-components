@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-footer",
-  "version": "0.0.1-prerelease",
+  "version": "0.0.2-prerelease",
   "description": "A simple web component built in javascript and lit",
   "scripts": {
     "dev": "webpack-dev-server --open",

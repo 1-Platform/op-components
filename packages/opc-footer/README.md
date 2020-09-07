@@ -14,24 +14,20 @@ npm install
 
 ## Usage
 
-the opc-footer have supports dark theme, by default the light theme is selected. for example
-footer with default theme:
+The opc-footer defaults to white background a.k.a light theme and supports dark theme as well.
 
 ```html
 <opc-footer></opc-footer>
 ```
 
-![Demo Footer light with no links](demo/images/Footer-light-no-links.png)
 
-here's another with dark
+### Example Dark theme
 
 ```html
 <opc-footer theme="dark"></opc-footer>
 ```
 
-![Demo Footer dark no links](demo/images/Footer-dark-no-links.png)
-
-To add the links it has a attribute called opc-links-groups. this supports the Array folloing is the structure.
+### To add the links it has a attribute called opc-links. It supports the following structure.
 
 ```js
 [
@@ -50,12 +46,8 @@ To add the links it has a attribute called opc-links-groups. this supports the A
   ...
 ];
 ```
-For a demo example see the
-![Demo Footer light with no links](demo/images/Footer-light-no-links.png)
-![Demo Footer dark with links](demo/images/Footer-dark-with-links.png)
 
-The Links with no path fires the custom event called footer-link-click, so the user can add
-custom behaviors.
+### The Links with no path fires the custom event called footer-link-click, so the user can add custom behavior.
 
 for example 
 ```js
