@@ -1,4 +1,4 @@
-import { LitElement, html, property, customElement, query } from 'lit-element';
+import { LitElement, html, property, customElement } from 'lit-element';
 import style  from './opc-footer.scss';
 
 @customElement('opc-footer')

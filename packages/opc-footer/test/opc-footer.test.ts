@@ -30,8 +30,8 @@ describe('opc-footer', () => {
     });
 
     it('has Default link groups', async () => {
-      expect(opcFooterElement.opcLinkCatagories).toBeDefined();
-      expect(opcFooterElement.opcLinkCatagories.length).toEqual(0);
+      expect(opcFooterElement.opcLinkCategories).toBeDefined();
+      expect(opcFooterElement.opcLinkCategories.length).toEqual(0);
     });
 
     it('has dark theme defined', async () => {
@@ -41,9 +41,8 @@ describe('opc-footer', () => {
     });
 
     it('has Links Group Defined', async () => {
-      const MockLinksGroupData = `[
-        {
-          "name":"Quick Links",
+      const MockLinksGroupData = [
+        { "name":"Quick Links",
           "links":[
             { "name":"Down For The Count", "path":"https://fb.com"},
             { "name":"Between a Rock and a Hard Place"},
@@ -51,12 +50,12 @@ describe('opc-footer', () => {
             { "name":"Drawing a Blank"}
           ]
         }
-      ]`;
+      ];
 
-      opcFooterElement.setAttribute('link-catagories', MockLinksGroupData);
+      opcFooterElement.opcLinkCategories = MockLinksGroupData;
       await opcFooterElement.updateComplete;
-      expect(opcFooterElement.opcLinkCatagories[0].name).toEqual("Quick Links");
-      expect(opcFooterElement.opcLinkCatagories[0].links.length).toEqual(4);
+      expect(opcFooterElement.opcLinkCategories[0].name).toEqual("Quick Links");
+      expect(opcFooterElement.opcLinkCategories[0].links.length).toEqual(4);
     });
 });
 
