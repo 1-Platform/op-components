@@ -30,12 +30,12 @@ describe('opc-footer', () => {
     });
 
     it('has Default link groups', async () => {
-      expect(opcFooterElement.linksGroups).toBeDefined();
-      expect(opcFooterElement.linksGroups.length).toEqual(0);
+      expect(opcFooterElement.opcLinkCatagories).toBeDefined();
+      expect(opcFooterElement.opcLinkCatagories.length).toEqual(0);
     });
 
     it('has dark theme defined', async () => {
-      opcFooterElement.setAttribute('opc-theme', 'dark');
+      opcFooterElement.setAttribute('theme', 'dark');
       await opcFooterElement.updateComplete;
       expect(opcFooterElement.theme).toEqual('dark');
     });
@@ -53,11 +53,10 @@ describe('opc-footer', () => {
         }
       ]`;
 
-      opcFooterElement.setAttribute('opc-links', MockLinksGroupData);
+      opcFooterElement.setAttribute('link-catagories', MockLinksGroupData);
       await opcFooterElement.updateComplete;
-      expect(opcFooterElement.linksGroups[0].name).toEqual("Quick Links");
-      expect(opcFooterElement.linksGroups[0].links.length).toEqual(4);
-
+      expect(opcFooterElement.opcLinkCatagories[0].name).toEqual("Quick Links");
+      expect(opcFooterElement.opcLinkCatagories[0].links.length).toEqual(4);
     });
 });
 

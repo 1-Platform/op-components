@@ -1,13 +1,13 @@
 {
   "name": "@one-platform/opc-footer",
   "version": "0.0.2-prerelease",
-  "description": "A simple web component built in javascript and lit",
+  "description": "A web component based on lit-element which provides themes and an api to show links.",
   "scripts": {
     "dev": "webpack-dev-server --open",
     "build": "webpack --mode production",
     "start": "webpack-dev-server",
     "test": "npm run build && jest --verbose=true",
-    "test:debug": "npm run build && SET DEBUG_MODE=1 && jest --verbose=true"
+    "test:debug": "npm run build && DEBUG_MODE=1 && jest --verbose=true"
   },
   "publishConfig": {
     "access": "public"
@@ -23,6 +23,7 @@
     "css-loader": "^3.6.0",
     "electron": "^9.0.5",
     "extract-loader": "^5.1.0",
+    "file-loader": "^6.1.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.1.0",

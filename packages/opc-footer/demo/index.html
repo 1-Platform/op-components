@@ -14,70 +14,70 @@
 <body>
   <header class="rh-display">Footer Component Demo</header>
 
-  <div class="slide flex-col">
-    <div class="flex-row rh-text">
-      <p>Full size footer with light theme</p>
-      <opc-footer @footer-link-click="${(e) => { console.log(e.detail.message) }}"></opc-footer>
+  <div class="slide">
+    <h3 class="rh-display">Examples:</h3>
+    <div class="rh-text">
+      <p>1. Full size footer with light theme</p>
+      <opc-footer></opc-footer>
     </div>
-    <div class="flex-row rh-text">
-      <p>Full size footer with dark theme</p>
-      <opc-footer opc-theme="dark" opc-links-group='[
-      {
-         "name":"Quick Links",
-         "links":[
-            {
-               "name":"Down For The Count",
-               "path":"https://fb.com"
-            },
-            { "name":"Between a Rock and a Hard Place"},
-            { "name":"Keep Your Eyes Peeled"},
-            { "name":"Drawing a Blank"}
-         ]
-      },
-      {
-         "name":"Related Links",
-         "links":[
-            {
-               "name":"All Greek To Me",
-               "path":"https://fb.com"
-            },
-            { "name":"Keep Your Shirt On"},
-            { "name":"Go For Broke"},
-            { "name":"Head Over Heels"},
-            { "name":"Lovey Dovey"},
-            { "name":"Raining Cats and Dogs"}
-         ]
-      },
-      {
-         "name":"Help",
-         "links":[
-            {
-               "name":"Back To the Drawing Board",
-               "path":"https://fb.com"
-            },
-            { "name":"Go For Broke" },
-            { "name":"Right Off the Bat" },
-            { "name":"Down And Out" }
-         ]
-      },
-      {
-        "name":"Other Links",
-        "links":[
-           {
-              "name":"Cup Of Joe",
-              "path":"https://fb.com"
-           },
-           { "name":"Quick On the Draw" },
-           { "name":"Long In The Tooth" }
-        ]
-     }
-   ]'>
+    <div class="rh-text">
+      <p>2. Full size footer with dark theme</p>
+      <opc-footer theme="dark">
       </opc-footer>
+    </div>
+
+    <div class="rh-text">
+      <p>3. Full size footer with demo links, light theme</p>
+      <opc-footer id="lightFooterWithLinks"></opc-footer>
+    </div>
+
+    <div class="rh-text">
+      <p>4. Full size footer with demo links, dark theme</p>
+      <opc-footer theme="dark" id="darkFooterWithLinks"></opc-footer>
     </div>
   </div>
 </body>
 <script src="opc-footer.js"></script>
 <script>
+  // Demo links
+  const links = [
+    {
+      "name":"Quick Links",
+      "links":[
+        { "name":"Down For The Count", "path":"https://fb.com" },
+        { "name":"Between a Rock and a Hard Place"},
+        { "name":"Keep Your Eyes Peeled"},
+        { "name":"Drawing a Blank"}
+      ]
+    },
+    {
+      "name":"Related Links",
+      "links":[
+        { "name":"All Greek To Me", "path":"https://fb.com" },
+        { "name":"Keep Your Shirt On"},
+        { "name":"Go For Broke"},
+        { "name":"Head Over Heels"},
+        { "name":"Lovey Dovey"},
+        { "name":"Raining Cats and Dogs"}
+      ]
+    },
+    {
+      "name":"Help",
+      "links":[
+        { "name":"Back To the Drawing Board", "path":"https://fb.com" },
+        { "name":"Go For Broke" },
+        { "name":"Right Off the Bat" },
+        { "name":"Down And Out" }
+      ]
+    },
+  ];
+
+  const lightFooterWithLinksEL = document.querySelector('#lightFooterWithLinks');
+  lightFooterWithLinksEL.opcLinkCatagories = links;
+
+  const darkFooterWithLinksEL = document.querySelector('#darkFooterWithLinks');
+  darkFooterWithLinksEL.opcLinkCatagories = links;
+
   const myElement = document.querySelectorAll('opc-footer');
   [...myElement].map(el => {
     el.addEventListener('opc-footer-link-click', (e) => {console.log(e)});
