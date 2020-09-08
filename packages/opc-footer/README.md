@@ -89,7 +89,7 @@ if you want to change use the slot name as `copyright` for example.
 * the better way to add the links is via js API but if you want to implementing `data goes down and events go up` pattern in your code then you can use the following attribute
 
 ```html
-<opc-footer link-catagories="${MockLinkData"> 
+<opc-footer link-catagories="${MockLinkData}"> 
 </opc-footer>
 ```
 

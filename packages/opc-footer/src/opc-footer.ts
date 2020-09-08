@@ -5,33 +5,33 @@ import style  from './opc-footer.scss';
 export class OpcFooter extends LitElement {
   @property({ attribute: 'theme' }) theme: string = 'light';
 
-  @property({ type: Array, attribute: 'link-catagories' })
-  _linkCatagories: OpcFooterLinkCategory[] | undefined = [];
+  @property({ type: Array, attribute: 'link-categories' })
+  _linkCategories: OpcFooterLinkCategory[] | undefined = [];
 
   static get styles() {
     return [ style ];
   }
 
-  get opcLinkCatagories() {
-    return this._linkCatagories;
+  get opcLinkCategories() {
+    return this._linkCategories;
   }
 
-  set opcLinkCatagories(links) {
+  set opcLinkCategories(links) {
     if (!links.length) {
       console.warn(`
         ${ this.tagName.toLowerCase() }:
         opc-footer needs an array of OpcFooterLinkCategory[] type for more information
         read README.md file.`);
     } else {
-      this._linkCatagories = links;
+      this._linkCategories = links;
     }
   }
 
   render() {
     return html`
       <footer class="${this.theme=== 'light' ? 'light' : 'dark'}
-        ${this._linkCatagories.length ? `background-image-${this.theme}`: '' }">
-        ${this._linkCatagories.map(_linkCategory => html`
+        ${this._linkCategories.length ? `background-image-${this.theme}`: '' }">
+        ${this._linkCategories.map(_linkCategory => html`
           <div class="link-category">
             <h4 class="link-category__name">${_linkCategory.name}</h4>
             ${_linkCategory.links.map(_link => html`
