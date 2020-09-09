@@ -48,7 +48,6 @@ class OPCHeaderBreadcrumb extends LitElement {
 
   constructor() {
     super();
-    this._breadcrumb;
   }
 
   static get styles() {
