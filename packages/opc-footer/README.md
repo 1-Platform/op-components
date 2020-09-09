@@ -4,13 +4,39 @@
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/1-Platform/op-components/graphs/commit-activity)
 
-A web component based on lit-element which provides themes and an api to show links. 
-
-# Prerequisites
-
-The `opc-footer` component's style are based on [`opc-styles`](https://github.com/1-Platform/op-components/tree/master/packages/opc-styles) package which contains all common styles which are important to get started with any component.
+A standardized web component based on Lit Element for Red Hat One Platform Footer.
 
 # Usage
+### Footer with links:
+* The links needs to have following data type which is defined in `./types.d.ts` file. Below is the mock data example.
+* use the `opcLinkCatagories` setter function to add links.
+```js
+const links = [
+  { "category":"Group name 1",
+    "links":[
+      { "text":"Lorem ipsum", "href":"https://example.com" },
+      { "text":"Lorem ipsum" },
+    ]},
+  { "category":"Group name 2",
+    "links":[
+      { "text":"Lorem ipsum", "href":"https://example.com" },
+      { "text":"Lorem ipsum" },
+      { "text":"Lorem ipsum" },
+  ]},
+];
+
+const myFooterEl = document.querySelector('opc-footer');
+myFooterEl.opcLinkCatagories = links;
+```
+
+* The Links with no path fires the custom event called `opc-footer-link:click`, so the user can add custom behavior. for example 
+```js
+  const myFooterElement = document.querySelector('opc-footer');
+  myFooterElement.addEventListener('opc-footer-link:click', (e) => {
+    console.log(e);
+    /// custom behaviors.
+  });
+```
 
 Default with light theme: 
 
@@ -29,45 +55,9 @@ const myFooterEl = document.querySelector('opc-footer');
 myFooterEl.theme = 'dark';
 ```
 
-### Footer with links:
-* The links needs to have following data type which is defined the `./types.d.ts` file. below is the mock data example.
-* use the `opcLinkCatagories` setter function to add links.
-```js
-const links = [
-  { "name":"Quick Links",
-    "links":[
-      { "name":"Down For The Count", "path":"https://example.com" },
-      { "name":"Between a Rock and a Hard Place" },
-      { "name":"Keep Your Eyes Peeled" },
-      { "name":"Drawing a Blank" }
-    ] },
-  { "name":"Related Links",
-    "links":[
-      { "name":"All Greek To Me", "path":"https://example.com" },
-      { "name":"Keep Your Shirt On" },
-      { "name":"Go For Broke" },
-      { "name":"Head Over Heels" },
-      { "name":"Lovey Dovey" },
-      { "name":"Raining Cats and Dogs" }
-  ]},
-];
-
-const myFooterEl = document.querySelector('opc-footer');
-myFooterEl.opcLinkCatagories = links;
-```
-
-* The Links with no path fires the custom event called `footer-link-click`, so the user can add custom behavior. for example 
-```js
-  const myFooterElement = document.querySelector('opc-footer');
-  myFooterElement.addEventListener('opc-footer-link-click', (e) => {
-    console.log(e);
-    /// custom behaviors.
-  });
-```
-
 # Slot
-the `opc-footer` supports the slot for foot note which is reserved for copyright text by default it shows the Copyright **All Rights Reserved.**
-if you want to change use the slot name as `copyright` for example.
+The `opc-footer` component supports the slot for foot note which is reserved for copyright text. By default it shows the text as Copyright **All Rights Reserved.**
+You can use `copyright` slot to provide custom text as shown in below example
 
 ```html
 <opc-footer>
@@ -77,17 +67,28 @@ if you want to change use the slot name as `copyright` for example.
 
 # Attributes
 
-### The `opc-footer` has a optional attribute  `theme` to manage the theme.
+**`theme`**
 
 | Theme name |  Value  |
 | ----------------- | ------- | 
 | `light` |  #FFF |
 | `dark` |  #000 |
 
-### The `opc-footer` has the optional attribute `link-catagories` to show the links.
+**`link-catagories`**
 
-* the better way to add the links is via js API but if you want to implementing `data goes down and events go up` pattern in your code then you can use the following attribute
+We recommend to provide the links via js API but if you want to implement `data goes down and events go up` pattern then you can use the `link-catagories` attribute.
 
+`recommended`
+```html
+<opc-footer> 
+</opc-footer>
+```
+```js
+const myFooterEl = document.querySelector('opc-footer');
+myFooterEl.opcLinkCatagories = MockLinkData;
+```
+
+`not recommended`
 ```html
 <opc-footer link-catagories="${MockLinkData}"> 
 </opc-footer>
@@ -97,8 +98,8 @@ if you want to change use the slot name as `copyright` for example.
 
 | CSS Variable name |  Value  |
 | ----------------- | ------- | 
-| `--opc-header-BackgroundColor` |  #FFF |
-| `--opc-header-TextColor` |  #000 |
+| `--opc-header--BackgroundColor` |  #FFF |
+| `--opc-header--TextColor` |  #000 |
 
 # Development server
 
@@ -109,17 +110,17 @@ npm run install
 
 Run development server
 ```sh
-npm run dev
+npm run dev opc-footer
 ```
 
 OR
 ```sh
-npm run start
+npm run start opc-footer
 ```
 
 Build
 ```sh
-npm run build
+npm run build opc-footer
 ```
 
 Run tests

@@ -42,32 +42,32 @@
   // Demo links
   const links = [
     {
-      "name":"Quick Links",
+      "category":"Quick Links",
       "links":[
-        { "name":"Down For The Count", "path":"https://fb.com" },
-        { "name":"Between a Rock and a Hard Place"},
-        { "name":"Keep Your Eyes Peeled"},
-        { "name":"Drawing a Blank"}
+        { "text":"Down For The Count", "href":"https://fb.com" },
+        { "text":"Between a Rock and a Hard Place"},
+        { "text":"Keep Your Eyes Peeled"},
+        { "text":"Drawing a Blank"}
       ]
     },
     {
-      "name":"Related Links",
+      "category":"Related Links",
       "links":[
-        { "name":"All Greek To Me", "path":"https://fb.com" },
-        { "name":"Keep Your Shirt On"},
-        { "name":"Go For Broke"},
-        { "name":"Head Over Heels"},
-        { "name":"Lovey Dovey"},
-        { "name":"Raining Cats and Dogs"}
+        { "text":"All Greek To Me", "href":"https://fb.com" },
+        { "text":"Keep Your Shirt On"},
+        { "text":"Go For Broke"},
+        { "text":"Head Over Heels"},
+        { "text":"Lovey Dovey"},
+        { "text":"Raining Cats and Dogs"}
       ]
     },
     {
-      "name":"Help",
+      "category":"Help",
       "links":[
-        { "name":"Back To the Drawing Board", "path":"https://fb.com" },
-        { "name":"Go For Broke" },
-        { "name":"Right Off the Bat" },
-        { "name":"Down And Out" }
+        { "text":"Back To the Drawing Board", "href":"https://fb.com" },
+        { "text":"Go For Broke" },
+        { "text":"Right Off the Bat" },
+        { "text":"Down And Out" }
       ]
     },
   ];
@@ -80,7 +80,7 @@
 
   const myElement = document.querySelectorAll('opc-footer');
   [...myElement].map(el => {
-    el.addEventListener('opc-footer-link-click', (e) => {console.log(e)});
+    el.addEventListener('opc-footer-link:click', (e) => {console.log(e)});
   });
 </script>
 </html>

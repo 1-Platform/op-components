@@ -59,8 +59,8 @@ footer {
 
 }
 
-/// Light theme Styles
-footer.light {
+/// Default theme Styles
+.light {
   border: 1px solid $opc-color--black-300;
   color: opc-get-var(TextColor,#000);
   background: opc-get-var(BackgroundColor, #FFF);
@@ -69,26 +69,28 @@ footer.light {
 }
 
 /// Dark theme Styles
-footer.dark {
+:host([theme="dark"]) {
   color: opc-get-var(TextColor,#fff);
   background: opc-get-var(BackgroundColor, #000);
+}
 
+.dark {
   a { color: opc-color(text--on-dark) }
 }
 
-footer.light.background-image-light,
-footer.dark.background-image-dark {
+.light.background-image-light,
+.dark.background-image-dark {
   background-image: url('./images/left-footer-cubes.svg'), url('./images/right-footer-cubes.svg');
   background-repeat: no-repeat;
   background-position: -38px center, calc(100% + 38px) center;
 }
 
-footer.light.background-image-light {
+.light.background-image-light {
   background-blend-mode: exclusion;
 }
 
 /// Inherits the theme from the parent element
-.footer-note {
+.note {
   flex: 1 0 100%;
   text-align: center;
   font-size: opc-get-var(FontSize, 14px, Note);

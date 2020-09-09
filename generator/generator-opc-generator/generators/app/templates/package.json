@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server",
     "test": "npm run build && jest --verbose=true",
-    "test:debug": "npm run build && DEBUG_MODE=1 && jest --verbose=true"
+    "test:debug": "npm run build && DEBUG_MODE=1 jest --verbose=true"
   },
   "publishConfig": {
     "access": "public"

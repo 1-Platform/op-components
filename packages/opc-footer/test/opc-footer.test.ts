@@ -1,18 +1,18 @@
 import {LitElement} from 'lit-element';
-import { OpcFooter } from '../src/opc-footer';
+import { OPCFooter } from '../src/opc-footer';
 
 describe('opc-footer', () => {
 
     const OPC_COMPONENT = 'opc-footer';
     const ELEMENT_ID = 'opc-footer';
-    let opcFooterElement: OpcFooter;
+    let opcFooterElement: OPCFooter;
 
     const getShadowRoot = (tagName: string): ShadowRoot => {
         return document.body.getElementsByTagName(tagName)[0].shadowRoot;
     }
 
     beforeEach(() => {
-        opcFooterElement = window.document.createElement(OPC_COMPONENT) as OpcFooter;
+        opcFooterElement = window.document.createElement(OPC_COMPONENT) as OPCFooter;
         document.body.appendChild(opcFooterElement);
     });
 
@@ -42,19 +42,19 @@ describe('opc-footer', () => {
 
     it('has Links Group Defined', async () => {
       const MockLinksGroupData = [
-        { "name":"Quick Links",
+        { "category":"Quick Links",
           "links":[
-            { "name":"Down For The Count", "path":"https://fb.com"},
-            { "name":"Between a Rock and a Hard Place"},
-            { "name":"Keep Your Eyes Peeled"},
-            { "name":"Drawing a Blank"}
+            { "text":"Down For The Count", "href":"https://fb.com"},
+            { "text":"Between a Rock and a Hard Place"},
+            { "text":"Keep Your Eyes Peeled"},
+            { "text":"Drawing a Blank"}
           ]
         }
       ];
 
       opcFooterElement.opcLinkCategories = MockLinksGroupData;
       await opcFooterElement.updateComplete;
-      expect(opcFooterElement.opcLinkCategories[0].name).toEqual("Quick Links");
+      expect(opcFooterElement.opcLinkCategories[0].category).toEqual("Quick Links");
       expect(opcFooterElement.opcLinkCategories[0].links.length).toEqual(4);
     });
 });

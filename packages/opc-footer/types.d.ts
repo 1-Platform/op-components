@@ -1,9 +1,9 @@
-type OpcFooterLinkCategory = {
-    name?: string;
-    links?: OpcFooterLink[];
+type OPCFooterLinkCategory = {
+    category?: string;
+    links?: OPCFooterLink[];
   }
 
-type OpcFooterLink = {
-    name?: string;
-    path?: string;
+type OPCFooterLink = {
+    text?: string;
+    href?: string;
   }
