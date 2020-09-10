@@ -21,22 +21,25 @@ header {
   z-index: 10;
   left: 0;
   right: 0;
-  background: black;
-  color: white;
+  border: 1px solid #ddd;
+  color: black;
+  background: white;
 }
 
 .slide {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  padding-top: 72px;
+  z-index: 0;
 }
 
-.flex-col {
-  flex-direction: column;
+h3 {
+  font-weight: 100;
+  margin-top: 2rem;
+  margin-left: 1rem;
 }
 
-.flex-row, opc-footer {
-  width: 100%;
+p {
+  margin-top: 2rem;
+  margin-left: 1rem;
 }

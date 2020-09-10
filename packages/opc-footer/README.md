@@ -1,112 +1,138 @@
-# This is opc-footer 👋
+# opc-footer component 👋
 
-![Version](https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.0.2-blue.svg?cacheSeconds=2592000)
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/1-Platform/op-components/graphs/commit-activity)
 
-opc-footer is a web component based on lit-element. By default it has the light theme and text for copyright.
+A standardized web component based on Lit Element for Red Hat One Platform Footer.
 
-## Install
-
-```sh
-npm install
-```
-
-## Usage
-
-the opc-footer have supports dark theme, by default the light theme is selected. for example
-footer with default theme:
-
-```html
-<opc-footer></opc-footer>
-```
-
-![Demo Footer light with no links](demo/images/Footer-light-no-links.png)
-
-here's another with dark
-
-```html
-<opc-footer theme="dark"></opc-footer>
-```
-
-![Demo Footer dark no links](demo/images/Footer-dark-no-links.png)
-
-To add the links it has a attribute called opc-links-groups. this supports the Array folloing is the structure.
-
+# Usage
+### Footer with links:
+* The links needs to have following data type which is defined in `./types.d.ts` file. Below is the mock data example.
+* use the `opcLinkCatagories` setter function to add links.
 ```js
-[
-  {
-    name: "Example Group Link",
-    links: [
-      {
-        name: "Crunch time",
-        path: "https://example.com",
-      },
-      {
-        name: "Lorem ipsum Link",
-      },
-    ],
-  },
-  ...
+const links = [
+  { "category":"Group name 1",
+    "links":[
+      { "text":"Lorem ipsum", "href":"https://example.com" },
+      { "text":"Lorem ipsum" },
+    ]},
+  { "category":"Group name 2",
+    "links":[
+      { "text":"Lorem ipsum", "href":"https://example.com" },
+      { "text":"Lorem ipsum" },
+      { "text":"Lorem ipsum" },
+  ]},
 ];
+
+const myFooterEl = document.querySelector('opc-footer');
+myFooterEl.opcLinkCatagories = links;
 ```
-For a demo example see the
-![Demo Footer light with no links](demo/images/Footer-light-no-links.png)
-![Demo Footer dark with links](demo/images/Footer-dark-with-links.png)
 
-The Links with no path fires the custom event called footer-link-click, so the user can add
-custom behaviors.
-
-for example 
+* The Links with no path fires the custom event called `opc-footer-link:click`, so the user can add custom behavior. for example 
 ```js
   const myFooterElement = document.querySelector('opc-footer');
-  myFooterElement.addEventListener('opc-footer-link-click', (e) => {
+  myFooterElement.addEventListener('opc-footer-link:click', (e) => {
     console.log(e);
     /// custom behaviors.
   });
 ```
 
-### Development server
+Default with light theme: 
 
-- Install packages
+```html
+<opc-footer></opc-footer>
+```
 
+Dark theme:
+in `html`
+```html
+<opc-footer theme="dark"></opc-footer>
+```
+as well you can change the theme in `js` too by selecting the element reference.
+```js
+const myFooterEl = document.querySelector('opc-footer');
+myFooterEl.theme = 'dark';
+```
+
+# Slot
+The `opc-footer` component supports the slot for foot note which is reserved for copyright text. By default it shows the text as Copyright **All Rights Reserved.**
+You can use `copyright` slot to provide custom text as shown in below example
+
+```html
+<opc-footer>
+  <span slot="copyright">My Company Rights Reserved</span>
+</opc-footer>
+```
+
+# Attributes
+
+**`theme`**
+
+| Theme name |  Value  |
+| ----------------- | ------- | 
+| `light` |  #FFF |
+| `dark` |  #000 |
+
+**`link-catagories`**
+
+We recommend to provide the links via js API but if you want to implement `data goes down and events go up` pattern then you can use the `link-catagories` attribute.
+
+`recommended`
+```html
+<opc-footer> 
+</opc-footer>
+```
+```js
+const myFooterEl = document.querySelector('opc-footer');
+myFooterEl.opcLinkCatagories = MockLinkData;
+```
+
+`not recommended`
+```html
+<opc-footer link-catagories="${MockLinkData}"> 
+</opc-footer>
+```
+
+# CSS Variables
+
+| CSS Variable name |  Value  |
+| ----------------- | ------- | 
+| `--opc-header--BackgroundColor` |  #FFF |
+| `--opc-header--TextColor` |  #000 |
+
+# Development server
+
+Install packages
 ```sh
 npm run install
 ```
 
-- Run development server
-
+Run development server
 ```sh
-npm run dev
+npm run dev opc-footer
 ```
 
 OR
-
 ```sh
-npm run start
+npm run start opc-footer
 ```
 
-### Build
-
+Build
 ```sh
-npm run build
+npm run build opc-footer
 ```
 
-## Run tests
-
+Run tests
 ```sh
 npm run test
 ```
 
 ## 🤝 Contributors
-
-👤 **Sumeet Ingole**
+[👤 **Sumeet Ingole**](https://github.com/gisumit)
 
 ## Show your support
-
 Give a ⭐️ if this project helped you!
 
 ## 📝 License
-
 This project is [MIT](./LICENSE) licensed.
-

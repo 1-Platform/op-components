@@ -6,21 +6,18 @@ $LOCAL: footer;
   display: block;
 }
 
-/// Mixin
-/// Link Reset
+/// Custom Mixin
 @mixin reset-link {
   text-decoration: none;
   margin-bottom: 8px;
   cursor: pointer;
 }
 
-/// Mixin for Link group name
-@mixin mixin--link-group__name {
+@mixin mixin--link-category__name {
   @include heading--four__small_quotes;
   margin-bottom: opc-get-var(MarginBottom, 1rem);
   text-transform: uppercase;
 }
-
 
 /// Common styles for both theme
 footer {
@@ -30,17 +27,17 @@ footer {
   justify-content: center;
   padding: opc-get-var(Padding, 20px);
 
-  .link-group {
-    margin-left: opc-get-var(MarginLeft, 8px, link-group);
-    margin-right: opc-get-var(MarginRight, 8px, link-group);
-    margin-bottom: opc-get-var(MarginBottom, 32px, link-group);
-    min-width: opc-get-var(MinWidth, 280px, link-group);;
+  .link-category {
+    margin-left: opc-get-var(MarginLeft, 8px, link-category);
+    margin-right: opc-get-var(MarginRight, 8px, link-category);
+    margin-bottom: opc-get-var(MarginBottom, 32px, link-category);
+    min-width: opc-get-var(MinWidth, 280px, link-category);;
     flex-shrink: 1;
     display: flex;
     flex-direction: column;
   }
 
-  .link-group-container {
+  .link-category-container {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -49,8 +46,8 @@ footer {
     flex-direction: row;
   }
 
-  .link-group__name {
-    @include mixin--link-group__name;
+  .link-category__name {
+    @include mixin--link-category__name;
   }
 
   a {
@@ -62,29 +59,38 @@ footer {
 
 }
 
-/// Light theme Styles
-footer.light {
+/// Default theme Styles
+.light {
   border: 1px solid $opc-color--black-300;
   color: opc-get-var(TextColor,#000);
   background: opc-get-var(BackgroundColor, #FFF);
 
-  a {
-    color: opc-color(text);
-  }
+  a { color: opc-color(text) }
 }
 
 /// Dark theme Styles
-footer.dark {
+:host([theme="dark"]) {
   color: opc-get-var(TextColor,#fff);
   background: opc-get-var(BackgroundColor, #000);
+}
 
-  a {
-    color: opc-color(text--on-dark);
-  }
+.dark {
+  a { color: opc-color(text--on-dark) }
+}
+
+.light.background-image-light,
+.dark.background-image-dark {
+  background-image: url('./images/left-footer-cubes.svg'), url('./images/right-footer-cubes.svg');
+  background-repeat: no-repeat;
+  background-position: -38px center, calc(100% + 38px) center;
+}
+
+.light.background-image-light {
+  background-blend-mode: exclusion;
 }
 
 /// Inherits the theme from the parent element
-.footer-note {
+.note {
   flex: 1 0 100%;
   text-align: center;
   font-size: opc-get-var(FontSize, 14px, Note);
