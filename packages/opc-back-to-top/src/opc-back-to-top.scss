@@ -1,0 +1,21 @@
+@import "@one-platform/opc-styles";
+
+$LOCAL: opc-back-to-top;
+
+$variables: (//Add your variables here);
+
+.hide {
+  display: none;
+}
+
+.show {
+  font-family: "Red Hat Text", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  display: flex;
+  align-items: center;
+}
