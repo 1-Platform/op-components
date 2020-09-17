@@ -16,6 +16,7 @@
     "name": "<%= authorName %>",
     "email": "<%= authorEmail %>"
   },
+  "main": "dist/<%= componentName %>.js",
   "license": "MIT",
   "devDependencies": {
     "@one-platform/opc-styles": "0.0.5",
