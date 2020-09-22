@@ -1,0 +1,42 @@
+@import '@one-platform/opc-styles';
+
+$LOCAL: opc-timeline;
+
+$variables: ( 
+  //Add your variables here
+);
+
+:host {
+  // add root styles here
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: $opc-color--black-300;
+    top: 0.4rem;
+  }
+  &__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: gray;
+    z-index: 0;
+    &::before {
+      content: '';
+      position: relative;
+      top: 0;
+      margin: .25rem;
+      width: $opc-global--spacer--sm;
+      height: $opc-global--spacer--sm;
+      border-radius: 50%;
+      background: #689B7A;
+    }
+  }
+}
