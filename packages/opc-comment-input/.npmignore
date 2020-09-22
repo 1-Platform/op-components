@@ -1,0 +1,7 @@
+# Ignore config files
+*.config.json
+
+# Folders
+demo
+src
+test
