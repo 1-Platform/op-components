@@ -23,7 +23,7 @@
   "author": "opc-lib",
   "license": "MIT",
   "dependencies": {
-    "lit-element": "2.2.1",
+    "lit-element": "2.4.0",
     "lit-html": "1.1.2"
   }
 }
