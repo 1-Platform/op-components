@@ -1,13 +1,14 @@
 @import '@one-platform/opc-styles';
 
-$LOCAL: opc-timeline;
-
-$variables: ( 
-  //Add your variables here
-);
+$LOCAL: timeline;
 
 :host {
-  // add root styles here
+  --opc-timeline--BackgroundColor: #DEDEDE;
+  --opc-timeline--Top: 0.3rem;
+  --opc-timeline--StepColor: #689B7A;
+  --opc-timeline--TextColor: #6C6C6C;
+  --opc-timeline--ActiveColor: #0aa521;
+  --opc-timeline--AfterActiveColor: #b6e4bc;
 }
 
 .timeline {
@@ -19,24 +20,37 @@ $variables: (
     position: absolute;
     height: 2px;
     width: 100%;
-    background: $opc-color--black-300;
-    top: 0.4rem;
+    background: var(--opc-timeline--BackgroundColor, #DEDEDE);
+    top: var(--opc-timeline--Top, 0.3rem);
   }
   &__step {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: gray;
+    color: var(--opc-timeline--TextColor, #6C6C6C);
     z-index: 0;
     &::before {
       content: '';
       position: relative;
-      top: 0;
-      margin: .25rem;
+      top: 2px;
+      margin-bottom: $opc-global--spacer--sm;
       width: $opc-global--spacer--sm;
       height: $opc-global--spacer--sm;
       border-radius: 50%;
-      background: #689B7A;
+      background: var(--opc-timeline--StepColor, #689B7A);
+    }
+    &.active::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      width: $opc-global--spacer--md;
+      height: $opc-global--spacer--md;
+      background: white;
+      border: 2px solid var(--opc-timeline--ActiveColor, #0aa521);
+      border-radius: 50%;
+    }
+    &.active ~ &::before {
+      background: var(--opc-timeline--AfterActiveColor, #b6e4bc);
     }
   }
 }

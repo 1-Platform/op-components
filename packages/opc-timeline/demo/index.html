@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>opc-timeline</title>
     <script src="opc-timeline.js"></script>
+    <style>
+        div {
+            height: 200px;
+            width: 800px;
+            padding-top: 100px;
+        }
+        .dark {
+            background: #000000;
+        }
+    </style>
 </head>
 <body>
-    <opc-timeline>
-    </opc-timeline>
+    <div class="light">
+        <opc-timeline id="timeline1" current-step-index="1"></opc-timeline>
+    </div>
+    <div class="dark">
+        <opc-timeline id="timeline2" current-step-index="4"></opc-timeline>
+    </div>
     <script>
-        document.querySelector('opc-timeline').steps = ['Scheduled', 'Loaned', 'Extended', 'Completed', undefined, null];
+        document.querySelector('#timeline1').steps = [undefined, 'Scheduled', 'Loaned', 'Extended', 'Completed', null];
+        document.querySelector('#timeline2').steps = [undefined, 'Scheduled', 'Loaned', 'Extended', 'Completed', null];
     </script>
 </body>
 </html>

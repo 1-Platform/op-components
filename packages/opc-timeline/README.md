@@ -46,7 +46,7 @@ npm install --save @one-platform/opc-timeline
 ### For VanillaJS
 - Import component
 ```js
-import '@one-platform/ opc-timeline/dist/ opc-timeline';
+import '@one-platform/opc-timeline';
 ```
 - Add component in html
 ```html
@@ -58,7 +58,7 @@ import '@one-platform/ opc-timeline/dist/ opc-timeline';
 - In your app.module include the `CUSTOM_ELEMENTS_SCHEMA` and import the component
 ```js
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@one-platform/ opc-timeline/dist/ opc-timeline';
+import '@one-platform/opc-timeline';
 
 @NgModule({
   declarations: [
@@ -82,7 +82,7 @@ export class AppModule { }
 ### For React
 - Import the component in App.js
 ```js
-import '@one-platform/ opc-timeline/dist/ opc-timeline';
+import '@one-platform/opc-timeline';
 ```
 
 - Add component in any component html render
