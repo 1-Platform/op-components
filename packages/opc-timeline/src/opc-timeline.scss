@@ -54,3 +54,7 @@ $LOCAL: timeline;
     }
   }
 }
+[name="timeline-label"]::slotted(*) {
+  display: flex;
+  justify-content: space-between;
+}

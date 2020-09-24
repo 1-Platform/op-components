@@ -1,5 +1,4 @@
 import { LitElement, html, property, customElement } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
 import style  from './opc-timeline.scss';
 
 @customElement('opc-timeline')
@@ -24,6 +23,7 @@ export class Timeline extends LitElement {
           }
         })}
       </ul>
+      <slot name="timeline-label"></slot>
     `;
   }
 }
