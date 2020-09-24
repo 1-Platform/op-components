@@ -27,7 +27,11 @@ A web component based on Lit Element to show a timeline for a specific range
 
 | color   | hex                                                              |
 |---------|------------------------------------------------------------------|
-| default | <span class="readme-color-preview" style="--bg:#ffffff"></span> #ffffff |
+| --opc-timeline--BackgroundColor | <span class="readme-color-preview" style="--bg:#DEDEDE"></span> #DEDEDE |
+| --opc-timeline--Color--step | <span class="readme-color-preview" style="--bg:#689B7A"></span> #689B7A |
+| --opc-timeline--TextColor | <span class="readme-color-preview" style="--bg:#6C6C6C"></span> #6C6C6C |
+| --opc-timeline--Color--active | <span class="readme-color-preview" style="--bg:#0aa521"></span> #0aa521 |
+| --opc-timeline--Color--after-active | <span class="readme-color-preview" style="--bg:#b6e4bc"></span> #b6e4bc |
 
 ## Install
 
@@ -50,8 +54,13 @@ import '@one-platform/opc-timeline';
 ```
 - Add component in html
 ```html
-< opc-timeline>
-</ opc-timeline>
+<opc-timeline id="timeline1" current-step-index="1">
+    <span slot="start-label" style="font-weight: 600;">Loaned on: Apr 28, 2018</span>
+    <span slot="end-label" style="font-weight: 600;">Expires on: Oct 27, 2018</span>
+</opc-timeline>
+<script>
+  document.querySelector('#timeline1').steps = [ 'Scheduled', 'Loaned', 'Extended', 'Completed'];
+</script>
 ```
 
 ### For Angular
@@ -75,8 +84,8 @@ export class AppModule { }
 ```
 - Add component in any component html template
 ```html
-< opc-timeline>
-</ opc-timeline>
+<opc-timeline>
+</opc-timeline>
 ```
 
 ### For React
@@ -87,8 +96,8 @@ import '@one-platform/opc-timeline';
 
 - Add component in any component html render
 ```html
-< opc-timeline>
-</ opc-timeline>
+<opc-timeline>
+</opc-timeline>
 ```
 
 ### Development server

@@ -9,21 +9,46 @@ export class Timeline extends LitElement {
     return [ style ];
   }
 
+  _eventEmitter(stepIndex: number, stepItem: string|null) {
+    this.dispatchEvent(
+      new CustomEvent('opc-timeline-step:click', {
+        detail: {
+          message: 'opc-timeline-step clicked',
+          data: {
+            index: stepIndex,
+            item: stepItem,
+          },
+          bubbles: true,
+          composed: true,
+        }
+      })
+    );
+  }
+
   render() {
     return html`
       <ul class="timeline">
         ${this.steps.map((step, index) => {
           if (step) {
             return html`
-            <li class="timeline__step ${this.currentStepIndex === index ? 'active' : ''}">
-              ${step}
+            <li 
+              class="timeline__step ${this.currentStepIndex === index ? 'active' : ''}"
+              @click="${() => {this._eventEmitter(index, step)}}">
+                ${step}
             </li>`;
           } else {
-            return html`<li class="timeline__step ${this.currentStepIndex === index ? 'active' : ''}"></li>`;
+            return html`
+              <li 
+                class="timeline__step ${this.currentStepIndex === index ? 'active' : ''}"
+                @click="${() => {this._eventEmitter(index, null)}}">
+                </li>`;
           }
         })}
       </ul>
-      <slot name="timeline-label"></slot>
+      <div class="timeline-label">
+        <slot name="start-label"></slot>
+        <slot name="end-label"></slot>
+      </div>
     `;
   }
 }

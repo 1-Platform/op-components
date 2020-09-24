@@ -5,10 +5,12 @@ $LOCAL: timeline;
 :host {
   --opc-timeline--BackgroundColor: #DEDEDE;
   --opc-timeline--Top: 0.3rem;
-  --opc-timeline--StepColor: #689B7A;
+  --opc-timeline--Color--step: #689B7A;
   --opc-timeline--TextColor: #6C6C6C;
-  --opc-timeline--ActiveColor: #0aa521;
-  --opc-timeline--AfterActiveColor: #b6e4bc;
+  --opc-timeline--Color--active: #0aa521;
+  --opc-timeline--Color--after-active: #b6e4bc;
+  --opc-timeline--Left--spacing: 0rem;
+  --opc-timeline--Right--spacing: 0rem;
 }
 
 .timeline {
@@ -19,7 +21,8 @@ $LOCAL: timeline;
     content: '';
     position: absolute;
     height: 2px;
-    width: 100%;
+    left: var(--opc-timeline--Left--spacing, 0rem);
+    width: calc(100% - var(--opc-timeline--Right--spacing, 0rem));
     background: var(--opc-timeline--BackgroundColor, #DEDEDE);
     top: var(--opc-timeline--Top, 0.3rem);
   }
@@ -28,6 +31,7 @@ $LOCAL: timeline;
     flex-direction: column;
     align-items: center;
     color: var(--opc-timeline--TextColor, #6C6C6C);
+    cursor: pointer;
     z-index: 0;
     &::before {
       content: '';
@@ -37,7 +41,7 @@ $LOCAL: timeline;
       width: $opc-global--spacer--sm;
       height: $opc-global--spacer--sm;
       border-radius: 50%;
-      background: var(--opc-timeline--StepColor, #689B7A);
+      background: var(--opc-timeline--Color--step, #689B7A);
     }
     &.active::after {
       content: '';
@@ -46,15 +50,15 @@ $LOCAL: timeline;
       width: $opc-global--spacer--md;
       height: $opc-global--spacer--md;
       background: white;
-      border: 2px solid var(--opc-timeline--ActiveColor, #0aa521);
+      border: 2px solid var(--opc-timeline--Color--active, #0aa521);
       border-radius: 50%;
     }
     &.active ~ &::before {
-      background: var(--opc-timeline--AfterActiveColor, #b6e4bc);
+      background: var(--opc-timeline--Color--after-active, #b6e4bc);
     }
   }
 }
-[name="timeline-label"]::slotted(*) {
+.timeline-label {
   display: flex;
   justify-content: space-between;
 }

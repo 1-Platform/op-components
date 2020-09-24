@@ -7,9 +7,11 @@
     <script src="opc-timeline.js"></script>
     <style>
         div {
-            height: 200px;
+            height: 100px;
             width: 800px;
-            padding-top: 100px;
+            padding-top: 50px;
+            margin: auto;
+            margin-bottom: 5rem;
         }
         .dark {
             background: #000000;
@@ -18,19 +20,34 @@
 </head>
 <body>
     <div class="light">
+        <opc-timeline id="timeline0" current-step-index="2">
+        </opc-timeline>
+    </div>
+    <div class="light">
         <opc-timeline id="timeline1" current-step-index="1">
-            <p slot="timeline-label">
-                <span>Hello</span>
-                <span>World</span>
-            </p>
+            <span slot="start-label" style="font-weight: 600;">Loaned on: Apr 28, 2018</span>
+            <span slot="end-label" style="font-weight: 600;">Expires on: Oct 27, 2018</span>
         </opc-timeline>
     </div>
     <div class="dark">
-        <opc-timeline id="timeline2" current-step-index="4"></opc-timeline>
+        <opc-timeline id="timeline2" current-step-index="2">
+            <span slot="start-label" style="font-weight: 600; color: white;">Loaned on: Apr 28, 2018</span>
+            <span slot="end-label" style="font-weight: 600; color: white;">Expires on: Oct 27, 2018</span>
+        </opc-timeline>
+    </div>
+    <div class="dark">
+        <opc-timeline id="timeline3" current-step-index="3">
+        </opc-timeline>
     </div>
     <script>
+        document.querySelector('#timeline0').steps = [null, null, null, null, null, null];
         document.querySelector('#timeline1').steps = [undefined, 'Scheduled', 'Loaned', 'Extended', 'Completed', null];
         document.querySelector('#timeline2').steps = [undefined, 'Scheduled', 'Loaned', 'Extended', 'Completed', null];
+        document.querySelector('#timeline3').steps = [null, null, null, null, null, null];
+        const timelines = document.querySelectorAll('opc-timeline');
+        [...timelines].map(el => {
+            el.addEventListener('opc-timeline-step:click', (e) => {console.log(e)});
+        });
     </script>
 </body>
 </html>
