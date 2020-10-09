@@ -23,7 +23,7 @@
     "yeoman-test": "1.9.1",
     "yeoman-assert": "3.1.1",
     "coveralls": "3.1.0",
-    "eslint": "7.9.0",
+    "eslint": "7.11.0",
     "prettier": "1.19.1",
     "lint-staged": "9.5.0",
     "eslint-config-prettier": "6.11.0",
