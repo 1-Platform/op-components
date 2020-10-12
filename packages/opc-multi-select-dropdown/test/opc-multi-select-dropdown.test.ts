@@ -1,32 +1,21 @@
 import {LitElement} from 'lit-element';
+import { MultiSelectDropdown } from '../src/opc-multi-select-dropdown';
 
 describe('opc-multi-select-dropdown', () => {
 
     const OPC_COMPONENT = 'opc-multi-select-dropdown';
-    const ELEMENT_ID = 'opc-multi-select-dropdown';
-    let buttonElement: LitElement;
-
-    const getShadowRoot = (tagName: string): ShadowRoot => {
-        return document.body.getElementsByTagName(tagName)[0].shadowRoot;
-    }
+    let opcMultiSelectDropdown: LitElement;
 
     beforeEach(() => {
-        buttonElement = window.document.createElement(OPC_COMPONENT) as LitElement;
-        document.body.appendChild(buttonElement);
+        opcMultiSelectDropdown = window.document.createElement(OPC_COMPONENT) as MultiSelectDropdown;
+        document.body.appendChild(opcMultiSelectDropdown);
     });
 
     afterEach(() => {
-       document.body.getElementsByTagName(OPC_COMPONENT)[0].remove();
+       document.querySelector(OPC_COMPONENT).remove();
     });
 
-    it('displays button text', async () => {
-        buttonElement.setAttribute('name', 'opc-multi-select-dropdown');
-        await buttonElement.updateComplete;
-
-        const renderedText = getShadowRoot(OPC_COMPONENT).getElementById(ELEMENT_ID).innerText;
-
-        expect(renderedText).toEqual('opc-multi-select-dropdown');
-    });
-
-    // Add more tests here
+    it('is defined', async () => {
+        expect(opcMultiSelectDropdown).toBeDefined();
+      });
 });

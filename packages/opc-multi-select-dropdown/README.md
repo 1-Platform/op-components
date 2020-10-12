@@ -4,44 +4,30 @@
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/1-Platform/op-components/graphs/commit-activity)
 
-multi-select dropdown web component based on lit element will be used in another application as multiselect dropdown.
-
-## Prerequisites
-<!-- Add if any -->
+A standardized web component based on Lit Element for Red Hat One Platform multi-select dropdown.
 
 ## Usage
-<!-- Add usage here -->
+
+Default multi-select-dropdown:
 
 ```html
 <opc-multi-select-dropdown></opc-multi-select-dropdown>
 ```
 
-## Slots
-<!-- Add Slots here -->
+multi-select-dropdown with is-searchable attribute, is-searchable="true" is used to show searchbox in multi-select-dropdown:
+
+```html
+<opc-multi-select-dropdown is-searchable="true"></opc-multi-select-dropdown>
+```
 
 ## Attributes
-<!-- Add attributes here -->
+**`is-searchable`**
 
-## Themes
-<!-- Change colors here -->
+| Attribute name |  Value  |
+| ----------------- | ------- | 
+| `is-searchable` |  true |
+| `is-searchable` |  false |
 
-| color   | hex                                                              |
-|---------|------------------------------------------------------------------|
-| default | <span class="readme-color-preview" style="--bg:#ffffff"></span> #ffffff |
-
-## Install
-
-```sh
-npm install
-```
-
-## Usage
-
-### Install opc-multi-select-dropdown
-
-```sh
-npm install --save @one-platform/opc-multi-select-dropdown 
-```
 
 ### For VanillaJS
 - Import component
@@ -89,6 +75,18 @@ import '@one-platform/ opc-multi-select-dropdown/dist/ opc-multi-select-dropdown
 ```html
 < opc-multi-select-dropdown>
 </ opc-multi-select-dropdown>
+```
+
+## Install
+
+```sh
+npm install
+```
+
+### Install opc-multi-select-dropdown
+
+```sh
+npm install --save @one-platform/opc-multi-select-dropdown 
 ```
 
 ### Development server

@@ -18,11 +18,8 @@ export class MultiSelectDropdown extends LitElement {
   @property({ type: String }) 
   text = "";
 
-  
   @property({ attribute: 'is-searchable', type: String }) 
   isSearchable = "false";
-  
-  
 
   search(e) {
     const val = e.srcElement.value;
@@ -86,11 +83,10 @@ export class MultiSelectDropdown extends LitElement {
         .hide {display: none;}
       </style>
       <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
-      <span class="pf-c-select__toggle-text"> Filter by ${this.filtername}</span>
       <div class="pf-c-select__menu ">
-        <!-- <button @click="${()=>{this.dropdownToggle}}" class="btn btn-default dropdown-toggle" type="button"> Dropdown </button> -->
         <input type="checkbox" id="toggle" hidden>
-        <label class="btn btn-default dropdown-toggle" for="toggle">Toggle Dropdown</label>
+        <!-- <span class="pf-c-select__toggle-text"> Filter by ${this.filtername}</span> -->
+        <label class="btn btn-default dropdown-toggle" for="toggle">Filter by ${this.filtername}</label>
         <div class="pf-c-select__menu-group toogle-dropdown">
         ${this.searchable}
           <fieldset id="dropdown" class="pf-c-select__menu-fieldset" aria-labelledby="select-checkbox-expanded-selected-group-status">
@@ -107,8 +103,6 @@ export class MultiSelectDropdown extends LitElement {
                   return html`<li style="display: none;">${listitem}</li>`;
                 }
               })}
-      
-
             </label>
           </fieldset>
           </div>
