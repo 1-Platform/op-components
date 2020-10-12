@@ -34,7 +34,7 @@
     "sass-loader": "10.0.2",
     "save-dev": "0.0.1-security",
     "ts-jest": "26.4.1",
-    "ts-loader": "7.0.5",
+    "ts-loader": "8.0.4",
     "typescript": "3.9.7",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12",
