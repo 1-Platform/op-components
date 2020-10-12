@@ -64,7 +64,7 @@ module.exports = class extends Generator {
     }
 
     this.fs.copyTpl(
-      `${this.templatePath()}/**/!(_)*`,
+      `${this.templatePath()}/!(_)*`,
       this.destinationPath(`${this.props.componentName}/`),
       this.props
     );
@@ -89,6 +89,13 @@ module.exports = class extends Generator {
       ),
       this.props
     );
+    this.fs.copyTpl(
+      this.templatePath("demo/index.html"),
+      this.destinationPath(
+        `${this.props.componentName}/demo/index.html`
+      ),
+      this.props
+    );
     this.fs.copy(
       this.templatePath("_.npmignore"),
       this.destinationPath(`${this.props.componentName}/.npmignore`),
@@ -99,5 +106,9 @@ module.exports = class extends Generator {
   install() {
     process.chdir(this.props.componentName);
     this.npmInstall();
+  }
+
+  end() {
+    this.spawnCommand("npm", ["run", "build"]);
   }
 };
