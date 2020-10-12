@@ -25,8 +25,8 @@
     "coveralls": "3.1.0",
     "eslint": "7.9.0",
     "prettier": "1.19.1",
+    "eslint-config-prettier": "6.12.0",
     "lint-staged": "10.4.0",
-    "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
     "eslint-config-xo": "0.32.1",
     "jest": "26.5.3"
