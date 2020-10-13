@@ -46,19 +46,19 @@ npm install --save @one-platform/<%= componentName %>
 ### For VanillaJS
 - Import component
 ```js
-import '@one-platform/ <%= componentName %>/dist/ <%= componentName %>';
+import '@one-platform/<%= componentName %>/dist/<%= componentName %>';
 ```
 - Add component in html
 ```html
-< <%= componentName %>>
-</ <%= componentName %>>
+<<%= componentName %>>
+</<%= componentName %>>
 ```
 
 ### For Angular
 - In your app.module include the `CUSTOM_ELEMENTS_SCHEMA` and import the component
 ```js
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@one-platform/ <%= componentName %>/dist/ <%= componentName %>';
+import '@one-platform/<%= componentName %>/dist/<%= componentName %>';
 
 @NgModule({
   declarations: [
@@ -75,20 +75,20 @@ export class AppModule { }
 ```
 - Add component in any component html template
 ```html
-< <%= componentName %>>
-</ <%= componentName %>>
+<<%= componentName %>>
+</<%= componentName %>>
 ```
 
 ### For React
 - Import the component in App.js
 ```js
-import '@one-platform/ <%= componentName %>/dist/ <%= componentName %>';
+import '@one-platform/<%= componentName %>/dist/<%= componentName %>';
 ```
 
 - Add component in any component html render
 ```html
-< <%= componentName %>>
-</ <%= componentName %>>
+<<%= componentName %>>
+</<%= componentName %>>
 ```
 
 ### Development server
