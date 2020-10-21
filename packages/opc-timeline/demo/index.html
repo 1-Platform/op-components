@@ -9,34 +9,51 @@
         div {
             height: 100px;
             width: 800px;
-            padding: 2rem;
             margin: auto;
-            margin-bottom: 5rem;
+            margin-bottom: 10rem;
         }
         .dark {
             background: #000000;
+            padding: 2rem 0 6rem 0;
+            margin-top: 8rem;
         }
     </style>
 </head>
 <body>
     <div class="light">
         <opc-timeline id="timeline0" current-step-index="2" variant="compact">
+            <div slot="timeline-details">
+                <h2>Timeline Details</h2>
+                The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+            </div>
         </opc-timeline>
     </div>
     <div class="light">
         <opc-timeline id="timeline1" current-step-index="1" variant="compact">
             <span slot="start-label" style="font-weight: 600;">Loaned on: Apr 28, 2018</span>
             <span slot="end-label" style="font-weight: 600;">Expires on: Oct 27, 2018</span>
+            <div slot="timeline-details">
+                <h2>Timeline Details</h2>
+                The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+            </div>
         </opc-timeline>
     </div>
     <div class="dark">
         <opc-timeline id="timeline2" current-step-index="2" variant="compact">
             <span slot="start-label" style="font-weight: 600; color: white;">Loaned on: Apr 28, 2018</span>
             <span slot="end-label" style="font-weight: 600; color: white;">Expires on: Oct 27, 2018</span>
+            <div slot="timeline-details" style="color: white;">
+                <h2>Timeline Details</h2>
+                The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+            </div>
         </opc-timeline>
     </div>
     <div class="dark">
         <opc-timeline id="timeline3" current-step-index="3" variant="compact">
+            <div slot="timeline-details" style="color: white;">
+                <h2>Timeline Details</h2>
+                The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+            </div>
         </opc-timeline>
     </div>
     <script>

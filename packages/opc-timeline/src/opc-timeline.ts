@@ -102,6 +102,9 @@ export class Timeline extends LitElement {
         <slot name="start-label"></slot>
         <slot name="end-label"></slot>
       </div>
+      <div>
+        <slot name="timeline-details"></slot>
+      </div>
     `;
   }
 }
