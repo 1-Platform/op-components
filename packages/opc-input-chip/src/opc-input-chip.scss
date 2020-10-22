@@ -1,0 +1,55 @@
+@import '@one-platform/opc-styles';
+
+$LOCAL: input-chip;
+
+$input-chip-units: (
+  margin: 4px,
+  border-width: 1px,
+);
+
+:host {
+  display: block;
+}
+
+.opc-input-chip {
+  border: map-get($input-chip-units, border-width) solid;
+  border-color: opc-get-var(BorderColor, $opc-color--black-300);
+  padding: map-get($input-chip-units, margin) 1rem;
+  min-height: 50px;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .opc-input {
+    flex: 1;
+    margin: map-get($input-chip-units, margin);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+    color: opc-get-var(TextColor, $opc-color--black-900);
+  }
+
+  .opc-chip {
+    height: 28px;
+    margin: map-get($input-chip-units, margin);
+    cursor: pointer;
+    text-transform: opc-get-var(TextTransform, lowercase);
+    background: opc-get-var(BackgroundColor, $opc-color--blue-100);
+    color: opc-get-var(Color, $opc-color--blue-400);
+    font-weight: opc-get-var(FontWeight, 400);
+    border-radius: 50px;
+    padding: 4px 12px 4px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  }
+}
