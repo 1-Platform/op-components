@@ -1,4 +1,4 @@
-import { LitElement, html, property, customElement, css } from 'lit-element';
+import { LitElement, html, property, customElement } from 'lit-element';
 import style  from './opc-timeline.scss';
 
 @customElement('opc-timeline')
