@@ -10,41 +10,33 @@ export class Timeline extends LitElement {
     return [ style ];
   }
 
-  scrollToLeft() {
+  scrollHandler(direction) {
     this.shadowRoot.querySelector('#timeline-steps').scrollBy({
-      left: -900,
+      left: direction === 'left' ?  -900 : 900,
       behavior: 'smooth'
     });
   }
 
-  scrollToRight() {
-    this.shadowRoot.querySelector('#timeline-steps').scrollBy({
-      left: 900,
-      behavior: 'smooth'
-    });
-  }
-
-  getArrow() {
+  getDirectionArrow() {
     if (this.variant === 'compact') {
       return {
         left: html`
-          <span class="timeline__arrow left" @click="${this.scrollToLeft}">
+          <span class="timeline__arrow left" @click="${() => {this.scrollHandler('left')}}">
             <div class="arrow">
             </div>
           </span>`,
           right: html`
-          <span class="timeline__arrow right" @click="${this.scrollToRight}">
+          <span class="timeline__arrow right" @click="${() => this.scrollHandler('right')}">
             <div class="arrow">
             </div>
           </span>
           `,
       }
-    } else {
-      return {
-        left: '',
-        right: ''
-      }
     }
+    return {
+      left: '',
+      right: ''
+    };
   }
 
   _eventEmitter(stepIndex: number, stepItem: string|null) {
@@ -64,6 +56,9 @@ export class Timeline extends LitElement {
   }
 
   render() {
+    if (this.currentStepIndex < 0) {
+      console.warn(`OPC-TIMELINE: The current-step-index attribute is set to ${this.currentStepIndex}, the active state will not be visible`);
+    }
     return html`
     <style>
       .compact .timeline-steps {
@@ -77,7 +72,7 @@ export class Timeline extends LitElement {
       }
     </style>
     <div class="timeline ${this.variant === 'compact' ? 'compact' : ''}">
-        ${this.getArrow().left}
+        ${this.getDirectionArrow().left}
         <ul id="timeline-steps" class="timeline-steps">
           ${this.steps.map((step, index) => {
             if (step) {
@@ -98,7 +93,7 @@ export class Timeline extends LitElement {
             }
           })}
         </ul>
-        ${this.getArrow().right}
+        ${this.getDirectionArrow().right}
       </div>
       <div class="timeline-label">
         <slot name="start-label"></slot>
