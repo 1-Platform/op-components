@@ -83,14 +83,16 @@ export class Timeline extends LitElement {
             if (step) {
               return html`
               <li
-                class="timeline-steps__step ${this.currentStepIndex === index ? 'active' : ''}"
+                class="timeline-steps__step
+                ${this.currentStepIndex === index ? 'active' : ''}"
                 @click="${() => {this._eventEmitter(index, step)}}">
                   ${step}
               </li>`;
             } else {
               return html`
                 <li 
-                  class="timeline-steps__step ${this.currentStepIndex === index ? 'active' : ''}"
+                  class="timeline-steps__step 
+                  ${this.currentStepIndex === index ? 'active' : ''}"
                   @click="${() => {this._eventEmitter(index, null)}}">
                 </li>`;
             }

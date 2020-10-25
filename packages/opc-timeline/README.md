@@ -5,40 +5,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/1-Platform/op-components/graphs/commit-activity)
 
 A web component based on Lit Element to show a timeline for a specific range
-
-## Prerequisites
-<!-- Add if any -->
-
-## Usage
-<!-- Add usage here -->
-
-```html
-<opc-timeline></opc-timeline>
-```
-
-## Slots
-<!-- Add Slots here -->
-
-## Attributes
-<!-- Add attributes here -->
-
-## Themes
-<!-- Change colors here -->
-
-| color   | hex                                                              |
-|---------|------------------------------------------------------------------|
-| --opc-timeline--BackgroundColor | <span class="readme-color-preview" style="--bg:#DEDEDE"></span> #DEDEDE |
-| --opc-timeline--Color--step | <span class="readme-color-preview" style="--bg:#689B7A"></span> #689B7A |
-| --opc-timeline--TextColor | <span class="readme-color-preview" style="--bg:#6C6C6C"></span> #6C6C6C |
-| --opc-timeline--Color--active | <span class="readme-color-preview" style="--bg:#0aa521"></span> #0aa521 |
-| --opc-timeline--Color--after-active | <span class="readme-color-preview" style="--bg:#b6e4bc"></span> #b6e4bc |
-
-## Install
-
-```sh
-npm install
-```
-
+---
 ## Usage
 
 ### Install opc-timeline
@@ -54,13 +21,16 @@ import '@one-platform/opc-timeline';
 ```
 - Add component in html
 ```html
-<opc-timeline id="timeline1" current-step-index="1">
-    <span slot="start-label" style="font-weight: 600;">Loaned on: Apr 28, 2018</span>
-    <span slot="end-label" style="font-weight: 600;">Expires on: Oct 27, 2018</span>
+<opc-timeline id="timeline" current-step-index="2" variant="compact">
+    <div slot="timeline-details">
+        <h2>Timeline Details</h2>
+        The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+    </div>
 </opc-timeline>
-<script>
-  document.querySelector('#timeline1').steps = [ 'Scheduled', 'Loaned', 'Extended', 'Completed'];
-</script>
+```
+- Using the steps attribute we can add an Array of strings which would be the steps for the timeline component
+```js
+document.querySelector('#timeline').steps = [ 'Scheduled', 'Loaned', 'Extended', 'Completed'];
 ```
 
 ### For Angular
@@ -84,7 +54,11 @@ export class AppModule { }
 ```
 - Add component in any component html template
 ```html
-<opc-timeline>
+<opc-timeline id="timeline" current-step-index="2" variant="compact">
+    <div slot="timeline-details">
+        <h2>Timeline Details</h2>
+        The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+    </div>
 </opc-timeline>
 ```
 
@@ -96,13 +70,85 @@ import '@one-platform/opc-timeline';
 
 - Add component in any component html render
 ```html
-<opc-timeline>
+<opc-timeline id="timeline" current-step-index="2" variant="compact">
+    <div slot="timeline-details">
+        <h2>Timeline Details</h2>
+        The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+    </div>
 </opc-timeline>
 ```
+---
+## Slots
+- There are three (2 + 1) optional slots in the opc-timeline as shown below namely
+  1. The timeline details slot: <strong>timeline-details</strong>
+  2. The timeline labels
+      - The start label on the left side of the timeline i.e. <strong>start-label</strong>
+      - The end label on the right side of the timeline i.e. <strong>end-label</strong>
+- Example structure code
+```html
+<opc-timeline>
+  <span slot="start-label" style="font-weight: 600; color: white;">Loaned on: Apr 28, 2018</span>
+  <span slot="end-label" style="font-weight: 600; color: white;">Expires on: Oct 27, 2018</span>
+  <div slot="timeline-details" style="color: white;">
+    <h2>Timeline Details</h2>
+    The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+  </div>
+</opc-timeline>
+```
+---
+## Attributes
+### steps
+- Input: Array of strings
+  - Example
+  ```js
+  document.querySelector('#timeline').steps = [ 'Scheduled', 'Loaned', 'Extended', 'Completed'];
+  ```
+- The array would be used as steps. 
+- Adding a falsy value would produce an empty step without string
+  - Example of falsy values
+  ```js
+  document.querySelector('#timeline3').steps = [null, undefined, 0];
+  ```
+  - PS: Adding empty string (e.g. - '') would also create a empty step
 
-### Development server
+### current-step-index
+- Input: Number
+- Sets the active state to the given number
 
-- Run development server
+### variant
+- Input: The following strings
+  - default
+  - compact
+- By default the variant attribute would be set to the string "default" which would have all the steps without the side arrows
+- The compact view has side arrows which scroll after clicking on them in their respective direction
+
+---
+## Themes
+- Only default themes
+
+### Color pallet
+
+| color   | hex (default-fallback) |
+|---------|------------------------------------------------------------------|
+| --opc-timeline--BackgroundColor | <span class="readme-color-preview" style="--bg:#DEDEDE"></span> #DEDEDE |
+| --opc-timeline--Color--step | <span class="readme-color-preview" style="--bg:#689B7A"></span> #689B7A |
+| --opc-timeline--TextColor | <span class="readme-color-preview" style="--bg:#6C6C6C"></span> #6C6C6C |
+| --opc-timeline--Color--active | <span class="readme-color-preview" style="--bg:#0aa521"></span> #0aa521 |
+| --opc-timeline--Color--after-active | <span class="readme-color-preview" style="--bg:#b6e4bc"></span> #b6e4bc |
+
+- Style variables to add spacing
+
+| Spacing | Default |
+|---|---|
+| --opc-timeline--Left--spacing | 0rem |
+| --opc-timeline--Right--spacing | 0rem |
+| --opc-timeline--MarginTop--timeline-label | 1rem |
+
+---
+
+## Development server
+
+### Run development server
 
 ```sh
 npm run dev opc-timeline
@@ -122,4 +168,4 @@ npm run test
 
 ## 🤝 Contributors
 
-👤 **hybridx**
+👤 **[hybridx](https://git.io/dnair)**

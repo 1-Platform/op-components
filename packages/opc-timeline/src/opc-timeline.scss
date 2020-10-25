@@ -4,20 +4,19 @@ $LOCAL: timeline;
 
 :host {
   --opc-timeline--BackgroundColor: #DEDEDE;
-  --opc-timeline--Top: 0.3rem;
   --opc-timeline--Color--step: #689B7A;
   --opc-timeline--TextColor: #6C6C6C;
   --opc-timeline--Color--active: #0aa521;
   --opc-timeline--Color--after-active: #b6e4bc;
   --opc-timeline--Left--spacing: 0rem;
   --opc-timeline--Right--spacing: 0rem;
-  --opc-timeline--MarginTop--spacing: 1rem;
+  --opc-timeline--MarginTop--timeline-label: 1rem;
 }
 
 .timeline {
   display: flex;
   align-items: baseline;
-  .timeline-steps {
+  &-steps {
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -30,7 +29,7 @@ $LOCAL: timeline;
       left: var(--opc-timeline--Left--spacing, 0rem);
       width: calc(100% - var(--opc-timeline--Right--spacing, 0rem));
       background: var(--opc-timeline--BackgroundColor, #DEDEDE);
-      top: var(--opc-timeline--Top, 0.3rem);
+      top: 0.3rem;
     }
     &__step {
       display: flex;
@@ -78,7 +77,7 @@ $LOCAL: timeline;
 .timeline-label {
   display: flex;
   justify-content: space-between;
-  margin-top: var(--opc-timeline--MarginTop--spacing, $opc-global--spacer--md);
+  margin-top: var(--opc-timeline--MarginTop--timeline-label, $opc-global--spacer--md);
 }
 
 .arrow {

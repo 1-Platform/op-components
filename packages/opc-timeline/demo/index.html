@@ -21,7 +21,7 @@
 </head>
 <body>
     <div class="light">
-        <opc-timeline id="timeline0" current-step-index="2" variant="compact">
+        <opc-timeline id="timeline0" current-step-index="2">
             <div slot="timeline-details">
                 <h2>Timeline Details</h2>
                 The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
@@ -60,7 +60,7 @@
         document.querySelector('#timeline0').steps = Array(10).fill();
         document.querySelector('#timeline1').steps = [undefined, 'Scheduled', 'Loaned', 'Extended', 'Completed', null];
         document.querySelector('#timeline2').steps = [undefined, 'Scheduled', 'Loaned', 'Extended', 'Completed', null];
-        document.querySelector('#timeline3').steps = [null, null, null, null, null, null];
+        document.querySelector('#timeline3').steps = [null, null, '', null, null, null];
         const timelines = document.querySelectorAll('opc-timeline');
         [...timelines].map(el => {
             el.addEventListener('opc-timeline-step:click', (e) => {console.log(e)});
