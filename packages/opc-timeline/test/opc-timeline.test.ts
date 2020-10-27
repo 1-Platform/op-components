@@ -1,32 +1,32 @@
-import {LitElement} from 'lit-element';
+import { axe, toHaveNoViolations } from 'jest-axe';
+import { Timeline } from '../src/opc-timeline';
+
+expect.extend(toHaveNoViolations);
 
 describe('opc-timeline', () => {
 
     const OPC_COMPONENT = 'opc-timeline';
     const ELEMENT_ID = 'opc-timeline';
-    let buttonElement: LitElement;
+    let opcElement: Timeline;
 
     const getShadowRoot = (tagName: string): ShadowRoot => {
         return document.body.getElementsByTagName(tagName)[0].shadowRoot;
     }
 
     beforeEach(() => {
-        buttonElement = window.document.createElement(OPC_COMPONENT) as LitElement;
-        document.body.appendChild(buttonElement);
+        opcElement = window.document.createElement(OPC_COMPONENT) as Timeline;
+        document.body.appendChild(opcElement);
     });
 
     afterEach(() => {
        document.body.getElementsByTagName(OPC_COMPONENT)[0].remove();
     });
 
-    it('displays button text', async () => {
-        buttonElement.setAttribute('name', 'opc-timeline');
-        await buttonElement.updateComplete;
-
-        const renderedText = getShadowRoot(OPC_COMPONENT).getElementById(ELEMENT_ID).innerText;
-
-        expect(renderedText).toEqual('opc-timeline');
+    it('is defined', async () => {
+        expect(opcElement).toBeDefined();
     });
 
-    // Add more tests here
+    it('has no axe violations', async () => {
+        expect(await axe(opcElement)).toHaveNoViolations()
+    });
 });
