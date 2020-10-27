@@ -29,8 +29,7 @@ export class Timeline extends LitElement {
           <span class="timeline__arrow right" @click="${() => this.scrollHandler('right')}">
             <div class="arrow">
             </div>
-          </span>
-          `,
+          </span>`,
       }
     }
     return {
