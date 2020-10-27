@@ -7,15 +7,15 @@ describe('opc-timeline', () => {
 
     const OPC_COMPONENT = 'opc-timeline';
     const ELEMENT_ID = 'opc-timeline';
-    let opcElement: Timeline;
+    let opcTimelineElement: Timeline;
 
     const getShadowRoot = (tagName: string): ShadowRoot => {
         return document.body.getElementsByTagName(tagName)[0].shadowRoot;
     }
 
     beforeEach(() => {
-        opcElement = window.document.createElement(OPC_COMPONENT) as Timeline;
-        document.body.appendChild(opcElement);
+        opcTimelineElement = window.document.createElement(OPC_COMPONENT) as Timeline;
+        document.body.appendChild(opcTimelineElement);
     });
 
     afterEach(() => {
@@ -23,10 +23,36 @@ describe('opc-timeline', () => {
     });
 
     it('is defined', async () => {
-        expect(opcElement).toBeDefined();
+        expect(opcTimelineElement).toBeDefined();
     });
 
     it('has no axe violations', async () => {
-        expect(await axe(opcElement)).toHaveNoViolations()
+        expect(await axe(opcTimelineElement)).toHaveNoViolations()
+    });
+
+    it('has default variant attribute defined and set as *default*', async () => {
+        expect(opcTimelineElement.variant).toBeDefined();
+        expect(opcTimelineElement.variant).toEqual('default');
+    });
+
+    it('has default steps attribute defined and set as 0', async ()=> {
+        expect(opcTimelineElement.steps).toBeDefined();
+        expect(opcTimelineElement.steps.length).toEqual(0);
+    });
+
+    it('has default currentStepIndex attribute defined as 0', async() => {
+        expect(opcTimelineElement.currentStepIndex).toBeDefined();
+        expect(opcTimelineElement.currentStepIndex).toEqual(0);
+    });
+
+    it('sets the steps as strings', async () => {
+        const mockStrArr = [
+            'Scheduled',
+            'Running',
+            'Stopped'
+        ];
+        opcTimelineElement.steps = mockStrArr;
+        expect(opcTimelineElement.steps.length).toEqual(3);
+        expect(opcTimelineElement.steps[0]).toEqual('Scheduled');
     });
 });
