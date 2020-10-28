@@ -1,0 +1,48 @@
+{
+  "name": "@one-platform/opc-back-to-top",
+  "version": "0.0.1-prerelease",
+  "description": "Back to Top component that enables smooth scroll from the bottom of the page to the top of the page.",
+  "scripts": {
+    "dev": "webpack-dev-server --open",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server",
+    "test": "npm run build && jest --verbose=true",
+    "test:debug": "npm run build && DEBUG_MODE=1 jest --verbose=true"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Anjnee K Sharma",
+    "email": "anjnee.k.sharma@gmail.com"
+  },
+  "main": "dist/opc-back-to-top.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@one-platform/opc-styles": "0.0.5",
+    "@types/jest": "^26.0.3",
+    "css-loader": "^3.6.0",
+    "electron": "^9.0.5",
+    "extract-loader": "^5.1.0",
+    "html-loader": "^1.1.0",
+    "jest": "^26.1.0",
+    "jest-electron": "^0.1.11",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "lit-scss-loader": "^1.0.0",
+    "node-sass": "4.14.1",
+    "sass-loader": "8.0.2",
+    "save-dev": "0.0.1-security",
+    "ts-jest": "^26.1.1",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "html-webpack-plugin": "^4.3.0"
+  },
+  "dependencies": {
+    "@patternfly/pfe-icon": "^1.0.0-prerelease.56",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1"
+  }
+}
