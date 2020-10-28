@@ -79,22 +79,27 @@ import '@one-platform/opc-timeline';
 ```
 ---
 ## Slots
-- There are three (2 + 1) optional slots in the opc-timeline as shown below namely
-  1. The timeline details slot: <strong>timeline-details</strong>
-  2. The timeline labels
-      - The start label on the left side of the timeline i.e. <strong>start-label</strong>
-      - The end label on the right side of the timeline i.e. <strong>end-label</strong>
-- Example structure code
-```html
-<opc-timeline>
-  <span slot="start-label" style="font-weight: 600; color: white;">Loaned on: Apr 28, 2018</span>
-  <span slot="end-label" style="font-weight: 600; color: white;">Expires on: Oct 27, 2018</span>
-  <div slot="timeline-details" style="color: white;">
-    <h2>Timeline Details</h2>
-    The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
-  </div>
-</opc-timeline>
-```
+- There are three optional slots in the opc-timeline as shown below namely
+  - <strong>```timeline-details```</strong>: To set the details for the timeline
+    - Example
+    ```html
+    <opc-timeline>
+      <div slot="timeline-details" style="color: white;">
+        <h2>Timeline Details</h2>
+        The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
+      </div>
+    </opc-timeline>
+    ```
+  - The timeline label slots
+      - <strong>start-label</strong>: The start label on the left side of the timeline 
+      - <strong>end-label</strong>: The end label on the right side of the timeline
+        - Example code
+      ```html
+      <opc-timeline>
+        <span slot="start-label" style="font-weight: 600; color: white;">Loaned on: Apr 28, 2018</span>
+        <span slot="end-label" style="font-weight: 600; color: white;">Expires on: Oct 27, 2018</span>
+      </opc-timeline>
+      ```
 ---
 ## Attributes
 ### steps

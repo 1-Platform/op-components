@@ -7,15 +7,20 @@ $LOCAL: timeline;
   --opc-timeline--Color--step: #689B7A;
   --opc-timeline--TextColor: #6C6C6C;
   --opc-timeline--Color--active: #0aa521;
-  --opc-timeline--Color--after-active: #b6e4bc;
+  --opc-timeline--Color--active--after: #b6e4bc;
   --opc-timeline--Left--spacing: 0rem;
   --opc-timeline--Right--spacing: 0rem;
-  --opc-timeline--MarginTop--timeline-label: 1rem;
+  --opc-timeline--MarginTop--timeline-label: $opc-global--spacer--md;
 }
 
 .timeline {
   display: flex;
   align-items: baseline;
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--opc-timeline--MarginTop--timeline-label, $opc-global--spacer--md);
+  }
   &-steps {
     display: flex;
     justify-content: space-between;
@@ -59,7 +64,7 @@ $LOCAL: timeline;
         border-radius: 50%;
       }
       &.active ~ &::before {
-        background: var(--opc-timeline--Color--after-active, #b6e4bc);
+        background: var(--opc-timeline--Color--active--after, #b6e4bc);
       }
     }
   }
@@ -73,34 +78,28 @@ $LOCAL: timeline;
     cursor: pointer;
     border: 1px solid #DDDDDD;
   }
-}
-.timeline-label {
-  display: flex;
-  justify-content: space-between;
-  margin-top: var(--opc-timeline--MarginTop--timeline-label, $opc-global--spacer--md);
-}
-
-.arrow {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: transparent;
-  border-top: 1px solid #bfbfbf;
-  border-left: 1px solid #bfbfbf;
-  text-decoration: none;
-  color: transparent;
-  border-width: 2px;
-}
-
-.left {
-  margin-right: 1rem;
-  div {
-    transform: rotate(-45deg);
+  .arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border-top: 1px solid #bfbfbf;
+    border-left: 1px solid #bfbfbf;
+    text-decoration: none;
+    color: transparent;
+    border-width: 2px;
   }
-}
-.right {
-  margin-left: 1rem;
-  div {
-    transform: rotate(135deg);
+  
+  .left {
+    margin-right: $opc-global--spacer--md;
+    div {
+      transform: rotate(-45deg);
+    }
+  }
+  .right {
+    margin-left: $opc-global--spacer--md;
+    div {
+      transform: rotate(135deg);
+    }
   }
 }
