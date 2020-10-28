@@ -10,23 +10,23 @@ export class Timeline extends LitElement {
     return [ style ];
   }
 
-  scrollHandler(direction) {
+  _scrollHandler(direction) {
     this.shadowRoot.querySelector('#timeline-steps').scrollBy({
       left: direction === 'left' ?  -900 : 900,
       behavior: 'smooth'
     });
   }
 
-  getDirectionArrow() {
+  _getDirectionArrow() {
     if (this.variant === 'compact') {
       return {
         left: html`
-          <span class="timeline__arrow left" @click="${() => {this.scrollHandler('left')}}">
+          <span class="timeline__arrow left" @click="${() => {this._scrollHandler('left')}}">
             <div class="arrow">
             </div>
           </span>`,
           right: html`
-          <span class="timeline__arrow right" @click="${() => this.scrollHandler('right')}">
+          <span class="timeline__arrow right" @click="${() => this._scrollHandler('right')}">
             <div class="arrow">
             </div>
           </span>`,
@@ -71,7 +71,7 @@ export class Timeline extends LitElement {
       }
     </style>
     <div class="timeline ${this.variant === 'compact' ? 'compact' : ''}">
-        ${this.getDirectionArrow().left}
+        ${this._getDirectionArrow().left}
         <ul id="timeline-steps" class="timeline-steps">
           ${this.steps.map((step, index) => {
             if (step) {
@@ -92,7 +92,7 @@ export class Timeline extends LitElement {
             }
           })}
         </ul>
-        ${this.getDirectionArrow().right}
+        ${this._getDirectionArrow().right}
       </div>
       <div class="timeline-label">
         <slot name="start-label"></slot>
