@@ -77,29 +77,28 @@ $LOCAL: timeline;
     box-shadow: 1px 3px 6px #00000029;
     cursor: pointer;
     border: 1px solid #DDDDDD;
-  }
-  .arrow {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: transparent;
-    border-top: 1px solid #bfbfbf;
-    border-left: 1px solid #bfbfbf;
-    text-decoration: none;
-    color: transparent;
-    border-width: 2px;
-  }
-  
-  .left {
-    margin-right: $opc-global--spacer--md;
-    div {
-      transform: rotate(-45deg);
+    &--left {
+      margin-right: $opc-global--spacer--md;
+      div {
+        transform: rotate(-45deg);
+      }
     }
-  }
-  .right {
-    margin-left: $opc-global--spacer--md;
-    div {
-      transform: rotate(135deg);
+    &--right {
+      margin-left: $opc-global--spacer--md;
+      div {
+        transform: rotate(135deg);
+      }
+    }
+    &-shape {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: transparent;
+      border-top: 1px solid #bfbfbf;
+      border-left: 1px solid #bfbfbf;
+      text-decoration: none;
+      color: transparent;
+      border-width: 2px;
     }
   }
 }

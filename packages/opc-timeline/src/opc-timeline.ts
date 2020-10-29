@@ -21,13 +21,13 @@ export class Timeline extends LitElement {
     if (this.variant === 'compact') {
       return {
         left: html`
-          <span class="timeline__arrow left" @click="${() => {this._scrollHandler('left')}}">
-            <div class="arrow">
+          <span class="timeline__arrow timeline__arrow--left" @click="${() => {this._scrollHandler('left')}}">
+            <div class="timeline__arrow-shape">
             </div>
           </span>`,
           right: html`
-          <span class="timeline__arrow right" @click="${() => this._scrollHandler('right')}">
-            <div class="arrow">
+          <span class="timeline__arrow timeline__arrow--right" @click="${() => this._scrollHandler('right')}">
+            <div class="timeline__arrow-shape">
             </div>
           </span>`,
       }
