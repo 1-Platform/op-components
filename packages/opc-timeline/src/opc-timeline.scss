@@ -1,0 +1,104 @@
+@import '@one-platform/opc-styles';
+
+$LOCAL: timeline;
+
+:host {
+  --opc-timeline--BackgroundColor: #DEDEDE;
+  --opc-timeline--Color--step: #689B7A;
+  --opc-timeline--TextColor: #6C6C6C;
+  --opc-timeline--Color--active: #0aa521;
+  --opc-timeline--Color--active--after: #b6e4bc;
+  --opc-timeline--Left--spacing: 0rem;
+  --opc-timeline--Right--spacing: 0rem;
+  --opc-timeline--MarginTop--timeline-label: $opc-global--spacer--md;
+}
+
+.timeline {
+  display: flex;
+  align-items: baseline;
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--opc-timeline--MarginTop--timeline-label, $opc-global--spacer--md);
+  }
+  &-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    flex: 1 1 auto;
+    margin: 0;
+    &::before {
+      content: '';
+      position: absolute;
+      height: 2px;
+      left: var(--opc-timeline--Left--spacing, 0rem);
+      width: calc(100% - var(--opc-timeline--Right--spacing, 0rem));
+      background: var(--opc-timeline--BackgroundColor, #DEDEDE);
+      top: 0.3rem;
+    }
+    &__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--opc-timeline--TextColor, #6C6C6C);
+      cursor: pointer;
+      z-index: 0;
+      &::before {
+        content: '';
+        position: relative;
+        top: 2px;
+        margin-bottom: $opc-global--spacer--sm;
+        width: $opc-global--spacer--sm;
+        height: $opc-global--spacer--sm;
+        border-radius: 50%;
+        background: var(--opc-timeline--Color--step, #689B7A);
+      }
+      &.active::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        width: $opc-global--spacer--md;
+        height: $opc-global--spacer--md;
+        background: white;
+        border: 2px solid var(--opc-timeline--Color--active, #0aa521);
+        border-radius: 50%;
+      }
+      &.active ~ &::before {
+        background: var(--opc-timeline--Color--active--after, #b6e4bc);
+      }
+    }
+  }
+  &__arrow {
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    box-shadow: 1px 3px 6px #00000029;
+    cursor: pointer;
+    border: 1px solid #DDDDDD;
+    &--left {
+      margin-right: $opc-global--spacer--md;
+      div {
+        transform: rotate(-45deg);
+      }
+    }
+    &--right {
+      margin-left: $opc-global--spacer--md;
+      div {
+        transform: rotate(135deg);
+      }
+    }
+    &--shape {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: transparent;
+      border-top: 1px solid #bfbfbf;
+      border-left: 1px solid #bfbfbf;
+      text-decoration: none;
+      color: transparent;
+      border-width: 2px;
+    }
+  }
+}
