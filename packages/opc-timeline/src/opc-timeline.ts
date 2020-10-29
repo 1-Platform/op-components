@@ -22,12 +22,12 @@ export class Timeline extends LitElement {
       return {
         left: html`
           <span class="timeline__arrow timeline__arrow--left" @click="${() => {this._scrollHandler('left')}}">
-            <div class="timeline__arrow-shape">
+            <div class="timeline__arrow--shape">
             </div>
           </span>`,
           right: html`
           <span class="timeline__arrow timeline__arrow--right" @click="${() => this._scrollHandler('right')}">
-            <div class="timeline__arrow-shape">
+            <div class="timeline__arrow--shape">
             </div>
           </span>`,
       }
