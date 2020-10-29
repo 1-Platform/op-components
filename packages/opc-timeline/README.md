@@ -121,11 +121,10 @@ import '@one-platform/opc-timeline';
 - Sets the active state to the given number
 
 ### variant
-- Input: The following strings
-  - default
-  - compact
-- By default the variant attribute would be set to the string "default" which would have all the steps without the side arrows
-- The compact view has side arrows which scroll after clicking on them in their respective direction
+- default
+  - By default the variant attribute would be set to the string "default" which would have all the steps without the side arrows
+- compact
+  - The compact view has side arrows which scroll after clicking on them in their respective direction
 
 ---
 ## Themes
