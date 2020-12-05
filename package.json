@@ -6,7 +6,7 @@
     "new": "cd packages && yo ../generator/generator-opc-generator/generators/app/"
   },
   "devDependencies": {
-    "eslint": "7.12.1",
+    "eslint": "7.15.0",
     "lerna": "3.22.1",
     "webpack": "5.3.1",
     "webpack-cli": "4.1.0",
