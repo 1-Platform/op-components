@@ -53,6 +53,7 @@ import '@one-platform/opc-timeline';
 export class AppModule { }
 ```
 - Add component in any component html template
+  - Note: To add using the html attribute, follow the below example
 ```html
 <opc-timeline id="timeline" current-step-index="2" variant="compact">
     <div slot="timeline-details">
@@ -60,6 +61,16 @@ export class AppModule { }
         The timeline component details go right here, it uses a slot named <strong>timeline-details</strong>. Happy coding :)
     </div>
 </opc-timeline>
+```
+
+- To use component using angular attributes use the internal property names
+```html
+    <opc-timeline 
+      id="timeline" 
+      [steps]="['Scheduled', 'Loaned', 'Completed']" 
+      [currentStepIndex]="number"
+      [variant]="variant">
+    </opc-timeline>
 ```
 
 ### For React
