@@ -9,6 +9,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
+        open: true,
         port: 4200,
     },
     entry: `${path.join(__dirname, 'src/opc-footer')}`,

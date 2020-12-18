@@ -3,9 +3,8 @@
   "version": "0.0.1-prerelease",
   "description": "Back to Top component that enables smooth scroll from the bottom of the page to the top of the page.",
   "scripts": {
-    "dev": "webpack-dev-server --open",
+    "dev": "webpack serve",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server",
     "test": "npm run build && jest --verbose=true",
     "test:debug": "npm run build && DEBUG_MODE=1 jest --verbose=true"
   },
