@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "description": "A simple web component built in javascript and lit",
   "scripts": {
-    "dev": "webpack-dev-server --open",
+    "dev": "webpack serve",
     "build": "webpack --mode production",
     "start": "webpack-dev-server",
-    "test": "npm run build && jest --verbose=true",
     "test:debug": "npm run build && DEBUG_MODE=1 jest --verbose=true"
   },
   "publishConfig": {
