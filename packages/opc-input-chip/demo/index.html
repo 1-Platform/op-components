@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opc-input-chip</title>
+    <style>
+      html, body {
+        font-family: 'red hat text';
+        margin: 0;
+      }
+
+      h4 {
+        font-weight: normal;
+      }
+
+      .card {
+        min-height: 50vh;
+      }
+
+      .card.dark {
+        background: #000;
+      }
+
+      .card.dark h4 {
+        color: #DEDEDE;
+      }
+
+      .card-content {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      .card.dark opc-input-chip {
+        --opc-input-chip--BorderColor: #2E2E2E;
+        --opc-input-chip--TextColor: #73BCF7;
+        --opc-input-chip--Color: #73BCF7;
+        --opc-input-chip--TextTransform: capitalize;
+        --opc-input-chip--BackgroundColor: #2E2E2E;
+      }
+
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+    <script src="opc-input-chip.js"></script>
+</head>
+<body>
+    <div class="card">
+      <div class="card-content">
+        <h4>Light(Default) theme</h4>
+        <opc-input-chip></opc-input-chip>
+      </div>
+    </div>
+
+    <div class="card dark">
+      <div class="card-content">
+        <h4>Dark theme</h4>
+        <opc-input-chip></opc-input-chip>
+      </div>
+    </div>
+    <script>
+      const opcInputChips = document.querySelectorAll('opc-input-chip');
+      const handleInputChipEvent = el => {
+        el.addEventListener('opc-input-chip:added', (e) => {console.log(e)});
+        el.addEventListener('opc-input-chip:removed', (e) => {console.log(e)});
+      }
+
+      [...opcInputChips].map(handleInputChipEvent);
+    </script>
+</body>
+</html>
