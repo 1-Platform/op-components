@@ -7,6 +7,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 4200,
+        open: true,
     },
     entry: `${path.join(__dirname, 'src/opc-input-chip')}`,
     devtool: 'inline-source-map',
