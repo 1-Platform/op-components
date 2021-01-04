@@ -38,7 +38,7 @@
     "webpack": "5.11.1",
     "webpack-cli": "4.3.1",
     "webpack-dev-server": "3.11.1",
-    "html-webpack-plugin": "4.5.0",
+    "html-webpack-plugin": "4.5.1",
     "jest-axe": "4.0.0",
     "@types/jest-axe": "3.5.0"
   },
