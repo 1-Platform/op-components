@@ -3,14 +3,23 @@
     "lerna": "lerna",
     "dev": "bash scripts/dev.sh",
     "build": "bash scripts/build.sh",
-    "new": "cd packages && yo ../generator/generator-opc-generator/generators/app/"
+    "new": "cd packages && yo ../generator/generator-opc-generator/generators/app/",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "eslint": "7.20.0",
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.12",
+    "@storybook/addon-essentials": "^6.1.12",
+    "@storybook/addon-links": "^6.1.12",
+    "@storybook/web-components": "^6.1.12",
+    "babel-loader": "^8.2.2",
+    "eslint": "7.17.0",
     "lerna": "3.22.1",
-    "webpack-cli": "4.4.0",
-    "webpack": "5.15.0",
-    "yeoman-generator": "4.13.0",
+    "lit-html": "^1.3.0",
+    "webpack": "4.28.1",
+    "webpack-cli": "4.3.1",
+    "yeoman-generator": "4.12.0",
     "yo": "3.1.1",
     "yosay": "2.0.2"
   },
@@ -23,7 +32,6 @@
   "author": "opc-lib",
   "license": "MIT",
   "dependencies": {
-    "lit-element": "2.4.0",
-    "lit-html": "1.3.0"
+    "lit-element": "2.4.0"
   }
 }

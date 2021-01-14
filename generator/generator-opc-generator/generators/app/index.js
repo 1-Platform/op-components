@@ -83,6 +83,13 @@ module.exports = class extends Generator {
       this.props
     );
     this.fs.copyTpl(
+      this.templatePath("demo/_story.js"),
+      this.destinationPath(
+        `${this.props.componentName}/demo/${this.props.componentName}.stories.js/`
+      ),
+      this.props
+    );
+    this.fs.copyTpl(
       this.templatePath("test/_test.ts"),
       this.destinationPath(
         `${this.props.componentName}/test/${this.props.componentName}.test.ts/`
