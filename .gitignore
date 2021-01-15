@@ -26,3 +26,6 @@ packages/*/dist
 
 # Storybook build folder 
 /storybook-static
+
+# Ignore .tgz files
+*.tgz
