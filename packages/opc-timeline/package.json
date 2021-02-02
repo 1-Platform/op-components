@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-timeline",
-  "version": "0.0.2-prerelease",
+  "version": "0.0.3-prerelease",
   "description": "A web component based on Lit Element to show a timeline for a specific range",
   "scripts": {
     "dev": "webpack serve",
