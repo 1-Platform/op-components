@@ -56,9 +56,8 @@ $LOCAL: timeline;
       &.active::after {
         content: '';
         position: absolute;
-        top: -2px;
-        width: $opc-global--spacer--md;
-        height: $opc-global--spacer--md;
+        width: 0.8rem;
+        height: 0.8rem;
         background: white;
         border: 2px solid var(--opc-timeline--Color--active, #0aa521);
         border-radius: 50%;

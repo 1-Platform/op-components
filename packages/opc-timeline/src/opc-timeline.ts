@@ -1,4 +1,4 @@
-import { LitElement, html, property, customElement } from 'lit-element';
+import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
 import style  from './opc-timeline.scss';
 
 @customElement('opc-timeline')
@@ -6,13 +6,16 @@ export class Timeline extends LitElement {
   @property({ type: Array, attribute: 'steps'}) steps = [];
   @property({ type: Number, attribute: 'current-step-index' }) currentStepIndex = 0;
   @property({ type: String, attribute: 'variant'}) variant = 'default';
+  @internalProperty() stepWidth = 0;
+  @query('li') listElement;
+  @query('ul') listElementContainer;
   static get styles() {
     return [ style ];
   }
 
   _scrollHandler(direction) {
     this.shadowRoot.querySelector('#timeline-steps').scrollBy({
-      left: direction === 'left' ?  -900 : 900,
+      left: direction === 'left' ?  -this.listElement.offsetWidth : this.listElement.offsetWidth,
       behavior: 'smooth'
     });
   }
@@ -54,6 +57,19 @@ export class Timeline extends LitElement {
     );
   }
 
+  updateTimelineWidth() {
+    const liWidth = this.listElement.offsetWidth * this.steps.length;
+    const ulWidth = this.listElementContainer.offsetWidth;
+    this.stepWidth = ulWidth > liWidth ? ulWidth : liWidth;
+  }
+
+  updated() {
+    this.updateTimelineWidth();
+    window.addEventListener('resize', () => {
+      this.updateTimelineWidth();
+    });
+  }
+
   render() {
     if (this.currentStepIndex < 0) {
       console.warn(`OPC-TIMELINE: The current-step-index attribute is set to ${this.currentStepIndex}, the active state will not be visible`);
@@ -64,7 +80,7 @@ export class Timeline extends LitElement {
         overflow: hidden;
       }
       .compact .timeline-steps::before {
-        width: ${this.steps.length * 180}px !important;
+        width: ${this.stepWidth}px;
       }
       .compact .timeline-steps .timeline-steps__step {
         flex: 0 0 180px;
