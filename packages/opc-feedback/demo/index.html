@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>opc-feedback</title>
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css"
+    crossorigin="anonymous" />
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly-addons.css"
+    crossorigin="anonymous" />
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
+  <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.2.3/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.2.3/ionicons/ionicons.js"></script>
+  <script src="opc-feedback.js"></script>
+</head>
+
+<body>
+  <opc-feedback id="opc-feedback" theme="red"></opc-feedback>
+  <div class="pf-c-content">
+    <header>
+      <h1>opc-feedback Component</h1>
+    </header>
+    <p><code>opc-feedback</code> component enables to collect the feedback from the user.</p>
+    <h2>Supported Params</h2>
+    <ol>
+      <li><code>url</code> - URL of your hosted feedback spa. By default <code>/feedback</code> is the url.</li>
+      <li><code>template</code> - UI Template data input
+        <div class="pf-c-code-editor pf-m-read-only pf-u-w-50">
+          <div class="pf-c-code-editor__header">
+            <div class="pf-c-code-editor__controls">
+            </div>
+            <div class="pf-c-code-editor__tab">
+              <span class="pf-c-code-editor__tab-icon">
+                <i class="fas fa-code"></i>
+              </span>
+              <span class="pf-c-code-editor__tab-text">Javascript</span>
+            </div>
+          </div>
+          <div class="pf-c-code-editor__main">
+            <div class="pf-c-code-editor__code">
+              <pre class="pf-c-code-editor__code-pre">document.getElementById('opc-feedback').template = {
+                      "title": "How was your experience?.",
+                      "subTitle": "It will help us to improve platform",
+                      "summaryTitle": "Summary",
+                      "summaryPlaceholder": "How can we do better?",
+                      "errorTitle": "What is wrong?",
+                      "experienceList": [{
+                        "name": "Excellent",
+                        "assetUrl": "./assets/happy.svg",
+                        "errorList": []
+                      },
+                      {
+                        "name": "Good",
+                        "assetUrl": "./assets/good.svg",
+                        "errorList": []
+                      }]
+                    };</pre>
+            </div>
+          </div>
+        </div>
+        <table style="width:30%">
+          <tr>
+            <th>Template Properties</th>
+            <th>Datatype</th>
+          </tr>
+          <tr>
+            <td>title</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>subTitle</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>summaryTitle</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>summaryPlaceholder</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>errorTitle</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>confirmationTitle</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>confirmationSubTitle</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>experienceList</td>
+            <td><code>Array</code></td>
+          </tr>
+        </table>
+      </li>
+    </ol>
+    <h2>Themes</h2>
+    <ol>
+      <li><code>opc-feedback</code> in red(default) color</li>
+      <div class="pf-c-code-editor pf-m-read-only pf-u-w-50">
+        <div class="pf-c-code-editor__header">
+          <div class="pf-c-code-editor__controls">
+          </div>
+          <div class="pf-c-code-editor__tab">
+            <span class="pf-c-code-editor__tab-icon">
+              <i class="fas fa-code"></i>
+            </span>
+            <span class="pf-c-code-editor__tab-text">HTML</span>
+          </div>
+        </div>
+        <div class="pf-c-code-editor__main">
+          <div class="pf-c-code-editor__code">
+            <pre class="pf-c-code-editor__code-pre">&nbsp;&lt;opc-feedback theme="red"&gt;&lt;/opc-feedback&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <li><code>opc-feedback</code> in blue color</li>
+      <div class="pf-c-code-editor pf-m-read-only pf-u-w-50">
+        <div class="pf-c-code-editor__header">
+          <div class="pf-c-code-editor__controls">
+          </div>
+          <div class="pf-c-code-editor__tab">
+            <span class="pf-c-code-editor__tab-icon">
+              <i class="fas fa-code"></i>
+            </span>
+            <span class="pf-c-code-editor__tab-text">HTML</span>
+          </div>
+        </div>
+        <div class="pf-c-code-editor__main">
+          <div class="pf-c-code-editor__code">
+            <pre class="pf-c-code-editor__code-pre">&nbsp;&lt;opc-feedback theme="blue"&gt;&lt;/opc-feedback&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </ol>
+    <h2>Event Handling</h2>
+    <ol>
+      <li>Obtaining the data from <code>opc-feedback</code> Component after the component action is initiated</li>
+      <div class="pf-c-code-editor pf-m-read-only pf-u-w-50">
+        <div class="pf-c-code-editor__header">
+          <div class="pf-c-code-editor__controls">
+          </div>
+          <div class="pf-c-code-editor__tab">
+            <span class="pf-c-code-editor__tab-icon">
+              <i class="fas fa-code"></i>
+            </span>
+            <span class="pf-c-code-editor__tab-text">Javascript</span>
+          </div>
+        </div>
+        <div class="pf-c-code-editor__main">
+          <div class="pf-c-code-editor__code">
+            <pre class="pf-c-code-editor__code-pre">document.querySelector('opc-feedback').addEventListener('opc-feedback:submit', (event) => console.log(event.detail.data));
+                    </pre>
+          </div>
+        </div>
+      </div>
+      <li>Open/Close the Feedback Modal universally</li>
+      <div class="pf-c-code-editor pf-m-read-only pf-u-w-50">
+        <div class="pf-c-code-editor__header">
+          <div class="pf-c-code-editor__controls">
+          </div>
+          <div class="pf-c-code-editor__tab">
+            <span class="pf-c-code-editor__tab-icon">
+              <i class="fas fa-code"></i>
+            </span>
+            <span class="pf-c-code-editor__tab-text">Javascript</span>
+          </div>
+        </div>
+        <div class="pf-c-code-editor__main">
+          <div class="pf-c-code-editor__code">
+            <pre class="pf-c-code-editor__code-pre">document.querySelector('opc-feedback').toggle();
+                    </pre>
+          </div>
+        </div>
+      </div>
+    </ol>
+  </div>
+</body>
+
+</html>

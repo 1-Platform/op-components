@@ -1,0 +1,129 @@
+/**
+ * Copyright (c) 2021 Red Hat One Platform
+ *
+ * MIT
+ *
+ * opc-feedback.scss consist of style properties for the opc-feedback-component
+ *
+ * @summary opc-feedback.scss will contain the properties for opc-feedback component styles
+ * @author Rigin Oommen
+ *
+ * Created at     : 2021-01-18 14:53:24 
+ * Last modified  : 2021-02-05 20:12:29
+ */
+@import "@one-platform/opc-styles";
+
+$LOCAL: feedback;
+//Add your variables here;
+$variables: ();
+
+:host {
+  --op-transition--default: 120ms ease-in-out;
+  --op-feedback__btn--Primary: #b70202;
+  --op-feedback__bg--Primary: #fceaeb;
+  position: relative;
+  z-index: 9000;
+}
+
+:host([theme="blue"]) {
+  --opc-feedback--BackgroundColor: #0066CC1A;
+  --opc-feedback--TextColor: #0066CC;
+  --opc-feedback__submit--BackgroundColor: #0066CC1A;
+  --opc-feedback__submit--TextColor: #0066CC;
+}
+
+:host([theme="red"]) {
+  --opc-feedback--BackgroundColor: #a30000;
+  --opc-feedback--TextColor: #fff;
+  --opc-feedback__submit--BackgroundColor: #a30000;
+  --opc-feedback__submit--TextColor: #fff;
+}
+
+* {
+  outline-width: medium;
+  font-family: "Red Hat Text", "Open Sans", Arial, Helvetica, sans-serif;
+}
+.op-feedback {
+  &__panel {
+    position: fixed;
+    bottom: $opc-global--spacer--3xl + $opc-global--FontSize--xl;
+    right: $opc-global--spacer--lg;
+    margin-right: 0;
+    padding: ($opc-global--spacer--md+$opc-global--spacer--sm/2) $opc-global--spacer--lg;
+    width: ($opc-global--spacer--3xl * 4) + $opc-global--spacer--md;
+    max-width: calc(100vw - $opc-global--spacer--2xl);
+    background: $opc-color--white;
+    border: none;
+    border-radius: $opc-global--spacer--sm + ($opc-global--spacer--sm/2);
+    border-bottom-right-radius: $opc-global--spacer--sm/2;
+    box-shadow: 0 $opc-global--spacer--sm/2 $opc-global--spacer--sm rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    transition: all var(--op-transition--default);
+    display: block;
+    opacity: 0;
+    transform: translateY($opc-global--spacer--xl);
+    perspective-origin: bottom right;
+    &[open] {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    &[open] + .op-feedback__button {
+      background: opc-get-var(BackgroundColor, $opc-color--red-300);
+      box-shadow: 0 $opc-global--spacer--sm $opc-global--spacer--sm rgba(0, 0, 0, 0.24);
+      border-radius: $opc-global--spacer--xl;
+      border-top-right-radius: $opc-global--spacer--sm/2;
+    }
+
+    &:not([open]) {
+      pointer-events: none;
+    }
+    
+  }
+  &__button {
+    position: fixed;
+    bottom: $opc-global--spacer--lg;
+    right: $opc-global--spacer--lg;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: opc-get-var(BackgroundColor, $opc-color--red-200);
+    color: opc-get-var(TextColor, $opc-color--white);
+    border: none;
+    line-height: $opc-global--spacer--xl;
+    padding: $opc-global--spacer--sm $opc-global--spacer--md+$opc-global--spacer--sm/2;
+    font-size: $opc-global--FontSize--md;
+    cursor: pointer;
+    border-radius: $opc-global--spacer--xl;
+    border-bottom-right-radius: $opc-global--spacer--sm/2;
+    box-shadow: 0 $opc-global--spacer--sm/2 $opc-global--spacer--sm rgba(0, 0, 0, 0.16);
+    transition: all var(--op-transition--default);
+    &:hover,
+    &:focus {
+      background: opc-get-var(BackgroundColor, $opc-color--red-300);
+      box-shadow: 0 $opc-global--spacer--sm $opc-global--spacer--sm rgba(0, 0, 0, 0.24);
+    }
+  }
+  &__subtitle {
+    color: var(--pf-global--Color--200);
+    &.pf-u-text-align-center.pf-u-p-xs {
+      cursor: pointer;
+    }
+  }
+  &__chip {
+    --pf-c-chip--BorderRadius: 15px;
+    margin: $opc-global--spacer--sm/2;
+    &:hover {
+      --pf-c-chip--BackgroundColor: #0066cc1a !important;
+      cursor: pointer;
+    }
+    &__active {
+      --pf-c-chip--BackgroundColor: #0066cc1a !important;
+    }
+  }
+}
+
+.pf-c-button {
+  background-color: opc-get-var(BackgroundColor, $opc-color--red-200, submit);
+  color: opc-get-var(TextColor, $opc-color--white, submit);
+}
