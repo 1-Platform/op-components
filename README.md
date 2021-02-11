@@ -69,3 +69,5 @@ npm run dev <component-name>
 👤 **Sumeet Ingole** [@gisumit](https://github.com/gisumit)
 
 👤 **Deepesh Nair** [@hybridx](https://github.com/hybridx)
+
+👤 **Rigin Oommen** [@riginoommen](https://github.com/riginoommen)
