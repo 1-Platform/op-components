@@ -6,6 +6,9 @@
 
 Feedback Component follows the One Platform design system and can be used as a popup to collect feedback from the end-users.
 
+## Prerequisites
+The `opc-footer` component is partially dependent on the Patternfly library for styles. So to avoid any missing styles, add the `patternfly.css` file before the component script tag.
+
 ## Install
 
 ```sh
