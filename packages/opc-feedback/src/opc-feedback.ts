@@ -9,13 +9,13 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-02-22 17:59:20
+ * Last modified  : 2021-02-22 23:55:27
  */
 
 import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
 import style from './opc-feedback.scss';
 import { repeat } from 'lit-html/directives/repeat.js';
-import { defaultTemplate } from './defaultTemplate';
+import { defaultTemplate,arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon, ellipsesIcon, chatboxEllipsesIcon } from './defaultTemplate';
 @customElement('opc-feedback')
 export class OpcFeedback extends LitElement {
   @property({ type: String, attribute: 'spa' }) spa = "/feedback";
@@ -129,10 +129,10 @@ export class OpcFeedback extends LitElement {
     <dialog id="bug-dialog" class="op-feedback__panel pf-u-mr-0 pf-u-display-block" .open="${this._openBugModal}">
       <form class="bug-form" id="bugform">
         <div class="pf-u-display-flex">
-          <ion-icon name="arrow-back-sharp" class="pf-u-mt-sm pf-u-font-size-lg" @click="${e => {
+          <img src="${arrowBackIcon}" width="14.25px" class="pf-u-font-size-lg" @click="${e => {
             this._setModalState(true, false, false, true);
             this._resetForm();
-          }}"></ion-icon>
+          }}"/>
           <header>
             <h3 class="pf-u-font-weight-normal pf-u-font-size-lg pf-u-text-align-center pf-u-m-xs">${this.template.errorTitle}
             </h3>
@@ -168,10 +168,10 @@ export class OpcFeedback extends LitElement {
     <dialog id="feedback-dialog" class="op-feedback__panel pf-u-mr-0 pf-u-display-block" .open="${this._openFeedbackModal}">
       <form class="feedback-form" id="feedbackform">
         <div class="pf-u-display-flex">
-          <ion-icon name="arrow-back-sharp" class="pf-u-mt-sm pf-u-font-size-lg" @click="${e => {
+          <img src="${arrowBackIcon}" width="14.25px" class="pf-u-font-size-lg" @click="${e => {
+            this._setModalState(true, false, false, true);
             this._resetForm();
-            this._setModalState(true, false,false, false);
-          }}"></ion-icon>
+          }}"/>
           <header>
             <h3 class="pf-u-font-weight-normal pf-u-font-size-lg pf-u-text-align-center pf-u-m-0">${this.template.feedbackTitle}
             </h3>
@@ -233,7 +233,7 @@ export class OpcFeedback extends LitElement {
             this.toggle();
             this._setModalState(false, false, true, false);
           }}">
-            <ion-icon name="bug-outline" class="op-feedback__option-icon pf-m-text-align-left"></ion-icon>
+            <img src="${bugIcon}" width="16px" class="op-feedback__option-icon pf-m-text-align-left"/>&nbsp;
             ${this.template.bugReportTitle}
           </button>
         </li>
@@ -242,22 +242,22 @@ export class OpcFeedback extends LitElement {
             this.toggle();
             this._setModalState(false, true, false, false);
           }}">
-            <ion-icon name="chatbox-ellipses-outline" class="op-feedback__option-icon"></ion-icon>
+            <img src="${chatboxIcon}" width="16px" class="op-feedback__option-icon pf-m-text-align-left"/>&nbsp;
             ${this.template.feedbackReportTitle}
           </button>
         </li>
         <li>
           <a href="${this.docs}" data-feedback-type="feedback-list" class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex">
-            <ion-icon name="document-outline" class="op-feedback__option-icon"></ion-icon>
+            <img src="${documentIcon}" width="16px" class="op-feedback__option-icon pf-m-text-align-left"/>&nbsp;
             ${this.template.documentationTitle}
-            <ion-icon name="open-outline" class="op-feedback__icon-secondary pf-u-ml-xs"></ion-icon>
+            <img src="${openLinkIcon}" width="16px" class="op-feedback__icon-secondary pf-u-ml-xs"/>
           </a>
         </li>
         <li>
           <a href="${this.spa}" data-feedback-type="feedback-list" class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex">
-            <ion-icon name="chatbubbles-outline" class="op-feedback__option-icon"></ion-icon>
+            <img src="${chatBubblesIcon}" width="16px" class="op-feedback__option-icon pf-m-text-align-left"/>&nbsp;
             ${this.template.spaRedirectTitle}
-            <ion-icon name="open-outline" class="op-feedback__icon-secondary pf-u-ml-xs"></ion-icon>
+            <img src="${openLinkIcon}" width="16px" class="op-feedback__icon-secondary pf-u-ml-xs"/>
           </a>
         </li>
       </ul>
@@ -269,9 +269,8 @@ export class OpcFeedback extends LitElement {
         this.toggle();
         this._setModalState(this._openInitialModal, false, this._openBugModal, false);
       }}">
-      <ion-icon
-        name="${(this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal) ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
-        class="pf-u-font-size-xl pf-u-mr-xs"></ion-icon>
+      <img src="${(this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal) ? `${ellipsesIcon}`: `${chatboxEllipsesIcon}`}"
+        class="pf-u-font-size-xl pf-u-mr-xs" width="20px"/>
       ${this.template.feedbackFAB}
     </button>
     `;
