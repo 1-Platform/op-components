@@ -71,7 +71,8 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 ## Properties
 | Name   | value |
 |---------|------------------------------------------------------------------|
-| ```url``` | ```String``` value is expected ```/feedback``` is the default fallback url. |
+| ```spa``` | ```String``` value is expected ```/feedback``` is the default fallback url for feedback spa |
+| ```docs``` | ```String``` value is expected ```/get-started``` is the default fallback url for docs |
 | ```theme``` | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
 
 
@@ -79,42 +80,47 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 When ```opc-feedback``` is launched it is loaded with the following the default template in ui.
 ```js
 {
-  title: 'How was your overall experience?.',
-  subtitle: 'It will help us to improve platform',
-  summary: 'Summary',
-  summaryPlaceholder: 'How can we do better?.',
+  feedbackFAB: 'Send Feedback',
+  dialogTitle: 'Share your thoughts with us',
+  bugReportTitle: 'Report Bug',
+  feedbackReportTitle: 'Send Feedback',
+  documentationTitle: 'Documentation',
+  spaRedirectTitle: 'View Feedback',
   errorTitle: 'What is wrong?',
+  bugSubmissionNote: 'Note: By submitting a bug it will open an issue in jira',
+  feedbackTitle: 'How was your overall experience?',
+  feedbackSubtitle: 'It will help us to improve platform',
+  summary: 'Summary',
+  summaryPlaceholder: 'How can we do better?',
   confirmationTitle: 'Thanks for your feedback. Your experience is important to us!',
   confirmationSubTitle: 'Each time a friend submits a experience, it creates a task for our developer team to resolve it with priority.',
-  confirmationEventMessage: 'Submitted the feedback.',
+  confirmationEventMessage: 'Submitted the feedback',
   experienceList: [{
     name: 'Excellent',
     assetUrl: './assets/happy.svg',
-    errorList: []
   },
   {
     name: 'Good',
     assetUrl: './assets/good.svg',
-    errorList: []
   },
   {
-    name: 'Sad',
-    assetUrl: './assets/sad.svg',
-    errorList: [{
-      name: 'Slow Loading'
-    },
-    {
-      name: 'App Crashed'
-    },
-    {
-      name: 'Navigation'
-    },
-    {
-      name: 'Not Responsive'
-    },
-    {
-      name: 'Other'
-    }]
+    name: 'Needs Improvement',
+    assetUrl: './assets/improvement.svg'
+  }],
+  errorList: [{
+    name: 'Slow Loading'
+  },
+  {
+    name: 'Not Responsive'
+  },
+  {
+    name: 'Navigation'
+  },
+  {
+    name: 'UI Issues'
+  },
+  {
+    name: 'Other'
   }]
 }
 ```
@@ -125,21 +131,28 @@ We can override the data with the default template with custom template by passi
 * Use the feedbackTemplate setter function to set the template ui.
 ```js
 document.querySelector('opc-feedback').feedbackTemplate = {
-  title: "Custom title?."
+  feedbackFAB: "Share Feedback"
 };
 ```
 
 | Template Properties   | Datatype |
 |---------|------------------------------------------------------------------|
-| title | ```String``` |
-| subtitle | ```String``` |
+| feedbackFAB | ```String``` |
+| dialogTitle | ```String``` |
+| bugReportTitle | ```String``` |
+| feedbackReportTitle | ```String``` |
+| documentationTitle | ```String``` |
+| spaRedirectTitle | ```String``` |
+| errorTitle | ```String``` |
+| bugSubmissionNote | ```String``` |
+| feedbackTitle | ```String``` |
+| feedbackSubtitle | ```String``` |
 | summary | ```String``` |
 | summaryPlaceholder | ```String``` |
-| errorTitle | ```String``` |
 | confirmationTitle | ```String``` |
 | confirmationSubtitle | ```String``` |
 | experienceList | ```Array``` |
-| experienceList.errorList | ```Array``` |
+| errorList | ```Array``` |
 
 ## Event Handling
 ### Trigger the modal outside the component.

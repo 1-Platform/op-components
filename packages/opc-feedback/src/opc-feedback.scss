@@ -9,7 +9,7 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-02-05 20:12:29
+ * Last modified  : 2021-02-22 16:40:18
  */
 @import "@one-platform/opc-styles";
 
@@ -30,13 +30,17 @@ $variables: ();
   --opc-feedback--TextColor: #0066CC;
   --opc-feedback__submit--BackgroundColor: #0066CC1A;
   --opc-feedback__submit--TextColor: #0066CC;
+  --opc-feedback__header--BackgroundColor: #0066CC1A;
+  --opc-feedback__header--TextColor: #0066CC;
 }
 
 :host([theme="red"]) {
   --opc-feedback--BackgroundColor: #a30000;
-  --opc-feedback--TextColor: #fff;
+  --opc-feedback--TextColor: var($opc-color--white);
   --opc-feedback__submit--BackgroundColor: #a30000;
-  --opc-feedback__submit--TextColor: #fff;
+  --opc-feedback__submit--TextColor: var($opc-color--white);
+  --opc-feedback__header--BackgroundColor: #a30000;
+  --opc-feedback__header--TextColor: var($opc-color--white);
 }
 
 * {
@@ -48,7 +52,6 @@ $variables: ();
     position: fixed;
     bottom: $opc-global--spacer--3xl + $opc-global--FontSize--xl;
     right: $opc-global--spacer--lg;
-    margin-right: 0;
     padding: ($opc-global--spacer--md+$opc-global--spacer--sm/2) $opc-global--spacer--lg;
     width: ($opc-global--spacer--3xl * 4) + $opc-global--spacer--md;
     max-width: calc(100vw - $opc-global--spacer--2xl);
@@ -59,7 +62,6 @@ $variables: ();
     box-shadow: 0 $opc-global--spacer--sm/2 $opc-global--spacer--sm rgba(0, 0, 0, 0.24);
     overflow: hidden;
     transition: all var(--op-transition--default);
-    display: block;
     opacity: 0;
     transform: translateY($opc-global--spacer--xl);
     perspective-origin: bottom right;
@@ -67,14 +69,12 @@ $variables: ();
       transform: translateY(0);
       opacity: 1;
     }
-
     &[open] + .op-feedback__button {
       background: opc-get-var(BackgroundColor, $opc-color--red-300);
       box-shadow: 0 $opc-global--spacer--sm $opc-global--spacer--sm rgba(0, 0, 0, 0.24);
       border-radius: $opc-global--spacer--xl;
       border-top-right-radius: $opc-global--spacer--sm/2;
     }
-
     &:not([open]) {
       pointer-events: none;
     }
@@ -84,9 +84,6 @@ $variables: ();
     position: fixed;
     bottom: $opc-global--spacer--lg;
     right: $opc-global--spacer--lg;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     background: opc-get-var(BackgroundColor, $opc-color--red-200);
     color: opc-get-var(TextColor, $opc-color--white);
     border: none;
@@ -111,8 +108,12 @@ $variables: ();
     }
   }
   &__chip {
+    --pf-c-chip--BackgroundColor: $opc-color--white !important;
     --pf-c-chip--BorderRadius: 15px;
     margin: $opc-global--spacer--sm/2;
+    &__text {
+      font-size: calc(var(--pf-global--spacer--xs) + var(--pf-global--spacer--sm)) !important;
+    }
     &:hover {
       --pf-c-chip--BackgroundColor: #0066cc1a !important;
       cursor: pointer;
@@ -120,6 +121,42 @@ $variables: ();
     &__active {
       --pf-c-chip--BackgroundColor: #0066cc1a !important;
     }
+  }
+  &__options {
+    list-style: none;
+    li:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+  }
+  &__option-item {
+    background: transparent;
+    border: none;
+    line-height: var(--pf-global--spacer--2xl);
+    font-size: var(--pf-global--spacer--md);
+    padding: 0 var(--pf-global--spacer--lg);
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background var(--op-transition--default);
+    text-decoration: none;
+    color: inherit;
+    &:hover,&:active,&:focus {
+      background: #f5f5f5;
+    }
+  }
+  &__option-item[disabled] {
+    opacity: $opc-global--spacer--sm;
+    cursor: not-allowed;
+  }
+  &__header {
+    background: opc-get-var(BackgroundColor, $opc-color--red-300, header);
+    padding: 1.25rem 1.5rem;
+    color: opc-get-var(TextColor, $opc-color--white, header);
+  }
+  &__icon-secondary {
+    height: calc(var(--pf-global--spacer--xs) + var(--pf-global--spacer--sm));
+  }
+  &__option-icon {
+    margin-right: .70rem;
   }
 }
 

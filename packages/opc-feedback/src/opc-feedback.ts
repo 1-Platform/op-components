@@ -9,7 +9,7 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-02-11 12:35:31
+ * Last modified  : 2021-02-22 17:59:20
  */
 
 import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
@@ -18,25 +18,27 @@ import { repeat } from 'lit-html/directives/repeat.js';
 import { defaultTemplate } from './defaultTemplate';
 @customElement('opc-feedback')
 export class OpcFeedback extends LitElement {
-  @property({ type: String, attribute: 'url' }) url;
-  @property({ reflect: true }) theme;
+  @property({ type: String, attribute: 'spa' }) spa = "/feedback";
+  @property({ type: String, attribute: 'docs' }) docs = "/get-started";
+  @property({ reflect: true }) theme = "red";
   @property({ type: Object }) template = defaultTemplate;
   @internalProperty()
   _openConfirmationModal = false;
   @internalProperty()
   _openFeedbackModal = false;
+  @internalProperty()
+  _openInitialModal = false;
+  @internalProperty()
+  _openBugModal = false;
   @internalProperty() protected _summary = '';
   @internalProperty() _experience = '';
   @internalProperty()
   _error = '';
-  _errorList = [];
 
   @query('textarea') textarea: HTMLTextAreaElement;
 
   constructor() {
     super();
-    this.theme = "red";
-    this.url = "/feedback";
   }
 
   static get styles() {
@@ -52,11 +54,22 @@ export class OpcFeedback extends LitElement {
 
   _setExperience(selectedExperience) {
     this._experience = selectedExperience;
-    this._errorList = this.template.experienceList.filter(experience => experience.name === this._experience)[0].errorList;
   }
 
   _updateTemplate() {
     this.template = { ...defaultTemplate, ...this.template }
+    const urlPattern =  new RegExp('^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    if (!urlPattern.test(this.docs)) {
+      console.warn(`${this.tagName.toLowerCase()} URL validation failed for docs`);
+    }
+    if (!urlPattern.test(this.spa)) {
+      console.warn(`${this.tagName.toLowerCase()} URL validation failed for spa`);
+    }
   }
 
   _setError(selectedError) {
@@ -79,11 +92,17 @@ export class OpcFeedback extends LitElement {
       }
     }));
     this._resetForm();
-    this._errorList = [];
   }
 
   toggle() {
-    this._openFeedbackModal = !this._openFeedbackModal;
+    this._openInitialModal = !this._openInitialModal;
+  }
+
+  _setModalState(initialModalState, feedbackModalState, bugModalState, confirmationModalState) {
+    this._openInitialModal=initialModalState;
+    this._openFeedbackModal=feedbackModalState;
+    this._openBugModal=bugModalState;
+    this._openConfirmationModal=confirmationModalState;
   }
 
   set feedbackTemplate(template) {
@@ -105,14 +124,59 @@ export class OpcFeedback extends LitElement {
       crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly-addons.css"
       crossorigin="anonymous"/>
+    
+    <!-- Bug Panel -->
+    <dialog id="bug-dialog" class="op-feedback__panel pf-u-mr-0 pf-u-display-block" .open="${this._openBugModal}">
+      <form class="bug-form" id="bugform">
+        <div class="pf-u-display-flex">
+          <ion-icon name="arrow-back-sharp" class="pf-u-mt-sm pf-u-font-size-lg" @click="${e => {
+            this._setModalState(true, false, false, true);
+            this._resetForm();
+          }}"></ion-icon>
+          <header>
+            <h3 class="pf-u-font-weight-normal pf-u-font-size-lg pf-u-text-align-center pf-u-m-xs">${this.template.errorTitle}
+            </h3>
+          </header>
+        </div>
+        ${repeat(this.template.errorList, (error) => html`
+        <div
+          class="pf-c-chip pf-m-draggable op-feedback__chip ${this._error === error.name ? 'op-feedback__chip__active' : ''}"
+          @click="${e => this._setError(error.name)}" @keydown=${e => (e.key === 'Enter') ? this._setError(error.name) : ''}
+          tabindex="0">
+          <span class="pf-u-font-size-xs">${error.name}</span>
+        </div>
+        `)}
+        <p class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md">${this.template.summary}</p>
+        <textarea id="bugsummary" rows="3" name="bugsummary"
+          @input="${(e: HTMLElementEventMap | any) => this._summary = e.target.value}"
+          placeholder=${this.template.summaryPlaceholder} class="pf-c-form-control pf-m-resize-vertical"
+          required></textarea>
+          <p class="op-feedback__subtitle pf-u-font-size-xs">
+          ${this.template.bugSubmissionNote}</p>
+        <button class="pf-c-button pf-m-block ${this._error.length === 0 ? 'pf-u-display-none-on-sm' : ''}"
+          type="button" @click="${e => {
+        this._submitFeedback();
+        this._setModalState(false, false, false, !this._openConfirmationModal);
+
+      }}">Submit</button>
+        <button id="submit-bug" class="pf-c-button pf-m-block ${this._error.length !== 0 ? 'pf-u-display-none-on-sm' : ''}"
+          type="button" disabled>Submit</button>
+      </form>
+    </dialog>
 
     <!-- Feedback Panel -->
-    <dialog id="data-dialog" class="op-feedback__panel" .open="${this._openFeedbackModal}">
-      <form class="feedback-form" id="form">
-        <header>
-          <h3 class="pf-u-font-weight-normal pf-u-font-size-lg pf-u-text-align-center pf-u-m-0">${this.template.title}
-          </h3>
-        </header>
+    <dialog id="feedback-dialog" class="op-feedback__panel pf-u-mr-0 pf-u-display-block" .open="${this._openFeedbackModal}">
+      <form class="feedback-form" id="feedbackform">
+        <div class="pf-u-display-flex">
+          <ion-icon name="arrow-back-sharp" class="pf-u-mt-sm pf-u-font-size-lg" @click="${e => {
+            this._resetForm();
+            this._setModalState(true, false,false, false);
+          }}"></ion-icon>
+          <header>
+            <h3 class="pf-u-font-weight-normal pf-u-font-size-lg pf-u-text-align-center pf-u-m-0">${this.template.feedbackTitle}
+            </h3>
+          </header>
+        </div>
         <p class="op-feedback__subtitle pf-u-text-align-center pf-u-font-size-sm pf-u-pt-md pf-u-pb-md">
           ${this.template.subtitle}</p>
         ${repeat(this.template.experienceList, (experience) => html`
@@ -121,46 +185,34 @@ export class OpcFeedback extends LitElement {
           @click="${e => this._setExperience(experience.name)}" @keydown=${e => (e.key === 'Enter') ?
             this._setExperience(experience.name) : ''} tabindex="0">
           <span class="pf-c-chip__icon">
-            <img src="${experience.assetUrl}" alt="${experience.name} icon" width="20px">
+            <img src="${experience.assetUrl}" alt="${experience.name} icon" width="17px">
           </span>
-          <span class="pf-c-chip__text">${experience.name}</span>
-        </div>
-        `)}
-        <hr class="pf-c-divider pf-u-pt-md pf-u-pb-md ${this._errorList.length === 0 ? 'pf-u-display-none-on-sm' : ''}" />
-        <p class="op-feedback__subtitle pf-u-font-size-md ${this._errorList.length === 0 ? 'pf-u-display-none-on-sm' : ''}">
-          ${this.template.errorTitle}</p>
-        ${repeat(this._errorList, (error) => html`
-        <div
-          class="pf-c-chip pf-m-draggable op-feedback__chip ${this._errorList.length === 0 ? 'pf-u-display-none-on-sm' : ''} ${this._error === error.name ? 'op-feedback__chip__active' : ''}"
-          @click="${e => this._setError(error.name)}" @keydown=${e => (e.key === 'Enter') ? this._setError(error.name) : ''}
-          tabindex="0">
-          <span class="pf-c-chip__text">${error.name}</span>
+          <span class="pf-u-font-size-xs">&nbsp;${experience.name}</span>
         </div>
         `)}
         <p class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md">${this.template.summary}</p>
-        <textarea id="summary" rows="3" name="summary"
+        <textarea id="feedbacksummary" rows="3" name="feedbacksummary"
           @input="${(e: HTMLElementEventMap | any) => this._summary = e.target.value}"
           placeholder=${this.template.summaryPlaceholder} class="pf-c-form-control pf-m-resize-vertical"
           required></textarea>
         <button class="pf-c-button pf-m-block ${this._experience.length === 0 ? 'pf-u-display-none-on-sm' : ''}"
           type="button" @click="${e => {
         this._submitFeedback();
-        this.toggle();
-        this._openConfirmationModal = !this._openConfirmationModal;
+        this._setModalState(false, false,false, !this._openConfirmationModal);
       }}">Submit</button>
         <button id="submit-feedback" class="pf-c-button pf-m-block ${this._experience.length !== 0 ? 'pf-u-display-none-on-sm' : ''}"
           type="button" disabled>Submit</button>
       </form>
     </dialog>
-
+    
     <!-- Confirmation Modal -->
-    <dialog id="confirmation-dialog" class="op-feedback__panel" .open="${this._openConfirmationModal}">
+    <dialog id="confirmation-dialog" class="op-feedback__panel pf-u-mr-0" .open="${this._openConfirmationModal}">
       <h2 class="pf-u-text-align-center">${this.template.confirmationTitle}</h2>
       <p class="op-feedback__subtitle pf-u-text-align-center pf-u-font-size-xs pf-u-pb-md">
         ${this.template.confirmationSubTitle}</p>
       <hr class="pf-c-divider" />
-      <a href="${this.url}" target="_blank">
-        <p class="pf-u-text-align-center pf-u-p-xs">View Feedback</p>
+      <a href="${this.spa}" target="_blank">
+        <p class="pf-u-text-align-center pf-u-p-xs">${this.template.spaRedirectTitle}</p>
       </a>
       <hr class="pf-c-divider" />
       <p class="op-feedback__subtitle pf-u-text-align-center pf-u-p-xs" @click="${e => this._openConfirmationModal = false}"
@@ -169,15 +221,58 @@ export class OpcFeedback extends LitElement {
       </p>
     </dialog>
     
+    <!-- Initial Modal -->
+    <dialog id="initial-dialog" class="op-feedback__panel pf-u-mr-0 pf-u-p-0" .open="${this._openInitialModal}">
+      <header class="op-feedback__header">
+        <h3 class="pf-u-font-weight-normal pf-u-font-size-md pf-u-m-0">${this.template.dialogTitle}</h3>
+      </header>
+      <main id="op-feedback__panel-body">
+      <ul class="op-feedback__options pf-u-m-0 pf-u-p-0">
+        <li>
+          <button type="button" autofocus="true" data-feedback-type="bug" class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex" @click="${e => {
+            this.toggle();
+            this._setModalState(false, false, true, false);
+          }}">
+            <ion-icon name="bug-outline" class="op-feedback__option-icon pf-m-text-align-left"></ion-icon>
+            ${this.template.bugReportTitle}
+          </button>
+        </li>
+        <li>
+          <button type="button" data-feedback-type="feedback" class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex" @click="${e => {
+            this.toggle();
+            this._setModalState(false, true, false, false);
+          }}">
+            <ion-icon name="chatbox-ellipses-outline" class="op-feedback__option-icon"></ion-icon>
+            ${this.template.feedbackReportTitle}
+          </button>
+        </li>
+        <li>
+          <a href="${this.docs}" data-feedback-type="feedback-list" class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex">
+            <ion-icon name="document-outline" class="op-feedback__option-icon"></ion-icon>
+            ${this.template.documentationTitle}
+            <ion-icon name="open-outline" class="op-feedback__icon-secondary pf-u-ml-xs"></ion-icon>
+          </a>
+        </li>
+        <li>
+          <a href="${this.spa}" data-feedback-type="feedback-list" class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex">
+            <ion-icon name="chatbubbles-outline" class="op-feedback__option-icon"></ion-icon>
+            ${this.template.spaRedirectTitle}
+            <ion-icon name="open-outline" class="op-feedback__icon-secondary pf-u-ml-xs"></ion-icon>
+          </a>
+        </li>
+      </ul>
+      </main>
+    </dialog>
+    
     <!-- Feedback Button -->
-    <button id="feedback-popup" type="button" class="op-feedback__button" @click="${e => {
+    <button id="feedback-popup" type="button" class="op-feedback__button pf-u-align-items-center pf-u-flex-direction-row pf-u-display-flex" @click="${e => {
         this.toggle();
-        this._openConfirmationModal = false;
+        this._setModalState(this._openInitialModal, false, this._openBugModal, false);
       }}">
       <ion-icon
-        name="${(this._openFeedbackModal || this._openConfirmationModal) ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
+        name="${(this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal) ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
         class="pf-u-font-size-xl pf-u-mr-xs"></ion-icon>
-      Feedback
+      ${this.template.feedbackFAB}
     </button>
     `;
   }
