@@ -9,13 +9,14 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-02-22 23:55:27
+ * Last modified  : 2021-02-23 07:55:32
  */
 
 import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
 import style from './opc-feedback.scss';
 import { repeat } from 'lit-html/directives/repeat.js';
-import { defaultTemplate,arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon, ellipsesIcon, chatboxEllipsesIcon } from './defaultTemplate';
+import { defaultTemplate } from './defaultTemplate';
+import { arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon } from './assets';
 @customElement('opc-feedback')
 export class OpcFeedback extends LitElement {
   @property({ type: String, attribute: 'spa' }) spa = "/feedback";
@@ -269,8 +270,9 @@ export class OpcFeedback extends LitElement {
         this.toggle();
         this._setModalState(this._openInitialModal, false, this._openBugModal, false);
       }}">
-      <img src="${(this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal) ? `${ellipsesIcon}`: `${chatboxEllipsesIcon}`}"
-        class="pf-u-font-size-xl pf-u-mr-xs" width="20px"/>
+      <ion-icon name="${(this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal) ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
+        class="pf-u-font-size-xl pf-u-mr-xs">
+      </ion-icon>
       ${this.template.feedbackFAB}
     </button>
     `;

@@ -7,7 +7,15 @@
 Feedback Component follows the One Platform design system and can be used as a popup to collect feedback from the end-users.
 
 ## Prerequisites
-The `opc-feedback` component is partially dependent on the Patternfly library for styles. So to avoid any missing styles, add the `patternfly.css` file before the component script tag.
+The `opc-feedback` component is partially dependent on the Patternfly library for styles. So to avoid any missing styles, add the `patternfly.css` file before the component script tag. `ion-icons` has used for rendering icons in the opc-feedback component this also should be included for displaying icons.
+
+```js
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly-addons.css" crossorigin="anonymous" />
+
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.0/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.2.3/ionicons/ionicons.js"></script>
+  ```
 
 ## Install
 
