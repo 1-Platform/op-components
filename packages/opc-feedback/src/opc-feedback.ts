@@ -9,7 +9,7 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-02-23 07:55:32
+ * Last modified  : 2021-02-23 22:27:14
  */
 
 import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
@@ -268,7 +268,7 @@ export class OpcFeedback extends LitElement {
     <!-- Feedback Button -->
     <button id="feedback-popup" type="button" class="op-feedback__button pf-u-align-items-center pf-u-flex-direction-row pf-u-display-flex" @click="${e => {
         this.toggle();
-        this._setModalState(this._openInitialModal, false, this._openBugModal, false);
+        this._setModalState(this._openInitialModal, false, false, false);
       }}">
       <ion-icon name="${(this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal) ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
         class="pf-u-font-size-xl pf-u-mr-xs">
