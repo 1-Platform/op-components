@@ -1,10 +1,14 @@
 import '../dist/opc-timeline';
+import readme from '../README.md';
 
 export default {
     title: 'Timeline',
     argTypes: {
       backgroundColor: { control: 'color' },
     },
+    parameters: {
+        notes: { readme },
+    }
   };
 
 export const opcTimeline_compact = (args) => `
