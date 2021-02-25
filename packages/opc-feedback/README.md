@@ -7,15 +7,7 @@
 Feedback Component follows the One Platform design system and can be used as a popup to collect feedback from the end-users.
 
 ## Prerequisites
-The `opc-feedback` component is partially dependent on the Patternfly library for styles. So to avoid any missing styles, add the `patternfly.css` file before the component script tag. `ion-icons` has used for rendering icons in the opc-feedback component this also should be included for displaying icons.
-
-```js
-<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous" />
-<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly-addons.css" crossorigin="anonymous" />
-
-<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.0/ionicons/ionicons.esm.js"></script>
-<script nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.2.3/ionicons/ionicons.js"></script>
-  ```
+The `opc-feedback` component is partially dependent on the Patternfly library for styles. So to avoid any missing styles, add the `patternfly.css` file before the component script tag.
 
 ## Install
 
@@ -79,8 +71,7 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 ## Properties
 | Name   | value |
 |---------|------------------------------------------------------------------|
-| ```spa``` | ```String``` value is expected ```/feedback``` is the default fallback url for feedback spa |
-| ```docs``` | ```String``` value is expected ```/get-started``` is the default fallback url for docs |
+| ```url``` | ```String``` value is expected ```/feedback``` is the default fallback url. |
 | ```theme``` | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
 
 
@@ -88,47 +79,42 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 When ```opc-feedback``` is launched it is loaded with the following the default template in ui.
 ```js
 {
-  feedbackFAB: 'Send Feedback',
-  dialogTitle: 'Share your thoughts with us',
-  bugReportTitle: 'Report Bug',
-  feedbackReportTitle: 'Send Feedback',
-  documentationTitle: 'Documentation',
-  spaRedirectTitle: 'View Feedback',
-  errorTitle: 'What is wrong?',
-  bugSubmissionNote: 'Note: By submitting a bug it will open an issue in jira',
-  feedbackTitle: 'How was your overall experience?',
-  feedbackSubtitle: 'It will help us to improve platform',
+  title: 'How was your overall experience?.',
+  subtitle: 'It will help us to improve platform',
   summary: 'Summary',
-  summaryPlaceholder: 'How can we do better?',
+  summaryPlaceholder: 'How can we do better?.',
+  errorTitle: 'What is wrong?',
   confirmationTitle: 'Thanks for your feedback. Your experience is important to us!',
   confirmationSubTitle: 'Each time a friend submits a experience, it creates a task for our developer team to resolve it with priority.',
-  confirmationEventMessage: 'Submitted the feedback',
+  confirmationEventMessage: 'Submitted the feedback.',
   experienceList: [{
     name: 'Excellent',
     assetUrl: './assets/happy.svg',
+    errorList: []
   },
   {
     name: 'Good',
     assetUrl: './assets/good.svg',
+    errorList: []
   },
   {
-    name: 'Needs Improvement',
-    assetUrl: './assets/improvement.svg'
-  }],
-  errorList: [{
-    name: 'Slow Loading'
-  },
-  {
-    name: 'Not Responsive'
-  },
-  {
-    name: 'Navigation'
-  },
-  {
-    name: 'UI Issues'
-  },
-  {
-    name: 'Other'
+    name: 'Sad',
+    assetUrl: './assets/sad.svg',
+    errorList: [{
+      name: 'Slow Loading'
+    },
+    {
+      name: 'App Crashed'
+    },
+    {
+      name: 'Navigation'
+    },
+    {
+      name: 'Not Responsive'
+    },
+    {
+      name: 'Other'
+    }]
   }]
 }
 ```
@@ -139,28 +125,21 @@ We can override the data with the default template with custom template by passi
 * Use the feedbackTemplate setter function to set the template ui.
 ```js
 document.querySelector('opc-feedback').feedbackTemplate = {
-  feedbackFAB: "Share Feedback"
+  title: "Custom title?."
 };
 ```
 
 | Template Properties   | Datatype |
 |---------|------------------------------------------------------------------|
-| feedbackFAB | ```String``` |
-| dialogTitle | ```String``` |
-| bugReportTitle | ```String``` |
-| feedbackReportTitle | ```String``` |
-| documentationTitle | ```String``` |
-| spaRedirectTitle | ```String``` |
-| errorTitle | ```String``` |
-| bugSubmissionNote | ```String``` |
-| feedbackTitle | ```String``` |
-| feedbackSubtitle | ```String``` |
+| title | ```String``` |
+| subtitle | ```String``` |
 | summary | ```String``` |
 | summaryPlaceholder | ```String``` |
+| errorTitle | ```String``` |
 | confirmationTitle | ```String``` |
 | confirmationSubtitle | ```String``` |
 | experienceList | ```Array``` |
-| errorList | ```Array``` |
+| experienceList.errorList | ```Array``` |
 
 ## Event Handling
 ### Trigger the modal outside the component.

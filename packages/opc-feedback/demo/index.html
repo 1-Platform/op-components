@@ -24,8 +24,7 @@
     <p><code>opc-feedback</code> component enables to collect the feedback from the user.</p>
     <h2>Supported Params</h2>
     <ol>
-      <li><code>spa</code> - URL of your hosted feedback spa. By default <code>/feedback</code> is the url.</li>
-      <li><code>docs</code> - URL of documentation. By default <code>/get-started</code> is the url.</li>
+      <li><code>url</code> - URL of your hosted feedback spa. By default <code>/feedback</code> is the url.</li>
       <li><code>template</code> - UI Template data input
         <div class="pf-c-code-editor pf-m-read-only pf-u-w-50">
           <div class="pf-c-code-editor__header">
@@ -40,50 +39,23 @@
           </div>
           <div class="pf-c-code-editor__main">
             <div class="pf-c-code-editor__code">
-              <pre class="pf-c-code-editor__code-pre">{
-                feedbackFAB: 'Send Feedback',
-                dialogTitle: 'Share your thoughts with us',
-                bugReportTitle: 'Report Bug',
-                feedbackReportTitle: 'Share Feedback',
-                documentationTitle: 'Documentation',
-                spaRedirectTitle: 'View Feedback',
-                errorTitle: 'What is wrong?',
-                bugSubmissionNote: 'Note: By submitting a bug it will open an issue in jira',
-                feedbackTitle: 'How was your overall experience?',
-                feedbackSubtitle: 'It will help us to improve platform',
-                summary: 'Summary',
-                summaryPlaceholder: 'How can we do better?',
-                confirmationTitle: 'Thanks for your feedback. Your experience is important to us!',
-                confirmationSubTitle: 'Each time a friend submits a experience, it creates a task for our developer team to resolve it with priority.',
-                confirmationEventMessage: 'Submitted the feedback',
-                experienceList: [{
-                  name: 'Excellent',
-                  assetUrl: excellentIcon
-                },
-                {
-                  name: 'Good',
-                  assetUrl: goodIcon
-                },
-                {
-                  name: 'Needs Improvement',
-                  assetUrl: needsImprovementIcon
-                }],
-                errorList: [{
-                  name: 'Slow Loading'
-                },
-                {
-                  name: 'Not Responsive'
-                },
-                {
-                  name: 'Navigation'
-                },
-                {
-                  name: 'UI Issues'
-                },
-                {
-                  name: 'Other'
-                }]
-              }</pre>
+              <pre class="pf-c-code-editor__code-pre">document.getElementById('opc-feedback').template = {
+                      "title": "How was your experience?.",
+                      "subTitle": "It will help us to improve platform",
+                      "summaryTitle": "Summary",
+                      "summaryPlaceholder": "How can we do better?",
+                      "errorTitle": "What is wrong?",
+                      "experienceList": [{
+                        "name": "Excellent",
+                        "assetUrl": "./assets/happy.svg",
+                        "errorList": []
+                      },
+                      {
+                        "name": "Good",
+                        "assetUrl": "./assets/good.svg",
+                        "errorList": []
+                      }]
+                    };</pre>
             </div>
           </div>
         </div>
@@ -93,51 +65,23 @@
             <th>Datatype</th>
           </tr>
           <tr>
-            <td>feedbackFAB</td>
+            <td>title</td>
             <td><code>String</code></td>
           </tr>
           <tr>
-            <td>dialogTitle</td>
+            <td>subTitle</td>
             <td><code>String</code></td>
           </tr>
           <tr>
-            <td>bugReportTitle</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>feedbackReportTitle</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>documentationTitle</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>spaRedirectTitle</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>errorTitle</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>bugSubmissionNote</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>feedbackTitle</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>feedbackSubtitle</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>summary</td>
+            <td>summaryTitle</td>
             <td><code>String</code></td>
           </tr>
           <tr>
             <td>summaryPlaceholder</td>
+            <td><code>String</code></td>
+          </tr>
+          <tr>
+            <td>errorTitle</td>
             <td><code>String</code></td>
           </tr>
           <tr>
@@ -149,16 +93,8 @@
             <td><code>String</code></td>
           </tr>
           <tr>
-            <td>confirmationEventMessage</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
             <td>experienceList</td>
-            <td><code>String</code></td>
-          </tr>
-          <tr>
-            <td>errorList</td>
-            <td><code>String</code></td>
+            <td><code>Array</code></td>
           </tr>
         </table>
       </li>
@@ -220,7 +156,7 @@
         <div class="pf-c-code-editor__main">
           <div class="pf-c-code-editor__code">
             <pre class="pf-c-code-editor__code-pre">document.querySelector('opc-feedback').addEventListener('opc-feedback:submit', (event) => console.log(event.detail.data));
-            </pre>
+                    </pre>
           </div>
         </div>
       </div>

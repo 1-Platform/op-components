@@ -9,25 +9,17 @@ type ErrorList = {
 type ExperienceList = {
   name: string;
   assetUrl: string;
+  errorList: ErrorList[];
 }
 
 type TemplateView = {
-  feedbackFAB: string;
-  dialogTitle: string;
-  bugReportTitle: string;
-  feedbackReportTitle: string;
-  documentationTitle: string;
-  spaRedirectTitle: string;
-  errorTitle: string;
-  bugSubmissionNote: string;
-  feedbackTitle: string;
-  feedbackSubtitle: string;
+  title: string;
   subtitle: string;
   summary: string;
   summaryPlaceholder: string;
   confirmationEventMessage: string;
+  errorTitle: string;
   confirmationTitle: string;
   confirmationSubTitle: string;
   experienceList: ExperienceList[];
-  errorList: ErrorList[];
 }
