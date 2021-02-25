@@ -1,4 +1,5 @@
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { defaultTemplate } from '../src/defaultTemplate';
 import { OpcFeedback } from '../src/opc-feedback';
 
 expect.extend(toHaveNoViolations);
@@ -31,17 +32,21 @@ describe('opc-feedback', () => {
   });
 
   // Add more tests here
-  it('does have default url by default', async () => {
-    expect(opcFeedbackPanelElement.url).toEqual('/feedback');
+  it('does have default spa by default', async () => {
+    expect(opcFeedbackPanelElement.spa).toEqual('/feedback');
   });
 
-  it('can initiate url for spa', async () => {
-    opcFeedbackPanelElement.url = 'https://example.com';
+  it('can initiate spa for spa url', async () => {
+    opcFeedbackPanelElement.spa = 'https://example.com';
     await opcFeedbackPanelElement.updateComplete;
-    expect(opcFeedbackPanelElement.url).toEqual('https://example.com');
+    expect(opcFeedbackPanelElement.spa).toEqual('https://example.com');
   });
 
   it('feedback modal is closed by default', async () => {
     expect(opcFeedbackPanelElement._openFeedbackModal).toBeFalsy;
+  });
+
+  it('does have default template by default', async () => {
+    expect(opcFeedbackPanelElement.template).toEqual(defaultTemplate);
   });
 });
