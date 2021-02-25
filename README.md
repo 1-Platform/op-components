@@ -36,6 +36,10 @@ npm run build
 npm run test
 ```
 
+### To publish packages to npmjs refer the following links.
+- https://docs.npmjs.com/creating-and-publishing-scoped-public-packages
+- https://docs.npmjs.com/cli/v6/commands/npm-publish
+
 ## Create a new component
 
 ### Install packages
