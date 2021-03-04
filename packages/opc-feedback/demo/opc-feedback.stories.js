@@ -2,7 +2,7 @@ import '../dist/opc-feedback';
 import readme from '../README.md';
 
 export default {
-    title: 'Back-To-Top',
+    title: 'Feedback',
     parameters: {
         notes: { readme },
     }
