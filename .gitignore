@@ -23,3 +23,9 @@ node_modules
 /_site/
 /dist/
 packages/*/dist
+
+# Storybook build folder 
+/storybook-static
+
+# Ignore .tgz files
+*.tgz
