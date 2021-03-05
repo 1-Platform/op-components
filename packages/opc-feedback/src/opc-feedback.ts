@@ -9,7 +9,7 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-02-23 22:27:14
+ * Last modified  : 2021-03-04 21:38:14
  */
 
 import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
@@ -83,11 +83,12 @@ export class OpcFeedback extends LitElement {
         message: this.template.confirmationEventMessage,
         data: {
           summary: this._summary,
-          experience: this._experience,
+          experience: (this._experience) ? this._experience : null,
+          error: (this._error) ? this._error : null,
+          category: (this._error) ? 'BUG' : 'FEEDBACK',
           stackInfo: {
             "stack": navigator.appVersion,
             "path": window.location.pathname,
-            "error": (this._error) ? `${this._error}` : ''
           }
         }
       }
