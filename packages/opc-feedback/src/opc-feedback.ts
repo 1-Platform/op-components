@@ -35,6 +35,7 @@ export class OpcFeedback extends LitElement {
   @internalProperty() _experience = '';
   @internalProperty()
   _error = '';
+  _path = window.location.pathname;
 
   @query('textarea') textarea: HTMLTextAreaElement;
 
@@ -88,7 +89,8 @@ export class OpcFeedback extends LitElement {
           category: (this._error) ? 'BUG' : 'FEEDBACK',
           stackInfo: {
             "stack": navigator.appVersion,
-            "path": window.location.pathname,
+            "path": ((this._path.length !== 1) && (this._path.substr(this._path.length-1, 1) === '/') || (this._path.substr(this._path.length-1, 1) === '#')) ? this._path.slice(0, -1) : this._path
+            ,
           }
         }
       }
