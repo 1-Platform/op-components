@@ -89,6 +89,7 @@ export class OpcFeedback extends LitElement {
           category: (this._error) ? 'BUG' : 'FEEDBACK',
           stackInfo: {
             "stack": navigator.appVersion,
+            // Includes the url of the page and removes the last chracter of url ending with / and #
             "path": ((this._path.length !== 1) && (this._path.substr(this._path.length-1, 1) === '/') || (this._path.substr(this._path.length-1, 1) === '#')) ? this._path.slice(0, -1) : this._path
           }
         }
