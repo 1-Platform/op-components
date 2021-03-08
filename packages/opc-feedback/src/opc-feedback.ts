@@ -90,7 +90,6 @@ export class OpcFeedback extends LitElement {
           stackInfo: {
             "stack": navigator.appVersion,
             "path": ((this._path.length !== 1) && (this._path.substr(this._path.length-1, 1) === '/') || (this._path.substr(this._path.length-1, 1) === '#')) ? this._path.slice(0, -1) : this._path
-            ,
           }
         }
       }
