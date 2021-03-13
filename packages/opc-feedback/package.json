@@ -31,7 +31,7 @@
     "css-loader": "5.1.1",
     "electron": "11.3.0",
     "extract-loader": "5.1.0",
-    "html-loader": "2.1.1",
+    "html-loader": "2.1.2",
     "html-webpack-plugin": "4.5.2",
     "jest": "26.6.3",
     "jest-axe": "4.1.0",
