@@ -157,13 +157,13 @@ export class OpcFeedback extends LitElement {
           required></textarea>
           <p class="op-feedback__subtitle pf-u-font-size-xs">
           ${this.template.bugSubmissionNote}</p>
-        <button class="pf-c-button pf-m-block ${this._error.length === 0 ? 'pf-u-display-none-on-sm' : ''}"
+        <button class="pf-c-button pf-m-block ${(this._error.length && this._summary.length) === 0 ? 'pf-u-display-none-on-sm' : ''}"
           type="button" @click="${e => {
         this._submitFeedback();
         this._setModalState(false, false, false, !this._openConfirmationModal);
 
       }}">Submit</button>
-        <button id="submit-bug" class="pf-c-button pf-m-block ${this._error.length !== 0 ? 'pf-u-display-none-on-sm' : ''}"
+        <button id="submit-bug" class="pf-c-button pf-m-block ${(this._error.length && this._summary.length) !== 0 ? 'pf-u-display-none-on-sm' : ''}"
           type="button" disabled>Submit</button>
       </form>
     </dialog>
@@ -199,12 +199,12 @@ export class OpcFeedback extends LitElement {
           @input="${(e: HTMLElementEventMap | any) => this._summary = e.target.value}"
           placeholder=${this.template.summaryPlaceholder} class="pf-c-form-control pf-m-resize-vertical"
           required></textarea>
-        <button class="pf-c-button pf-m-block ${this._experience.length === 0 ? 'pf-u-display-none-on-sm' : ''}"
+        <button class="pf-c-button pf-m-block ${(this._experience.length && this._summary.length) === 0 ? 'pf-u-display-none-on-sm' : ''}"
           type="button" @click="${e => {
         this._submitFeedback();
         this._setModalState(false, false,false, !this._openConfirmationModal);
       }}">Submit</button>
-        <button id="submit-feedback" class="pf-c-button pf-m-block ${this._experience.length !== 0 ? 'pf-u-display-none-on-sm' : ''}"
+        <button id="submit-feedback" class="pf-c-button pf-m-block ${(this._experience.length && this._summary.length) !== 0 ? 'pf-u-display-none-on-sm' : ''}"
           type="button" disabled>Submit</button>
       </form>
     </dialog>

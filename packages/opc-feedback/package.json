@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-feedback",
-  "version": "0.0.6-prerelease",
+  "version": "0.0.7-prerelease",
   "description": "opc-feedback component follows the One Platform design system and can be used as a popup to collect feedback from the end-users.",
   "scripts": {
     "dev": "webpack serve",
