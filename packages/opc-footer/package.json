@@ -30,7 +30,7 @@
     "jest-electron": "0.1.11",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "lit-scss-loader": "1.0.1",
-    "node-sass": "5.0.0",
+    "node-sass": "6.0.0",
     "sass-loader": "11.0.1",
     "save-dev": "0.0.1-security",
     "webpack-cli": "4.6.0",
