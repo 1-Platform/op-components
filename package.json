@@ -36,6 +36,6 @@
   "license": "MIT",
   "dependencies": {
     "@storybook/addon-notes": "5.3.21",
-    "lit-element": "2.4.0"
+    "lit-element": "2.5.1"
   }
 }
