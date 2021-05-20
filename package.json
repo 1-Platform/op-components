@@ -8,7 +8,7 @@
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "@babel/core": "7.14.0",
+    "@babel/core": "7.14.3",
     "@storybook/addon-actions": "6.2.9",
     "@storybook/addon-controls": "6.2.9",
     "@storybook/addon-essentials": "6.2.9",
@@ -20,7 +20,7 @@
     "eslint": "7.26.0",
     "lerna": "4.0.0",
     "lit-html": "1.4.1",
-    "webpack": "5.24.3",
+    "webpack": "5.37.1",
     "webpack-cli": "4.7.0",
     "yeoman-generator": "4.12.0",
     "yo": "4.1.0",
