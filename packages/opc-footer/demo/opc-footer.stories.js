@@ -1,7 +1,11 @@
 import '../dist/opc-footer';
+import readme from '../README.md';
 
 export default {
     title: 'Footer',
+    parameters: {
+      notes: { readme },
+    },
     argTypes: {
         color: {
             control: 'color',

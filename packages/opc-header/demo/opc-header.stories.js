@@ -1,7 +1,11 @@
 import '../dist/opc-header';
+import readme from '../README.md';
 
 export default {
     title: 'Header',
+    parameters: {
+      notes: { readme },
+    },
     argsTypes: {
       breadcrumbs: [{"name":"Home", "href":"#"},{"name":"Outages", "href":"#"}],
       links: [{"name":"Video Guide", "href":"#", "icon":"fa-play-circle"},{"name":"FAQs", "href":"#", "icon":"fa-question-circle"},{"name":"Documentation", "href":"#", "icon":"fa-file"}],

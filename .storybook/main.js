@@ -9,6 +9,5 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-controls",
-    "@storybook/addon-notes/register",
   ],
 };

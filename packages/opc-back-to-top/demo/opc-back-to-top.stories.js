@@ -8,6 +8,6 @@ export default {
     }
   };
 
-export const opcTimeline_compact = (args) => `
+export const opcBackToTop = (args) => `
     <opc-back-to-top></opc-back-to-top>
 `;
