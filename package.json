@@ -23,7 +23,7 @@
     "webpack": "5.37.1",
     "webpack-cli": "4.7.0",
     "yeoman-generator": "4.12.0",
-    "yo": "4.1.0",
+    "yo": "4.2.0",
     "yosay": "2.0.2"
   },
   "bugs": {
