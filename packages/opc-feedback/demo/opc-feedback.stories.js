@@ -8,6 +8,6 @@ export default {
     }
   };
 
-export const opcTimeline_compact = (args) => `
+export const opcFeedback = (args) => `
     <opc-feedback></opc-feedback>
 `;

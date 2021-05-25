@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.14.3",
+    "@babel/plugin-proposal-private-property-in-object": "^7.14.0",
     "@storybook/addon-actions": "6.2.9",
     "@storybook/addon-controls": "6.2.9",
     "@storybook/addon-essentials": "6.2.9",
@@ -20,7 +21,7 @@
     "eslint": "7.27.0",
     "lerna": "4.0.0",
     "lit-html": "1.4.1",
-    "webpack": "5.37.1",
+    "webpack": "4.24.0",
     "webpack-cli": "4.7.0",
     "yeoman-generator": "4.12.0",
     "yo": "4.2.0",
@@ -36,6 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "@storybook/addon-notes": "5.3.21",
-    "lit-element": "2.5.1"
+    "lit-element": "2.5.1",
+    "storybook-readme": "^5.0.9"
   }
 }
