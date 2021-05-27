@@ -1,0 +1,40 @@
+@import '@one-platform/opc-styles';
+
+:host {
+  display: block;
+}
+
+.comment {
+  &-empty-state {
+    text-align: center;
+    padding: $opc-global--spacer--md;
+    margin-top: $opc-global--spacer--md;
+    border-radius: $opc-global--spacer--sm;
+    background: $opc-color--black-150;
+  }
+
+  &-item {
+    display: flex;
+    margin-bottom: $opc-global--spacer--xl;
+  }
+}
+
+.user {
+  &-avatar {
+    display: block;
+    width: 36px;
+    flex: 1 0 36px;
+    height: 36px;
+    margin-right: $opc-global--spacer--md;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='36' height='36' viewBox='0 0 36 36'%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Ccircle cx='18' cy='18' r='18' fill='%23fff'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23a)'%3E%3Cg transform='translate(5.14 6.68)'%3E%3Cg transform='translate(0 0)'%3E%3Cpath d='M22.6,18.1a7.454,7.454,0,0,0-3.5-2.6c-1.2-.4-1.8-.6-6.3-.6s-6.1.7-6.1.7h0a6.8,6.8,0,0,0-3.4,2.6C1,21,.1,30.5.1,33c0,3.2.4,12.3.6,15.4,0,0-.4,5.5,4,5.5l-.3-6.3L4,44.1l.2-.9c.9.4,3.6,1.2,8.6,1.2,5.3,0,8-.9,8.8-1.3l.2,1-.2,3.6L21.3,54c3,.1,3.7-3,3.8-4.4s.6-12.6.6-16.5c.1-2.6-.8-12.1-3.1-15Z' transform='translate(-0.1 -0.3)' fill='%23bbb' fill-rule='evenodd'/%3E%3Cpath d='M22.5,26c-.1-2.1-1.5-2.8-4.8-2.8l2.2,9.6s1.8-1.7,3-1.8c0,0-.4-4.6-.4-5Z' transform='translate(-0.1 -0.3)' fill-rule='evenodd' opacity='0.1'/%3E%3Cpath d='M12.7,13.2A6.445,6.445,0,0,1,6.3,6.8a6.4,6.4,0,0,1,12.8,0,6.38,6.38,0,0,1-6.4,6.4Z' transform='translate(-0.1 -0.3)' fill='%23bbb' fill-rule='evenodd'/%3E%3Cpath d='M9.4,6.8A6.631,6.631,0,0,1,14.3.5,7.772,7.772,0,0,0,12.7.3,6.445,6.445,0,0,0,6.3,6.7a6.445,6.445,0,0,0,6.4,6.4,7.772,7.772,0,0,0,1.6-.2A6.227,6.227,0,0,1,9.4,6.8Z' transform='translate(-0.1 -0.3)' fill='%23231f20' fill-rule='evenodd' opacity='0.08'/%3E%3Cpath d='M8.3,22.4a3.408,3.408,0,0,0-3.1,3.5L4.6,44.5a14.756,14.756,0,0,0,3.6.9l.1-23Z' transform='translate(-0.1 -0.3)' fill-rule='evenodd' opacity='0.1'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &-name {
+    font-weight: $opc-global--fontWeight--normal;
+    margin-bottom: 0;
+
+    small {
+      font-weight: $opc-global--fontWeight--light;
+    }
+  }
+}

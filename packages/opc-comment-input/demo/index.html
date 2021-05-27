@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opc-comment-input</title>
+    <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+    <script src="opc-comment-input.js"></script>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      h1 {
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .card {
+        max-width: 800px;
+        margin: 2rem auto;
+        min-height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card-body {
+        width: 100%
+      }
+    </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <h1>Default: with Light(Default) theme</h1>
+      <opc-comment-input id="my-comment-input">
+      </opc-comment-input>
+      <opc-comment-list id="my-comment-list"></opc-comment-list>
+    </div>
+  </div>
+</body>
+<script>
+  const myCommentInput = document.querySelector('#my-comment-input');
+  myCommentInput.addEventListener('opc-comment-button:click', e => {
+    console.log(e);
+  });
+
+  const demoComments = [
+    {
+      commenter: 'Dave Brown',
+      date: 'Friday, May 29, 2020 at 10:59 AM',
+      comment: 'Uneasy barton seeing remark happen his has. Am possible offering at contempt mr distance stronger an. Attachment excellence announcing or reasonable am on if indulgence.' },
+    {
+      commenter: 'Liam Webb',
+      date: 'Friday, May 29, 2020 at 10:59 AM',
+      comment: ' Exeter talked in agreed spirit no he unable do. Betrayed shutters in vicinity it unpacked in. In so impossible appearance considered mr. Mrs him left find are good.' },
+    {
+      commenter: 'Morris Lee',
+      date: 'Friday, May 29, 2020 at 10:59 AM',
+      comment: 'Far concluded not his something extremity. Want four we face an he gate. On he of played he ladies answer little though nature.' },
+  ];
+
+  const myCommentList = document.querySelector('#my-comment-list');
+  myCommentList.comments = demoComments;
+</script>
+</html>
