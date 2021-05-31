@@ -8,6 +8,6 @@ jobs:
     steps:
       - name: Google Chat Notification
         if: ${{ github.event.pull_request.head.repo.full_name == '1-Platform/op-components' }}
-        uses: gautamkrishnar/google-chat-notification@master
+        uses: associate-run-projects/google-chat-notification@master
         with:
           url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
