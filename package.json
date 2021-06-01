@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.14.3",
-    "@babel/plugin-proposal-private-property-in-object": "^7.14.0",
+    "@babel/plugin-proposal-private-property-in-object": "7.14.0",
     "@storybook/addon-actions": "6.2.9",
     "@storybook/addon-controls": "6.2.9",
     "@storybook/addon-essentials": "6.2.9",
@@ -38,6 +38,6 @@
   "dependencies": {
     "@storybook/addon-notes": "5.3.21",
     "lit-element": "2.5.1",
-    "storybook-readme": "^5.0.9"
+    "storybook-readme": "5.0.9"
   }
 }
