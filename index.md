@@ -1,37 +1,77 @@
-## Welcome to GitHub Pages
+# Welcome to One Platform Components Library 👋
 
-You can use the [editor on GitHub](https://github.com/1-Platform/op-components/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/1-Platform/op-components#readme)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/1-Platform/op-components/graphs/commit-activity)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/1-Platform/op-components.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/1-Platform/op-components/alerts/)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+One platform component library.
 
-### Markdown
+## Install dependencies
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```sh
+npm install
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Usage
 
-### Jekyll Themes
+### Development server
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/1-Platform/op-components/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- Run a single component
 
-### Support or Contact
+```sh
+npm run dev <component-name>
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- Build a single component
+
+```sh
+npm run build <component-name>
+```
+
+## Run tests
+
+```sh
+npm run build
+npm run test
+```
+
+### To publish packages to npmjs refer the following links.
+- https://docs.npmjs.com/creating-and-publishing-scoped-public-packages
+- https://docs.npmjs.com/cli/v6/commands/npm-publish
+
+## Create a new component
+
+### Install packages
+
+```bash
+npm install
+```
+
+### Create new component
+
+```bash
+npm run new
+```
+
+#### This would run the generator and add the component to packages folder
+
+#### Run your component
+
+```bash
+npm run dev <component-name>
+```
+
+## 🤝 Contributors
+
+👤 **Ghanshyam Lohar** [@ghanlohar](https://github.com/ghanlohar)
+
+👤 **Diwanshi Gadgil** [@diwanshi](https://github.com/diwanshi)
+
+👤 **Anjnee K. Sharma** [@anjneeksharma](https://github.com/anjneeksharma)
+
+👤 **Sumeet Ingole** [@gisumit](https://github.com/gisumit)
+
+👤 **Deepesh Nair** [@hybridx](https://github.com/hybridx)
+
+👤 **Rigin Oommen** [@riginoommen](https://github.com/riginoommen)
