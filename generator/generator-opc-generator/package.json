@@ -24,7 +24,7 @@
     "yeoman-assert": "3.1.1",
     "coveralls": "3.1.0",
     "eslint": "7.27.0",
-    "prettier": "2.3.0",
+    "prettier": "2.3.2",
     "eslint-config-prettier": "8.3.0",
     "lint-staged": "11.0.0",
     "eslint-plugin-prettier": "3.4.0",
