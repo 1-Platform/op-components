@@ -9,27 +9,28 @@ module.exports = {
         port: 4200,
         open: true,
     },
-    entry: `${path.join(__dirname, 'src/opc-input-chip')}`,
+    entry: `${path.join(__dirname, 'src/opc-input-chip.ts')}`,
     devtool: 'inline-source-map',
     optimization : {
         usedExports: true
     },
     module: {
         rules: [
-        {
-            test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/,
-        },
-        {
-            test: /\.css|\.s(c|a)ss$/,
-            use: [{
-              loader: 'lit-scss-loader',
-              options: {
-                minify: true, // defaults to false
-              },
-            }, 'extract-loader', 'css-loader', 'sass-loader'],
-        },
+            {
+                test: /\.css|\.s(c|a)ss$/,
+                use: [{
+                  loader: 'lit-scss-loader',
+                  options: {
+                    // defaultSkip: true,
+                    minify: true
+                  },
+                }, 'extract-loader', 'css-loader', 'sass-loader'],
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ],
     },
     plugins: [
@@ -40,7 +41,7 @@ module.exports = {
         }),
     ],
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ],
+        extensions: [ '.tsx', '.ts', '.js',],
     },
     output: {
         filename: 'opc-input-chip.js',

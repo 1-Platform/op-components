@@ -1,6 +1,5 @@
-import { LitElement, html, property, customElement } from 'lit-element';
-import { nothing } from 'lit-html';
-import style  from './opc-input-chip.scss';
+import { LitElement, html, property, customElement} from 'lit-element';
+import style from './opc-input-chip.scss';
 
 @customElement('opc-input-chip')
 export class OpcInputChip extends LitElement {
@@ -23,7 +22,7 @@ export class OpcInputChip extends LitElement {
           <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
         </svg>
       `
-      : nothing;
+      : '';
   }
 
   handleKeyDownRemove(e, index) {
@@ -76,7 +75,7 @@ export class OpcInputChip extends LitElement {
                   ${this.getRemoveChipIcon(chip, index)}
                 </div>
             `)
-          : nothing
+          : ''
         }
         <input class="opc-input" type="text" placeholder="${this.placeholder}"
           aria-label="Enter chip name" @keydown="${ e => this.addNewChip(e)}">
