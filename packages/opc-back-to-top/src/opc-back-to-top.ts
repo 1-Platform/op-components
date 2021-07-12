@@ -1,4 +1,5 @@
-import { LitElement, html, property, customElement } from 'lit-element';
+import { LitElement, html } from 'lit';
+import { property, customElement} from 'lit-element';
 import style from './opc-back-to-top.scss';
 
 @customElement('opc-back-to-top')
