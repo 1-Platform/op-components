@@ -1,5 +1,5 @@
-import { LitElement, html, property, customElement, query } from 'lit-element';
-import { state } from 'lit/decorators.js';
+import { LitElement, html, } from 'lit';
+import { state, property, customElement, query } from 'lit/decorators.js';
 import style  from './opc-comment-input.scss';
 
 @customElement('opc-comment-input')
