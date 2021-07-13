@@ -9,31 +9,31 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-03-04 21:38:14
+ * Last modified  : 2021-07-13 18:34:12
  */
-
-import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
+import { html, LitElement } from 'lit';
+import {customElement, property, state, query }  from 'lit/decorators.js';
 import style from './opc-feedback.scss';
-import { repeat } from 'lit-html/directives/repeat.js';
 import { defaultTemplate } from './defaultTemplate';
 import { arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon } from './assets';
+import dialogPolyfill from 'dialog-polyfill';
 @customElement('opc-feedback')
 export class OpcFeedback extends LitElement {
   @property({ type: String, attribute: 'spa' }) spa = "/feedback";
   @property({ type: String, attribute: 'docs' }) docs = "/get-started";
   @property({ reflect: true }) theme = "red";
   @property({ type: Object }) template = defaultTemplate;
-  @internalProperty()
+  @state()
   _openConfirmationModal = false;
-  @internalProperty()
+  @state()
   _openFeedbackModal = false;
-  @internalProperty()
+  @state()
   _openInitialModal = false;
-  @internalProperty()
+  @state()
   _openBugModal = false;
-  @internalProperty() protected _summary = '';
-  @internalProperty() _experience = '';
-  @internalProperty()
+  @state() protected _summary = '';
+  @state() _experience = '';
+  @state()
   _error = '';
   _path = window.location.pathname;
 
@@ -121,6 +121,13 @@ export class OpcFeedback extends LitElement {
     return this.template;
   }
 
+  updated() {
+    dialogPolyfill.registerDialog(this.shadowRoot.getElementById('initial-dialog') as any);
+    dialogPolyfill.registerDialog(this.shadowRoot.getElementById('bug-dialog') as any);
+    dialogPolyfill.registerDialog(this.shadowRoot.getElementById('feedback-dialog') as any);
+    dialogPolyfill.registerDialog(this.shadowRoot.getElementById('confirmation-dialog') as any);
+  }
+
   render() {
     this._updateTemplate();
     return html`
@@ -142,7 +149,7 @@ export class OpcFeedback extends LitElement {
             </h3>
           </header>
         </div>
-        ${repeat(this.template.errorList, (error) => html`
+        ${this.template.errorList.map((error:any) => html`
         <div
           class="pf-c-chip pf-m-draggable op-feedback__chip ${this._error === error.name ? 'op-feedback__chip__active' : ''}"
           @click="${e => this._setError(error.name)}" @keydown=${e => (e.key === 'Enter') ? this._setError(error.name) : ''}
@@ -183,7 +190,7 @@ export class OpcFeedback extends LitElement {
         </div>
         <p class="op-feedback__subtitle pf-u-text-align-center pf-u-font-size-sm pf-u-pt-md pf-u-pb-md">
           ${this.template.subtitle}</p>
-        ${repeat(this.template.experienceList, (experience) => html`
+        ${this.template.experienceList.map((experience:any) => html`
         <div
           class="pf-c-chip pf-m-draggable op-feedback__chip ${this._experience === experience.name ? 'op-feedback__chip__active' : ''}"
           @click="${e => this._setExperience(experience.name)}" @keydown=${e => (e.key === 'Enter') ?
