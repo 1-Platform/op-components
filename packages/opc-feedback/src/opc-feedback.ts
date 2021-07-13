@@ -9,9 +9,10 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-07-13 12:26:02
+ * Last modified  : 2021-07-13 18:34:12
  */
-import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
+import { html, LitElement } from 'lit';
+import {customElement, property, state, query }  from 'lit/decorators.js';
 import style from './opc-feedback.scss';
 import { defaultTemplate } from './defaultTemplate';
 import { arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon } from './assets';
@@ -22,17 +23,17 @@ export class OpcFeedback extends LitElement {
   @property({ type: String, attribute: 'docs' }) docs = "/get-started";
   @property({ reflect: true }) theme = "red";
   @property({ type: Object }) template = defaultTemplate;
-  @internalProperty()
+  @state()
   _openConfirmationModal = false;
-  @internalProperty()
+  @state()
   _openFeedbackModal = false;
-  @internalProperty()
+  @state()
   _openInitialModal = false;
-  @internalProperty()
+  @state()
   _openBugModal = false;
-  @internalProperty() protected _summary = '';
-  @internalProperty() _experience = '';
-  @internalProperty()
+  @state() protected _summary = '';
+  @state() _experience = '';
+  @state()
   _error = '';
   _path = window.location.pathname;
 
