@@ -9,11 +9,10 @@
  * @author Rigin Oommen
  *
  * Created at     : 2021-01-18 14:53:24 
- * Last modified  : 2021-03-04 21:38:14
+ * Last modified  : 2021-07-13 12:26:02
  */
 import { LitElement, html, property, customElement, internalProperty, query } from 'lit-element';
 import style from './opc-feedback.scss';
-import { repeat } from 'lit-html/directives/repeat.js';
 import { defaultTemplate } from './defaultTemplate';
 import { arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon } from './assets';
 import dialogPolyfill from 'dialog-polyfill';
@@ -149,7 +148,7 @@ export class OpcFeedback extends LitElement {
             </h3>
           </header>
         </div>
-        ${repeat(this.template.errorList, (error) => html`
+        ${this.template.errorList.map((error:any) => html`
         <div
           class="pf-c-chip pf-m-draggable op-feedback__chip ${this._error === error.name ? 'op-feedback__chip__active' : ''}"
           @click="${e => this._setError(error.name)}" @keydown=${e => (e.key === 'Enter') ? this._setError(error.name) : ''}
@@ -190,7 +189,7 @@ export class OpcFeedback extends LitElement {
         </div>
         <p class="op-feedback__subtitle pf-u-text-align-center pf-u-font-size-sm pf-u-pt-md pf-u-pb-md">
           ${this.template.subtitle}</p>
-        ${repeat(this.template.experienceList, (experience) => html`
+        ${this.template.experienceList.map((experience:any) => html`
         <div
           class="pf-c-chip pf-m-draggable op-feedback__chip ${this._experience === experience.name ? 'op-feedback__chip__active' : ''}"
           @click="${e => this._setExperience(experience.name)}" @keydown=${e => (e.key === 'Enter') ?
