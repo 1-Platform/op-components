@@ -1,4 +1,5 @@
-import { LitElement, html, property, customElement, query, internalProperty } from 'lit-element';
+import { LitElement, html, property, customElement, query } from 'lit-element';
+import { state } from 'lit/decorators.js';
 import style  from './opc-comment-input.scss';
 
 @customElement('opc-comment-input')
@@ -6,7 +7,7 @@ export class CommentInput extends LitElement {
   @property({type: String})
   placeholder = 'Type your comment';
 
-  @internalProperty()
+  @state()
   protected commentText = '';
 
   @query('textarea')
