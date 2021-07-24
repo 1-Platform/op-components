@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-comment-input",
-  "version": "0.0.1-prerelease",
+  "version": "0.0.2-prerelease",
   "description": "A standardized web component based on Lit Element for Red Hat One Platform to use as a comment input component.",
   "scripts": {
     "dev": "webpack serve",
@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "@one-platform/opc-styles": "0.0.5",
-    "lit": "^2.0.0-rc.2",
-    "lit-element": "2.4.0"
+    "lit": "^2.0.0-rc.2"
   }
 }
