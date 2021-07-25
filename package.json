@@ -1,11 +1,15 @@
 {
   "scripts": {
     "lerna": "lerna",
+    "build:packages": "lerna run build",
+    "test:packages": "echo Running Tests && lerna run test",
+    "analyse:packages": "lerna run analyse",
     "dev": "bash scripts/dev.sh",
     "build": "bash scripts/build.sh",
     "new": "cd packages && yo ../generator/generator-opc-generator/generators/app/",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "postinstall": "lerna exec -- rm -rf ./node_modules && lerna bootstrap --no-ci --loglevel warn --concurrency 4"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
@@ -19,7 +23,7 @@
     "@storybook/web-components": "6.2.9",
     "babel-loader": "8.2.2",
     "eslint": "7.27.0",
-    "lerna": "4.0.0",
+    "lerna": "^4.0.0",
     "lit-html": "1.4.1",
     "webpack": "4.24.0",
     "webpack-cli": "4.7.0",
