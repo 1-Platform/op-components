@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>opc-menu-drawer</title>
     <script src="opc-menu-drawer.js"></script>
 </head>
+
 <body>
-    <opc-menu-drawer>
+    <button>Click to toggle drawer</button>
+    <opc-menu-drawer headerTitle="Akhil Mohan">
+        <span slot="avatar">
+            AM
+        </span>
+        <button slot="menu">
+            Log In
+        </button>
+        <button slot="menu">
+            Log Out
+        </button>
     </opc-menu-drawer>
+    <script>
+        const button = document.querySelector("button");
+        const drawer = document.querySelector("opc-menu-drawer");
+        const links = [
+            {
+                title: "BUILD in SERVICES",
+                links: [
+                    { name: "Blog", href: "#" },
+                    { name: "Documentation", href: "#" },
+                    { name: "Something #1", href: "#" },
+                    { name: "Something #2", href: "#" },
+                    { name: "Something #3", href: "#" },
+                    { name: "Something #4", href: "#" },
+                    { name: "Something #5", href: "#" },
+                    { name: "Something #6", href: "#" },
+                ]
+            },
+            {
+                title: "BUILD in SERVICES",
+                links: [
+                    { name: "blog", href: "#" },
+                    { name: "Documentation", href: "#" }
+                ]
+            },
+
+        ]
+        drawer.links = links;
+        button.addEventListener("click", () => {
+            const isDrawerOpen = drawer.getAttribute("isOpen");
+            drawer.isOpen = !isDrawerOpen;
+        })
+    </script>
 </body>
+
 </html>

@@ -1,11 +1,178 @@
-@import '@one-platform/opc-styles';
+@import "@one-platform/opc-styles";
 
 $LOCAL: opc-menu-drawer;
 
-$variables: ( 
-  //Add your variables here
-);
+dialog,
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+button,
+::slotted(button) {
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+hr {
+  border: 0.5px solid #ddd;
+  width: 100%;
+  margin: 10px 0 !important;
+}
+
+a {
+  text-decoration: none;
+  color: #1e1e1e;
+}
+
+img[inverse] {
+  transform: rotateZ(180deg);
+}
 
 :host {
-  // add root styles here
+  --opc-menu-drawer__backdrop-color: #00000060;
+  --opc-menu-drawer__btn-hover-color: #efefef;
+  --opc-menu-drawer__z-index: 9;
+  --opc-menu-drawer__width: 260px;
+  --opc-menu-drawer__top: 0px;
+  --opc-menu-drawer__right: 0px;
+  --opc-menu-drawer__menu-padding: 8px 21px;
+  --opc-menu-drawer__link-group-title-color: #6a6e73;
+  --opc-menu-drawer__transition--default: 120ms ease-in-out;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.angle-icon {
+  margin-left: 0.25rem;
+}
+
+.opc-menu-drawer {
+  &-container {
+    position: fixed;
+    z-index: var(--opc-menu-drawer__z-index, 9);
+    inset: 0px;
+    font-family: var(--opc-global--Font-Family, "Red Hat Text");
+    transition: var(--opc-menu-drawer__transition--default);
+    visibility: visible;
+  }
+
+  &-container[isHidden] {
+    visibility: hidden;
+  }
+
+  &-backdrop {
+    z-index: -1;
+    position: fixed;
+    inset: 0px;
+    background-color: var(--opc-menu-drawer__backdrop-color, #00000060);
+  }
+}
+
+.opc-menu-drawer {
+  top: var(--opc-menu-drawer__top, 0);
+  left: auto;
+  right: var(--opc-menu-drawer__right, 0);
+  height: calc(100vh - var(--opc-menu-drawer__top, 0));
+  width: var(--opc-menu-drawer__width, 260px);
+  transition: var(--opc-menu-drawer__transition--default);
+  transform: translateX(100%);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &[open] {
+    transition-delay: 0.2s;
+    transform: translateX(0);
+  }
+
+  &-menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 14px 21px;
+
+    &-title {
+      font-family: var(--opc-global--Heading--font-Family, "Red Hat Display");
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  &-menu-btn {
+    display: flex;
+    flex-direction: column;
+    transition: height 150ms ease-in-out;
+    overflow: hidden;
+    height: 0;
+  }
+
+  &-menu-btn ::slotted(button),
+  &-link {
+    font-size: 16px;
+    font-family: var(--opc-global--Font-Family, "Red Hat Text");
+    padding: var(--opc-menu-drawer__menu-padding, 8px 21px);
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: left;
+  }
+
+  &-menu-btn ::slotted(button:hover),
+  &__header:hover,
+  &-link:hover {
+    background-color: var(--opc-menu-drawer__btn-hover-color);
+    cursor: pointer;
+  }
+
+  &-link-title {
+    color: var(--opc-menu-drawer__link-group-title-color, #6a6e73);
+    font-size: 12px;
+    padding: 4px 21px;
+    text-transform: uppercase;
+  }
+
+  &__header img {
+    margin-left: 0.5rem;
+  }
+
+  &-links-collapse {
+    &-box {
+      transition: height 150ms ease-in-out;
+      overflow: hidden;
+      height: 0;
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      padding: var(--opc-menu-drawer__menu-padding, 8px 21px);
+      text-transform: uppercase;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    &-button > * {
+      pointer-events: none;
+      filter: invert(44%) sepia(6%) saturate(413%) hue-rotate(173deg)
+        brightness(94%) contrast(84%);
+    }
+  }
+
+  &-body ::slotted(*) {
+    padding: var(--opc-menu-drawer__menu-padding, 8px 21px);
+  }
+
+  &-container footer {
+    padding: var(--opc-menu-drawer__menu-padding, 8px 21px);
+  }
 }

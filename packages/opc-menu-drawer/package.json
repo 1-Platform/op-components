@@ -1,10 +1,11 @@
 {
   "name": "@one-platform/opc-menu-drawer",
   "version": "0.0.1",
-  "description": "A simple web component built in javascript and lit",
+  "description": "opc-menu-drawer is a customizable drawer web component which shows the menu's and user profile",
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack --mode production",
+    "test": "npm run build && jest --verbose=true",
     "test:debug": "npm run build && DEBUG_MODE=1 jest --verbose=true"
   },
   "publishConfig": {
