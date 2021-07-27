@@ -9,7 +9,7 @@
     "new": "cd packages && yo ../generator/generator-opc-generator/generators/app/",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "postinstall": "lerna exec -- rm -rf ./node_modules && lerna bootstrap --no-ci --loglevel warn --concurrency 4"
+    "postinstall": "lerna exec -- rm -rf ./node_modules && lerna bootstrap --no-ci --loglevel warn --concurrency 1"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
