@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opc-nav</title>
+    <script src="opc-nav.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap");
+
+
+        .seperate {
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="seperate">
+        <h3>
+            Opc-Nav
+        </h3>
+        <opc-nav>
+            <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
+        </opc-nav>
+    </div>
+    <div class="seperate">
+        <h3>
+            Opc-Nav with hidden search and links
+        </h3>
+        <opc-nav isSearchHidden>
+            <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
+        </opc-nav>
+    </div>
+    <script>
+        const links = [
+            { name: "Blog", href: "#" },
+            { name: "Documentation", href: "#" }
+        ];
+        const opcNav = document.querySelector("opc-nav");
+        opcNav.links = links;
+        opcNav.addEventListener('opc-nav-btn-menu:click', function (event) {
+            alert("menu got clicked")
+        });
+        opcNav.addEventListener('opc-nav-btn-notification:click', function (event) {
+            alert("notification got clicked")
+        });
+    </script>
+</body>
+
+</html>
