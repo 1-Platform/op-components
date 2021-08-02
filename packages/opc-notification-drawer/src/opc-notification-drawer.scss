@@ -1,0 +1,160 @@
+@import '@one-platform/opc-styles';
+
+$LOCAL: opc-notification-drawer;
+
+dialog,
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #1e1e1e;
+}
+
+:host {
+  // add root styles here
+  --opc-notification-drawer__backdrop-color: #00000060;
+  --opc-notification-drawer__z-index: 9;
+  --opc-notification-drawer__width: 260px;
+  --opc-notification-drawer__top: 0px;
+  --opc-notification-drawer__right: 0px;
+  --opc-notification-drawer__transition--default: 120ms ease-in-out;
+  --opc-notification-item__variant--success: #f2faf2;
+  --opc-notification-item__variant--success-header: #1e4f18;
+  --opc-notification-item__variant--danger: #ee00001a;
+  --opc-notification-item__variant--danger-header: #ee0000;
+  --opc-notification-item__variant--info: #316dc11a;
+  --opc-notification-item__variant--info-header: #316dc1;
+  --opc-notification-item__variant--warn: #f9e0a2;
+  --opc-notification-item__variant--warn-header: #795600;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.opc-notification-drawer {
+  &-container {
+    position: fixed;
+    z-index: var(--opc-notification-drawer__z-index, 9);
+    inset: 0px;
+    font-family: var(--opc-global--Font-Family, 'Red Hat Text');
+    transition: var(--opc-notification-drawer__transition--default);
+    visibility: visible;
+  }
+
+  &-container[isHidden] {
+    visibility: hidden;
+  }
+
+  &-backdrop {
+    z-index: -1;
+    position: fixed;
+    inset: 0px;
+    background-color: var(--opc-notification-drawer__backdrop-color, #00000060);
+  }
+}
+
+.opc-notification-drawer {
+  top: var(--opc-notification-drawer__top, 0);
+  left: auto;
+  right: var(--opc-notification-drawer__right, 0);
+  height: calc(100vh - var(--opc-notification-drawer__top, 0));
+  width: var(--opc-notification-drawer__width, 260px);
+  transform: translateX(100%);
+  transition: var(--opc-notification-drawer__transition--default);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &[open] {
+    transition-delay: 0.2s;
+    width: var(--opc-notification-drawer__width, 260px);
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 0.5px solid $opc-color--black-300;
+
+    &-title {
+      font: 400 12px var(--opc-global--Heading--Font-Family, 'Red Hat Display');
+      color: $opc-color--black-600;
+      text-transform: uppercase;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 0.75rem;
+  }
+}
+
+.opc-notification-item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+
+  &[variant='success'] {
+    background-color: var(--opc-notification-item__variant--success);
+  }
+
+  &[variant='warn'] {
+    background-color: var(--opc-notification-item__variant--warn);
+  }
+
+  &[variant='info'] {
+    background-color: var(--opc-notification-item__variant--info);
+  }
+
+  &[variant='danger'] {
+    background-color: var(--opc-notification-item__variant--danger);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+
+    &[variant='success'] {
+      color: var(--opc-notification-item__variant--success-header);
+    }
+
+    &[variant='warn'] {
+      color: var(--opc-notification-item__variant--warn-header);
+    }
+
+    &[variant='info'] {
+      color: var(--opc-notification-item__variant--info-header);
+    }
+
+    &[variant='danger'] {
+      color: var(--opc-notification-item__variant--danger-header);
+    }
+
+    &-title {
+      flex-grow: 1;
+      font-weight: bold;
+    }
+
+    &-close {
+      filter: invert(46%) sepia(12%) saturate(181%) hue-rotate(173deg)
+        brightness(89%) contrast(91%);
+    }
+  }
+}

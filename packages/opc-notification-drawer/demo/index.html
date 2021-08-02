@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opc-notification-drawer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap" rel="stylesheet" />
+    <script src="opc-notification-drawer.js"></script>
+</head>
+
+<body>
+    <button>Click to toggle drawer</button>
+    <opc-notification-drawer isOpen>
+        <opc-notification-item title="Success alert title" variant="success" key="notification1">
+            <span>Success alert description. This should tell the user more information about the alert. This is a
+                link.</span>
+        </opc-notification-item>
+        <opc-notification-item title="Information alert title" variant="info">
+            <span>Information alert description. This should tell the user more information about the alert.</span>
+        </opc-notification-item>
+        <opc-notification-item title="Danger alert title" variant="danger">
+            <span>Danger alert description. This should tell the user more information about the alert. This is a
+                link.</span>
+        </opc-notification-item>
+        <opc-notification-item title="Warn alert title" variant="warn">
+            <span>Warn alert description. This should tell the user more information about the alert. This is a
+                link.</span>
+        </opc-notification-item>
+    </opc-notification-drawer>
+    <script>
+        const button = document.querySelector("button");
+        const drawer = document.querySelector("opc-notification-drawer");
+        const item = document.querySelector("opc-notification-item");
+        item.addEventListener('opc-notification-item:close', (e) => {
+            alert(JSON.stringify(e.detail))
+        })
+        button.addEventListener("click", () => {
+            const isDrawerOpen = drawer.getAttribute("isOpen");
+            drawer.isOpen = !isDrawerOpen;
+        })
+    </script>
+</body>
+
+</html>

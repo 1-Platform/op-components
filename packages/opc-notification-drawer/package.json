@@ -1,9 +1,10 @@
 {
-  "name": "@one-platform/opc-nav",
+  "name": "@one-platform/opc-notification-drawer",
   "version": "0.0.1",
-  "description": "opc-nav is a nav bar component developed using lit elements for Red Hat One Platform.",
+  "description": "opc-notification-drawer is a webcomponent develped using lit elements for Red Hat One Platform for showing user notifications.",
   "scripts": {
     "dev": "webpack serve",
+    "analyse": "lit-analyzer --strict",
     "build": "webpack --mode production",
     "test": "jest --detectOpenHandles --verbose --forceExit",
     "test:debug": "npm run build && DEBUG_MODE=1 jest --verbose=true"
@@ -15,7 +16,7 @@
     "name": "akhilmhdh",
     "email": "akhilmhdh@gmail.com"
   },
-  "main": "dist/opc-nav.js",
+  "main": "dist/opc-notification-drawer.js",
   "license": "MIT",
   "devDependencies": {
     "@one-platform/opc-styles": "0.0.5",
@@ -42,7 +43,8 @@
     "@types/jest-axe": "3.5.1"
   },
   "dependencies": {
-    "lit-element": "2.5.1",
-    "lit": "^2.0.0-rc.2"
+    "lit": "^2.0.0-rc.2",
+    "lit-analyzer": "^1.2.1",
+    "lit-element": "2.5.1"
   }
 }
