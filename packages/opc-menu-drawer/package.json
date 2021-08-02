@@ -39,7 +39,7 @@
     "webpack-dev-server": "3.11.2",
     "html-webpack-plugin": "4.5.2",
     "jest-axe": "4.1.0",
-    "@types/jest-axe": "3.5.1"
+    "@types/jest-axe": "3.5.2"
   },
   "dependencies": {
     "lit-element": "2.5.1",
