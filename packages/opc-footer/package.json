@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "26.0.23",
+    "@types/jest": "26.0.24",
     "clean-webpack-plugin": "3.0.0",
     "copy-webpack-plugin": "8.1.1",
     "css-loader": "5.2.5",
