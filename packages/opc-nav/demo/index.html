@@ -24,14 +24,24 @@
         </h3>
         <opc-nav>
             <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
+            <opc-nav-search slot="opc-nav-search" value="search"></opc-nav-search>
         </opc-nav>
     </div>
     <div class="seperate">
         <h3>
             Opc-Nav with hidden search and links
         </h3>
-        <opc-nav isSearchHidden>
+        <opc-nav>
             <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
+        </opc-nav>
+    </div>
+    <div class="seperate">
+        <h3>
+            Opc-Nav with active menu
+        </h3>
+        <opc-nav activeButton="menu">
+            <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
+            <opc-nav-search slot="opc-nav-search" value="search"></opc-nav-search>
         </opc-nav>
     </div>
     <script>
@@ -40,7 +50,13 @@
             { name: "Documentation", href: "#" }
         ];
         const opcNav = document.querySelector("opc-nav");
+        const opcNavSearch = document.querySelector("opc-nav-search");
         opcNav.links = links;
+
+        opcNavSearch.addEventListener('opc-nav-search:change', function (event) {
+            console.log(event.detail.value);
+        })
+
         opcNav.addEventListener('opc-nav-btn-menu:click', function (event) {
             alert("menu got clicked")
         });

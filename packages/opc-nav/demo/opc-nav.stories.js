@@ -6,17 +6,12 @@ export default {
   parameters: {
     notes: { readme },
   },
-  argTypes: {
-    isSearchHidden: {
-      control: 'boolean',
-      description: 'To hide the searchbar',
-    },
-  },
 };
 
 export const opcNav = () => `
 <opc-nav>
     <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
+    <opc-nav-search slot="opc-nav-search"></opc-nav-search>
 </opc-nav>
 <script>
 const links = [
