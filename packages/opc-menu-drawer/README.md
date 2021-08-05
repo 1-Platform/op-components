@@ -86,7 +86,7 @@ The default slot gets passed to the drawer body. It will be shown after the link
 ```js
 const links = [
   {
-    title: 'BUILD IN SERVICES',
+    title: 'BUILT-IN SERVICES',
     links: [
       { name: 'Blog', href: '#' },
       { name: 'Documentation', href: '#' },
@@ -99,7 +99,7 @@ const links = [
     ],
   },
   {
-    title: 'BUILD IN SERVICES',
+    title: 'BUILT-IN SERVICES',
     links: [
       { name: 'blog', href: '#' },
       { name: 'Documentation', href: '#' },
@@ -171,7 +171,7 @@ There are total 5 slots available in this component
 
 ```js
 document.querySelector("opc-menu-drawer").links = {
-    title: "BUILD in SERVICES",
+    title: "BUILT-IN SERVICES",
     links: [
       { name: "Blog#2", href: "#" },
       { name: "Documentation#1", href: "#" },

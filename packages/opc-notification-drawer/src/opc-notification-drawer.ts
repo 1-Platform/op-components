@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { closeIcon } from './assets';
 import style from './opc-notification-drawer.scss';
 
@@ -10,22 +10,48 @@ export class OpcNotificationDrawer extends LitElement {
     return [style];
   }
 
-  @property({ type: Boolean, reflect: true }) isOpen = false;
+  @state() private _isOpen = false;
   @property({ type: String, reflect: true }) title = 'notifications';
 
-  private _handleDrawerClose() {
-    this.isOpen = false;
+  close() {
+    this._isOpen = false;
+  }
+
+  open() {
+    this._isOpen = true;
+  }
+
+  toggle() {
+    this._isOpen = !this._isOpen;
+  }
+
+  get isOpen() {
+    return this._isOpen;
+  }
+
+  updated(changedProperties: any) {
+    if (changedProperties.has('_isOpen')) {
+      this.dispatchEvent(
+        new CustomEvent(
+          `opc-notification-drawer:${this.isOpen ? 'open' : 'close'}`,
+          {
+            bubbles: true,
+            composed: true,
+          }
+        )
+      );
+    }
   }
 
   render() {
     return html`
       <div
         class="opc-notification-drawer-container"
-        ?isHidden="${!this.isOpen}"
+        ?isHidden="${!this._isOpen}"
       >
         <div
           class="opc-notification-drawer-backdrop"
-          @click="${this._handleDrawerClose}"
+          @click="${this.close}"
         ></div>
         <dialog
           ?open=${this.isOpen}

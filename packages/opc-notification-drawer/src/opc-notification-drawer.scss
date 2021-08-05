@@ -87,7 +87,7 @@ a {
   &__header {
     display: flex;
     padding: 1rem;
-    border-bottom: 0.5px solid $opc-color--black-300;
+    border-bottom: 0.5px solid #ddd;
 
     &-title {
       font: 400 12px var(--opc-global--Heading--Font-Family, 'Red Hat Display');

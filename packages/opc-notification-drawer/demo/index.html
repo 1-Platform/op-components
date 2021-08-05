@@ -14,7 +14,7 @@
 
 <body>
     <button>Click to toggle drawer</button>
-    <opc-notification-drawer isOpen>
+    <opc-notification-drawer>
         <opc-notification-item title="Success alert title" variant="success" key="notification1">
             <span>Success alert description. This should tell the user more information about the alert. This is a
                 link.</span>
@@ -35,12 +35,14 @@
         const button = document.querySelector("button");
         const drawer = document.querySelector("opc-notification-drawer");
         const item = document.querySelector("opc-notification-item");
+        drawer.addEventListener('opc-notification-drawer:open', (e) => {
+            console.log("opened")
+        })
         item.addEventListener('opc-notification-item:close', (e) => {
             alert(JSON.stringify(e.detail))
         })
         button.addEventListener("click", () => {
-            const isDrawerOpen = drawer.getAttribute("isOpen");
-            drawer.isOpen = !isDrawerOpen;
+            drawer.toggle();
         })
     </script>
 </body>

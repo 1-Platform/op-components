@@ -43,9 +43,12 @@ describe('opc-notification-drawer', () => {
 
   it('should make drawer open and close', async () => {
     expect(opcNotificationDrawer.isOpen).toBeFalsy();
-    opcNotificationDrawer.isOpen = true;
+    opcNotificationDrawer.toggle();
     await opcNotificationDrawer.updateComplete;
     expect(opcNotificationDrawer.isOpen).toBeTruthy();
+    opcNotificationDrawer.close();
+    await opcNotificationDrawer.updateComplete;
+    expect(opcNotificationDrawer.isOpen).toBeFalsy();
   });
 });
 
