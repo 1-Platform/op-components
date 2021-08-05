@@ -50,7 +50,7 @@ describe('opc-menu-drawer', () => {
 
   it('should make drawer close and open', async () => {
     expect(opcMenuDrawer.isOpen).toBeFalsy();
-    opcMenuDrawer.isOpen = true;
+    opcMenuDrawer.toggle();
     await opcMenuDrawer.updateComplete;
     expect(opcMenuDrawer.isOpen).toBeTruthy();
   });

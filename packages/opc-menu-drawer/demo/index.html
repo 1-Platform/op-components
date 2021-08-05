@@ -49,8 +49,10 @@
         ]
         drawer.links = links;
         button.addEventListener("click", () => {
-            const isDrawerOpen = drawer.getAttribute("isOpen");
-            drawer.isOpen = !isDrawerOpen;
+            drawer.open();
+        })
+        drawer.addEventListener("opc-menu-drawer:open", () => {
+            console.log("menu drawer is open");
         })
     </script>
 </body>

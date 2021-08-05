@@ -1,13 +1,13 @@
-import { LitElement, html } from "lit";
-import { property, state, queryAll, customElement } from "lit/decorators.js";
+import { LitElement, html } from 'lit';
+import { property, state, queryAll, customElement } from 'lit/decorators.js';
 
-import { angleDownIcon } from "./assets";
+import { angleDownIcon } from './assets';
 
-import style from "./opc-menu-drawer.scss";
+import style from './opc-menu-drawer.scss';
 
-@customElement("opc-menu-drawer")
+@customElement('opc-menu-drawer')
 export class OpcMenuDrawer extends LitElement {
-  @property() name = "opc-menu-drawer";
+  @property() name = 'opc-menu-drawer';
 
   static get styles() {
     return [style];
@@ -15,8 +15,8 @@ export class OpcMenuDrawer extends LitElement {
 
   @property({ type: Array, reflect: true })
   links: OpcMenuDrawerLinkGroup[] = [];
-  @property({ type: String, reflect: true }) headerTitle = "";
-  @property({ type: Boolean, reflect: true }) isOpen = false;
+  @property({ type: String, reflect: true }) headerTitle = '';
+  @state() private _isOpen = false;
 
   /**
    * This is to monitor all states of collapsed boxes
@@ -24,9 +24,9 @@ export class OpcMenuDrawer extends LitElement {
    * Because it doesn't sync at first, the request update is fired before client height changes
    * So to avoid unsynced collapse state.
    */
-  @state() collapsableState: boolean[] = [];
+  @state() private collapsableState: boolean[] = [];
 
-  @queryAll(".opc-menu-drawer-menu-btn,.opc-menu-drawer-links-collapse-box")
+  @queryAll('.opc-menu-drawer-menu-btn,.opc-menu-drawer-links-collapse-box')
   collapsableLinks: NodeListOf<HTMLDivElement> | undefined;
 
   private _handleExpandToggle(pos: number) {
@@ -34,33 +34,50 @@ export class OpcMenuDrawer extends LitElement {
     this.collapsableState[pos] = !this.collapsableState[pos];
 
     if (toggleRef.clientHeight === 0) {
-      toggleRef.style.height = toggleRef.scrollHeight + "px";
+      toggleRef.style.height = toggleRef.scrollHeight + 'px';
     } else {
-      toggleRef.style.height = "0";
+      toggleRef.style.height = '0';
     }
 
     this.requestUpdate();
   }
 
-  private _handleDrawerClose() {
-    this.isOpen = false;
+  close() {
+    this._isOpen = false;
+  }
+
+  open() {
+    this._isOpen = true;
+  }
+
+  toggle() {
+    this._isOpen = !this._isOpen;
+  }
+
+  get isOpen() {
+    return this._isOpen;
   }
 
   updated(changedProperties: any) {
-    if (changedProperties.has("links")) {
+    if (changedProperties.has('links')) {
       this.collapsableState = new Array(this.links.length + 1).fill(false);
+    }
+    if (changedProperties.has('_isOpen')) {
+      this.dispatchEvent(
+        new CustomEvent(`opc-menu-drawer:${this.isOpen ? 'open' : 'close'}`, {
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
   }
 
   render() {
     return html`
       <div class="opc-menu-drawer-container" ?isHidden="${!this.isOpen}">
-        <div
-          class="opc-menu-drawer-backdrop"
-          @click="${this._handleDrawerClose}"
-        ></div>
+        <div class="opc-menu-drawer-backdrop" @click="${this.close}"></div>
         <dialog
-          ?open=${this.isOpen}
+          ?open=${this._isOpen}
           id="opc-menu-drawer"
           class="opc-menu-drawer"
           role="dialog"
@@ -93,7 +110,7 @@ export class OpcMenuDrawer extends LitElement {
                 <slot name="menu"></slot>
               </div>
             </slot>
-            <hr />
+            <hr class="opc-menu-drawer__header-sep" />
           </div>
           ${this.links.map(({ title, links }, index) => {
             return html`
