@@ -45,7 +45,7 @@ Opc-notification-drawer component also provides `opc-notification-item` componen
 ### Code
 
 ```html
-<opc-notification-drawer isOpen>
+<opc-notification-drawer>
   <opc-notification-item
     title="Success alert title"
     variant="success"
@@ -75,6 +75,10 @@ Opc-notification-drawer component also provides `opc-notification-item` componen
     >
   </opc-notification-item>
 </opc-notification-drawer>
+```
+
+```js
+document.querySelector('opc-notification-drawer').open();
 ```
 
 ### Screenshot
@@ -107,20 +111,43 @@ Opc-notification-drawer component also provides `opc-notification-item` componen
 
 ### opc-notification-drawer
 
-- `isOpen`
-  - Type: `Boolean`
-  - Default value: `false`
-
-```html
-<opc-notification-drawer isOpen></opc-notification-drawer>
-```
-
 - `title`
   - Type: `String`
   - Default value: `notifications`
 
 ```html
 <opc-notification-drawer title="messages"></opc-notification-drawer>
+```
+
+### Methods
+
+- `isOpen`
+  - Type: `Boolean`
+  - Default value: `false`
+
+```js
+document.querySelector('opc-notification-drawer').isOpen;
+```
+
+- `open`
+  - Description: To open the drawer.
+
+```js
+document.querySelector('opc-notification-drawer').open();
+```
+
+- `close`
+  - Description: To close the drawer.
+
+```js
+document.querySelector('opc-notification-drawer').close();
+```
+
+- `toggle`
+  - Description: To toggle the drawer states.
+
+```js
+document.querySelector('opc-notification-drawer').toggle();
 ```
 
 ### opc-notification-item
@@ -149,6 +176,38 @@ Opc-notification-drawer component also provides `opc-notification-item` componen
 ```
 
 ## Events
+
+### opc-notification-drawer
+
+There are two events emitted by opc-notification-drawer emitter when drawer state changes.
+
+1. `opc-notification-drawer:open`
+
+Dispatched when drawer opens.
+
+Example:
+
+```js
+document
+  .querySelector('opc-notification-drawer')
+  .addEventListener('opc-notification-drawer:open', function (event) {
+    alert('drawer opened');
+  });
+```
+
+1. `opc-notification-drawer:close`
+
+Dispatched when drawer closed.
+
+Example:
+
+```js
+document
+  .querySelector('opc-notification-drawer')
+  .addEventListener('opc-notification-drawer:close', function (event) {
+    alert('drawer closed');
+  });
+```
 
 ### opc-notification-item
 

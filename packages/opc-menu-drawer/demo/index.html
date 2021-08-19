@@ -26,7 +26,7 @@
         const drawer = document.querySelector("opc-menu-drawer");
         const links = [
             {
-                title: "BUILD in SERVICES",
+                title: "BUILT-IN SERVICES",
                 links: [
                     { name: "Blog", href: "#" },
                     { name: "Documentation", href: "#" },
@@ -39,7 +39,7 @@
                 ]
             },
             {
-                title: "BUILD in SERVICES",
+                title: "BUILT-IN SERVICES",
                 links: [
                     { name: "blog", href: "#" },
                     { name: "Documentation", href: "#" }
@@ -49,8 +49,10 @@
         ]
         drawer.links = links;
         button.addEventListener("click", () => {
-            const isDrawerOpen = drawer.getAttribute("isOpen");
-            drawer.isOpen = !isDrawerOpen;
+            drawer.open();
+        })
+        drawer.addEventListener("opc-menu-drawer:open", () => {
+            console.log("menu drawer is open");
         })
     </script>
 </body>

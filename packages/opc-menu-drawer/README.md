@@ -45,6 +45,10 @@ The header is the topmost element seen on the drawer body. It contains a collaps
 </opc-menu-drawer>
 ```
 
+```js
+document.querySelector('opc-menu-drawer').open();
+```
+
 ### Screenshot
 
 #### opc-menu-drawer with header collapsed
@@ -82,35 +86,36 @@ The default slot gets passed to the drawer body. It will be shown after the link
 ```js
 const links = [
   {
-    title: "BUILD IN SERVICES",
+    title: 'BUILT-IN SERVICES',
     links: [
-      { name: "Blog", href: "#" },
-      { name: "Documentation", href: "#" },
-      { name: "Something #1", href: "#" },
-      { name: "Something #2", href: "#" },
-      { name: "Something #3", href: "#" },
-      { name: "Something #4", href: "#" },
-      { name: "Something #5", href: "#" },
-      { name: "Something #6", href: "#" },
+      { name: 'Blog', href: '#' },
+      { name: 'Documentation', href: '#' },
+      { name: 'Something #1', href: '#' },
+      { name: 'Something #2', href: '#' },
+      { name: 'Something #3', href: '#' },
+      { name: 'Something #4', href: '#' },
+      { name: 'Something #5', href: '#' },
+      { name: 'Something #6', href: '#' },
     ],
   },
   {
-    title: "BUILD IN SERVICES",
+    title: 'BUILT-IN SERVICES',
     links: [
-      { name: "blog", href: "#" },
-      { name: "Documentation", href: "#" },
+      { name: 'blog', href: '#' },
+      { name: 'Documentation', href: '#' },
     ],
   },
 ];
 
-document.querySelector("opc-menu-drawer").links = links;
+document.querySelector('opc-menu-drawer').links = links;
+document.querySelector('opc-menu-drawer').open();
 ```
 
 ### Screenshot
 
 #### opc-menu-drawer with links
 
-![Image of opc-menu-drawer with ](./docs/opc-menu-drawer-links.png)
+![Image of opc-menu-drawer with links](./docs/opc-menu-drawer-links.png)
 
 </details>
 
@@ -130,6 +135,10 @@ The footer component will be at the bottom of the drawer body. It can be added u
   <span slot="avatar">AM</span>
   <span slot="footer">2021 Red Hat </span>
 </opc-menu-drawer>
+```
+
+```js
+document.querySelector('opc-menu-drawer').open();
 ```
 
 ### Screenshot
@@ -162,7 +171,7 @@ There are total 5 slots available in this component
 
 ```js
 document.querySelector("opc-menu-drawer").links = {
-    title: "BUILD in SERVICES",
+    title: "BUILT-IN SERVICES",
     links: [
       { name: "Blog#2", href: "#" },
       { name: "Documentation#1", href: "#" },
@@ -178,17 +187,68 @@ document.querySelector("opc-menu-drawer").links = {
   <opc-menu-drawer headerTitle="Akhil Mohan"></opc-menu-drawer isOpen>
 ```
 
+### Methods
+
 - `isOpen`
   - Type: `Boolean`
   - Default value: `false`
 
-```html
-<opc-menu-drawer isOpen></opc-menu-drawer>
+```js
+document.querySelector('opc-menu-drawer').isOpen;
+```
+
+- `open`
+  - Description: To open the drawer.
+
+```js
+document.querySelector('opc-menu-drawer').open();
+```
+
+- `close`
+  - Description: To close the drawer.
+
+```js
+document.querySelector('opc-menu-drawer').close();
+```
+
+- `toggle`
+  - Description: To toggle the drawer states.
+
+```js
+document.querySelector('opc-menu-drawer').toggle();
 ```
 
 ## Events
 
-- opc-menu-drawer doesn't have any events.
+There are two events emitted by opc-menu-drawer emitter when drawer state changes.
+
+1. `opc-menu-drawer:open`
+
+Dispatched when drawer opens.
+
+Example:
+
+```js
+document
+  .querySelector('opc-menu-drawer')
+  .addEventListener('opc-menu-drawer:open', function (event) {
+    alert('drawer opened');
+  });
+```
+
+1. `opc-menu-drawer:close`
+
+Dispatched when drawer closed.
+
+Example:
+
+```js
+document
+  .querySelector('opc-menu-drawer')
+  .addEventListener('opc-menu-drawer:close', function (event) {
+    alert('drawer closed');
+  });
+```
 
 # CSS Variables
 
@@ -223,7 +283,7 @@ npm install --save @one-platform/opc-menu-drawer
 - Import component
 
 ```js
-import "@one-platform/opc-menu-drawer/dist/opc-menu-drawer";
+import '@one-platform/opc-menu-drawer/dist/opc-menu-drawer';
 ```
 
 - Add component in html
@@ -237,8 +297,8 @@ import "@one-platform/opc-menu-drawer/dist/opc-menu-drawer";
 - In your app.module include the `CUSTOM_ELEMENTS_SCHEMA` and import the component
 
 ```js
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import "@one-platform/opc-menu-drawer/dist/opc-menu-drawer";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import '@one-platform/opc-menu-drawer/dist/opc-menu-drawer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -261,7 +321,7 @@ export class AppModule {}
 - Import the component in App.js
 
 ```js
-import "@one-platform/opc-menu-drawer/dist/opc-menu-drawer";
+import '@one-platform/opc-menu-drawer/dist/opc-menu-drawer';
 ```
 
 - Add component in any component html render

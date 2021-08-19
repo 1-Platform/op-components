@@ -1,22 +1,21 @@
-import "../dist/opc-menu-drawer";
-import readme from "../README.md";
+import '../dist/opc-menu-drawer';
+import readme from '../README.md';
 
 export default {
-  title: "OpcMenuDrawer",
+  title: 'OpcMenuDrawer',
   parameters: {
     notes: { readme },
   },
   argTypes: {
-    isOpen: { control: "boolean", description: "To open and close the drawer" },
     headerTitle: {
-      control: "string",
-      description: "Header title of the drawer",
+      control: 'string',
+      description: 'Header title of the drawer',
     },
   },
 };
 
 export const opcMenuDrawer = () => `
-<opc-menu-drawer isOpen headerTitle="Akhil Mohan"></opc-menu-drawer>
+<opc-menu-drawer headerTitle="Akhil Mohan"></opc-menu-drawer>
 <script>
 var links = [{
         title: "BUILT-IN SERVICES",
@@ -43,6 +42,8 @@ var links = [{
         ]
     }
 ];
-document.querySelector('opc-menu-drawer').links = links;
+const drawer = document.querySelector('opc-menu-drawer');
+drawer.links = links;
+drawer.open();
 </script>
 `;

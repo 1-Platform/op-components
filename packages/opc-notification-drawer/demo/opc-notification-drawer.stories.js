@@ -7,10 +7,6 @@ export default {
     notes: { readme },
   },
   argTypes: {
-    isOpen: {
-      control: 'boolean',
-      description: 'To open the drawer',
-    },
     title: {
       control: 'string',
       description: 'Title of the drawer',
