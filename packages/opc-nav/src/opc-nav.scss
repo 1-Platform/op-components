@@ -23,9 +23,6 @@ input {
 }
 
 :host {
-  position: sticky;
-  top: 0;
-  left: 0;
   --opc-nav-height: 60px;
   --opc-nav-transition--default: 120ms ease-in-out;
   --opc-nav-menu__spacing-size: 24px;
@@ -33,6 +30,10 @@ input {
   --opc-nav-container__z-index: 9;
   --opc-nav-btn__padding: 17px;
   --opc-nav-btn__hover-color: #316dc11a;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: var(--opc-nav-container__z-index, 10);
 }
 
 .opc-nav {
@@ -41,7 +42,6 @@ input {
     font-family: var(--opc-global--Font-Family);
     align-items: center;
     border: 1px solid #dddddd;
-    z-index: var(--opc-nav-container__z-index, 9);
     background-color: #fff;
     height: var(--opc-nav-height);
   }
@@ -87,6 +87,7 @@ input {
     transition: var(--opc-nav-transition--default, 120ms ease-in-out);
     background: none;
 
+    &[active],
     &:hover {
       background: var(--opc-nav-btn__hover-color);
 
@@ -99,6 +100,7 @@ input {
 
   &-search__btn {
     padding: var(--opc-nav-btn__padding);
+    cursor: pointer;
   }
 
   &-search__input {
@@ -137,12 +139,15 @@ input {
     ::slotted(button:hover),
     button:hover,
     ::slotted(button:active),
-    button:active {
+    button:active,
+    ::slotted(button[active]),
+    button[active] {
       background: var(--opc-nav-btn__hover-color);
     }
 
     button:hover img,
-    button:active img {
+    button:active img,
+    button[active] img {
       filter: invert(42%) sepia(13%) saturate(5058%) hue-rotate(187deg)
         brightness(85%) contrast(85%);
     }

@@ -39,6 +39,7 @@ It is a mandatory slot component that contains the product logo, positioned at t
 ```html
 <opc-nav>
   <img slot="opc-nav-logo" />
+  <opc-nav-search slot="opc-nav-search"></opc-nav-search>
 </opc-nav>
 ```
 
@@ -61,6 +62,7 @@ Links are the quick reference links for easy navigation, positioned after the lo
 ```html
 <opc-nav>
   <img slot="opc-nav-logo" src="" alt="logo" />
+  <opc-nav-search slot="opc-nav-search"></opc-nav-search>
 </opc-nav>
 ```
 
@@ -80,13 +82,11 @@ document.querySelector('opc-nav').links = links;
 
 <!-- 3. opc-nav with buttons -->
 <details>
-<summary>opc-nav with search and nav buttons</summary>
+<summary>opc-nav with nav buttons</summary>
 
 ## Details
 
-The search bar component helps users to search for information. It is customizable by using the slot `opc-nav-search` . It can be removed by the attribute `isSearchHidden` with the value true.
-
-The nav buttons, enable utility actions that enhance the user experience. By default, opc-nav provids two buttons with there corresponding events. Menu buttons can be replaced with the slot `opc-nav-btn`. Icon buttons with size of 60px are prefered.
+The nav buttons, enable utility actions that enhance the user experience. By default, opc-nav provides two buttons with there corresponding events. Menu buttons can be replaced with the slot `opc-nav-btn`. Icon buttons with size of 60px are prefered. `activeMenu` property provides active class styling to show users which one is selected. It accepts `menu | notification` as value.
 
 | Name                | Icon      | Event                          |
 | ------------------- | --------- | ------------------------------ |
@@ -98,6 +98,7 @@ The nav buttons, enable utility actions that enhance the user experience. By def
 ```html
 <opc-nav>
   <img slot="opc-nav-logo" src="" alt="logo" />
+  <opc-nav-search slot="opc-nav-search"></opc-nav-search>
 </opc-nav>
 ```
 
@@ -108,7 +109,7 @@ The nav buttons, enable utility actions that enhance the user experience. By def
 ### Code (Search hidden and custom button)
 
 ```html
-<opc-nav isSearchHidden>
+<opc-nav>
   <img slot="opc-nav-logo" src="" alt="logo" />
   <button slot="opc-nav-btn">R</button>
 </opc-nav>
@@ -117,6 +118,36 @@ The nav buttons, enable utility actions that enhance the user experience. By def
 ### Screenshot
 
 ![Image of opc-nav-with logo](./docs/opc-nav-with-logo.png)
+
+</details>
+
+<details>
+<summary>opc-nav-search</summary>
+
+## Details
+
+`opc-nav-search` is a search component for the `opc-nav`. It enables modular control on how the search works. It has events `opc-nav-search:change` on input change and `opc-nav-search:search` on search submit.
+
+### Code (Default)
+
+```html
+<opc-nav>
+  <opc-nav-search slot="opc-nav-search"></opc-nav-search>
+</opc-nav>
+```
+
+```js
+document
+  .querySelector('opc-nav-search')
+  .addEventListener('opc-nav-search:change', function (event) {
+    console.log(event.detail.value);
+  });
+document
+  .querySelector('opc-nav-search')
+  .addEventListener('opc-nav-search:submit', function (event) {
+    console.log(event.detail.value);
+  });
+```
 
 </details>
 
@@ -148,17 +179,17 @@ There are total 4 slots of which 3 are optional and one is mandatory
 document.querySelector('opc-nav').links = [{ name: 'Blog', href: '#' }];
 ```
 
-- `isSearchHidden`
-  - Type: `Boolean`
-  - Default value: `false`
+- `activeButton`
+  - Type: `menu | notification`
+  - Default value: null
 
-```html
-<opc-nav isSearchHidden>
-  <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
-</opc-nav>
+```js
+document.querySelector('opc-nav').activeMenu = 'menu';
 ```
 
 ## Events
+
+### opc-nav
 
 There are two events emitted by opc-nav both are dispatched on click of navbar notification(bell icon) and menu(grid icon) button.
 
@@ -187,6 +218,36 @@ document
   .querySelector('opc-nav')
   .addEventListener('opc-nav-btn-notification:click', function (event) {
     alert('notification got clicked');
+  });
+```
+
+### opc-nav-search
+
+1. `opc-nav-search:change`
+
+Dispatched on input change of search.
+
+Example:
+
+```js
+document
+  .querySelector('opc-nav-search')
+  .addEventListener('opc-nav-search:change', function (event) {
+    console.log(event.detail.value);
+  });
+```
+
+2. `opc-nav-btn-notification:click`
+
+Dispatched on notification(bell icon) button click.
+
+Example:
+
+```js
+document
+  .querySelector('opc-nav')
+  .addEventListener('opc-nav-search:submit', function (event) {
+    alert(event.detail.value);
   });
 ```
 

@@ -4,3 +4,5 @@ interface OpcNavMenuLinks {
   name: string;
   href: string;
 }
+
+type Active = 'menu' | 'notification';
