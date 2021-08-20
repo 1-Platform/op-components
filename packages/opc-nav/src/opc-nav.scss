@@ -37,6 +37,9 @@ input {
 }
 
 .opc-nav {
+  z-index: var(--opc-nav-container__z-index, 10);
+  position: relative;
+
   &-container {
     display: flex;
     font-family: var(--opc-global--Font-Family);
