@@ -78,6 +78,16 @@ You can use `copyright` slot to provide custom text as shown in below example
 
 We recommend to provide the links via js API but if you want to implement `data goes down and events go up` pattern then you can use the `link-catagories` attribute.
 
+**`flat`**
+
+The flat attribute removes the background cubes illustration from the footer component. By Default the value is `false`
+
+for example:
+
+```html 
+<opc-footer flat="true"></opc-footer>
+```
+
 `recommended`
 ```html
 <opc-footer> 
