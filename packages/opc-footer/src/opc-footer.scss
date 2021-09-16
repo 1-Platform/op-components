@@ -87,6 +87,13 @@ footer {
   background-position: -38px center, calc(100% + 38px) center;
 }
 
+:host([flat]) {
+  .light.background-image-light.no-bg,
+  .dark.background-image-dark.no-bg {
+    background-image: none;
+  }
+}
+
 .light.background-image-light {
   background-blend-mode: exclusion;
 }

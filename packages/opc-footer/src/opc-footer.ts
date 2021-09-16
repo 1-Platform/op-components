@@ -1,9 +1,12 @@
 import { LitElement, html, property, customElement } from 'lit-element';
+import { nothing } from 'lit-html';
 import style  from './opc-footer.scss';
 
 @customElement('opc-footer')
 export class OPCFooter extends LitElement {
   @property({ attribute: 'theme' }) theme: string = 'light';
+
+  @property({ attribute: 'flat', type: Boolean }) flat: Boolean = false;
 
   @property({ type: Array, attribute: 'link-categories' })
   _linkCategories: OPCFooterLinkCategory[] | undefined = [];
@@ -30,7 +33,8 @@ export class OPCFooter extends LitElement {
   render() {
     return html`
       <footer class="${this.theme=== 'light' ? 'light' : 'dark'}
-        ${this._linkCategories.length ? `background-image-${this.theme}`: '' }">
+        ${this._linkCategories.length ? `background-image-${this.theme}`: '' }
+        ${this.flat ? 'no-bg': nothing}">
         ${this._linkCategories.map(_linkCategory => html`
           <div class="link-category">
             <h4 class="link-category__name">${_linkCategory.category}</h4>

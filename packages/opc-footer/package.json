@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-footer",
-  "version": "0.0.3-prerelease",
+  "version": "0.0.4-prerelease",
   "description": "A standardized web component based on Lit Element for Red Hat One Platform Footer.",
   "scripts": {
     "dev": "webpack serve",
