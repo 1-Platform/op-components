@@ -21,12 +21,13 @@ $variables: ();
   --op-transition--default: 120ms ease-in-out;
   --op-feedback__btn--Primary: #b70202;
   --op-feedback__bg--Primary: #fceaeb;
+  --op-feedback__z-index: 5;
   position: relative;
-  z-index: 9000;
+  z-index: var(--op-feedback__z-index,5);
 }
 
 :host([theme="blue"]) {
-  --opc-feedback--BackgroundColor: #0066CC1A;
+  --opc-feedback--BackgroundColor: #e5effa;
   --opc-feedback--TextColor: #0066CC;
   --opc-feedback__submit--BackgroundColor: #0066CC1A;
   --opc-feedback__submit--TextColor: #0066CC;

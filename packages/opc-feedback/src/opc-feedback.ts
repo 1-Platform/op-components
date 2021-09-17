@@ -15,7 +15,7 @@ import { html, LitElement } from 'lit';
 import {customElement, property, state, query }  from 'lit/decorators.js';
 import style from './opc-feedback.scss';
 import { defaultTemplate } from './defaultTemplate';
-import { arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon } from './assets';
+import { arrowBackIcon, bugIcon, chatboxIcon, documentIcon, openLinkIcon, chatBubblesIcon, beetleIcon } from './assets';
 import dialogPolyfill from 'dialog-polyfill';
 @customElement('opc-feedback')
 export class OpcFeedback extends LitElement {
@@ -119,6 +119,18 @@ export class OpcFeedback extends LitElement {
   
   get feedbackTemplate() {
     return this.template;
+  }
+
+  get renderIcon(){
+    const isModelOpen = this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal;
+    if(this.theme === 'blue' && !isModelOpen){
+      return html`<img src=${beetleIcon} width="20px" height="20px" class="pf-u-mr-xs"/>`
+    }
+    return html`<ion-icon
+      name="${isModelOpen ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
+      class="pf-u-font-size-xl pf-u-mr-xs"
+    >
+    </ion-icon>`;
   }
 
   updated() {
@@ -280,9 +292,7 @@ export class OpcFeedback extends LitElement {
         this.toggle();
         this._setModalState(this._openInitialModal, false, false, false);
       }}">
-      <ion-icon name="${(this._openFeedbackModal || this._openConfirmationModal || this._openInitialModal || this._openBugModal) ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
-        class="pf-u-font-size-xl pf-u-mr-xs">
-      </ion-icon>
+      ${this.renderIcon}
       ${this.template.feedbackFAB}
     </button>
     `;
