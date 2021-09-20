@@ -1,4 +1,4 @@
-name: Storybook push process
+name: Storybook deployment
 on: 
   push:
     branches: 
@@ -22,6 +22,6 @@ jobs:
         if: success()
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with: 
-          ACCESS_TOKEN: ${{ secrets.GH_PAT }}
+          ACCESS_TOKEN: ${{ secrets.GH_STORYBOOK_DEPLOYMENT }}
           BRANCH: gh-pages
-          FOLDER: dist
+          FOLDER: storybook-static
