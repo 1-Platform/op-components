@@ -3,12 +3,13 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 
 import { searchIcon, notificationIcon, gridIcon } from './assets';
-import style from './opc-nav.scss';
+import opcNavStyle from './opc-nav.scss';
+import opcNavSearchStyle from './opc-nav-search.scss';
 
 @customElement('opc-nav')
 export class OpcNav extends LitElement {
   static get styles() {
-    return [style];
+    return [opcNavStyle];
   }
 
   @property({ type: String }) name = 'opc-nav';
@@ -76,7 +77,7 @@ export class OpcNav extends LitElement {
 @customElement('opc-nav-search')
 export class OpcNavSearch extends LitElement {
   static get styles() {
-    return [style];
+    return [opcNavSearchStyle];
   }
 
   @property({ type: String, reflect: true })
