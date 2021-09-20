@@ -12,12 +12,12 @@ jobs:
         with:
           node-version: '12.x'
       - name: Setup node
-        run: npm i
-        run: npm run build:packages
+      - run: npm i
+      - run: npm run build:packages
         env: 
           CI: true
       - name: Build
-        run: npm run build-storybook
+      - run: npm run build-storybook
       - name: Deploy
         if: success()
         uses: JamesIves/github-pages-deploy-action@releases/v3
