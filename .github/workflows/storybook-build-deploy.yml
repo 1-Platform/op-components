@@ -18,7 +18,7 @@ jobs:
         env: 
           CI: true
       - name: Build
-        run: npm run build-storybook
+      - run: npm run build-storybook
       - name: Deploy
         if: success()
         uses: JamesIves/github-pages-deploy-action@releases/v3
