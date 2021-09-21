@@ -12,8 +12,9 @@ jobs:
         with:
           node-version: '12.x'
       - name: Setup node
-      - run: npm i
-      - run: npm run build:packages
+        run: |
+          npm i
+          npm run build:packages
         env: 
           CI: true
       - name: Build
