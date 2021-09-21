@@ -1,9 +1,12 @@
 import { LitElement, html } from 'lit';
-import { property, state, queryAll, customElement } from 'lit/decorators.js';
+import { property, state, query, customElement } from 'lit/decorators.js';
+import { live } from 'lit/directives/live';
+import { repeat } from 'lit/directives/repeat';
 
-import { angleDownIcon } from './assets';
+import { angleDownIcon, closeIcon, searchIcon } from './assets';
 
 import style from './opc-menu-drawer.scss';
+import opcMenuDrawerSearch from './opc-menu-drawer-search.scss';
 
 @customElement('opc-menu-drawer')
 export class OpcMenuDrawer extends LitElement {
@@ -15,31 +18,53 @@ export class OpcMenuDrawer extends LitElement {
 
   @property({ type: Array, reflect: true })
   links: OpcMenuDrawerLinkGroup[] = [];
-  @property({ type: String, reflect: true }) headerTitle = '';
+  @property({ type: String, reflect: true }) title = 'Menu';
+  @property({ type: String, reflect: true }) menuTitle = '';
+
   @state() private _isOpen = false;
+  @state() private _searchLinkState: Record<string, string> = {};
+  @state() private _searchDebounce: NodeJS.Timeout;
 
-  /**
-   * This is to monitor all states of collapsed boxes
-   * Why, when client height can be used?
-   * Because it doesn't sync at first, the request update is fired before client height changes
-   * So to avoid unsynced collapse state.
-   */
-  @state() private collapsableState: boolean[] = [];
+  @query('.opc-menu-drawer-menu')
+  collapsableMenuContainer: HTMLDivElement | undefined;
 
-  @queryAll('.opc-menu-drawer-menu-btn,.opc-menu-drawer-links-collapse-box')
-  collapsableLinks: NodeListOf<HTMLDivElement> | undefined;
+  private _handleLinkExpandToggle(event: Event) {
+    const container = (event.target as HTMLDivElement).parentElement!;
+    const collapseBox = container.querySelector(
+      '.opc-menu-drawer-links-collapse-box'
+    )! as HTMLDivElement;
+    const collapseIndicator = container.querySelector('.angle-icon')!;
+    this._toggleContainerHeight(collapseBox, collapseIndicator);
+  }
 
-  private _handleExpandToggle(pos: number) {
-    const toggleRef = this.collapsableLinks[pos]!;
-    this.collapsableState[pos] = !this.collapsableState[pos];
+  private _handleMenuExpandToggle() {
+    const collapsableMenu = this.collapsableMenuContainer.querySelector(
+      '.opc-menu-drawer-menu-btn'
+    ) as HTMLDivElement;
+    const collapseIndicator = this.collapsableMenuContainer.querySelector(
+      '.angle-icon'
+    );
+    this._toggleContainerHeight(collapsableMenu, collapseIndicator);
+  }
 
-    if (toggleRef.clientHeight === 0) {
-      toggleRef.style.height = toggleRef.scrollHeight + 'px';
+  private _toggleContainerHeight(box: HTMLDivElement, indicator: Element) {
+    if (box.clientHeight === 0) {
+      box.style.height = box.scrollHeight + 'px';
+      indicator.setAttribute('inverse', 'true');
     } else {
-      toggleRef.style.height = '0';
+      box.style.height = '0';
+      indicator.removeAttribute('inverse');
     }
+  }
 
-    this.requestUpdate();
+  private _handleSearchChange(type: string, search: string) {
+    clearTimeout(this._searchDebounce);
+    this._searchDebounce = setTimeout(() => {
+      this._searchLinkState = {
+        ...this._searchLinkState,
+        [type]: search.toLowerCase(),
+      };
+    }, 300);
   }
 
   close() {
@@ -59,9 +84,6 @@ export class OpcMenuDrawer extends LitElement {
   }
 
   updated(changedProperties: any) {
-    if (changedProperties.has('links')) {
-      this.collapsableState = new Array(this.links.length + 1).fill(false);
-    }
     if (changedProperties.has('_isOpen')) {
       this.dispatchEvent(
         new CustomEvent(`opc-menu-drawer:${this.isOpen ? 'open' : 'close'}`, {
@@ -70,6 +92,10 @@ export class OpcMenuDrawer extends LitElement {
         })
       );
     }
+  }
+
+  disconnectedCallback() {
+    clearTimeout(this._searchDebounce);
   }
 
   render() {
@@ -83,74 +109,97 @@ export class OpcMenuDrawer extends LitElement {
           role="dialog"
           aria-modal="true"
         >
-          <div class="opc-menu-drawer-menu">
-            <slot name="header">
-              <div
-                class="opc-menu-drawer__header"
-                @click="${() => this._handleExpandToggle(0)}"
-              >
-                <div>
-                  <h4 class="opc-menu-drawer__header-title">
-                    ${this.headerTitle}
-                  </h4>
-                </div>
-                <img
-                  src="${angleDownIcon}"
-                  alt="angle-icon"
-                  ?inverse="${this.collapsableState[0]}"
-                  width="10px"
-                  height="8px"
-                />
-                <div class="flex-grow"></div>
-                <div>
-                  <slot name="avatar"></slot>
-                </div>
+          <slot name="header">
+            <div class="opc-menu-drawer__header">
+              <div>
+                <h4 class="opc-menu-drawer__header-title">${this.title}</h4>
               </div>
-              <div class="opc-menu-drawer-menu-btn">
-                <slot name="menu"></slot>
+              <div>
+                <button @click=${this.close}>
+                  <img
+                    src="${closeIcon}"
+                    alt="angle-icon"
+                    class="angle-icon"
+                    width="12px"
+                    height="12px"
+                  />
+                </button>
               </div>
-            </slot>
-            <hr class="opc-menu-drawer__header-sep" />
-          </div>
-          ${this.links.map(({ title, links }, index) => {
+            </div>
+            <div class="opc-menu-drawer__header-body">
+              <slot name="header-body"></slot>
+            </div>
+          </slot>
+          ${this.links.map(({ title, links, isSearchable }, index) => {
+            const normalizedTitle = title.toLowerCase();
+
             return html`
               <div class="opc-menu-drawer-link-group">
                 <div class="opc-menu-drawer-link-title">
                   <p>${title}</p>
                 </div>
-                ${links.slice(0, 5).map(
-                  ({ name, href }) =>
-                    html` <a href="${href}">
-                      <div class="opc-menu-drawer-link">${name}</div>
-                    </a>`
-                )}
-                <div class="opc-menu-drawer-links-collapse-box">
-                  ${links.slice(5).map(
-                    ({ name, href }) =>
-                      html` <a href="${href}">
-                        <div class="opc-menu-drawer-link">${name}</div>
-                      </a>`
-                  )}
-                </div>
-                ${links.length > 5
-                  ? html`
-                      <div
-                        class="opc-menu-drawer-links-collapse-button"
-                        key="${index}"
-                        @click="${() => this._handleExpandToggle(index + 1)}"
-                      >
-                        <p>Show more</p>
-                        <img
-                          src="${angleDownIcon}"
-                          alt="angle-icon"
-                          width="12px"
-                          height="8px"
-                          class="angle-icon"
-                          ?inverse="${this.collapsableState[index + 1]}"
-                        />
-                      </div>
-                    `
+                ${isSearchable
+                  ? html`<opc-menu-drawer-search
+                      placeholder=${`Search ${normalizedTitle} via name`}
+                      @opc-menu-drawer-search:change=${(evt: any) => {
+                        this._handleSearchChange(
+                          normalizedTitle,
+                          evt.detail.value
+                        );
+                      }}
+                    ></opc-menu-drawer-search>`
                   : null}
+                ${Boolean(this._searchLinkState[normalizedTitle])
+                  ? html`
+                      ${repeat(
+                        links.filter(({ name }) =>
+                          name
+                            .toLowerCase()
+                            .includes(this._searchLinkState[normalizedTitle])
+                        ),
+                        ({ name }) => name,
+                        ({ name, href }) =>
+                          html` <a href="${href}">
+                            <div class="opc-menu-drawer-link">${name}</div>
+                          </a>`
+                      )}
+                    `
+                  : html`${repeat(
+                        links.slice(0, 5),
+                        ({ name }) => name,
+                        ({ name, href }) =>
+                          html` <a href="${href}">
+                            <div class="opc-menu-drawer-link">${name}</div>
+                          </a>`
+                      )}
+                      <div class="opc-menu-drawer-links-collapse-box">
+                        ${repeat(
+                          links.slice(5),
+                          ({ name }) => name,
+                          ({ name, href }) =>
+                            html` <a href="${href}">
+                              <div class="opc-menu-drawer-link">${name}</div>
+                            </a>`
+                        )}
+                      </div>
+                      ${links.length > 5
+                        ? html`
+                            <div
+                              class="opc-menu-drawer-links-collapse-button"
+                              key="${index}"
+                              @click="${this._handleLinkExpandToggle}"
+                            >
+                              <p>Show more</p>
+                              <img
+                                src="${angleDownIcon}"
+                                alt="angle-icon"
+                                width="12px"
+                                height="8px"
+                                class="angle-icon"
+                              />
+                            </div>
+                          `
+                        : null}`}
                 <hr />
               </div>
             `;
@@ -159,10 +208,88 @@ export class OpcMenuDrawer extends LitElement {
             <slot></slot>
           </div>
           <div class="flex-grow"></div>
-          <footer>
-            <slot name="footer"></slot>
-          </footer>
+          <slot name="footer"></slot>
+          <div class="opc-menu-drawer-menu">
+            <hr class="opc-menu-drawer__menu-header-sep" />
+            <div
+              class="opc-menu-drawer__menu-header"
+              @click="${this._handleMenuExpandToggle}"
+            >
+              <div>
+                <h4 class="opc-menu-drawer__menu-header-title">
+                  ${this.menuTitle}
+                </h4>
+              </div>
+              <img
+                src="${angleDownIcon}"
+                alt="angle-icon"
+                class="angle-icon"
+                width="10px"
+                height="8px"
+              />
+              <div class="flex-grow"></div>
+              <div>
+                <slot name="avatar"></slot>
+              </div>
+            </div>
+            <div class="opc-menu-drawer-menu-btn">
+              <slot name="menu"></slot>
+            </div>
+          </div>
         </dialog>
+      </div>
+    `;
+  }
+}
+
+@customElement('opc-menu-drawer-search')
+export class OpcMenuDrawerSearch extends LitElement {
+  static get styles() {
+    return [opcMenuDrawerSearch];
+  }
+
+  @property({ type: String, reflect: true })
+  value = '';
+
+  @property({ type: String, reflect: true })
+  placeholder = 'Search';
+
+  @query('input')
+  private input!: HTMLInputElement;
+
+  private _handleInputChange(e: Event) {
+    this.dispatchEvent(
+      new CustomEvent('opc-menu-drawer-search:change', {
+        detail: {
+          value: this.input.value,
+        },
+      })
+    );
+  }
+
+  render() {
+    return html`
+      <div class="opc-menu-drawer-search">
+        <div class="opc-menu-drawer-search__item">
+          <img
+            src="${searchIcon}"
+            class="opc-menu-drawer-search__icon"
+            alt="user"
+            width="12px"
+            height="12px"
+          />
+        </div>
+        <div class="flex-grow opc-menu-drawer-search__item">
+          <input
+            class="opc-menu-drawer-search__input"
+            type="search"
+            name="seach"
+            aria-label=${this.placeholder}
+            placeholder=${this.placeholder}
+            .value=${live(this.value)}
+            @input="${this._handleInputChange}"
+          />
+        </div>
       </div>
     `;
   }

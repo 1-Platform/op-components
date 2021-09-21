@@ -35,7 +35,7 @@ describe('opc-notification-drawer', () => {
   });
 
   it('should change the title of drawer header', async () => {
-    expect(opcNotificationDrawer.title).toEqual('notifications');
+    expect(opcNotificationDrawer.title).toEqual('Notifications');
     opcNotificationDrawer.title = 'messages';
     await opcNotificationDrawer.updateComplete;
     expect(opcNotificationDrawer.title).toEqual('messages');

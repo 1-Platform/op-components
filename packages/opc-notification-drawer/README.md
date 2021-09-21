@@ -231,7 +231,7 @@ document
 | -------------------------------------------------- | ----------------- |
 | `--opc-notification-drawer__backdrop-color`        | #00000060         |
 | `--opc-notification-drawer__z-index`               | 9                 |
-| ` --opc-notification-drawer__width`                | 260px             |
+| ` --opc-notification-drawer__width`                | 360px             |
 | `--opc-notification-drawer__top`                   | 0px               |
 | `--opc-notification-drawer__right`                 | #000              |
 | `--opc-notification-drawer__transition--default`   | 120ms ease-in-out |

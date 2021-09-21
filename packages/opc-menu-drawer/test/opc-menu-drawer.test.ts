@@ -1,5 +1,5 @@
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { OpcMenuDrawer } from '../src/opc-menu-drawer';
+import { OpcMenuDrawer, OpcMenuDrawerSearch } from '../src/opc-menu-drawer';
 
 expect.extend(toHaveNoViolations);
 
@@ -55,9 +55,50 @@ describe('opc-menu-drawer', () => {
     expect(opcMenuDrawer.isOpen).toBeTruthy();
   });
 
-  it('should add headerTitle', async () => {
-    opcMenuDrawer.headerTitle = 'Akhil Mohan';
+  it('should have menu as default title', async () => {
+    expect(opcMenuDrawer.title).toEqual('Menu');
+  });
+
+  it('should add title', async () => {
+    opcMenuDrawer.menuTitle = 'Akhil Mohan';
     await opcMenuDrawer.updateComplete;
-    expect(opcMenuDrawer.headerTitle).toEqual('Akhil Mohan');
+    expect(opcMenuDrawer.menuTitle).toEqual('Akhil Mohan');
+  });
+});
+
+describe('opc-menu-drawer-search', () => {
+  const OPC_COMPONENT = 'opc-menu-drawer-search';
+  const ELEMENT_ID = 'opc-menu-drawer-search';
+  let opcMenuDrawerSearch: OpcMenuDrawerSearch;
+
+  const getShadowRoot = (tagName: string): ShadowRoot => {
+    return document.body.getElementsByTagName(tagName)[0].shadowRoot;
+  };
+
+  beforeEach(() => {
+    opcMenuDrawerSearch = window.document.createElement(
+      OPC_COMPONENT
+    ) as OpcMenuDrawerSearch;
+    document.body.appendChild(opcMenuDrawerSearch);
+  });
+
+  afterEach(() => {
+    document.body.getElementsByTagName(OPC_COMPONENT)[0].remove();
+  });
+
+  it('is defined', async () => {
+    expect(opcMenuDrawerSearch).toBeDefined();
+  });
+
+  it('has no axe violations', async () => {
+    expect(await axe(opcMenuDrawerSearch)).toHaveNoViolations();
+  });
+
+  it('should change placeholder', async () => {
+    const placeholder = 'Search application';
+    expect(opcMenuDrawerSearch.placeholder).toEqual('Search');
+    opcMenuDrawerSearch.placeholder = placeholder;
+    await opcMenuDrawerSearch.updateComplete;
+    expect(opcMenuDrawerSearch.placeholder).toEqual(placeholder);
   });
 });

@@ -11,7 +11,7 @@ export class OpcNotificationDrawer extends LitElement {
   }
 
   @state() private _isOpen = false;
-  @property({ type: String, reflect: true }) title = 'notifications';
+  @property({ type: String, reflect: true }) title = 'Notifications';
 
   close() {
     this._isOpen = false;
@@ -61,15 +61,25 @@ export class OpcNotificationDrawer extends LitElement {
           aria-modal="true"
         >
           <slot name="header">
-            <div class="opc-notification-drawer__header">
-              <div>
-                <h6 class="opc-notification-drawer__header-title">
-                  ${this.title}
-                </h6>
+            <div class="opc-notification-drawer__header-container">
+              <div class="opc-notification-drawer__header">
+                <div>
+                  <h4 class="opc-notification-drawer__header-title">
+                    ${this.title}
+                  </h4>
+                </div>
+                <button @click=${this.close}>
+                  <img
+                    src="${closeIcon}"
+                    alt="angle-icon"
+                    class="angle-icon"
+                    width="12px"
+                    height="12px"
+                  />
+                </button>
               </div>
-              <div class="flex-grow"></div>
               <div>
-                <slot name="header-menu"></slot>
+                <slot name="header-body"></slot>
               </div>
             </div>
           </slot>
@@ -120,7 +130,7 @@ export class OpcNotificationItem extends LitElement {
               <slot name="header-actions">
                 <button
                   aria-label="close button"
-                  @click=${(e) => this._handleButtonClick()}
+                  @click=${this._handleButtonClick}
                 >
                   <img
                     src=${closeIcon}
