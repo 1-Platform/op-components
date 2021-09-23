@@ -256,12 +256,16 @@ document
 | CSS Variable name               | Value             |
 | ------------------------------- | ----------------- |
 | `--opc-nav-height`              | 60px              |
+| ` --opc-nav-width`              | 100%              |
+| ` --opc-nav-position-top`       | 0                 |
+| ` --opc-nav-position-left`      | 0                 |
 | ` --opc-nav-transition--defaul` | 120ms ease-in-out |
 | `--opc-nav-menu__spacing-size`  | 24px              |
 | `--opc-nav-menu__link-color`    | #151515           |
 | ` --opc-nav-container__z-index` | 9                 |
 | `--opc-nav-btn__padding`        | 16px              |
 | ` --opc-nav-btn__hover-color`   | #316dc11a         |
+| ` --opc-nav-display;`           | block             |
 
 ## Install
 

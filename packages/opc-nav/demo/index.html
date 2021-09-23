@@ -10,39 +10,21 @@
         @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap");
         @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap");
 
-
-        .seperate {
-            padding: 1rem 0;
+        .content {
+            height: 200vh;
         }
     </style>
 </head>
 
 <body>
-    <div class="seperate">
-        <h3>
-            Opc-Nav
-        </h3>
+    <div>
         <opc-nav>
             <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
             <opc-nav-search slot="opc-nav-search" value="search"></opc-nav-search>
         </opc-nav>
-    </div>
-    <div class="seperate">
-        <h3>
-            Opc-Nav with hidden search and links
-        </h3>
-        <opc-nav>
-            <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
-        </opc-nav>
-    </div>
-    <div class="seperate">
-        <h3>
-            Opc-Nav with active menu
-        </h3>
-        <opc-nav activeButton="menu">
-            <img slot="opc-nav-logo" src="./logo.svg" height="28px" alt="logo" />
-            <opc-nav-search slot="opc-nav-search" value="search"></opc-nav-search>
-        </opc-nav>
+        <div class="content">
+            This is content
+        </div>
     </div>
     <script>
         const links = [
