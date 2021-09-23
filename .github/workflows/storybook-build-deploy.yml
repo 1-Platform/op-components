@@ -1,9 +1,11 @@
+
 name: Storybook deployment
 on:
-  workflow_dispatch:
   push:
-    branches: 
-      - 'master'
+    branches:
+      master
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: [ubuntu-latest]
