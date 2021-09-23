@@ -19,7 +19,7 @@ button,
 hr {
   border: 0.5px solid #ddd;
   width: 100%;
-  margin: 10px 0 !important;
+  margin: 0;
 }
 
 a {
@@ -35,7 +35,7 @@ img[inverse] {
   --opc-menu-drawer__backdrop-color: #00000060;
   --opc-menu-drawer__btn-hover-color: #efefef;
   --opc-menu-drawer__z-index: 9;
-  --opc-menu-drawer__width: 260px;
+  --opc-menu-drawer__width: 360px;
   --opc-menu-drawer__top: 0px;
   --opc-menu-drawer__right: 0px;
   --opc-menu-drawer__menu-padding: 8px 21px;
@@ -92,15 +92,32 @@ img[inverse] {
     transform: translateX(0);
   }
 
+  &__header {
+    display: flex;
+    padding: var(--opc-menu-drawer__menu-padding);
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+
+    &-title {
+      font-weight: 500;
+    }
+  }
+
   &-menu {
     display: flex;
     flex-direction: column;
   }
 
-  &__header {
+  &__menu-header {
     display: flex;
     align-items: center;
-    padding: 14px 21px;
+    padding: 1rem 1.25rem;
+
+    .angle-icon {
+      margin-left: 8px;
+    }
 
     &-title {
       font-family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
@@ -121,6 +138,10 @@ img[inverse] {
     height: 0;
   }
 
+  &-link-group {
+    padding-bottom: 0.5rem;
+  }
+
   &-menu-btn ::slotted(button),
   &-link {
     font-size: 16px;
@@ -132,7 +153,7 @@ img[inverse] {
   }
 
   &-menu-btn ::slotted(button:hover),
-  &__header:hover,
+  &__menu-header:hover,
   &-link:hover {
     background-color: var(--opc-menu-drawer__btn-hover-color);
     cursor: pointer;

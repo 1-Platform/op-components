@@ -10,7 +10,7 @@
 
 <body>
     <button>Click to toggle drawer</button>
-    <opc-menu-drawer headerTitle="Akhil Mohan">
+    <opc-menu-drawer menuTitle="Akhil Mohan">
         <span slot="avatar">
             AM
         </span>
@@ -26,7 +26,8 @@
         const drawer = document.querySelector("opc-menu-drawer");
         const links = [
             {
-                title: "BUILT-IN SERVICES",
+                title: "Applications",
+                isSearchable: true,
                 links: [
                     { name: "Blog", href: "#" },
                     { name: "Documentation", href: "#" },
@@ -48,6 +49,7 @@
 
         ]
         drawer.links = links;
+        drawer.open();
         button.addEventListener("click", () => {
             drawer.open();
         })

@@ -24,7 +24,7 @@ a {
   // add root styles here
   --opc-notification-drawer__backdrop-color: #00000060;
   --opc-notification-drawer__z-index: 9;
-  --opc-notification-drawer__width: 260px;
+  --opc-notification-drawer__width: 360px;
   --opc-notification-drawer__top: 0px;
   --opc-notification-drawer__right: 0px;
   --opc-notification-drawer__transition--default: 120ms ease-in-out;
@@ -40,6 +40,10 @@ a {
 
 .flex-grow {
   flex-grow: 1;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .opc-notification-drawer {
@@ -86,13 +90,24 @@ a {
 
   &__header {
     display: flex;
-    padding: 1rem;
-    border-bottom: 0.5px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border-bottom: 0.5px solid rgba(125, 125, 125, 0.8);
+
+      ::slotted(div) {
+        margin-top: 0.5rem;
+      }
+    }
 
     &-title {
-      font: 400 12px var(--opc-global--Heading--Font-Family, 'Red Hat Display');
-      color: $opc-color--black-600;
-      text-transform: uppercase;
+      font-family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+      font-size: 16px;
+      font-weight: 600;
     }
   }
 

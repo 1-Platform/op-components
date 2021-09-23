@@ -3,6 +3,7 @@ declare module '*.scss';
 type OpcMenuDrawerLinkGroup = {
   title: string;
   links: OpcMenuDrawerLink[];
+  isSearchable?: boolean;
 };
 
 type OpcMenuDrawerLink = {

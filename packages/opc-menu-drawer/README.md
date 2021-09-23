@@ -27,19 +27,19 @@ Opc-menu-drawer is implemented under Red Hat design guidelines. Therefore the co
 
 Opc-menu-drawer contains mainly two component. A backdrop and a drawer component expanded from rightside of the screen. The drawer can be controlled using `isOpen` attribute. Backdrop color can be controlled by `--opc-menu-drawer__backdrop-color` css variable.
 
-<!-- 1. opc-menu-drawer with header -->
+<!-- 1. opc-menu-drawer with menu -->
 
 <details>
-<summary>opc-menu-drawer with header</summary>
+<summary>opc-menu-drawer with menu</summary>
 
 ## Details
 
-The header is the topmost element seen on the drawer body. It contains a collapsable box with a title from the attribute `headerTitle` and an optional slot `avatar` to provide an avatar of the user. The header also accepts buttons through the slot `menu` that provide primary actions of the drawer, which is revealed by expanding the header title. The header container could be replaced with the slot `header`.
+The menu is the bottom element seen on the drawer body. It contains a collapsable box with a title from the attribute `menuTitle` and an optional slot `avatar` to provide an avatar of the user. The header also accepts buttons through the slot `menu` that provide primary actions of the drawer, which is revealed by expanding the header title. The header container could be replaced with the slot `header`.
 
 ### Code
 
 ```html
-<opc-menu-drawer headerTitle="Akhil Mohan">
+<opc-menu-drawer menuTitle="Akhil Mohan">
   <span slot="avatar">AM</span>
   <button slot="menu">Log In</button>
 </opc-menu-drawer>
@@ -49,18 +49,6 @@ The header is the topmost element seen on the drawer body. It contains a collaps
 document.querySelector('opc-menu-drawer').open();
 ```
 
-### Screenshot
-
-#### opc-menu-drawer with header collapsed
-
-![Image of opc-menu-drawer with ](./docs/opc-menu-drawer-header-collapsed.png)
-
-#### opc-menu-drawer with header expanded
-
-![Image of opc-menu-drawer with ](./docs/opc-menu-drawer-header-expanded.png)
-
-</details>
-
 <!-- 2. opc-menu-drawer with links -->
 
 <details>
@@ -68,14 +56,14 @@ document.querySelector('opc-menu-drawer').open();
 
 ## Details
 
-The drawer component accepts links grouped into categories for users to navigate easily. Links can be set via the `links` attribute. When the links are more than 5 for a group, the rest of them will be hidden in a collapsable box. It can be revealed by clicking on the show more button for that category.
+The drawer component accepts links grouped into categories for users to navigate easily. Links can be set via the `links` attribute. When the links are more than 5 for a group, the rest of them will be hidden in a collapsable box. It can be revealed by clicking on the show more button for that category. Links also accept an `isSearchable` which enables a search component to easily find when links are long
 
 The default slot gets passed to the drawer body. It will be shown after the links section if links are provided.
 
 ### Code
 
 ```html
-<opc-menu-drawer headerTitle="Akhil Mohan">
+<opc-menu-drawer menuTitle="Akhil Mohan">
   <span slot="avatar">AM</span>
   <div>
     <h6>Main Body</h6>
@@ -87,6 +75,7 @@ The default slot gets passed to the drawer body. It will be shown after the link
 const links = [
   {
     title: 'BUILT-IN SERVICES',
+    isSearchable: true,
     links: [
       { name: 'Blog', href: '#' },
       { name: 'Documentation', href: '#' },
@@ -111,12 +100,6 @@ document.querySelector('opc-menu-drawer').links = links;
 document.querySelector('opc-menu-drawer').open();
 ```
 
-### Screenshot
-
-#### opc-menu-drawer with links
-
-![Image of opc-menu-drawer with links](./docs/opc-menu-drawer-links.png)
-
 </details>
 
 <!-- 3. opc-menu-drawer with footer -->
@@ -131,7 +114,7 @@ The footer component will be at the bottom of the drawer body. It can be added u
 ### Code
 
 ```html
-<opc-menu-drawer headerTitle="Akhil Mohan">
+<opc-menu-drawer menuTitle="Akhil Mohan">
   <span slot="avatar">AM</span>
   <span slot="footer">2021 Red Hat </span>
 </opc-menu-drawer>
@@ -140,12 +123,6 @@ The footer component will be at the bottom of the drawer body. It can be added u
 ```js
 document.querySelector('opc-menu-drawer').open();
 ```
-
-### Screenshot
-
-#### opc-menu-drawer with footer
-
-![Image of opc-menu-drawer with ](./docs/opc-menu-drawer-footer.png)
 
 </details>
 
@@ -156,6 +133,8 @@ There are total 5 slots available in this component
 - `Default slot`: Default slot will be component inside body of the drawer componenent.
 
 - `header`: Container component that contains the header component.
+
+- `header-body`: Body component for the header. Eg: Filter chips can be placed here
 
 - `avatar`: The avatar component on drawer header.
 
@@ -172,6 +151,7 @@ There are total 5 slots available in this component
 ```js
 document.querySelector("opc-menu-drawer").links = {
     title: "BUILT-IN SERVICES",
+    isSearchable:true,
     links: [
       { name: "Blog#2", href: "#" },
       { name: "Documentation#1", href: "#" },
@@ -179,12 +159,20 @@ document.querySelector("opc-menu-drawer").links = {
   },;
 ```
 
-- `headerTitle`
+- `title`
+  - Type: `String`
+  - Default value: `Menu`
+
+```html
+  <opc-menu-drawer title="Menu Drawer"></opc-menu-drawer isOpen>
+```
+
+- `menuTitle`
   - Type: `String`
   - Default value: `''`
 
 ```html
-  <opc-menu-drawer headerTitle="Akhil Mohan"></opc-menu-drawer isOpen>
+  <opc-menu-drawer menuTitle="Akhil Mohan"></opc-menu-drawer isOpen>
 ```
 
 ### Methods
@@ -257,7 +245,7 @@ document
 | `--opc-menu-drawer__backdrop-color`         | #00000060         |
 | `--opc-menu-drawer__btn-hover-color`        | #efefef           |
 | `--opc-menu-drawer__z-index`                | 9                 |
-| ` --opc-menu-drawer__width`                 | 260px             |
+| ` --opc-menu-drawer__width`                 | 360px             |
 | `--opc-menu-drawer__top`                    | 0px               |
 | `--opc-menu-drawer__right`                  | #000              |
 | `--opc-menu-drawer__menu-padding`           | 8px 21px          |

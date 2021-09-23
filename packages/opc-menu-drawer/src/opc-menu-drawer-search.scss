@@ -1,0 +1,41 @@
+@import '@one-platform/opc-styles';
+
+button,
+::slotted(button) {
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+:host {
+  --opc-menu-drawer-search__bg: #efefef;
+  --opc-menu-drawer-search__margin: 0.5rem 0.5rem;
+  --opc-menu-drawer-search__padding: 0.5rem;
+  --opc-menu-drawer-search__border-radius: 8px;
+}
+
+.opc-menu-drawer-search {
+  display: flex;
+  background-color: var(--opc-menu-drawer-search__bg);
+  margin: var(--opc-menu-drawer-search__margin);
+  box-sizing: border-box;
+  align-items: center;
+  padding: var(--opc-menu-drawer-search__padding);
+  border-radius: var(--opc-menu-drawer-search__border-radius);
+
+  &__item {
+    padding: 0 0.25rem;
+  }
+
+  &__input {
+    background: none;
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+  }
+}
+
+.flex-grow {
+  flex-grow: 1;
+}

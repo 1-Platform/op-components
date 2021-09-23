@@ -35,6 +35,7 @@
         const button = document.querySelector("button");
         const drawer = document.querySelector("opc-notification-drawer");
         const item = document.querySelector("opc-notification-item");
+        drawer.open();
         drawer.addEventListener('opc-notification-drawer:open', (e) => {
             console.log("opened")
         })

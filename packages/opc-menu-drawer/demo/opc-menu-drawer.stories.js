@@ -15,7 +15,7 @@ export default {
 };
 
 export const opcMenuDrawer = () => `
-<opc-menu-drawer headerTitle="Akhil Mohan"></opc-menu-drawer>
+<opc-menu-drawer menuTitle="Akhil Mohan"></opc-menu-drawer>
 <script>
 var links = [{
         title: "BUILT-IN SERVICES",
