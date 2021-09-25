@@ -1,11 +1,9 @@
-
 name: Storybook deployment
-on:
-  push:
-    branches:
-      master
+on: 
   workflow_dispatch:
-
+  push:
+    branches: 
+      - master
 jobs:
   build:
     runs-on: [ubuntu-latest]
@@ -13,16 +11,18 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '16.x'
       - name: Setup node
-      - run: |
-          npm i
-          npm run build:packages
+        run: npm i
         env: 
           CI: true
-      - name: Build
-      - run: npm run build-storybook
-      - name: Deploy
+          name: Test and build all packages
+          run: |
+           npm test
+           npm run build:packages
+      - name: Build Storybook
+        run: npm run build-storybook
+      - name: Deploy Storybook
         if: success()
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with: 
