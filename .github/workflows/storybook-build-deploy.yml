@@ -9,17 +9,20 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Use Node.js 14.x
+        env:
+          NODE_ENV: development
+        uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - name: Setup node
-        run: npm install
-        env: 
-          CI: true
-          name: Build all packages
-          run: npm run build:packages
+      - run: npm install 
+      - run: npm run build:packages 
+      - name: Run headless test
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: npm run test:packages 
       - name: Build Storybook
-        run: npm run build-storybook
+        run: npm run build-storybook 
       - name: Deploy Storybook
         if: success()
         uses: JamesIves/github-pages-deploy-action@releases/v3
