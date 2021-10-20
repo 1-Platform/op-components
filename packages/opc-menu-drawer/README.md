@@ -78,7 +78,7 @@ const links = [
     isSearchable: true,
     links: [
       { name: 'Blog', href: '#' },
-      { name: 'Documentation', href: '#' },
+      { name: 'Documentation', href: '#', isDisabled: true },
       { name: 'Something #1', href: '#' },
       { name: 'Something #2', href: '#' },
       { name: 'Something #3', href: '#' },
@@ -153,7 +153,7 @@ document.querySelector("opc-menu-drawer").links = {
     title: "BUILT-IN SERVICES",
     isSearchable:true,
     links: [
-      { name: "Blog#2", href: "#" },
+      { name: "Blog#2", href: "#", isDisabled: true },
       { name: "Documentation#1", href: "#" },
     ],
   },;

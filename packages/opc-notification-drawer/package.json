@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-notification-drawer",
-  "version": "0.1.1-prerelease",
+  "version": "0.1.2-prerelease",
   "description": "opc-notification-drawer is a webcomponent develped using lit elements for Red Hat One Platform for showing user notifications.",
   "scripts": {
     "dev": "webpack serve",

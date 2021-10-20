@@ -8,6 +8,11 @@ import { angleDownIcon, closeIcon, searchIcon } from './assets';
 import style from './opc-menu-drawer.scss';
 import opcMenuDrawerSearch from './opc-menu-drawer-search.scss';
 
+enum CollapsableText {
+  isExpanded = 'show less',
+  isCollapsed = 'show more',
+}
+
 @customElement('opc-menu-drawer')
 export class OpcMenuDrawer extends LitElement {
   @property() name = 'opc-menu-drawer';
@@ -35,6 +40,17 @@ export class OpcMenuDrawer extends LitElement {
     )! as HTMLDivElement;
     const collapseIndicator = container.querySelector('.angle-icon')!;
     this._toggleContainerHeight(collapseBox, collapseIndicator);
+    this._toggleContainerText(container);
+  }
+
+  private _toggleContainerText(container: HTMLElement) {
+    const collapsableText = container.querySelector(
+      '.opc-menu-drawer-links--collapse-text'
+    ) as HTMLParagraphElement;
+    collapsableText.innerText =
+      collapsableText.innerText.toLowerCase() === CollapsableText.isExpanded
+        ? CollapsableText.isCollapsed
+        : CollapsableText.isExpanded;
   }
 
   private _handleMenuExpandToggle() {
@@ -158,27 +174,51 @@ export class OpcMenuDrawer extends LitElement {
                             .includes(this._searchLinkState[normalizedTitle])
                         ),
                         ({ name }) => name,
-                        ({ name, href }) =>
-                          html` <a href="${href}">
-                            <div class="opc-menu-drawer-link">${name}</div>
+                        ({ name, href, isDisabled }) =>
+                          html` <a
+                            href="${isDisabled ? href : '#'}"
+                            aria-disabled="${isDisabled}"
+                          >
+                            <div
+                              class="opc-menu-drawer-link"
+                              ?disabled=${isDisabled}
+                            >
+                              ${name}
+                            </div>
                           </a>`
                       )}
                     `
                   : html`${repeat(
                         links.slice(0, 5),
                         ({ name }) => name,
-                        ({ name, href }) =>
-                          html` <a href="${href}">
-                            <div class="opc-menu-drawer-link">${name}</div>
+                        ({ name, href, isDisabled }) =>
+                          html` <a
+                            href="${isDisabled ? '#' : href}"
+                            aria-disabled="${isDisabled}"
+                          >
+                            <div
+                              class="opc-menu-drawer-link"
+                              ?disabled=${isDisabled}
+                            >
+                              ${name}
+                            </div>
                           </a>`
                       )}
                       <div class="opc-menu-drawer-links-collapse-box">
                         ${repeat(
                           links.slice(5),
                           ({ name }) => name,
-                          ({ name, href }) =>
-                            html` <a href="${href}">
-                              <div class="opc-menu-drawer-link">${name}</div>
+                          ({ name, href, isDisabled }) =>
+                            html` <a
+                              href="${isDisabled ? '#' : href}"
+                              aria-disabled="${isDisabled}"
+                            >
+                              <div
+                                class="opc-menu-drawer-link"
+                                ?disabled=${isDisabled}
+                              >
+                                ${name}
+                              </div>
                             </a>`
                         )}
                       </div>
@@ -189,7 +229,9 @@ export class OpcMenuDrawer extends LitElement {
                               key="${index}"
                               @click="${this._handleLinkExpandToggle}"
                             >
-                              <p>Show more</p>
+                              <p class="opc-menu-drawer-links--collapse-text">
+                                ${CollapsableText.isCollapsed}
+                              </p>
                               <img
                                 src="${angleDownIcon}"
                                 alt="angle-icon"
