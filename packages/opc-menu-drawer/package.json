@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-menu-drawer",
-  "version": "0.1.1-prerelease",
+  "version": "0.1.2-prerelease",
   "description": "opc-menu-drawer is a customizable drawer web component which shows the menu's and user profile",
   "scripts": {
     "dev": "webpack serve",

@@ -9,4 +9,5 @@ type OpcMenuDrawerLinkGroup = {
 type OpcMenuDrawerLink = {
   name: string;
   href: string;
+  isDisabled?: boolean;
 };
