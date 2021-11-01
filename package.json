@@ -12,8 +12,8 @@
     "postinstall": "lerna exec -- rm -rf ./node_modules && lerna bootstrap --no-ci --loglevel warn --concurrency 1"
   },
   "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/plugin-proposal-private-property-in-object": "7.15.4",
+    "@babel/core": "7.16.0",
+    "@babel/plugin-proposal-private-property-in-object": "7.16.0",
     "@storybook/addon-actions": "6.2.9",
     "@storybook/addon-controls": "6.2.9",
     "@storybook/addon-essentials": "6.2.9",
@@ -21,7 +21,7 @@
     "@storybook/addons": "6.2.9",
     "@storybook/theming": "6.2.9",
     "@storybook/web-components": "6.2.9",
-    "babel-loader": "8.2.2",
+    "babel-loader": "8.2.3",
     "eslint": "7.27.0",
     "lerna": "4.0.0",
     "lit-html": "1.4.1",
