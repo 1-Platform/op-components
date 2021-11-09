@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 
 import { searchIcon, notificationIcon, gridIcon } from './assets';
@@ -29,45 +29,46 @@ export class OpcNav extends LitElement {
         <div class="opc-nav-logo-container">
           <slot name="opc-nav-logo"></slot>
         </div>
-        <nav class="opc-nav-menu">
-          <slot name="opc-nav-menu-links">
-            <ul>
-              ${this.links.map(
-                ({ name, href }) =>
-                  html` <li><a href="${href}">${name}</a></li> `
-              )}
-            </ul>
-          </slot>
-        </nav>
-        <div class="flex-grow"></div>
         <slot></slot>
         <slot name="opc-nav-search"> </slot>
-        <div class="opc-nav-btn-container">
-          <slot name="opc-nav-btn">
-            <button
-              @click="${(e) => this._handleButtonClick('notification')}"
-              ?active=${this.activeButton === 'notification'}
-            >
-              <img
-                src="${notificationIcon}"
-                alt="icons"
-                width="20px"
-                height="20px"
-              />
-            </button>
-            <button
-              @click="${(e) => this._handleButtonClick('menu')}"
-              ?active=${this.activeButton === 'menu'}
-            >
-              <img
-                src="${gridIcon}"
-                alt="icons"
-                width="20px"
-                height="20px"
-                type="menu"
-              />
-            </button>
-          </slot>
+        <div class="opc-nav-menu-container">
+          <nav class="opc-nav-menu">
+            <slot name="opc-nav-menu-links">
+              <ul>
+                ${this.links.map(
+                  ({ name, href }) =>
+                    html` <li><a href="${href}">${name}</a></li> `
+                )}
+              </ul>
+            </slot>
+          </nav>
+          <div class="opc-nav-btn-container">
+            <slot name="opc-nav-btn">
+              <button
+                @click="${() => this._handleButtonClick('notification')}"
+                ?active=${this.activeButton === 'notification'}
+              >
+                <img
+                  src="${notificationIcon}"
+                  alt="icons"
+                  width="20px"
+                  height="20px"
+                />
+              </button>
+              <button
+                @click="${() => this._handleButtonClick('menu')}"
+                ?active=${this.activeButton === 'menu'}
+              >
+                <img
+                  src="${gridIcon}"
+                  alt="icons"
+                  width="20px"
+                  height="20px"
+                  type="menu"
+                />
+              </button>
+            </slot>
+          </div>
         </div>
       </div>
     </header>`;
@@ -83,23 +84,11 @@ export class OpcNavSearch extends LitElement {
   @property({ type: String, reflect: true })
   value = '';
 
-  @state()
-  private _isSearchOpen: boolean = false;
+  @property({ type: String, reflect: true })
+  placeholder = 'Search application, documents, contents etc';
 
   @query('input')
   private input!: HTMLInputElement;
-
-  private _handleSearchOpen() {
-    this._isSearchOpen = true;
-    this.input.focus();
-  }
-
-  private _handleSearchClose() {
-    if (!this.input.value) {
-      this.value = '';
-      this._isSearchOpen = false;
-    }
-  }
 
   private _handleInputChange(e: Event) {
     this.dispatchEvent(
@@ -125,52 +114,31 @@ export class OpcNavSearch extends LitElement {
   }
 
   render() {
-    const isSearchExpanded = Boolean(this.value) || this._isSearchOpen;
-
     return html`
       <div class="opc-nav-search">
         <form
           class="opc-nav-search__form"
           @submit="${this._handleSearchSubmit}"
-          ?active=${isSearchExpanded}
-          @blur="${this._handleSearchClose}"
         >
-          ${isSearchExpanded
-            ? html` <button class="opc-nav-search__btn" type="submit">
-                <img
-                  src="${searchIcon}"
-                  class="opc-nav__icon"
-                  alt="user"
-                  width="20px"
-                  height="20px"
-                />
-              </button>`
-            : html` <button
-                class="opc-nav-search__btn"
-                type="button"
-                @click="${this._handleSearchOpen}"
-              >
-                <img
-                  src="${searchIcon}"
-                  class="opc-nav__icon"
-                  alt="user"
-                  width="20px"
-                  height="20px"
-                />
-              </button>`}
+          <button class="opc-nav-search__btn" type="submit">
+            <img
+              src="${searchIcon}"
+              class="opc-nav__icon"
+              alt="user"
+              width="20px"
+              height="20px"
+            />
+          </button>
           <input
-            class="opc-nav-search__input ${isSearchExpanded
-              ? 'opc-nav-search__input-active'
-              : ''}"
+            class="opc-nav-search__input"
             type="search"
             name="query"
             autofocus
             autocomplete="off"
-            aria-label="Search"
-            placeholder="Search"
+            aria-label=${this.placeholder}
+            placeholder=${this.placeholder}
             required
             .value=${live(this.value)}
-            @blur="${this._handleSearchClose}"
             @input="${this._handleInputChange}"
           />
         </form>

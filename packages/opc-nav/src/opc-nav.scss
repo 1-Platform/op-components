@@ -30,11 +30,12 @@ input {
   --opc-nav-height: 60px;
   --opc-nav-width: 100%;
   --opc-nav-transition--default: 120ms ease-in-out;
-  --opc-nav-menu__spacing-size: 24px;
+  --opc-nav-menu__spacing-size: 32px;
   --opc-nav-menu__link-color: #151515;
   --opc-nav-container__z-index: 9;
   --opc-nav-btn__padding: 17px;
   --opc-nav-btn__hover-color: #316dc11a;
+  --opc-nav-link__hover-color: #0066cc;
   display: var(--opc-nav-display, block);
   height: var(--opc-nav-height, 60px);
 }
@@ -52,6 +53,7 @@ input {
     display: flex;
     font-family: var(--opc-global--Font-Family);
     align-items: center;
+    justify-content: space-between;
     border: 1px solid #dddddd;
     background-color: #fff;
     height: var(--opc-nav-height);
@@ -64,15 +66,30 @@ input {
   &-menu {
     padding: var(--opc-nav-btn__padding);
 
+    &-container {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
     ul {
       list-style: none;
       display: flex;
       align-items: center;
 
+      @media screen and (max-width: 1200px) {
+        display: none;
+      }
+
       li a {
         font-family: var(--opc-global--Font-Family);
         text-decoration: none;
         color: var(--opc-nav-menu__link-color, #151515);
+
+        &:hover {
+          color: var(--opc-nav-link__hover-color);
+        }
       }
 
       li:not(:last-child) {
@@ -104,7 +121,6 @@ input {
       background: none;
       transition: var(--opc-nav-transition--default);
     }
-
     ::slotted(button:hover),
     button:hover,
     ::slotted(button:active),

@@ -18,47 +18,38 @@ input {
   background: none;
 }
 
+:host {
+  --opc-nav-search-bg: #f3f3f3;
+  --opc-nav-search__padding: 12px 17px;
+  --opc-nav-search__border-radius: 8px;
+}
+
 .opc-nav {
   &-search {
     &__form {
       display: flex;
       align-items: center;
       transition: var(--opc-nav-transition--default, 120ms ease-in-out);
-      background: none;
-
-      &[active],
-      &:hover {
-        background: var(--opc-nav-btn__hover-color);
-
-        img {
-          filter: invert(42%) sepia(13%) saturate(5058%) hue-rotate(187deg)
-            brightness(85%) contrast(85%);
-        }
-      }
+      background: #f3f3f3;
+      border-radius: var(--opc-nav-search__border-radius);
     }
 
     &__btn {
-      padding: var(--opc-nav-btn__padding);
+      padding: var(--opc-nav-search__padding);
       cursor: pointer;
     }
 
     &__input {
       font-family: var(--opc-global--Heading--Font-Family);
       font-size: 16px;
-      width: 0;
-      opacity: 0;
       transition: var(--opc-nav-transition--default, 120ms ease-in-out);
       outline: none;
+      opacity: 1;
+      width: 40vw;
+      max-width: 720px;
 
       &:required {
         box-shadow: none;
-      }
-
-      &-active {
-        opacity: 1;
-        width: 20vw;
-        max-width: 360px;
-        padding-right: 20px;
       }
     }
   }
