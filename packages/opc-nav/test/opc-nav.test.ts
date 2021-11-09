@@ -70,4 +70,10 @@ describe('opc-nav-search', () => {
     await opcNavSearch.updateComplete;
     expect(opcNavSearch.value).toEqual('search');
   });
+
+  it('should have placeholder value', async () => {
+    opcNavSearch.placeholder = 'search';
+    await opcNavSearch.updateComplete;
+    expect(opcNavSearch.placeholder).toEqual('search');
+  });
 });

@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-nav",
-  "version": "0.0.2-prerelease",
+  "version": "0.0.3-prerelease",
   "description": "opc-nav is a nav bar component developed using lit elements for Red Hat One Platform.",
   "scripts": {
     "dev": "webpack serve",
