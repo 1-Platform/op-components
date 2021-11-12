@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@one-platform/opc-styles": "0.0.3",
-    "lit": "2.0.0",
+    "lit": "2.0.2",
     "lit-analyzer": "1.2.1",
     "lit-element": "2.5.1"
   }
