@@ -1,6 +1,8 @@
 @import "@one-platform/opc-styles";
 
-$LOCAL: opc-back-to-top;
+:host {
+  display: block;
+}
 
 .hide {
   display: none;
