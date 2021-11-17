@@ -76,7 +76,7 @@ export class OpcInputChip extends LitElement {
                   ${this.getRemoveChipIcon(chip, index)}
                 </div>
             `)
-          : nothing
+          : ''
         }
         <input class="opc-input" type="text" placeholder="${this.placeholder}"
           aria-label="Enter chip name" @keydown="${ e => this.addNewChip(e)}">
