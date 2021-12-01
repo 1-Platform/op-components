@@ -22,7 +22,7 @@
     "@storybook/theming": "6.2.9",
     "@storybook/web-components": "6.2.9",
     "babel-loader": "8.2.3",
-    "eslint": "7.27.0",
+    "eslint": "7.32.0",
     "lerna": "4.0.0",
     "lit-html": "1.4.1",
     "webpack": "4.24.0",
