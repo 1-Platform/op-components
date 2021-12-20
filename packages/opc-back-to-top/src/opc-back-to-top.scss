@@ -1,4 +1,4 @@
-@import "@one-platform/opc-styles";
+@import '@one-platform/opc-styles';
 
 :host {
   display: block;
@@ -9,7 +9,7 @@
 }
 
 .show {
-  font-family: "Red Hat Text", sans-serif;
+  font-family: var(--opc-global--Font-Family, 'RedHatText');
   display: flex;
   justify-content: center;
   align-items: center;

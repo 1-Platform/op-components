@@ -115,9 +115,9 @@ Use the mixin by `@include <mixin-name>` for example:
 - By Default the Red Hat Text is applied to the all text excluding All Headings Tags which are from H1 to H6. If you want to change the font family you can do that by changing the global css custom proprietary which is declared in the :root selector in the `_base` file.
 
 ```css
-:root {
- --opc-global--Heading--Font-Family: 'Red Hat Display';
- --opc-global--Font-Family: 'Red Hat Text';
+:host {
+ --opc-global--Heading--Font-Family: 'RedHatDisplay';
+ --opc-global--Font-Family: 'RedHatText';
 }
 ```
 

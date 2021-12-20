@@ -1,13 +1,14 @@
-/// Root Variables
-:root {
-  --opc-global--Heading--Font-Family: 'Red Hat Display', Overpass 'Arial';
-  --opc-global--Font-Family: 'Red Hat Text', Overpass, 'Arial';
+/// Why not root? Web components cannot access DOM root.
+/// Thus uses host
+:host {
+  --opc-global--Heading--Font-Family: 'RedHatDisplay', Overpass 'Arial';
+  --opc-global--Font-Family: 'RedHatText', Overpass, 'Arial';
 }
 
 // NORMALIZE
 * {
   box-sizing: border-box;
-  font-family: var(--opc-global--Font-Family, 'Red Hat Text');
+  font-family: var(--opc-global--Font-Family, 'RedHatText');
 }
 
 html,
@@ -46,7 +47,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+  font-family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
 }
 
 ul {

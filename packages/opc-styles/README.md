@@ -63,7 +63,7 @@ this will convert to the css
 
 ```
   .app-heading {
-    font-family: var(--opc-global--Heading--font-Family, "Red Hat Display");
+    font-family: var(--opc-global--Heading--font-Family, "RedHatDisplay");
     font-size: 1.5rem;
     font-weight: 500;
   }
