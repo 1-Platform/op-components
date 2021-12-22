@@ -51,7 +51,7 @@ a {
     position: fixed;
     z-index: var(--opc-notification-drawer__z-index, 9);
     inset: 0px;
-    font-family: var(--opc-global--Font-Family, 'Red Hat Text');
+    font-family: var(--opc-global--Font-Family, 'RedHatText');
     transition: var(--opc-notification-drawer__transition--default);
     visibility: visible;
   }
@@ -105,7 +105,7 @@ a {
     }
 
     &-title {
-      font-family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+      font-family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
       font-size: 16px;
       font-weight: 500;
     }

@@ -1,6 +1,6 @@
 @mixin heading--one {
   font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+    family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
     size: $opc-global--FontSize--4xl;
     weight: $opc-global--fontWeight--normal;
   }
@@ -8,7 +8,7 @@
 
 @mixin heading--two {
   font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+    family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
     size: $opc-global--FontSize--3xl;
     weight: $opc-global--fontWeight--normal;
   }
@@ -16,7 +16,7 @@
 
 @mixin heading--two__large_quotes {
   font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+    family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
     size: $opc-global--FontSize--3xl;
     weight: $opc-global--fontWeight--light;
   }
@@ -24,7 +24,7 @@
 
 @mixin heading--three {
   font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+    family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
     size: $opc-global--FontSize--2xl;
     weight: $opc-global--fontWeight--normal;
   }
@@ -32,7 +32,7 @@
 
 @mixin heading--four {
   font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+    family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
     size: $opc-global--FontSize--xl;
     weight: $opc-global--fontWeight--normal;
   }
@@ -40,7 +40,7 @@
 
 @mixin heading--four__small_quotes {
   font: {
-    family: var(--opc-global--Heading--font-Family, 'Red Hat Display');
+    family: var(--opc-global--Heading--font-Family, 'RedHatDisplay');
     size: $opc-global--FontSize--xl;
     weight: $opc-global--fontWeight--light;
   }
