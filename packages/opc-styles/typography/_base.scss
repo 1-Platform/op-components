@@ -1,7 +1,7 @@
 /// Why not root? Web components cannot access DOM root.
 /// Thus uses host
 :host {
-  --opc-global--Heading--Font-Family: 'RedHatDisplay', Overpass 'Arial';
+  --opc-global--Heading--Font-Family: 'RedHatDisplay', Overpass, 'Arial';
   --opc-global--Font-Family: 'RedHatText', Overpass, 'Arial';
 }
 
