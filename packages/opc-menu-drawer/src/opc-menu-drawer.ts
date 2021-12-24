@@ -7,6 +7,7 @@ import { angleDownIcon, closeIcon, searchIcon } from './assets';
 
 import style from './opc-menu-drawer.scss';
 import opcMenuDrawerSearch from './opc-menu-drawer-search.scss';
+import { queryAll } from 'lit-element';
 
 enum CollapsableText {
   isExpanded = 'show less',
@@ -27,33 +28,56 @@ export class OpcMenuDrawer extends LitElement {
   @property({ type: String, reflect: true }) menuTitle = '';
 
   @state() private _isOpen = false;
-  @state() private _searchLinkState: Record<string, string> = {};
+  @state() private _searchTermApplication = '';
   @state() private _searchDebounce: NodeJS.Timeout;
 
   @query('.opc-menu-drawer-menu')
   collapsableMenuContainer: HTMLDivElement | undefined;
 
-  private _handleLinkExpandToggle(event: Event) {
-    const container = (event.target as HTMLDivElement).parentElement!;
-    const collapseBox = container.querySelector(
-      '.opc-menu-drawer-links-collapse-box'
-    )! as HTMLDivElement;
-    const collapseIndicator = container.querySelector('.angle-icon')!;
-    this._toggleContainerHeight(collapseBox, collapseIndicator);
-    this._toggleContainerText(container);
-  }
+  @queryAll('.opc-menu-drawer-link-group')
+  collapsableLinkContainer: NodeListOf<HTMLDivElement> | undefined;
 
-  private _toggleContainerText(container: HTMLElement) {
+  // utility function to change text of collapsable
+  private _toggleContainerText(container: HTMLElement, state?: boolean) {
     const collapsableText = container.querySelector(
       '.opc-menu-drawer-links--collapse-text'
     ) as HTMLParagraphElement;
-    collapsableText.innerText =
-      collapsableText.innerText.toLowerCase() === CollapsableText.isExpanded
-        ? CollapsableText.isCollapsed
-        : CollapsableText.isExpanded;
+    const isOpen =
+      typeof state === 'boolean'
+        ? state
+        : collapsableText.innerText.toLowerCase() !==
+          CollapsableText.isExpanded;
+    collapsableText.innerText = isOpen
+      ? CollapsableText.isExpanded
+      : CollapsableText.isCollapsed;
   }
 
-  private _handleMenuExpandToggle() {
+  // utility function to change height of collapsable
+  private _toggleContainerHeight(
+    box: HTMLDivElement,
+    indicator: Element,
+    state?: boolean
+  ) {
+    const isOpen = typeof state === 'boolean' ? state : box.clientHeight === 0;
+    if (isOpen) {
+      box.style.height = box.scrollHeight + 'px';
+      indicator.setAttribute('inverse', 'true');
+    } else {
+      box.style.height = '0';
+      indicator.removeAttribute('inverse');
+    }
+  }
+
+  // close all opened toggles
+  private _resetAllMenuToggles() {
+    const totalCollapsable = this.collapsableLinkContainer.length;
+    for (let i = 0; i < totalCollapsable; i++) {
+      this._onLinkToggle(i, false);
+    }
+  }
+
+  // Collapsable function to trigger menu and links
+  private _onMenuToggle() {
     const collapsableMenu = this.collapsableMenuContainer.querySelector(
       '.opc-menu-drawer-menu-btn'
     ) as HTMLDivElement;
@@ -63,23 +87,28 @@ export class OpcMenuDrawer extends LitElement {
     this._toggleContainerHeight(collapsableMenu, collapseIndicator);
   }
 
-  private _toggleContainerHeight(box: HTMLDivElement, indicator: Element) {
-    if (box.clientHeight === 0) {
-      box.style.height = box.scrollHeight + 'px';
-      indicator.setAttribute('inverse', 'true');
-    } else {
-      box.style.height = '0';
-      indicator.removeAttribute('inverse');
+  private _onLinkToggle(collapseIndex: number, state?: boolean) {
+    const collapseBox = this.collapsableLinkContainer[
+      collapseIndex
+    ].querySelector('.opc-menu-drawer-links-collapse-box') as HTMLDivElement;
+    const collapseIndicator = this.collapsableLinkContainer[
+      collapseIndex
+    ].querySelector('.angle-icon');
+    if (collapseBox && collapseIndicator) {
+      this._toggleContainerHeight(collapseBox, collapseIndicator, state);
+      this._toggleContainerText(
+        this.collapsableLinkContainer[collapseIndex],
+        state
+      );
     }
   }
 
-  private _handleSearchChange(type: string, search: string) {
+  // application search controller
+  private _onSearchChange(searchTerm: string) {
     clearTimeout(this._searchDebounce);
     this._searchDebounce = setTimeout(() => {
-      this._searchLinkState = {
-        ...this._searchLinkState,
-        [type]: search.toLowerCase(),
-      };
+      this._searchTermApplication = searchTerm;
+      this._resetAllMenuToggles();
     }, 300);
   }
 
@@ -142,106 +171,84 @@ export class OpcMenuDrawer extends LitElement {
                 </button>
               </div>
             </div>
+            <div>
+              <opc-menu-drawer-search
+                placeholder=${`Search application via name`}
+                @opc-menu-drawer-search:change=${(evt: any) => {
+                  this._onSearchChange(evt.detail.value);
+                }}
+              ></opc-menu-drawer-search>
+            </div>
             <div class="opc-menu-drawer__header-body">
               <slot name="header-body"></slot>
             </div>
           </slot>
-          ${this.links.map(({ title, links, isSearchable }, index) => {
-            const normalizedTitle = title.toLowerCase();
+          ${this.links.map(({ title, links }, linkIndex) => {
+            const nonCollapsedLinks = links
+              .filter(({ name }) =>
+                name.toLowerCase().includes(this._searchTermApplication)
+              )
+              .slice(0, 5);
 
+            const collapsedLinks = links
+              .filter(({ name }) =>
+                name.toLowerCase().includes(this._searchTermApplication)
+              )
+              .slice(5);
             return html`
               <div class="opc-menu-drawer-link-group">
                 <div class="opc-menu-drawer-link-title">
                   <p>${title}</p>
                 </div>
-                ${isSearchable
-                  ? html`<opc-menu-drawer-search
-                      placeholder=${`Search ${normalizedTitle} via name`}
-                      @opc-menu-drawer-search:change=${(evt: any) => {
-                        this._handleSearchChange(
-                          normalizedTitle,
-                          evt.detail.value
-                        );
-                      }}
-                    ></opc-menu-drawer-search>`
-                  : null}
-                ${Boolean(this._searchLinkState[normalizedTitle])
-                  ? html`
-                      ${repeat(
-                        links.filter(({ name }) =>
-                          name
-                            .toLowerCase()
-                            .includes(this._searchLinkState[normalizedTitle])
-                        ),
-                        ({ name }) => name,
-                        ({ name, href, isDisabled }) =>
-                          html` <a
-                            href="${isDisabled ? href : '#'}"
-                            aria-disabled="${isDisabled}"
-                          >
-                            <div
-                              class="opc-menu-drawer-link"
-                              ?disabled=${isDisabled}
-                            >
-                              ${name}
-                            </div>
-                          </a>`
-                      )}
-                    `
-                  : html`${repeat(
-                        links.slice(0, 5),
-                        ({ name }) => name,
-                        ({ name, href, isDisabled }) =>
-                          html` <a
-                            href="${isDisabled ? '#' : href}"
-                            aria-disabled="${isDisabled}"
-                          >
-                            <div
-                              class="opc-menu-drawer-link"
-                              ?disabled=${isDisabled}
-                            >
-                              ${name}
-                            </div>
-                          </a>`
-                      )}
-                      <div class="opc-menu-drawer-links-collapse-box">
-                        ${repeat(
-                          links.slice(5),
-                          ({ name }) => name,
-                          ({ name, href, isDisabled }) =>
-                            html` <a
-                              href="${isDisabled ? '#' : href}"
-                              aria-disabled="${isDisabled}"
-                            >
-                              <div
-                                class="opc-menu-drawer-link"
-                                ?disabled=${isDisabled}
-                              >
-                                ${name}
-                              </div>
-                            </a>`
-                        )}
+                ${repeat(
+                  nonCollapsedLinks,
+                  ({ name }) => name,
+                  ({ name, href, isDisabled }) =>
+                    html` <a
+                      href="${isDisabled ? '#' : href}"
+                      aria-disabled="${isDisabled}"
+                    >
+                      <div class="opc-menu-drawer-link" ?disabled=${isDisabled}>
+                        ${name}
                       </div>
-                      ${links.length > 5
-                        ? html`
-                            <div
-                              class="opc-menu-drawer-links-collapse-button"
-                              key="${index}"
-                              @click="${this._handleLinkExpandToggle}"
-                            >
-                              <p class="opc-menu-drawer-links--collapse-text">
-                                ${CollapsableText.isCollapsed}
-                              </p>
-                              <img
-                                src="${angleDownIcon}"
-                                alt="angle-icon"
-                                width="12px"
-                                height="8px"
-                                class="angle-icon"
-                              />
-                            </div>
-                          `
-                        : null}`}
+                    </a>`
+                )}
+                <div class="opc-menu-drawer-links-collapse-box">
+                  ${repeat(
+                    collapsedLinks,
+                    ({ name }) => name,
+                    ({ name, href, isDisabled }) =>
+                      html` <a
+                        href="${isDisabled ? '#' : href}"
+                        aria-disabled="${isDisabled}"
+                      >
+                        <div
+                          class="opc-menu-drawer-link"
+                          ?disabled=${isDisabled}
+                        >
+                          ${name}
+                        </div>
+                      </a>`
+                  )}
+                </div>
+                ${collapsedLinks.length > 0
+                  ? html` <div
+                      class="opc-menu-drawer-links-collapse-button"
+                      key="${linkIndex}"
+                      @click="${() => this._onLinkToggle(linkIndex)}"
+                    >
+                      <p class="opc-menu-drawer-links--collapse-text">
+                        ${CollapsableText.isCollapsed}
+                      </p>
+                      <img
+                        src="${angleDownIcon}"
+                        alt="angle-icon"
+                        width="12px"
+                        height="8px"
+                        class="angle-icon"
+                      />
+                    </div>`
+                  : null}
                 <hr />
               </div>
             `;
@@ -255,7 +262,7 @@ export class OpcMenuDrawer extends LitElement {
             <hr class="opc-menu-drawer__menu-header-sep" />
             <div
               class="opc-menu-drawer__menu-header"
-              @click="${this._handleMenuExpandToggle}"
+              @click="${this._onMenuToggle}"
             >
               <div>
                 <h4 class="opc-menu-drawer__menu-header-title">

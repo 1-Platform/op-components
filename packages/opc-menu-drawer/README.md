@@ -56,7 +56,7 @@ document.querySelector('opc-menu-drawer').open();
 
 ## Details
 
-The drawer component accepts links grouped into categories for users to navigate easily. Links can be set via the `links` attribute. When the links are more than 5 for a group, the rest of them will be hidden in a collapsable box. It can be revealed by clicking on the show more button for that category. Links also accept an `isSearchable` which enables a search component to easily find when links are long
+The drawer component accepts links grouped into categories for users to navigate easily. Links can be set via the `links` attribute. When the links are more than 5 for a group, the rest of them will be hidden in a collapsable box. It can be revealed by clicking on the show more button for that category.
 
 The default slot gets passed to the drawer body. It will be shown after the links section if links are provided.
 
@@ -75,7 +75,6 @@ The default slot gets passed to the drawer body. It will be shown after the link
 const links = [
   {
     title: 'BUILT-IN SERVICES',
-    isSearchable: true,
     links: [
       { name: 'Blog', href: '#' },
       { name: 'Documentation', href: '#', isDisabled: true },
@@ -151,7 +150,6 @@ There are total 5 slots available in this component
 ```js
 document.querySelector("opc-menu-drawer").links = {
     title: "BUILT-IN SERVICES",
-    isSearchable:true,
     links: [
       { name: "Blog#2", href: "#", isDisabled: true },
       { name: "Documentation#1", href: "#" },
