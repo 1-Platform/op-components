@@ -26,7 +26,7 @@
   "main": "dist/opc-feedback.js",
   "license": "MIT",
   "devDependencies": {
-    "@one-platform/opc-styles": "0.0.5",
+    "@one-platform/opc-styles": "0.0.7",
     "@types/jest": "26.0.24",
     "@types/jest-axe": "3.5.3",
     "css-loader": "5.2.7",
