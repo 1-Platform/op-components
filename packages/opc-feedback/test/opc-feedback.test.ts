@@ -49,4 +49,9 @@ describe('opc-feedback', () => {
   it('does have default template by default', async () => {
     expect(opcFeedbackPanelElement.template).toEqual(defaultTemplate);
   });
+
+  it('should have default value for application', async () => {
+    expect(opcFeedbackPanelElement.app.name).toEqual('one platform');
+    expect(opcFeedbackPanelElement.app.url).toEqual('/');
+  });
 });

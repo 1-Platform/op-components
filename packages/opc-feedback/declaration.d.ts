@@ -31,3 +31,8 @@ type TemplateView = {
   experienceList: ExperienceList[];
   errorList: ErrorList[];
 }
+
+type Application = {
+  name?: string;
+  url?: string;
+}
