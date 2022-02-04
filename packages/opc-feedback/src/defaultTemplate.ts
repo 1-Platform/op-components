@@ -44,3 +44,8 @@ export const defaultTemplate = {
     name: 'Other'
   }]
 } as TemplateView;
+
+export const defaultApplication: Application = {
+  name: 'one platform',
+  url: '/'
+}
