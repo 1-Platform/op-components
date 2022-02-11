@@ -28,7 +28,7 @@
     "jest-electron": "0.1.12",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "lit-scss-loader": "1.0.1",
-    "node-sass": "4.14.1",
+    "node-sass": "7.0.0",
     "sass-loader": "8.0.2",
     "save-dev": "0.0.1-security",
     "ts-jest": "26.4.4",
