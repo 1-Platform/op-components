@@ -22,7 +22,7 @@
     "@types/jest": "26.0.24",
     "@types/jest-axe": "3.5.3",
     "css-loader": "5.2.7",
-    "electron": "12.1.0",
+    "electron": "13.6.6",
     "extract-loader": "5.1.0",
     "html-loader": "2.1.2",
     "html-webpack-plugin": "4.5.2",
