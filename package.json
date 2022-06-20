@@ -12,8 +12,8 @@
     "postinstall": "lerna exec -- rm -rf ./node_modules && lerna bootstrap --no-ci --loglevel warn --concurrency 1"
   },
   "devDependencies": {
-    "@babel/core": "7.17.10",
-    "@babel/plugin-proposal-private-property-in-object": "7.16.7",
+    "@babel/core": "7.18.5",
+    "@babel/plugin-proposal-private-property-in-object": "7.17.12",
     "@storybook/addon-actions": "6.2.9",
     "@storybook/addon-controls": "6.2.9",
     "@storybook/addon-essentials": "6.4.13",
