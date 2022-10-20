@@ -162,6 +162,7 @@ export class OpcFeedback extends LitElement {
         src=${beetleIcon}
         width="20px"
         height="20px"
+        alt="beetle"
         class="pf-u-mr-xs"
       />`;
     }
@@ -190,19 +191,6 @@ export class OpcFeedback extends LitElement {
   render() {
     this._updateTemplate();
     return html`
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="https://unpkg.com/@patternfly/patternfly/patternfly.css"
-        crossorigin="anonymous"
-      />
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="https://unpkg.com/@patternfly/patternfly/patternfly-addons.css"
-        crossorigin="anonymous"
-      />
-
       <!-- Bug Panel -->
       <dialog
         id="bug-dialog"
@@ -219,14 +207,15 @@ export class OpcFeedback extends LitElement {
                 this._setModalState(true, false, false, true);
                 this._resetForm();
               }}"
+              alt="arrow down"
             />
-            <header>
+            <div>
               <h3
                 class="pf-u-font-weight-normal pf-u-font-size-lg pf-u-text-align-center pf-u-m-xs"
               >
                 ${this.template.errorTitle}
               </h3>
-            </header>
+            </div>
           </div>
           ${this.template.errorList.map(
             (error: any) => html`
@@ -312,14 +301,15 @@ export class OpcFeedback extends LitElement {
                 this._setModalState(true, false, false, true);
                 this._resetForm();
               }}"
+              alt="back"
             />
-            <header>
+            <div>
               <h3
                 class="pf-u-font-weight-normal pf-u-font-size-lg pf-u-text-align-center pf-u-m-0"
               >
                 ${this.template.feedbackTitle}
               </h3>
-            </header>
+            </div>
           </div>
           <p
             class="op-feedback__subtitle pf-u-text-align-center pf-u-font-size-sm pf-u-pt-md pf-u-pb-md"
@@ -343,6 +333,7 @@ export class OpcFeedback extends LitElement {
                     src="${experience.assetUrl}"
                     alt="${experience.name} icon"
                     width="17px"
+                    alt="assets"
                   />
                 </span>
                 <span class="pf-u-font-size-xs">&nbsp;${experience.name}</span>
@@ -460,6 +451,7 @@ export class OpcFeedback extends LitElement {
                   src="${bugIcon}"
                   width="16px"
                   class="op-feedback__option-icon pf-m-text-align-left"
+                  alt="bug"
                 />&nbsp; ${this.template.bugReportTitle}
               </button>
             </li>
@@ -477,6 +469,7 @@ export class OpcFeedback extends LitElement {
                   src="${chatboxIcon}"
                   width="16px"
                   class="op-feedback__option-icon pf-m-text-align-left"
+                  alt="chat"
                 />&nbsp; ${this.template.feedbackReportTitle}
               </button>
             </li>
@@ -490,11 +483,13 @@ export class OpcFeedback extends LitElement {
                   src="${documentIcon}"
                   width="16px"
                   class="op-feedback__option-icon pf-m-text-align-left"
+                  alt="document"
                 />&nbsp; ${this.template.documentationTitle}
                 <img
                   src="${openLinkIcon}"
                   width="16px"
                   class="op-feedback__icon-secondary pf-u-ml-xs"
+                  alt="open link"
                 />
               </a>
             </li>
@@ -508,11 +503,13 @@ export class OpcFeedback extends LitElement {
                   src="${chatBubblesIcon}"
                   width="16px"
                   class="op-feedback__option-icon pf-m-text-align-left"
+                  alt="chat"
                 />&nbsp; ${this.template.spaRedirectTitle}
                 <img
                   src="${openLinkIcon}"
                   width="16px"
                   class="op-feedback__icon-secondary pf-u-ml-xs"
+                  alt="open link"
                 />
               </a>
             </li>
