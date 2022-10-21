@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-feedback",
-  "version": "0.0.11-prerelease",
+  "version": "0.0.12-prerelease",
   "description": "opc-feedback component follows the One Platform design system and can be used as a popup to collect feedback from the end-users.",
   "scripts": {
     "dev": "webpack serve",
@@ -30,6 +30,7 @@
   "main": "dist/opc-feedback.js",
   "license": "MIT",
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
     "@one-platform/opc-styles": "0.0.7",
     "@patternfly/patternfly": "4.171.1",
     "@types/jest": "26.0.24",
@@ -44,7 +45,8 @@
     "jest-electron": "0.1.12",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "lit-scss-loader": "1.1.0",
-    "node-sass": "7.0.0",
+    "postcss-loader": "^7.0.1",
+    "sass": "^1.55.0",
     "sass-loader": "11.1.1",
     "save-dev": "0.0.1-security",
     "ts-jest": "26.5.6",
@@ -56,7 +58,6 @@
   },
   "dependencies": {
     "dialog-polyfill": "^0.5.6",
-    "file-loader": "^6.2.0",
     "lit": "^2.0.0-rc.2",
     "lit-analyzer": "^1.2.1",
     "lit-element": "2.4.0"
