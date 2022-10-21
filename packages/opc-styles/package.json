@@ -10,6 +10,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "node-sass": "7.0.0"
+    "node-sass": "7.0.2"
   }
 }
