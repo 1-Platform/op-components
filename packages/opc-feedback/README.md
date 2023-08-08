@@ -7,11 +7,12 @@
 Feedback Component follows the One Platform design system and can be used as a popup to collect feedback from the end-users.
 
 ## Prerequisites
+
 The `opc-feedback` component is partially dependent on the Patternfly library for styles. So to avoid any missing styles, add the `patternfly.css` file before the component script tag. `ion-icons` has used for rendering icons in the opc-feedback component this also should be included for displaying icons.
 
 ```js
-<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous" />
-<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly-addons.css" crossorigin="anonymous" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly@4.224.5/patternfly.min.css" crossorigin="anonymous" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly@4.224.5/patternfly-addons.css" crossorigin="anonymous" />
 
 <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.0/ionicons/ionicons.esm.js"></script>
 <script nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.2.3/ionicons/ionicons.js"></script>
@@ -24,13 +25,19 @@ npm install --save @one-platform/opc-feedback
 ```
 
 ## Usage
+
 ### For VanillaJS
+
 - Import component
+
 ```js
 import '@one-platform/opc-feedback/dist/opc-feedback';
 ```
+
 ### For Angular
+
 - In your app.module include the `CUSTOM_ELEMENTS_SCHEMA` and import the component
+
 ```js
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import '@one-platform/opc-feedback/dist/opc-feedback';
@@ -48,20 +55,26 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 })
 export class AppModule { }
 ```
+
 - Add component in any component html template
 
 ### For React
+
 - Import the component in App.js
+
 ```js
 import '@one-platform/opc-feedback/dist/opc-feedback';
 ```
 
-#### Inject component to the index of your app.
+#### Inject component to the index of your app
+
 ```html
 <opc-feedback id="opc-feedback">
 </opc-feedback>
 ```
+
 ## Themes
+
 | Theme Name   | Example |
 |---------|------------------------------------------------------------------|
 | red (*default and fallback color*) | ```<opc-feedback theme="red"></opc-feedback>``` |
@@ -77,6 +90,7 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 | --opc-feedback__submit--TextColor | ```#fff``` |
 
 ## Properties
+
 | Name   | value |
 |---------|------------------------------------------------------------------|
 | ```spa``` | ```String``` value is expected ```/feedback``` is the default fallback url for feedback spa |
@@ -84,9 +98,10 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 | ```app``` | ```Object``` value is expected ```{ name: 'one platform', url: '/' }``` is the default fallback url for docs |
 | ```theme``` | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
 
-
 ### Default Template
+
 When ```opc-feedback``` is launched it is loaded with the following the default template in ui.
+
 ```js
 {
   feedbackFAB: 'Send Feedback',
@@ -135,9 +150,11 @@ When ```opc-feedback``` is launched it is loaded with the following the default 
 ```
 
 ### Custom Template Example
+
 We can override the data with the default template with custom template by passing the custom properties in the following format as per defined structure of default json.
 
-* Use the feedbackTemplate setter function to set the template ui.
+- Use the feedbackTemplate setter function to set the template ui.
+
 ```js
 document.querySelector('opc-feedback').feedbackTemplate = {
   feedbackFAB: "Share Feedback"
@@ -164,22 +181,29 @@ document.querySelector('opc-feedback').feedbackTemplate = {
 | errorList | ```Array``` |
 
 ## Event Handling
-### Trigger the modal outside the component.
+
+### Trigger the modal outside the component
+
 ```js
 document.querySelector('opc-feedback').toggle();
 ```
 
-### ```opc-feedback``` emits an event with submit operation.
- - You can use the data for sending it to backend.
+### ```opc-feedback``` emits an event with submit operation
+
+- You can use the data for sending it to backend.
 
 ```js
 document.querySelector('opc-feedback').addEventListener('opc-feedback:submit', (event) => console.log(event.detail.data) );
 ```
+
 ### Development server
+
 #### Prerequisites
-* NodeJS >= 8
-* IDE (VSCode/Atom)
-* Browser (Mozilla Firefox/Google Chrome)
+
+- NodeJS >= 8
+
+- IDE (VSCode/Atom)
+- Browser (Mozilla Firefox/Google Chrome)
 
 ### Run development server
 
@@ -188,6 +212,7 @@ npm run dev opc-feedback
 ```
 
 ### Build
+
 ```sh
 npm run build opc-feedback
 ```

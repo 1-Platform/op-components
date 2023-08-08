@@ -39,7 +39,7 @@ export class CommentInput extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly@4.224.5/patternfly.min.css" crossorigin="anonymous">
       <div class="pf-c-form">
         <div class="pf-c-form__group">
           <div class="pf-c-form__group-label">

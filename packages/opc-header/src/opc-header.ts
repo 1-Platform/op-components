@@ -68,7 +68,7 @@ class OPCHeaderBreadcrumb extends LitElement {
 
   render() {
     return html`
-        <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly@4.224.5/patternfly.min.css" crossorigin="anonymous">
         <nav class="pf-c-breadcrumb" aria-label="breadcrumb">
           <ol class="pf-c-breadcrumb__list">
             ${this._breadcrumb.map(breadcrumb =>
@@ -113,7 +113,7 @@ class OPCHeaderLinks extends LitElement {
 
   render() {
     return html`
-        <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly@4.224.5/patternfly.min.css" crossorigin="anonymous">
         ${this._links.map(link =>
           html`
               <a class="pf-c-button pf-m-link" href="${link.href}">
