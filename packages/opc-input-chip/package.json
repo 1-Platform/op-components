@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-input-chip",
-  "version": "0.0.1-prerelease",
+  "version": "0.0.2-prerelease",
   "description": "A web component based on Lit Element for input chip filed",
   "scripts": {
     "dev": "webpack serve",
