@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-header",
-  "version": "0.0.3-prerelease",
+  "version": "0.0.2-prerelease",
   "description": "A web component based on Lit Element for Red Hat One Platform Header",
   "scripts": {
     "dev": "webpack serve",
