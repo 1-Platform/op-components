@@ -81,7 +81,7 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 |---------|------------------------------------------------------------------|
 | ```spa``` | ```String``` value is expected ```/feedback``` is the default fallback url for feedback spa |
 | ```docs``` | ```String``` value is expected ```/get-started``` is the default fallback url for docs |
-| ```app``` | ```Object``` value is expected ```{ name: 'one platform', url: '/' }``` is the default fallback url for docs |
+| ```app``` | ```String``` value is expected in json format ```'{ "name": "one platform", "url": "/" }'``` is the default fallback url for docs |
 | ```theme``` | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
 
 

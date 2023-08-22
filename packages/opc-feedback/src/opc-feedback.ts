@@ -31,7 +31,7 @@ export class OpcFeedback extends LitElement {
   @property({ type: String, attribute: 'docs' }) docs = '/get-started';
   @property({ reflect: true }) theme = 'red';
   @property({ type: Object }) template = defaultTemplate;
-  @property({ type: Object }) app = defaultApplication;
+  @property({ type: String }) app = `{"name": "${defaultApplication.name}" ,"url":"${defaultApplication.url}"}`;
   @state()
   _openConfirmationModal = false;
   @state()
@@ -189,6 +189,7 @@ export class OpcFeedback extends LitElement {
   }
 
   render() {
+    const app = JSON.parse(this.app);
     this._updateTemplate();
     return html`
       <!-- Bug Panel -->
@@ -279,8 +280,8 @@ export class OpcFeedback extends LitElement {
         </form>
         <p class="pf-u-font-size-xs">
           Bug reporting for
-          <a href="${this.app.url}" target="_blank" rel="noopener noreferrer">
-            ${this.app.name}
+          <a href="${app.url}" target="_blank" rel="noopener noreferrer">
+            ${app.name}
           </a>
         </p>
       </dialog>
@@ -385,8 +386,8 @@ export class OpcFeedback extends LitElement {
         </form>
         <p class="pf-u-font-size-xs">
           Feedback for
-          <a href="${this.app.url}" target="_blank" rel="noopener noreferrer">
-            ${this.app.name}
+          <a href="${app.url}" target="_blank" rel="noopener noreferrer">
+            ${app.name}
           </a>
         </p>
       </dialog>
