@@ -39,7 +39,7 @@ export default {
 const opcHeader = (args) => {
   console.log(args.breadcrumbs, args.links);
   return`
-    <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly/patternfly.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/@patternfly/patternfly@4.224.5/patternfly.min.css" crossorigin="anonymous">
     <opc-header heading="Outage Management" id="header1" theme="default">
       <opc-header-breadcrumb slot="breadcrumb" id="breadcrumb1"></opc-header-breadcrumb>
       <opc-header-links slot="links" id="links1"></opc-header-links>

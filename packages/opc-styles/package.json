@@ -10,6 +10,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "node-sass": "7.0.0"
+    "node-sass": "9.0.0"
+  },
+  "resolutions": {
+    "**/node-gyp": "^9.3.1"
   }
 }
