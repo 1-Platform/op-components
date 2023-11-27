@@ -40,7 +40,7 @@
     "webpack-dev-server": "3.11.3",
     "html-webpack-plugin": "4.5.2",
     "jest-axe": "4.1.0",
-    "@types/jest-axe": "3.5.4"
+    "@types/jest-axe": "3.5.9"
   },
   "dependencies": {
     "lit": "^2.0.0-rc.2",

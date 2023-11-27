@@ -34,7 +34,7 @@
     "@one-platform/opc-styles": "0.0.7",
     "@patternfly/patternfly": "4.171.1",
     "@types/jest": "26.0.24",
-    "@types/jest-axe": "3.5.4",
+    "@types/jest-axe": "3.5.9",
     "css-loader": "5.2.7",
     "electron": "15.5.5",
     "extract-loader": "5.1.0",
