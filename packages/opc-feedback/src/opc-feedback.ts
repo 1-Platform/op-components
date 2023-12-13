@@ -27,11 +27,14 @@ import {
 import dialogPolyfill from 'dialog-polyfill';
 @customElement('opc-feedback')
 export class OpcFeedback extends LitElement {
-  @property({ type: String, attribute: 'spa' }) spa = '/feedback';
-  @property({ type: String, attribute: 'docs' }) docs = '/get-started';
+  @property({ type: String, attribute: 'spa' }) spa = undefined;
+  @property({ type: String, attribute: 'docs' }) docs = undefined;
   @property({ reflect: true }) theme = 'red';
   @property({ type: Object }) template = defaultTemplate;
   @property({ type: Object }) app = defaultApplication;
+  @property({ type: Number }) summaryLimit = undefined;
+  onSubmit: (event: CustomEvent) => Promise<any>;
+
   @state()
   _openConfirmationModal = false;
   @state()
@@ -46,7 +49,9 @@ export class OpcFeedback extends LitElement {
   _error = '';
   _path = window.location.pathname;
 
-  @query('textarea') textarea: HTMLTextAreaElement;
+  @query('textarea[id=bugsummary]') bugTextareaElem: HTMLTextAreaElement;
+  @query('textarea[id=feedbacksummary]')
+  feedbackTextareaElem: HTMLTextAreaElement;
 
   constructor() {
     super();
@@ -60,7 +65,8 @@ export class OpcFeedback extends LitElement {
     this._summary = '';
     this._experience = '';
     this._error = '';
-    this.textarea.value = '';
+    this.bugTextareaElem.value = '';
+    this.feedbackTextareaElem.value = '';
   }
 
   _setExperience(selectedExperience) {
@@ -69,7 +75,7 @@ export class OpcFeedback extends LitElement {
 
   _isValidUrl(url: string): boolean {
     try {
-      new URL(url);
+      new URL(url, window.origin);
       return true;
     } catch {
       return false;
@@ -94,31 +100,32 @@ export class OpcFeedback extends LitElement {
     this._error = selectedError;
   }
 
-  _submitFeedback() {
-    this.dispatchEvent(
-      new CustomEvent('opc-feedback:submit', {
-        detail: {
-          message: this.template.confirmationEventMessage,
-          data: {
-            summary: this._summary,
-            experience: this._experience ? this._experience : null,
-            error: this._error ? this._error : null,
-            category: this._error ? 'BUG' : 'FEEDBACK',
-            stackInfo: {
-              stack: navigator.appVersion,
-              // Includes the url of the page and removes the last chracter of url ending with / and #
-              path:
-                (this._path.length !== 1 &&
-                  this._path.substr(this._path.length - 1, 1) === '/') ||
-                this._path.substr(this._path.length - 1, 1) === '#'
-                  ? this._path.slice(0, -1)
-                  : this._path,
-            },
+  async _submitFeedback() {
+    const event = new CustomEvent('opc-feedback:submit', {
+      detail: {
+        message: this.template.confirmationEventMessage,
+        data: {
+          summary: this._summary,
+          experience: this._experience ? this._experience : null,
+          error: this._error ? this._error : null,
+          category: this._error ? 'BUG' : 'FEEDBACK',
+          stackInfo: {
+            stack: navigator.appVersion,
+            // Includes the url of the page and removes the last chracter of url ending with / and #
+            path:
+              (this._path.length !== 1 &&
+                this._path.substr(this._path.length - 1, 1) === '/') ||
+              this._path.substr(this._path.length - 1, 1) === '#'
+                ? this._path.slice(0, -1)
+                : this._path,
           },
         },
-      })
-    );
+      },
+    });
+    this.dispatchEvent(event);
+    await this.onSubmit?.(event);
     this._resetForm();
+    this._setModalState(false, false, false, !this._openConfirmationModal);
   }
 
   toggle() {
@@ -126,10 +133,10 @@ export class OpcFeedback extends LitElement {
   }
 
   _setModalState(
-    initialModalState,
-    feedbackModalState,
-    bugModalState,
-    confirmationModalState
+    initialModalState: boolean,
+    feedbackModalState: boolean,
+    bugModalState: boolean,
+    confirmationModalState: boolean
   ) {
     this._openInitialModal = initialModalState;
     this._openFeedbackModal = feedbackModalState;
@@ -204,7 +211,7 @@ export class OpcFeedback extends LitElement {
               width="14.25px"
               class="pf-u-font-size-lg"
               @click="${(e) => {
-                this._setModalState(true, false, false, true);
+                this._setModalState(true, false, false, false);
                 this._resetForm();
               }}"
               alt="arrow down"
@@ -233,9 +240,20 @@ export class OpcFeedback extends LitElement {
               </div>
             `
           )}
-          <p class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md">
-            ${this.template.summary}
-          </p>
+          <div class=" pf-u-display-flex pf-u-justify-content-space-between">
+            <p class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md">
+              ${this.template.summary}<span />
+            </p>
+            ${this.summaryLimit === undefined
+              ? ''
+              : html`<p
+                  class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md "
+                >
+                  ${this.bugTextareaElem
+                    ? `${this.bugTextareaElem.value.length}/${this.summaryLimit}`
+                    : `0/${this.summaryLimit}`}
+                </p>`}
+          </div>
           <textarea
             id="bugsummary"
             rows="3"
@@ -245,6 +263,7 @@ export class OpcFeedback extends LitElement {
             placeholder=${this.template.summaryPlaceholder}
             class="pf-c-form-control pf-m-resize-vertical"
             required
+            maxlength="${this.summaryLimit}"
           ></textarea>
           <p class="op-feedback__subtitle pf-u-font-size-xs">
             ${this.template.bugSubmissionNote}
@@ -256,12 +275,6 @@ export class OpcFeedback extends LitElement {
             type="button"
             @click="${(e) => {
               this._submitFeedback();
-              this._setModalState(
-                false,
-                false,
-                false,
-                !this._openConfirmationModal
-              );
             }}"
           >
             Submit
@@ -298,7 +311,7 @@ export class OpcFeedback extends LitElement {
               width="14.25px"
               class="pf-u-font-size-lg"
               @click="${(e) => {
-                this._setModalState(true, false, false, true);
+                this._setModalState(true, false, false, false);
                 this._resetForm();
               }}"
               alt="back"
@@ -314,7 +327,7 @@ export class OpcFeedback extends LitElement {
           <p
             class="op-feedback__subtitle pf-u-text-align-center pf-u-font-size-sm pf-u-pt-md pf-u-pb-md"
           >
-            ${this.template.subtitle}
+            ${this.template.feedbackSubtitle}
           </p>
           ${this.template.experienceList.map(
             (experience: any) => html`
@@ -340,9 +353,20 @@ export class OpcFeedback extends LitElement {
               </div>
             `
           )}
-          <p class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md">
-            ${this.template.summary}
-          </p>
+          <div class=" pf-u-display-flex pf-u-justify-content-space-between">
+            <p class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md">
+              ${this.template.summary}<span />
+            </p>
+            ${this.summaryLimit === undefined
+              ? ''
+              : html`<p
+                  class="op-feedback__subtitle pf-u-font-size-md pf-u-pt-md "
+                >
+                  ${this.feedbackTextareaElem
+                    ? `${this.feedbackTextareaElem.value.length}/${this.summaryLimit}`
+                    : `0/${this.summaryLimit}`}
+                </p>`}
+          </div>
           <textarea
             id="feedbacksummary"
             rows="3"
@@ -352,21 +376,17 @@ export class OpcFeedback extends LitElement {
             placeholder=${this.template.summaryPlaceholder}
             class="pf-c-form-control pf-m-resize-vertical"
             required
+            maxlength="${this.summaryLimit}"
           ></textarea>
           <button
             class="pf-c-button pf-m-block pf-u-my-sm ${this._experience
               .length === 0
-              ? 'pf-u-display-none-on-sm'
+              ? // || this.feedbackTextareaElem?.value.length === 0
+                'pf-u-display-none-on-sm'
               : ''}"
             type="button"
             @click="${(e) => {
               this._submitFeedback();
-              this._setModalState(
-                false,
-                false,
-                false,
-                !this._openConfirmationModal
-              );
             }}"
           >
             Submit
@@ -375,7 +395,8 @@ export class OpcFeedback extends LitElement {
             id="submit-feedback"
             class="pf-c-button pf-m-block pf-u-my-sm  ${this._experience
               .length !== 0
-              ? 'pf-u-display-none-on-sm'
+              ? // && this.feedbackTextareaElem?.value.length !== 0
+                'pf-u-display-none-on-sm'
               : ''}"
             type="button"
             disabled
@@ -405,12 +426,13 @@ export class OpcFeedback extends LitElement {
         >
           ${this.template.confirmationSubTitle}
         </p>
-        <hr class="pf-c-divider" />
-        <a href="${this.spa}" target="_blank">
-          <p class="pf-u-text-align-center pf-u-p-xs">
-            ${this.template.spaRedirectTitle}
-          </p>
-        </a>
+        ${this.spa &&
+        html`<hr class="pf-c-divider" />
+          <a href="${this.spa}" target="_blank">
+            <p class="pf-u-text-align-center pf-u-p-xs">
+              ${this.template.spaRedirectTitle}
+            </p>
+          </a>`}
         <hr class="pf-c-divider" />
         <p
           class="op-feedback__subtitle pf-u-text-align-center pf-u-p-xs"
@@ -473,7 +495,8 @@ export class OpcFeedback extends LitElement {
                 />&nbsp; ${this.template.feedbackReportTitle}
               </button>
             </li>
-            <li>
+            ${this.docs &&
+            html`<li>
               <a
                 href="${this.docs}"
                 data-feedback-type="feedback-list"
@@ -492,8 +515,9 @@ export class OpcFeedback extends LitElement {
                   alt="open link"
                 />
               </a>
-            </li>
-            <li>
+            </li>`}
+            ${this.spa &&
+            html`<li>
               <a
                 href="${this.spa}"
                 data-feedback-type="feedback-list"
@@ -512,7 +536,7 @@ export class OpcFeedback extends LitElement {
                   alt="open link"
                 />
               </a>
-            </li>
+            </li>`}
           </ul>
         </main>
       </dialog>

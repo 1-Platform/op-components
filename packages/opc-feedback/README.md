@@ -16,7 +16,7 @@ The `opc-feedback` component is partially dependent on the Patternfly library fo
 
 <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.0/ionicons/ionicons.esm.js"></script>
 <script nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.2.3/ionicons/ionicons.js"></script>
-  ```
+```
 
 ## Install
 
@@ -43,17 +43,13 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import '@one-platform/opc-feedback/dist/opc-feedback';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 - Add component in any component html template
@@ -69,38 +65,38 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 #### Inject component to the index of your app
 
 ```html
-<opc-feedback id="opc-feedback">
-</opc-feedback>
+<opc-feedback id="opc-feedback"> </opc-feedback>
 ```
 
 ## Themes
 
-| Theme Name   | Example |
-|---------|------------------------------------------------------------------|
-| red (*default and fallback color*) | ```<opc-feedback theme="red"></opc-feedback>``` |
-| blue | ```<opc-feedback theme="blue"></opc-feedback>``` |
+| Theme Name                         | Example                                      |
+| ---------------------------------- | -------------------------------------------- |
+| red (_default and fallback color_) | `<opc-feedback theme="red"></opc-feedback>`  |
+| blue                               | `<opc-feedback theme="blue"></opc-feedback>` |
 
 ### Color pallette
 
-| Color   | hex (default-fallback) |
-|---------|------------------------------------------------------------------|
-| --opc-feedback--BackgroundColor | ```#a30000``` |
-| --opc-feedback--TextColor | ```#fff``` |
-| --opc-feedback__submit--BackgroundColor |  ```#a30000``` |
-| --opc-feedback__submit--TextColor | ```#fff``` |
+| Color                                     | hex (default-fallback) |
+| ----------------------------------------- | ---------------------- |
+| --opc-feedback--BackgroundColor           | `#a30000`              |
+| --opc-feedback--TextColor                 | `#fff`                 |
+| --opc-feedback\_\_submit--BackgroundColor | `#a30000`              |
+| --opc-feedback\_\_submit--TextColor       | `#fff`                 |
 
 ## Properties
 
-| Name   | value |
-|---------|------------------------------------------------------------------|
-| ```spa``` | ```String``` value is expected ```/feedback``` is the default fallback url for feedback spa |
-| ```docs``` | ```String``` value is expected ```/get-started``` is the default fallback url for docs |
-| ```app``` | ```Object``` value is expected ```{ name: 'one platform', url: '/' }``` is the default fallback url for docs |
-| ```theme``` | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
+| Name           | value                                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `spa`          | `String` value is expected, **View Feedback** link is hidden by default.                                                |
+| `docs`         | `String` value is expected, it is `undefined` by default.                                                               |
+| `summaryLimit` | `Number` value is expected, it is Infinite by default.                                                                  |
+| `app`          | `Object` value is expected `{ name: 'one platform', url: '/' }` is the default fallback url for docs                    |
+| `theme`        | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
 
 ### Default Template
 
-When ```opc-feedback``` is launched it is loaded with the following the default template in ui.
+When `opc-feedback` is launched it is loaded with the following the default template in ui.
 
 ```js
 {
@@ -157,28 +153,28 @@ We can override the data with the default template with custom template by passi
 
 ```js
 document.querySelector('opc-feedback').feedbackTemplate = {
-  feedbackFAB: "Share Feedback"
+  feedbackFAB: 'Share Feedback',
 };
 ```
 
-| Template Properties   | Datatype |
-|---------|------------------------------------------------------------------|
-| feedbackFAB | ```String``` |
-| dialogTitle | ```String``` |
-| bugReportTitle | ```String``` |
-| feedbackReportTitle | ```String``` |
-| documentationTitle | ```String``` |
-| spaRedirectTitle | ```String``` |
-| errorTitle | ```String``` |
-| bugSubmissionNote | ```String``` |
-| feedbackTitle | ```String``` |
-| feedbackSubtitle | ```String``` |
-| summary | ```String``` |
-| summaryPlaceholder | ```String``` |
-| confirmationTitle | ```String``` |
-| confirmationSubtitle | ```String``` |
-| experienceList | ```Array``` |
-| errorList | ```Array``` |
+| Template Properties  | Datatype |
+| -------------------- | -------- |
+| feedbackFAB          | `String` |
+| dialogTitle          | `String` |
+| bugReportTitle       | `String` |
+| feedbackReportTitle  | `String` |
+| documentationTitle   | `String` |
+| spaRedirectTitle     | `String` |
+| errorTitle           | `String` |
+| bugSubmissionNote    | `String` |
+| feedbackTitle        | `String` |
+| feedbackSubtitle     | `String` |
+| summary              | `String` |
+| summaryPlaceholder   | `String` |
+| confirmationTitle    | `String` |
+| confirmationSubtitle | `String` |
+| experienceList       | `Array`  |
+| errorList            | `Array`  |
 
 ## Event Handling
 
@@ -188,12 +184,27 @@ document.querySelector('opc-feedback').feedbackTemplate = {
 document.querySelector('opc-feedback').toggle();
 ```
 
-### ```opc-feedback``` emits an event with submit operation
+### `opc-feedback` emits an event with submit operation
 
 - You can use the data for sending it to backend.
 
 ```js
-document.querySelector('opc-feedback').addEventListener('opc-feedback:submit', (event) => console.log(event.detail.data) );
+document
+  .querySelector('opc-feedback')
+  .addEventListener('opc-feedback:submit', (event) =>
+    console.log(event.detail.data)
+  );
+```
+
+### (new) Submit data using callback function:
+
+- You can set `onSubmit()` fucntion on opc-feedback component
+
+```js
+function callbackFn(event) {
+  console.log(event.detail.data);
+}
+document.querySelector('opc-feedback').onSubmit = callbackFn;
 ```
 
 ### Development server

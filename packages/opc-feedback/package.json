@@ -1,6 +1,6 @@
 {
   "name": "@one-platform/opc-feedback",
-  "version": "0.0.12-prerelease",
+  "version": "0.1.0-alpha",
   "description": "opc-feedback component follows the One Platform design system and can be used as a popup to collect feedback from the end-users.",
   "scripts": {
     "dev": "webpack serve",
@@ -39,7 +39,7 @@
     "electron": "15.5.5",
     "extract-loader": "5.1.0",
     "html-loader": "2.1.2",
-    "html-webpack-plugin": "4.5.2",
+    "html-webpack-plugin": "^5.5.4",
     "jest": "26.6.3",
     "jest-axe": "4.1.0",
     "jest-electron": "0.1.12",
