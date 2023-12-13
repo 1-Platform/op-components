@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <opc-feedback id="opc-feedback" theme="red"></opc-feedback>
+  <opc-feedback id="opc-feedback" summaryLimit=100   theme="red"></opc-feedback>
   <div class="pf-c-content">
     <header>
       <h1>opc-feedback Component</h1>
@@ -20,9 +20,10 @@
     <p><code>opc-feedback</code> component enables to collect the feedback from the user.</p>
     <h2>Supported Params</h2>
     <ol>
-      <li><code>spa</code> - URL of your hosted feedback spa. By default <code>/feedback</code> is the url.</li>
-      <li><code>docs</code> - URL of documentation. By default <code>/get-started</code> is the url.</li>
+      <li><code>spa</code> - URL of your hosted feedback spa. By default it will be <b>undefined</b>.</li>
+      <li><code>docs</code> - URL of documentation. By default it will be <b>undefined</b>.</li>
       <li><code>app</code> - Application name and URL to be shown in popup</li>
+      <li><code>summaryLimit</code> - Limit the summary with specified characters. By default it is <b>infinite</b></li>
       <li><code>template</code> - UI Template data input
         <div class="pf-c-code-editor pf-m-read-only pf-u-w-50">
           <div class="pf-c-code-editor__header">

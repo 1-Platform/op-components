@@ -33,7 +33,7 @@ describe('opc-feedback', () => {
 
   // Add more tests here
   it('does have default spa by default', async () => {
-    expect(opcFeedbackPanelElement.spa).toEqual('/feedback');
+    expect(opcFeedbackPanelElement.spa).toEqual(undefined);
   });
 
   it('can initiate spa for spa url', async () => {
