@@ -123,9 +123,13 @@ export class OpcFeedback extends LitElement {
       },
     });
     this.dispatchEvent(event);
-    await this.onSubmit?.(event);
-    this._resetForm();
-    this._setModalState(false, false, false, !this._openConfirmationModal);
+    try {
+      await this.onSubmit?.(event);
+      this._resetForm();
+      this._setModalState(false, false, false, !this._openConfirmationModal);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   toggle() {
