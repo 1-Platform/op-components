@@ -502,6 +502,7 @@ export class OpcFeedback extends LitElement {
             ${this.docs &&
             html`<li>
               <a
+                target="_blank"
                 href="${this.docs}"
                 data-feedback-type="feedback-list"
                 class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex"
@@ -523,6 +524,7 @@ export class OpcFeedback extends LitElement {
             ${this.spa &&
             html`<li>
               <a
+                target="_blank"
                 href="${this.spa}"
                 data-feedback-type="feedback-list"
                 class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex"
