@@ -25,6 +25,10 @@
     {
       "name": "Akhil Mohan",
       "email": "akhilmhdh@gmail.com"
+    },
+    {
+      "name": "Shamsuddin",
+      "email": "shamsu602@gmail.com"
     }
   ],
   "main": "dist/opc-feedback.js",
