@@ -87,14 +87,16 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 
 ## Properties
 
-| Name           | value                                                                                                                   |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `spa`          | `String` value is expected, **View Feedback** link is hidden by default.                                                |
-| `docs`         | `String` value is expected, it is `undefined` by default.                                                               |
-| `summaryLimit` | `Number` value is expected, it is Infinite by default.                                                                  |
-| `app`          | `Object` value is expected `{ name: 'one platform', url: '/' }` is the default fallback url for docs                    |
-| `theme`        | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
-| `target`       | `String` value is expected, it is `_self` by default. Specifies where to open the linked document Url                   |
+| Name            | value                                                                                                                   |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `spa`           | `String` value is expected, **View Feedback** link is hidden by default.                                                |
+| `docs`          | `String` value is expected, it is `undefined` by default.                                                               |
+| `summaryLimit`  | `Number` value is expected, it is Infinite by default.                                                                  |
+| `app`           | `Object` value is expected `{ name: 'one platform', url: '/' }` is the default fallback url for docs                    |
+| `theme`         | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
+| `target`        | `String` value is expected, it is `_self` by default. Specifies where to open the linked document Url                   |
+| `showBeetleIcon`| `Boolean` value is expected, it is true by default. Specifies to show or hide the parent beetle icon on the button      |
+
 
 ### Default Template
 
