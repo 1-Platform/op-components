@@ -169,11 +169,12 @@ export class OpcFeedback extends LitElement {
       this._openConfirmationModal ||
       this._openInitialModal ||
       this._openBugModal;
-    if (this.theme === 'blue' && !isModelOpen) {
+    if (!isModelOpen) {
       return html`<img
         src=${beetleIcon}
         width="20px"
         height="20px"
+        id="beetleIcon"
         alt="beetle"
         class="pf-u-mr-xs"
       />`;
