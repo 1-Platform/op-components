@@ -285,6 +285,11 @@ $variables: ();
   --pf-global--arrow--width-lg: 1.5625rem;
   --pf-global--target-size--MinWidth: 44px;
   --pf-global--target-size--MinHeight: 44px;
+  --opc-feedback__icon-Filter: invert(0%) sepia(0%) saturate(7500%)
+    hue-rotate(327deg) brightness(96%) contrast(104%);
+  --opc-feedback__subtitle--TextColor: var(--pf-global--Color--200);
+  --opc-feedback--ShadowColor--medium: rgba(0, 0, 0, 0.24);
+  --opc-feedback--ShadowColor--light: rgba(0, 0, 0, 0.16);
 }
 
 :host([theme='blue']) {
@@ -298,6 +303,36 @@ $variables: ();
   --opc-feedback__chip--TextColor: #0066cc;
   --opc-feedback__chip-icon-color: invert(32%) sepia(71%) saturate(6958%)
     hue-rotate(198deg) brightness(92%) contrast(104%);
+}
+
+:host([theme='dark']) {
+  --opc-feedback--BackgroundColor: #1b1d21;
+  --opc-feedback--Divider: #57585a;
+  --opc-feedback--TextColor: #e0e0e0;
+  --opc-feedback__subtitle--TextColor: #e0e0e0;
+  --opc-feedback--ShadowColor--light: rgba(0, 0, 0, 0.5);
+  --opc-feedback--ShadowColor--medium: rgba(0, 0, 0, 0.71);
+
+  --opc-feedback__panel--BackgroundColor: #1b1d21;
+  --opc-feedback__panel--TextColor: #e0e0e0;
+
+  --opc-feedback__textarea--BackgroundColor: #36373a;
+
+  --opc-feedback__submit--BackgroundColor: #0066cc;
+  --opc-feedback__submit--TextColor: #e0e0e0;
+  --opc-feedback__submit--HoverColor: #004080;
+
+  --opc-feedback__header--BackgroundColor: #111213;
+  --opc-feedback__header--TextColor: #e0e0e0;
+
+  --opc-feedback__hover--BackgroundColor: #26292d;
+  --opc-feedback__icon-Filter: invert(96%) sepia(46%) saturate(3%)
+    hue-rotate(76deg) brightness(92%) contrast(91%);
+
+  --opc-feedback__chip--BackgroundColor: #bfc0c299;
+  --opc-feedback__chip--TextColor: #ffffff;
+  --opc-feedback__chip-icon-color: invert(96%) sepia(46%) saturate(3%)
+    hue-rotate(76deg) brightness(92%) contrast(91%);
 }
 
 :host([theme='red']) {
@@ -315,6 +350,7 @@ $variables: ();
 
 a {
   color: var(--opc-feedback--TextColor);
+  text-decoration: underline;
 }
 
 * {
@@ -330,12 +366,17 @@ a {
       $opc-global--spacer--lg;
     width: ($opc-global--spacer--3xl * 4) + $opc-global--spacer--md;
     max-width: calc(100vw - $opc-global--spacer--2xl);
-    background: $opc-color--white;
+    background: opc-get-var(BackgroundColor, $opc-color--white, 'panel');
+    color: opc-get-var(
+      TextColor,
+      var(--pf-global--palette--black-900),
+      'panel'
+    );
     border: none;
     border-radius: $opc-global--spacer--sm + calc($opc-global--spacer--sm / 2);
     border-bottom-right-radius: calc($opc-global--spacer--sm / 2);
     box-shadow: 0 calc($opc-global--spacer--sm / 2) $opc-global--spacer--sm
-      rgba(0, 0, 0, 0.24);
+      var(--opc-feedback--ShadowColor--medium);
     overflow: hidden;
     transition: all var(--op-transition--default);
     opacity: 0;
@@ -348,12 +389,15 @@ a {
     &[open] + .op-feedback__button {
       background: opc-get-var(BackgroundColor, $opc-color--red-300);
       box-shadow: 0 $opc-global--spacer--sm $opc-global--spacer--sm
-        rgba(0, 0, 0, 0.24);
+        var(--opc-feedback--ShadowColor--medium);
       border-radius: $opc-global--spacer--xl;
       border-top-right-radius: calc($opc-global--spacer--sm / 2);
     }
     &:not([open]) {
       pointer-events: none;
+    }
+    img {
+      filter: var(--opc-feedback__icon-Filter);
     }
   }
   &__button {
@@ -371,18 +415,18 @@ a {
     border-radius: $opc-global--spacer--xl;
     border-bottom-right-radius: calc($opc-global--spacer--sm / 2);
     box-shadow: 0 calc($opc-global--spacer--sm / 2) $opc-global--spacer--sm
-      rgba(0, 0, 0, 0.16);
+      var(--opc-feedback--ShadowColor--light);
     transition: all var(--op-transition--default);
 
     &:hover,
     &:focus {
       background: opc-get-var(BackgroundColor, $opc-color--red-300);
       box-shadow: 0 $opc-global--spacer--sm $opc-global--spacer--sm
-        rgba(0, 0, 0, 0.24);
+        var(--opc-feedback--ShadowColor--medium);
     }
   }
   &__subtitle {
-    color: var(--pf-global--Color--200);
+    color: var(--opc-feedback__subtitle--TextColor);
     &.pf-u-text-align-center.pf-u-p-xs {
       cursor: pointer;
     }
@@ -391,16 +435,20 @@ a {
     --pf-c-chip--BackgroundColor: $opc-color--white !important;
     --pf-c-chip--BorderRadius: 15px;
     margin: calc($opc-global--spacer--sm / 2);
+    img {
+      filter: var(--opc-feedback__icon-Filter);
+    }
     &__text {
       font-size: calc(
         var(--pf-global--spacer--xs) + var(--pf-global--spacer--sm)
       ) !important;
     }
+    color: var(--opc-feedback__panel--TextColor);
     &:hover {
+      color: var(--opc-feedback__chip--TextColor);
       --pf-c-chip--BackgroundColor: var(
         --opc-feedback__chip--BackgroundColor
       ) !important;
-      color: var(--opc-feedback__chip--TextColor);
       cursor: pointer;
 
       img {
@@ -421,7 +469,7 @@ a {
   &__options {
     list-style: none;
     li:not(:last-child) {
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid opc-get-var('Divider', #eee);
     }
   }
   &__option-item {
@@ -438,7 +486,7 @@ a {
     &:hover,
     &:active,
     &:focus {
-      background: #f5f5f5;
+      background: opc-get-var(BackgroundColor, #f5f5f5, hover);
     }
   }
   &__option-item[disabled] {
@@ -452,15 +500,35 @@ a {
   }
   &__icon-secondary {
     height: calc(var(--pf-global--spacer--xs) + var(--pf-global--spacer--sm));
+    filter: var(--opc-feedback__icon-Filter);
   }
   &__option-icon {
     margin-right: 0.7rem;
+    filter: var(--opc-feedback__icon-Filter);
   }
+}
+
+.pf-c-form-control {
+  background-color: opc-get-var(
+    BackgroundColor,
+    var(--opc-feedback__panel--BackgroundColor),
+    textarea
+  );
+  border-color: opc-get-var(BackgroundColor, rgb(240, 240, 240), textarea);
+  border-bottom: 1px solid var(--opc-feedback--TextColor);
+  color: var(--opc-feedback__panel--TextColor);
 }
 
 .pf-c-button {
   background-color: opc-get-var(BackgroundColor, $opc-color--red-200, submit);
   color: opc-get-var(TextColor, $opc-color--white, submit);
+  &:hover {
+    background-color: opc-get-var(
+      HoverColor,
+      var(--opc-feedback__submit--BackgroundColor),
+      submit
+    );
+  }
 }
 
 /* purgecss end ignore */
