@@ -93,6 +93,7 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 | `summaryLimit` | `Number` value is expected, it is Infinite by default.                                                                  |
 | `app`          | `Object` value is expected `{ name: 'one platform', url: '/' }` is the default fallback url for docs                    |
 | `theme`        | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
+| `target`       | `String` value is expected, it is `_self` by default. Specifies where to open the linked document Url                   |
 
 ### Default Template
 
@@ -241,3 +242,5 @@ npm run test
 👤 **Sumeet Ingole**
 
 👤 **Akhil Mohan**
+
+👤 **Shamsuddin**

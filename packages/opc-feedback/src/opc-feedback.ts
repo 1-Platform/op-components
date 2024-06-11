@@ -29,6 +29,7 @@ import dialogPolyfill from 'dialog-polyfill';
 export class OpcFeedback extends LitElement {
   @property({ type: String, attribute: 'spa' }) spa = undefined;
   @property({ type: String, attribute: 'docs' }) docs = undefined;
+  @property({ type: String, attribute: 'target' }) target = undefined;
   @property({ reflect: true }) theme = 'red';
   @property({ type: Object }) template = defaultTemplate;
   @property({ type: Object }) app = defaultApplication;
@@ -182,6 +183,14 @@ export class OpcFeedback extends LitElement {
       class="pf-u-font-size-xl pf-u-mr-xs"
     >
     </ion-icon>`;
+  }
+
+  get getTarget(){
+    if (this.target === "_blank"){
+      return this.target;
+    } else {
+      return "_self";
+    }
   }
 
   updated() {
@@ -502,6 +511,7 @@ export class OpcFeedback extends LitElement {
             ${this.docs &&
             html`<li>
               <a
+                target="${this.getTarget}"
                 href="${this.docs}"
                 data-feedback-type="feedback-list"
                 class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex"
@@ -523,6 +533,7 @@ export class OpcFeedback extends LitElement {
             ${this.spa &&
             html`<li>
               <a
+                target="${this.getTarget}"
                 href="${this.spa}"
                 data-feedback-type="feedback-list"
                 class="op-feedback__option-item pf-u-flex-direction-row pf-u-align-items-center pf-u-w-100 pf-u-display-flex"
