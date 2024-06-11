@@ -30,6 +30,7 @@ export class OpcFeedback extends LitElement {
   @property({ type: String, attribute: 'spa' }) spa = undefined;
   @property({ type: String, attribute: 'docs' }) docs = undefined;
   @property({ type: String, attribute: 'target' }) target = undefined;
+  @property({ type: Boolean, attribute: 'showBeetleIcon' }) showBeetleIcon = true;
   @property({ reflect: true }) theme = 'red';
   @property({ type: Object }) template = defaultTemplate;
   @property({ type: Object }) app = defaultApplication;
@@ -169,7 +170,7 @@ export class OpcFeedback extends LitElement {
       this._openConfirmationModal ||
       this._openInitialModal ||
       this._openBugModal;
-    if (!isModelOpen) {
+    if (!isModelOpen && this.showBeetleIcon) {
       return html`<img
         src=${beetleIcon}
         width="20px"
