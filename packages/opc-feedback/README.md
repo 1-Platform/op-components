@@ -95,7 +95,7 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 | `app`           | `Object` value is expected `{ name: 'one platform', url: '/' }` is the default fallback url for docs                    |
 | `theme`         | Refer [themes](https://github.com/1-Platform/op-components/tree/master/packages/opc-feedback/README.md#themes) section. |
 | `target`        | `String` value is expected, it is `_self` by default. Specifies where to open the linked document Url                   |
-| `showBeetleIcon`| `Boolean` value is expected, it is true by default. Specifies to show or hide the parent beetle icon on the button      |
+| `beetleIcon`    | `String` value is expected, it is `show` by default. Specifies to `show` or `hide` the parent beetle icon on the button |
 
 
 ### Default Template
