@@ -74,6 +74,7 @@ import '@one-platform/opc-feedback/dist/opc-feedback';
 | ---------------------------------- | -------------------------------------------- |
 | red (_default and fallback color_) | `<opc-feedback theme="red"></opc-feedback>`  |
 | blue                               | `<opc-feedback theme="blue"></opc-feedback>` |
+| dark                               | `<opc-feedback theme="dark"></opc-feedback>` |
 
 ### Color pallette
 
