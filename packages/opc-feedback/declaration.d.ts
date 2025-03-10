@@ -1,15 +1,15 @@
 declare module '*.scss';
-declare module "*.json";
+declare module '*.json';
 // Add your type definitions here
 
 type ErrorList = {
-  name: string
-}
+  name: string;
+};
 
 type ExperienceList = {
   name: string;
   assetUrl: string;
-}
+};
 
 type TemplateView = {
   feedbackFAB: string;
@@ -30,9 +30,9 @@ type TemplateView = {
   confirmationSubTitle: string;
   experienceList: ExperienceList[];
   errorList: ErrorList[];
-}
+};
 
 type Application = {
   name?: string;
   url?: string;
-}
+};
