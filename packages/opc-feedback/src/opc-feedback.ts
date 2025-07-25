@@ -181,11 +181,11 @@ export class OpcFeedback extends LitElement {
         class="pf-u-mr-xs"
       />`;
     }
-    return html`<ion-icon
-      name="${isModelOpen ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
-      class="pf-u-font-size-xl pf-u-mr-xs"
-    >
-    </ion-icon>`;
+    // return html`<ion-icon
+    //   name="${isModelOpen ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
+    //   class="pf-u-font-size-xl pf-u-mr-xs"
+    // >
+    // </ion-icon>`;
     }
   }
 
