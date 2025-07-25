@@ -29,3 +29,5 @@ packages/*/dist
 
 # Ignore .tgz files
 *.tgz
+
+/lerna-debug.log

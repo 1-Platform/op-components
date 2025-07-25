@@ -9,7 +9,9 @@ module.exports = {
     maxAssetSize: 512000,
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
     open: true,
     port: 4200,
@@ -23,7 +25,12 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+          },
+        },
         exclude: /node_modules/,
       },
       {

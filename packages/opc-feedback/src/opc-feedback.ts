@@ -165,13 +165,12 @@ export class OpcFeedback extends LitElement {
   }
 
   get renderIcon() {
-    if(this.beetleIcon !== "hide"){
     const isModelOpen =
       this._openFeedbackModal ||
       this._openConfirmationModal ||
       this._openInitialModal ||
       this._openBugModal;
-    if (!isModelOpen) {
+    if(this.beetleIcon === "show" && this._openBugModal){
       return html`<img
         src=${beetleIcon}
         width="20px"
@@ -187,7 +186,7 @@ export class OpcFeedback extends LitElement {
     // >
     // </ion-icon>`;
     }
-  }
+
 
   get getTarget(){
     if (this.target === "_blank"){
