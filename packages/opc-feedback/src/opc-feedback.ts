@@ -164,35 +164,11 @@ export class OpcFeedback extends LitElement {
     return this.template;
   }
 
-  get renderIcon() {
-    const isModelOpen =
-      this._openFeedbackModal ||
-      this._openConfirmationModal ||
-      this._openInitialModal ||
-      this._openBugModal;
-    if(this.beetleIcon === "show" && this._openBugModal){
-      return html`<img
-        src=${beetleIcon}
-        width="20px"
-        height="20px"
-        id="beetleIcon"
-        alt="beetle"
-        class="pf-u-mr-xs"
-      />`;
-    }
-    // return html`<ion-icon
-    //   name="${isModelOpen ? 'ellipsis-horizontal-outline' : 'chatbox-ellipses'}"
-    //   class="pf-u-font-size-xl pf-u-mr-xs"
-    // >
-    // </ion-icon>`;
-    }
-
-
-  get getTarget(){
-    if (this.target === "_blank"){
+  get getTarget() {
+    if (this.target === '_blank') {
       return this.target;
     } else {
-      return "_self";
+      return '_self';
     }
   }
 
@@ -569,7 +545,7 @@ export class OpcFeedback extends LitElement {
           this._setModalState(this._openInitialModal, false, false, false);
         }}"
       >
-        ${this.renderIcon} ${this.template.feedbackFAB}
+        ${this.template.feedbackFAB}
       </button>
     `;
   }
